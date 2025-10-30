@@ -1,0 +1,65 @@
+// components/EbikeFinder/EbikeCalculator.tsx
+'use client';
+
+import { useState } from 'react';
+import { calculateBikeMatch, type UserPreferences, type BikeWithScore } from './calculatorLogic';
+import { adaptProductsToBikes } from './productAdapter';
+import QuestionnaireForm from './QuestionnaireForm';
+import ResultsDisplay from './ResultsDisplay';
+import { ProductCard } from '@/lib/productData';
+
+// Import your product data - Update this path to match your project structure
+// import { products } from '@/lib/products';
+
+interface EbikeCalculatorProps {
+  products?: ProductCard[]; // Your ProductCard[] type
+}
+
+export default function EbikeCalculator({ products = [] }: EbikeCalculatorProps) {
+  const [currentStep, setCurrentStep] = useState<'form' | 'results'>('form');
+  const [recommendations, setRecommendations] = useState<BikeWithScore[]>([]);
+  const [userPreferences, setUserPreferences] = useState<UserPreferences | null>(null);
+
+  const handleSubmit = (preferences: UserPreferences) => {
+    // Convert your ProductCard format to calculator's Bike format
+    const adaptedProducts = adaptProductsToBikes(products);
+    
+    // Calculate matches
+    const results = calculateBikeMatch(preferences, adaptedProducts);
+    
+    setRecommendations(results);
+    setUserPreferences(preferences);
+    setCurrentStep('results');
+  };
+
+  const handleReset = () => {
+    setCurrentStep('form');
+    setRecommendations([]);
+    setUserPreferences(null);
+  };
+
+  return (
+    <section className="py-12 px-4 bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            Find Your Perfect E-Bike
+          </h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-xl mx-auto">
+            Answer a few questions and we&apos;ll recommend the best e-bikes tailored to your needs
+          </p>
+        </div>
+
+        {currentStep === 'form' ? (
+          <QuestionnaireForm onSubmit={handleSubmit} />
+        ) : (
+          <ResultsDisplay
+            recommendations={recommendations}
+            userPreferences={userPreferences!}
+            onReset={handleReset}
+          />
+        )}
+      </div>
+    </section>
+  );
+}
