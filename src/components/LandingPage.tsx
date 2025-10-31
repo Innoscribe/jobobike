@@ -46,7 +46,8 @@ const LandingPage = () => {
           width={1200}
           height={600}
           priority
-          className="max-h-[600px] w-auto md:object-contain md:max-w-7xl md:px-4 sm:px-2"
+          style={{ maxHeight: '600px', width: 'auto' }}
+          className="md:object-contain md:max-w-7xl md:px-4 sm:px-2"
         />
       </section>
 

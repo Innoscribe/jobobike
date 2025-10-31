@@ -1,7 +1,8 @@
 ﻿"use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 import { AddToCartButton } from "@/components/AddToCartButton";
 
@@ -39,6 +40,13 @@ export default function CategoryClient({ products, slug }: CategoryClientProps) 
     if (sort === "new") arr.reverse();
     return arr.slice((page - 1) * perPage, page * perPage);
   }, [sort, page, products]);
+
+  useEffect(() => {
+    sortedProducts.slice(0, 6).forEach(product => {
+      const img = new window.Image();
+      img.src = product.image;
+    });
+  }, [sortedProducts]);
 
   return (
     <main className="bg-white text-gray-900 mt-52 md:mt-36">
@@ -81,11 +89,15 @@ export default function CategoryClient({ products, slug }: CategoryClientProps) 
             >
               <div className="relative mb-2 sm:mb-3">
                 <Link href={`/products/${product.slug}`}>
-                  <img
+                  <Image
                     className="object-cover w-[85%] h-[85%] sm:w-full sm:h-full m-auto sm:m-0 rounded-lg sm:rounded-xl"
                     src={product.image}
                     alt={product.name}
-                    loading="lazy"
+                    width={300}
+                    height={300}
+                    priority={sortedProducts.indexOf(product) < 6}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                   />
                 </Link>
               </div>

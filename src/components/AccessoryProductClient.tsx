@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AccessoryProduct } from '@/lib/accessoriesProducts';
@@ -15,6 +15,13 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || '');
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || '');
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    product.images.forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, [product.images]);
 
   const handleAddToCart = () => {
     // Add to cart logic here
