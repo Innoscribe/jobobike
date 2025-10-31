@@ -73,7 +73,7 @@ const ContactUs: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 py-12 text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Kontakt oss</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Har du spÃ¸rsmÃ¥l om vÃ¥re el-sykler? Vi er her for Ã¥ hjelpe! Ta kontakt med vÃ¥rt team av eksperter for personlig assistanse.
+            Har du spørsmål om våre el-sykler? Vi er her for å hjelpe! Ta kontakt med vårt team av eksperter for personlig assistanse.
           </p>
         </div>
       </div>
@@ -97,7 +97,7 @@ const ContactUs: React.FC = () => {
               {submitStatus === 'error' && (
                 <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                   <p className="text-red-800">
-                    Beklager, det oppstod en feil ved sending av meldingen. Vennligst prÃ¸v igjen.
+                    Beklager, det oppstod en feil ved sending av meldingen. Vennligst prøv igjen.
                   </p>
                 </div>
               )}
@@ -279,11 +279,11 @@ const ContactUs: React.FC = () => {
                     <ClockIcon className="h-6 w-6 text-[#12b190]" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Ã…pningstider</h4>
+                    <h4 className="font-medium text-gray-900">Åpningstider</h4>
                     <div className="text-gray-600 mt-1 space-y-1">
                       <p>Mandag - Fredag: 09:00 - 18:00</p>
-                      <p>LÃ¸rdag: 10:00 - 16:00</p>
-                      <p>SÃ¸ndag: Stengt</p>
+                      <p>Lørdag: 10:00 - 16:00</p>
+                      <p>Søndag: Stengt</p>
                     </div>
                   </div>
                 </div>

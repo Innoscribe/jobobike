@@ -60,7 +60,7 @@ export default function ProductPage() {
             </Link>
           </li>
           <li aria-hidden="true" className="text-gray-400">/</li>
-          <li className="text-black font-medium">Sykkel</li>
+          <li className="text-black font-medium">El-sykler</li>
         </ol>
       </nav>
 
@@ -68,7 +68,7 @@ export default function ProductPage() {
       <section className="mx-auto max-w-7xl px-4 sm:px-2 pt-6">
         <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-center">
           <div>
-            <h1 className="text-2xl sm:text-4xl font-semibold tracking-tight text-black text-center sm:text-left">Sykkel</h1>
+            <h1 className="text-2xl sm:text-4xl font-semibold tracking-tight text-black text-center sm:text-left">El-sykler</h1>
           </div>
         </header>
       </section>

@@ -36,7 +36,7 @@ const LandingPage = () => {
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center text-black mb-12">
-            POPULAR CATEGORIES
+            POPULÆRE KATEGORIER
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 items-center justify-center text-center">
@@ -49,7 +49,7 @@ const LandingPage = () => {
                   className="mx-auto w-72 h-60 object-contain"
                 />
                 <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-lg">
-                  <span>Fat Tire</span>
+                  <span>Fatbike</span>
                   <span className="text-[#12b190]">➜</span>
                 </div>
               </div>
@@ -64,7 +64,7 @@ const LandingPage = () => {
                   className="mx-auto w-72 h-60 object-contain"
                 />
                 <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-lg">
-                  <span>Lightweight</span>
+                  <span>Lett</span>
                   <span className="text-[#12b190]">➜</span>
                 </div>
               </div>
@@ -79,7 +79,7 @@ const LandingPage = () => {
                   className="mx-auto w-72 h-60 object-contain"
                 />
                 <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-lg">
-                  <span>Cargo & Family</span>
+                  <span>Last & Familie</span>
                   <span className="text-[#12b190]">➜</span>
                 </div>
               </div>
@@ -92,7 +92,7 @@ const LandingPage = () => {
       <section className="mx-auto mt-6 max-w-7xl px-4 sm:px-2 mb-16">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
-            Popular E-Bikes
+            Populære El-sykler
           </h2>
         </div>
 
@@ -156,6 +156,7 @@ const LandingPage = () => {
                     product={product}
                     quantity={getQuantity(product.id)}
                     className="w-full sm:flex-1 rounded-full border border-gray-300 px-1 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-white bg-[#12b190] hover:bg-[#12b190] transition sm:bg-black sm:hover:border-black sm:hover:bg-gray-50 sm:hover:text-black whitespace-nowrap"
+                    text="Legg til"
                   />
                 </div>
               </div>
@@ -187,7 +188,7 @@ const LandingPage = () => {
                 300+
               </div>
               <p className="text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                Partners in Europe
+                Partnere i Europa
               </p>
             </div>
 
@@ -197,7 +198,7 @@ const LandingPage = () => {
                 50000+
               </div>
               <p className="text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                Sold Electric Bikes
+                Solgte el-sykler
               </p>
             </div>
 
@@ -207,7 +208,7 @@ const LandingPage = () => {
                 100000+
               </div>
               <p className="text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                Jobobike Fans
+                Jobobike fans
               </p>
             </div>
 
@@ -217,7 +218,7 @@ const LandingPage = () => {
                 20+
               </div>
               <p className="text-sm md:text-base lg:text-lg text-gray-700 font-medium">
-                Experience in Ebike Manufacturing
+                Års erfaring med el-sykkel produksjon
               </p>
             </div>
           </div>
@@ -446,13 +447,13 @@ const LandingPage = () => {
           {/* Section Header */}
           <div className="mb-12">
             <p className="text-[#12b190] text-base md:text-lg font-medium mb-3">
-              Transport and exercise
+              Transport og trening
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 tracking-tight">
-              CERTIFICATES
+              SERTIFISERINGER
             </h2>
             <p className="text-gray-700 text-base md:text-lg max-w-2xl leading-relaxed">
-              JOBOBIKE achieves a great combination of transport and exercise. Our e-bikes have obtained the following professional certifications.
+              JOBOBIKE oppnår en flott kombinasjon av transport og trening. Våre el-sykler har fått følgende profesjonelle sertifiseringer.
             </p>
           </div>
 

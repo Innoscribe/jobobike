@@ -18,7 +18,7 @@ const CartPage: React.FC = () => {
   };
 
   const handleStartFresh = () => {
-    if (confirm('Dette vil tÃ¸mme handlekurven din. Er du sikker?')) {
+    if (confirm('Dette vil tømme handlekurven din. Er du sikker?')) {
       clearCart();
     }
   };
@@ -37,7 +37,7 @@ const CartPage: React.FC = () => {
   const handleCheckout = async () => {
     try {
       if (!items || items.length === 0) {
-        alert('Handlekurven din er tom. Legg til varer fÃ¸r du gÃ¥r til kassen.');
+        alert('Handlekurven din er tom. Legg til varer før du går til kassen.');
         return;
       }
       
@@ -52,14 +52,14 @@ const CartPage: React.FC = () => {
       );
       
       if (!validItems) {
-        alert('Det ser ut til Ã¥ vÃ¦re et problem med varene i handlekurven. Oppdater siden og prÃ¸v igjen.');
+        alert('Det ser ut til å være et problem med varene i handlekurven. Oppdater siden og prøv igjen.');
         return;
       }
       
       router.push("/checkout");
     } catch (error) {
       console.error('Checkout error:', error);
-      alert('Det oppstod en feil ved Ã¥ gÃ¥ til kassen. PrÃ¸v igjen.');
+      alert('Det oppstod en feil ved å Gå til kassen. prøv igjen.');
     }
   };
 
@@ -90,7 +90,7 @@ const CartPage: React.FC = () => {
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">Handlekurven din er tom</h2>
               <p className="text-gray-600 mb-8 text-sm leading-relaxed">
-                Oppdag fantastiske produkter og legg dem til i handlekurven for Ã¥ komme i gang.
+                Oppdag fantastiske produkter og legg dem til i handlekurven for å komme i gang.
               </p>
               
               <div className="space-y-3">
@@ -99,7 +99,7 @@ const CartPage: React.FC = () => {
                   className="w-full bg-gradient-to-r from-[#12b190] to-[#12b190] text-white px-6 py-4 rounded-xl font-semibold hover:from-[#12b190] hover:to-[#12b190] transition-all duration-300 flex items-center gap-2 justify-center text-sm shadow-lg transform hover:scale-105"
                 >
                   <ArrowLeft className="h-4 w-4" />
-                  Start Ã¥ handle
+                  Start å handle
                 </button>
               </div>
             </div>
@@ -112,7 +112,7 @@ const CartPage: React.FC = () => {
                 <ShoppingBag className="h-14 w-14 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Handlekurven din er tom</h2>
-              <p className="text-gray-600 mb-10 text-lg">Det ser ut som du ikke har lagt til noe i handlekurven ennÃ¥.</p>
+              <p className="text-gray-600 mb-10 text-lg">Det ser ut som du ikke har lagt til noe i handlekurven ennå.</p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
@@ -120,7 +120,7 @@ const CartPage: React.FC = () => {
                   className="bg-gradient-to-r from-[#12b190] to-[#12b190] text-white px-10 py-4 rounded-xl font-semibold hover:from-[#12b190] hover:to-[#12b190] transition-all duration-300 flex items-center gap-3 justify-center shadow-lg transform hover:scale-105"
                 >
                   <ArrowLeft className="h-5 w-5" />
-                  Fortsett Ã¥ handle
+                  Fortsett å handle
                 </button>
               </div>
             </div>
@@ -221,7 +221,7 @@ const CartPage: React.FC = () => {
               onClick={handleCheckout}
               className="w-full bg-gradient-to-r from-[#12b190] to-[#12b190] text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-[#12b190] hover:to-[#12b190] transition-all duration-300 shadow-lg transform hover:scale-105 mb-3"
             >
-              GÃ¥ til kassen
+              Gå til kassen
             </button>
             
             <button
@@ -229,7 +229,7 @@ const CartPage: React.FC = () => {
               className="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-200 flex items-center justify-center gap-2 text-sm border border-gray-200"
             >
               <ArrowLeft className="h-4 w-4" />
-              Fortsett Ã¥ handle
+              Fortsett å handle
             </button>
           </div>
           <div className="h-32"></div>
@@ -326,7 +326,7 @@ const CartPage: React.FC = () => {
                   onClick={handleCheckout}
                   className="w-full bg-gradient-to-r from-[#12b190] to-[#12b190] text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-[#12b190] hover:to-[#12b190] transition-all duration-300 shadow-lg transform hover:scale-105"
                 >
-                  GÃ¥ til kassen
+                  Gå til kassen
                 </button>
 
                 <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
@@ -335,7 +335,7 @@ const CartPage: React.FC = () => {
                     className="w-full bg-gray-100 text-gray-700 py-4 px-6 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-200 flex items-center justify-center gap-3 border border-gray-200"
                   >
                     <ArrowLeft className="h-5 w-5" />
-                    Fortsett Ã¥ handle
+                    Fortsett å handle
                   </button>
                   
                   <div className="text-center mt-8 pt-6 border-t border-gray-200">
@@ -343,7 +343,7 @@ const CartPage: React.FC = () => {
                       <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                         <span className="text-green-600 text-sm font-bold">âœ“</span>
                       </div>
-                      <span className="font-medium">Kopi av E-sykkel manualen vil bli sendt pÃ¥ e-post med sporingsnummer</span>
+                      <span className="font-medium">Kopi av E-sykkel manualen vil bli sendt på e-post med sporingsnummer</span>
                     </div>
                     <div className="flex items-center justify-center gap-3 text-sm text-gray-600">
                       <div className="w-6 h-6 bg-[#12b190] rounded-full flex items-center justify-center">

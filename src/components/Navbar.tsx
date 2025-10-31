@@ -154,9 +154,9 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { name: 'E-Bikes', href: '/', dropdown: true },
-    { name: 'Accessories', href: '/accessorie' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'El-sykler', href: '/', dropdown: true },
+    { name: 'Tilbehør', href: '/accessorie' },
+    { name: 'Kontakt', href: '/contact' },
   ];
 
   const moreMenuItems = [
@@ -201,17 +201,17 @@ export default function Navbar() {
               <div className="flex items-center space-x-4 md:space-x-6">
                 <div className="flex items-center space-x-1.5">
                   <Factory className="w-4 h-4" />
-                  <span className="hidden sm:inline">European Factory</span>
-                  <span className="sm:hidden">Factory</span>
+                  <span className="hidden sm:inline">Europeisk fabrikk</span>
+                  <span className="sm:hidden">Fabrikk</span>
                 </div>
                 <div className="flex items-center space-x-1.5">
                   <Truck className="w-4 h-4" />
-                  <span className="hidden sm:inline">Free Shipping to the EU</span>
-                  <span className="sm:hidden">Free Ship</span>
+                  <span className="hidden sm:inline">Gratis frakt til EU</span>
+                  <span className="sm:hidden">Gratis frakt</span>
                 </div>
                 <div className="flex items-center space-x-1.5">
                   <Users className="w-4 h-4" />
-                  <span>300+ Partners in Europe</span>
+                  <span>300+ partnere i Europa</span>
                 </div>
               </div>
             </div>
@@ -254,8 +254,8 @@ export default function Navbar() {
                     {item.dropdown && activeDropdown === index && (
                       <div className="absolute left-1/2 transform -translate-x-1/2 top-full bg-white shadow-2xl rounded-xl border border-gray-100 z-50 w-[95vw] max-w-[700px] max-h-[500px] overflow-hidden flex flex-col">
                         <div className="px-8 pt-8 pb-4 border-b border-gray-200 flex-shrink-0">
-                          <h3 className="text-2xl font-bold text-gray-900">Browse by Category</h3>
-                          <p className="text-sm text-gray-600 mt-1">Explore our complete e-bike collection</p>
+                          <h3 className="text-2xl font-bold text-gray-900">Bla gjennom kategorier</h3>
+                          <p className="text-sm text-gray-600 mt-1">Utforsk vårt komplette el-sykkel utvalg</p>
                         </div>
 
                         <div className="overflow-y-auto flex-1 px-8 py-6 custom-scrollbar">
@@ -294,7 +294,7 @@ export default function Navbar() {
                             className="inline-flex items-center gap-2 text-sm font-semibold text-[#12b190] hover:text-[#0f9a7a] transition-colors"
                             onClick={() => setActiveDropdown(null)}
                           >
-                            View All E-Bikes
+                            Se alle el-sykler
                             <ChevronRight className="w-4 h-4" />
                           </Link>
                         </div>
@@ -372,7 +372,7 @@ export default function Navbar() {
                   onKeyDown={handleKeyDown}
                   onFocus={() => { if (results.length) setShowResults(true); }}
                   type="text"
-                  placeholder="Search for products..."
+                  placeholder="Søk etter produkter..."
                   className="w-full pl-12 pr-12 py-3 text-base text-black bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-[#12b190] focus:ring-2 focus:ring-[#12b190]/20"
                 />
                 <button
@@ -431,7 +431,7 @@ export default function Navbar() {
           <div className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-in-out overflow-y-auto">
             {/* Mobile Menu Header */}
             <div className="flex justify-between items-center p-4 border-b border-gray-200">
-              <h2 className="text-lg font-bold text-gray-900">Menu</h2>
+              <h2 className="text-lg font-bold text-gray-900">Meny</h2>
               <button
                 onClick={toggleMobileMenu}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -450,7 +450,7 @@ export default function Navbar() {
                   onKeyDown={handleKeyDown}
                   onFocus={() => { if (results.length) setShowResults(true); }}
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="Søk produkter..."
                   className="w-full pl-10 pr-4 py-2.5 text-sm text-black bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#12b190] focus:ring-2 focus:ring-[#12b190]/20"
                 />
 
@@ -495,7 +495,7 @@ export default function Navbar() {
                   onClick={toggleMobileDropdown}
                   className="flex items-center justify-between w-full px-4 py-3 text-gray-900 font-semibold hover:bg-gray-100 transition-colors"
                 >
-                  <span className="text-sm">E-Bikes</span>
+                  <span className="text-sm">El-sykler</span>
                   <ChevronDown
                     className={`w-4 h-4 text-gray-600 transition-transform duration-300 ${
                       mobileDropdownOpen ? 'rotate-180' : ''
@@ -539,7 +539,7 @@ export default function Navbar() {
                 className="flex items-center justify-between px-4 py-3 text-sm font-semibold text-[#12b190] bg-[#12b190]/5 rounded-lg hover:bg-[#12b190]/10 transition-colors border border-[#12b190]/20"
                 onClick={toggleMobileMenu}
               >
-                <span>View All Bikes</span>
+                <span>Se alle sykler</span>
                 <ChevronRight className="w-4 h-4 text-[#12b190]" />
               </Link>
 
