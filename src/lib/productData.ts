@@ -3452,17 +3452,51 @@ export const getProductsByCategory = (category: string): ProductCard[] => {
 
 // âœ… Search products
 export const searchProducts = (query: string): ProductCard[] => {
-  const lowerQuery = query.toLowerCase();
-  return PRODUCTS_DATA.filter((product) =>
-    product.name.toLowerCase().includes(lowerQuery) ||
-    product.description.toLowerCase().includes(lowerQuery) ||
-    product.keyFeatures.some(feature =>
+  if (!query || query.trim().length === 0) return [];
+  
+  const lowerQuery = query.toLowerCase().trim();
+  
+  return PRODUCTS_DATA.filter((product) => {
+    // Search in product name
+    if (product.name.toLowerCase().includes(lowerQuery)) return true;
+    
+    // Search in description
+    if (product.description.toLowerCase().includes(lowerQuery)) return true;
+    
+    // Search in features
+    if (product.features && product.features.some(feature =>
       feature.toLowerCase().includes(lowerQuery)
-    ) ||
-    product.category.some(cat =>
+    )) return true;
+    
+    // Search in key features
+    if (product.keyFeatures && product.keyFeatures.some(feature =>
+      feature.toLowerCase().includes(lowerQuery)
+    )) return true;
+    
+    // Search in categories
+    if (product.category && product.category.some(cat =>
       cat.toLowerCase().includes(lowerQuery)
-    )
-  );
+    )) return true;
+    
+    // Search in specifications
+    if (product.specifications) {
+      const specs = product.specifications;
+      if (specs.motor && specs.motor.toLowerCase().includes(lowerQuery)) return true;
+      if (specs.battery && specs.battery.toLowerCase().includes(lowerQuery)) return true;
+      if (specs.frame && specs.frame.toLowerCase().includes(lowerQuery)) return true;
+      if (specs.drivetrain && specs.drivetrain.toLowerCase().includes(lowerQuery)) return true;
+    }
+    
+    // Search in badge
+    if (product.badge && product.badge.toLowerCase().includes(lowerQuery)) return true;
+    
+    // Search in colors
+    if (product.availableColors && product.availableColors.some(color =>
+      color.toLowerCase().includes(lowerQuery)
+    )) return true;
+    
+    return false;
+  });
 };
 
 // âœ… Get products by price range
