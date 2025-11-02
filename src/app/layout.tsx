@@ -96,8 +96,9 @@ export default function RootLayout({
         <div id="main-content">
          <CartProvider>
           <Navbar />
-
-          {children}
+          <div className="mt-32 md:mt-36">
+            {children}
+          </div>
           </CartProvider>
         </div>
         

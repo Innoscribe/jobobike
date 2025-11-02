@@ -155,8 +155,6 @@ export default function Navbar() {
     { name: 'El-sykler', href: '/', dropdown: true },
     { name: 'Sykkelutstyr', href: '/accessorie' },
     { name: 'Kontakt oss', href: '/contact' },
-    { name: 'Om oss', href: '/about' },
-    { name: 'Bli forhandler', href: '/bli-forhandler' },
   ];
 
   const toggleDropdown = (index: number) =>
@@ -321,6 +319,25 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* BOTTOM ROW - Secondary Navigation */}
+        <div className="hidden md:block border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex items-center h-14 gap-8">
+              <Link
+                href="/about"
+                className="text-base font-medium text-gray-700 hover:text-[#12b190] transition-colors"
+              >
+                Om oss
+              </Link>
+              <Link
+                href="/bli-forhandler"
+                className="text-base font-medium text-gray-700 hover:text-[#12b190] transition-colors"
+              >
+                Bli forhandler
+              </Link>
+            </div>
+          </div>
+        </div>
 
       </nav>
 
@@ -391,6 +408,93 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
+            </div>
+
+            {/* mobile navigation */}
+            <div className="p-4 space-y-2">
+              {/* El-sykler dropdown */}
+              <div>
+                <button
+                  onClick={toggleMobileDropdown}
+                  className="flex items-center justify-between w-full p-3 text-left text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  <span className="font-medium">El-sykler</span>
+                  <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${mobileDropdownOpen ? 'rotate-90' : ''}`} />
+                </button>
+                {mobileDropdownOpen && (
+                  <div className="ml-4 mt-2 space-y-1">
+                    {categories.map((cat) => (
+                      <Link
+                        key={cat.slug}
+                        href={`/category/${cat.slug}`}
+                        className="block p-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded transition-colors"
+                        onClick={toggleMobileMenu}
+                      >
+                        {cat.name}
+                      </Link>
+                    ))}
+                    <Link
+                      href="/cycle"
+                      className="block p-2 text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium rounded transition-colors"
+                      onClick={toggleMobileMenu}
+                    >
+                      Se alle el-sykler
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Other menu items */}
+              <Link
+                href="/accessorie"
+                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Sykkelutstyr
+              </Link>
+              <Link
+                href="/contact"
+                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Kontakt oss
+              </Link>
+
+              <Link
+                href="/cart"
+                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Handlekurv
+              </Link>
+              <Link
+                href="/afterSale"
+                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Ettersalg
+              </Link>
+              <Link
+                href="/returns"
+                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Retur
+              </Link>
+              <Link
+                href="/terms"
+                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Vilkår
+              </Link>
+              <Link
+                href="/privacy"
+                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Personvern
+              </Link>
             </div>
 
 

@@ -62,7 +62,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-gray-700">
               <li><Link href="/privacy" className="hover:text-[#12b190]">Personvernerklæring</Link></li>
               <li><Link href="/terms" className="hover:text-[#12b190]">Vilkår for tjeneste</Link></li>
-              <li><Link href="/afterSale" className="hover:text-[#12b190]">Afer Sale Service</Link></li>
+              <li><Link href="/afterSale" className="hover:text-[#12b190]">Ettersalgsservice</Link></li>
             </ul>
           </div>
 
