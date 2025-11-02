@@ -30,6 +30,8 @@ export default function Navbar() {
 
   // mobile e-bikes accordion
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  // desktop e-bikes accordion
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
 
   // dynamic categories
   const [categories, setCategories] = useState<any[]>([]);
@@ -320,7 +322,7 @@ export default function Navbar() {
         </div>
 
         {/* BOTTOM ROW - Secondary Navigation */}
-        <div className="hidden md:block border-t border-gray-100">
+        <div className="border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center h-14 gap-8">
               <Link
@@ -348,7 +350,14 @@ export default function Navbar() {
 
           <div className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-in-out overflow-y-auto" style={{marginTop: '0px'}}>
             <div className="flex justify-between items-center p-4 border-b border-gray-200">
-              <h2 className="text-lg font-bold text-gray-900">Meny</h2>
+              <div className="flex items-center gap-3">
+                <img
+                  src="/images/logo.jpg"
+                  alt="JOBOBIKE"
+                  className="h-8 w-auto"
+                />
+                <h2 className="text-lg font-bold text-gray-900">JOBOBIKE</h2>
+              </div>
               <button
                 onClick={toggleMobileMenu}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -412,7 +421,7 @@ export default function Navbar() {
 
             {/* mobile navigation */}
             <div className="p-4 space-y-2">
-              {/* El-sykler dropdown */}
+              {/* El-sykler dropdown with images */}
               <div>
                 <button
                   onClick={toggleMobileDropdown}
@@ -422,20 +431,28 @@ export default function Navbar() {
                   <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${mobileDropdownOpen ? 'rotate-90' : ''}`} />
                 </button>
                 {mobileDropdownOpen && (
-                  <div className="ml-4 mt-2 space-y-1">
+                  <div className="mt-2 space-y-2">
                     {categories.map((cat) => (
                       <Link
                         key={cat.slug}
                         href={`/category/${cat.slug}`}
-                        className="block p-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded transition-colors"
+                        className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100"
                         onClick={toggleMobileMenu}
                       >
-                        {cat.name}
+                        <img
+                          src={cat.image}
+                          alt={cat.name}
+                          className="w-12 h-12 object-contain rounded-md border border-gray-200 mr-3 flex-shrink-0"
+                        />
+                        <div className="flex-1">
+                          <div className="text-sm font-medium text-gray-900">{cat.name}</div>
+                          <div className="text-xs text-gray-500 mt-0.5">{cat.tagline}</div>
+                        </div>
                       </Link>
                     ))}
                     <Link
                       href="/cycle"
-                      className="block p-2 text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium rounded transition-colors"
+                      className="block p-3 text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium rounded-lg bg-gray-50 transition-colors text-center"
                       onClick={toggleMobileMenu}
                     >
                       Se alle el-sykler
@@ -444,7 +461,7 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* Other menu items */}
+              {/* Sidebar menu items only */}
               <Link
                 href="/accessorie"
                 className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
@@ -460,41 +477,6 @@ export default function Navbar() {
                 Kontakt oss
               </Link>
 
-              <Link
-                href="/cart"
-                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                onClick={toggleMobileMenu}
-              >
-                Handlekurv
-              </Link>
-              <Link
-                href="/afterSale"
-                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                onClick={toggleMobileMenu}
-              >
-                Ettersalg
-              </Link>
-              <Link
-                href="/returns"
-                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                onClick={toggleMobileMenu}
-              >
-                Retur
-              </Link>
-              <Link
-                href="/terms"
-                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                onClick={toggleMobileMenu}
-              >
-                Vilkår
-              </Link>
-              <Link
-                href="/privacy"
-                className="block p-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                onClick={toggleMobileMenu}
-              >
-                Personvern
-              </Link>
             </div>
 
 
@@ -519,26 +501,42 @@ export default function Navbar() {
               {moreMenuItems.map((item, index) => (
                 item.dropdown ? (
                   <div key={item.name} className="space-y-2">
-                    <div className="text-gray-900 font-semibold">{item.name}</div>
-                    <div className="pl-4 space-y-2">
-                      {categories.map((cat) => (
+                    <button
+                      onClick={() => setDesktopDropdownOpen(!desktopDropdownOpen)}
+                      className="flex items-center justify-between w-full text-left text-gray-900 font-semibold hover:text-[#12b190] transition-colors"
+                    >
+                      <span>{item.name}</span>
+                      <ChevronRight className={`w-4 h-4 text-gray-400 transition-transform ${desktopDropdownOpen ? 'rotate-90' : ''}`} />
+                    </button>
+                    {desktopDropdownOpen && (
+                      <div className="pl-4 space-y-2">
+                        {categories.map((cat) => (
+                          <Link
+                            key={cat.slug}
+                            href={`/category/${cat.slug}`}
+                            className="flex items-center p-2 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100"
+                            onClick={toggleMoreMenu}
+                          >
+                            <img
+                              src={cat.image}
+                              alt={cat.name}
+                              className="w-10 h-10 object-contain rounded-md border border-gray-200 mr-3 flex-shrink-0"
+                            />
+                            <div className="flex-1">
+                              <div className="text-sm font-medium text-gray-900">{cat.name}</div>
+                              <div className="text-xs text-gray-500 mt-0.5">{cat.tagline}</div>
+                            </div>
+                          </Link>
+                        ))}
                         <Link
-                          key={cat.slug}
-                          href={`/category/${cat.slug}`}
-                          className="block text-sm text-gray-600 hover:text-black"
+                          href="/cycle"
+                          className="block p-2 text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium rounded-lg bg-gray-50 transition-colors text-center mt-2"
                           onClick={toggleMoreMenu}
                         >
-                          {cat.name}
+                          Se alle el-sykler
                         </Link>
-                      ))}
-                      <Link
-                        href="/cycle"
-                        className="block text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium"
-                        onClick={toggleMoreMenu}
-                      >
-                        Se alle el-sykler
-                      </Link>
-                    </div>
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <Link
