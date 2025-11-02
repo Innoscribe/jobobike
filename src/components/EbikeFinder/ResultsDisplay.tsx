@@ -40,16 +40,16 @@ export default function ResultsDisplay({
       <div className="text-center py-12 bg-gray-800 rounded-2xl">
         <div className="w-16 h-16 bg-gray-600 rounded-full mx-auto mb-4"></div>
         <h3 className="text-2xl font-bold text-white mb-4">
-          No Perfect Match Found
+          Ingen perfekt match funnet
         </h3>
         <p className="text-gray-400 mb-8">
-          We couldn&apos;t find e-bikes matching all your criteria. Try adjusting your preferences.
+          Vi fant ingen el-sykler som matcher alle dine kriterier. Prøv å justere preferansene dine.
         </p>
         <button
           onClick={onReset}
           className="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
         >
-          Try Again
+          Prøv igjen
         </button>
       </div>
     );
@@ -60,23 +60,23 @@ export default function ResultsDisplay({
       {/* User Summary */}
       <div className="bg-white rounded-2xl p-5 shadow-lg border border-gray-100">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
-          Your Profile
+          Din profil
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
           <div className="bg-gray-50 rounded-lg p-3">
-            <span className="text-gray-600 block">Height</span>
+            <span className="text-gray-600 block">Høyde</span>
             <span className="font-semibold text-gray-900">{userPreferences.height} cm</span>
           </div>
           <div className="bg-gray-50 rounded-lg p-3">
-            <span className="text-gray-600 block">Terrain</span>
+            <span className="text-gray-600 block">Terreng</span>
             <span className="font-semibold text-gray-900">{userPreferences.terrain}</span>
           </div>
           <div className="bg-gray-50 rounded-lg p-3">
-            <span className="text-gray-600 block">Distance</span>
+            <span className="text-gray-600 block">Avstand</span>
             <span className="font-semibold text-gray-900">{userPreferences.distancePerTrip} km</span>
           </div>
           <div className="bg-gray-50 rounded-lg p-3">
-            <span className="text-gray-600 block">Budget</span>
+            <span className="text-gray-600 block">Budsjett</span>
             <span className="font-semibold text-[#12b190]">{userPreferences.budget.toLocaleString()} NOK</span>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function ResultsDisplay({
           <div className="flex items-center justify-between">
             <div>
               <span className="inline-block bg-white text-[#12b190] px-4 py-2 rounded-full text-sm font-bold mb-3 shadow-sm">
-                BEST MATCH
+                BESTE MATCH
               </span>
               <h3 className="text-xl md:text-2xl font-bold text-white">
                 {topRecommendation.name}
@@ -125,7 +125,7 @@ export default function ResultsDisplay({
 
             <div className="space-y-4">
               <div>
-                <h4 className="font-semibold text-black mb-3">Why this is perfect for you:</h4>
+                <h4 className="font-semibold text-black mb-3">Hvorfor dette er perfekt for deg:</h4>
                 <ul className="space-y-2">
                   {topRecommendation.matchReasons.map((reason, index) => (
                     <li key={index} className="flex items-start">
@@ -139,25 +139,25 @@ export default function ResultsDisplay({
               <div className="grid grid-cols-2 gap-3 pt-4 border-t border-gray-200">
                 {topRecommendation.motor_watt && (
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <div className="text-xs text-gray-600 mb-1">Motor Power</div>
+                    <div className="text-xs text-gray-600 mb-1">Motoreffekt</div>
                     <div className="font-bold text-gray-900">{topRecommendation.motor_watt}W</div>
                   </div>
                 )}
                 {topRecommendation.range_km && (
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <div className="text-xs text-gray-600 mb-1">Range</div>
+                    <div className="text-xs text-gray-600 mb-1">Rekkevidde</div>
                     <div className="font-bold text-gray-900">{topRecommendation.range_km} km</div>
                   </div>
                 )}
                 {topRecommendation.weight_kg && (
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <div className="text-xs text-gray-600 mb-1">Weight</div>
+                    <div className="text-xs text-gray-600 mb-1">Vekt</div>
                     <div className="font-bold text-gray-900">{topRecommendation.weight_kg} kg</div>
                   </div>
                 )}
                 {topRecommendation.battery_Ah && (
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <div className="text-xs text-gray-600 mb-1">Battery</div>
+                    <div className="text-xs text-gray-600 mb-1">Batteri</div>
                     <div className="font-bold text-gray-900">{topRecommendation.battery_Ah} Ah</div>
                   </div>
                 )}
@@ -173,7 +173,7 @@ export default function ResultsDisplay({
                     className="flex-1"
                   >
                     <button className="w-full bg-gradient-to-r from-[#12b190] to-[#0f9a7a] text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all">
-                      View Details
+                      Se detaljer
                     </button>
                   </Link>
                   
@@ -188,7 +188,7 @@ export default function ResultsDisplay({
       {alternatives.length > 0 && (
         <div>
           <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5">
-            Other Great Options
+            Andre gode alternativer
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {alternatives.map((bike) => (
@@ -229,7 +229,7 @@ export default function ResultsDisplay({
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {bike.range_km && (
                       <div className="bg-gray-50 rounded-lg p-2 text-center">
-                        <div className="text-xs text-gray-600">Range</div>
+                        <div className="text-xs text-gray-600">Rekkevidde</div>
                         <div className="font-semibold text-gray-900 text-sm">{bike.range_km}km</div>
                       </div>
                     )}
@@ -251,7 +251,7 @@ export default function ResultsDisplay({
                       className="flex-1"
                     >
                       <button className="w-full bg-gray-100 text-gray-700 px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors border border-gray-200">
-                        View
+                        Se
                       </button>
                     </Link>
                    <AddToCartButton product={bike} className='border rounded-xl text-white bg-[#12b190] hover:bg-[#0f9a7a]'/>
@@ -269,13 +269,13 @@ export default function ResultsDisplay({
           onClick={onReset}
           className="px-6 py-3 border-2 border-gray-300 bg-white rounded-xl font-medium text-gray-700 hover:border-[#12b190] hover:text-[#12b190] transition-all"
         >
-          Start Over
+          Start på nytt
         </button>
         {selectedForCompare.length >= 2 && (
           <button
             className="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
           >
-            Compare Selected ({selectedForCompare.length})
+            Sammenlign valgte ({selectedForCompare.length})
           </button>
         )}
       </div>

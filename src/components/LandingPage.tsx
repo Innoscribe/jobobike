@@ -50,65 +50,76 @@ const LandingPage = () => {
      
 
       {/* ===== Popular Categories Section ===== */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center text-black mb-12">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-black mb-8">
             POPULÆRE KATEGORIER
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 items-center justify-center text-center">
-            {/* Fat Tire */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center justify-center text-center">
+            {/* Pendler */}
+            <Link href="/category/Pendler">
+              <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
+                <Image
+                  src="/images/lyon/lyon-1.png"
+                  alt="Pendler"
+                  width={200}
+                  height={200}
+                  priority
+                  className="mx-auto w-48 h-48 object-contain"
+                />
+                <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-base">
+                  <span>Pendler</span>
+                  <span className="text-[#12b190]">➜</span>
+                </div>
+              </div>
+            </Link>
+
+            {/* Fatbike */}
             <Link href="/category/Fatbike">
-              <div>
+              <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
                 <Image
                   src="/images/mover/mover-1.png"
-                  alt="Fat Tire"
-                  width={288}
-                  height={240}
+                  alt="Fatbike"
+                  width={200}
+                  height={200}
                   priority
-                  className="mx-auto w-72 h-60 object-contain"
+                  className="mx-auto w-48 h-48 object-contain"
                 />
-                <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-lg">
+                <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-base">
                   <span>Fatbike</span>
                   <span className="text-[#12b190]">➜</span>
                 </div>
               </div>
             </Link>
 
-            {/* lightweight */}
-            <Link href="/category/Pendler ">
-              <div>
+            {/* Sammenleggbar */}
+            <Link href="/category/Sammenleggbar">
+              <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
                 <Image
-                  src="/images/lyon/lyon-1.png"
-                  alt="Step-thru"
-                  width={288}
-                  height={240}
+                  src="/images/eddy-x/eddy-1.png"
+                  alt="Sammenleggbar"
+                  width={200}
+                  height={200}
                   priority
-                  className="mx-auto w-72 h-60 object-contain"
+                  className="mx-auto w-48 h-48 object-contain"
                 />
-                <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-lg">
-                  <span>Lett</span>
+                <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-base">
+                  <span>Sammenleggbar</span>
                   <span className="text-[#12b190]">➜</span>
                 </div>
               </div>
             </Link>
+          </div>
 
-            {/* Cargo & Family */}
-            <Link href="/category/Lastesykkel">
-              <div>
-                <Image
-                  src="/images/eddy-x/eddy-1.png"
-                  alt="Cargo & Family"
-                  width={288}
-                  height={240}
-                  priority
-                  className="mx-auto w-72 h-60 object-contain"
-                />
-                <div className="mt-3 flex justify-center items-center gap-1 text-black font-medium text-lg">
-                  <span>Last & Familie</span>
-                  <span className="text-[#12b190]">➜</span>
-                </div>
-              </div>
+          {/* CTA Button */}
+          <div className="text-center mt-8">
+            <Link
+              href="/cycle"
+              className="inline-flex items-center gap-2 bg-[#12b190] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0f9a7a] transition-colors"
+            >
+              Se alle sykler
+              <span>→</span>
             </Link>
           </div>
         </div>
@@ -118,7 +129,7 @@ const LandingPage = () => {
       <section className="mx-auto mt-6 max-w-7xl px-4 sm:px-2 mb-16">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
-            Populære El-sykler
+            Bestselgere
           </h2>
         </div>
 
@@ -193,6 +204,17 @@ const LandingPage = () => {
             </li>
           ))}
         </ul>
+
+        {/* CTA Button */}
+        <div className="text-center mt-8">
+          <Link
+            href="/cycle"
+            className="inline-flex items-center gap-2 bg-[#12b190] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0f9a7a] transition-colors"
+          >
+            Se alle sykler
+            <span>→</span>
+          </Link>
+        </div>
       </section>
 
       <section>
@@ -206,7 +228,7 @@ const LandingPage = () => {
           {/* Section Title */}
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
-              WHY TRUST JOBOBIKE?
+              HVORFOR STOLE PÅ JOBOBIKE?
             </h2>
           </div>
 

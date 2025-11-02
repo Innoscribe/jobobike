@@ -9,10 +9,10 @@ const PrivacyPolicy = () => {
       <div className="bg-gray-50 py-16 mt-32 md:mt-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-4">
-            JOBOBIKE Privacy Policy
+            JOBOBIKE Personvernerklæring
           </h1>
           <p className="text-sm text-gray-600 text-center">
-            Last updated: July 13, 2023
+            Sist oppdatert: 13. juli 2023
           </p>
         </div>
       </div>
@@ -23,7 +23,7 @@ const PrivacyPolicy = () => {
         {/* Introduction */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Jobo Europe Values Your Privacy
+            Jobo Europe verdsetter ditt personvern
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             At Jobo Europe, we take your personal privacy seriously and recognize that you expect privacy and security for all your personal information. We understand the need to provide clear and specific information about our websites designed to prevent misuse of your information.
@@ -48,7 +48,7 @@ const PrivacyPolicy = () => {
 
         {/* Consent */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Consent</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Samtykke</h2>
           <p className="text-gray-700 leading-relaxed">
             By accessing this Site, registering with Jobo Europe, creating a user profile on our Site, or submitting information to Jobo Europe, you consent to this Privacy Notice and our collection and use of your information and data as described below. We will also provide you with notice that you agree to different stages of collecting information. If you do not agree with our policies and practices, you may not be able to access or benefit from certain portions of this Site.
           </p>
@@ -56,7 +56,7 @@ const PrivacyPolicy = () => {
 
         {/* Scope */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Scope</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Omfang</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             Please be advised that this Privacy Notice applies to information that we collect:
           </p>
@@ -73,7 +73,7 @@ const PrivacyPolicy = () => {
         {/* How we collect Your Information */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            How we collect Your Information
+            Hvordan vi samler inn din informasjon
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             The only personal information we collect about you is either provided by you voluntarily or as described below under &quot;Information Collected from Your Use of the Site.&quot; Jobo Europe does not collect children&apos;s information or any other special category data.

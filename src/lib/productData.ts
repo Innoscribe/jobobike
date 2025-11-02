@@ -155,11 +155,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
     "/images/luxe/luxe-2.png",
   ],
   features: [
-    "Carbon belt drive system",
-    "Internal 8-speed transmission",
-    "Hydraulic brakes",
-    "Smart App connectivity via Bluetooth",
-    "Automatic brake light sensing"
+    "Karbon drivrem system",
+    "Intern 8-trinns giring",
+    "Hydrauliske bremser",
+    "Smart App tilkobling via Bluetooth",
+    "Automatisk bremselys sensing"
   ],
   badge: "Smart Tech",
   category: ["Pendler"],
@@ -282,27 +282,27 @@ export const PRODUCTS_DATA: ProductCard[] = [
       bottleHolder: false
     }
   },
-  description: "JOBOBIKE Luxe is a premium smart urban e-bike that combines technology and elegance. Featuring a maintenance-free carbon belt drive system and internal 8-speed transmission, it offers a smooth, quiet, and low-maintenance riding experience. The integrated Bluetooth app allows real-time monitoring of riding data and personalized settings, making urban commuting smarter and more relaxed.",
+  description: "JOBOBIKE Luxe er en premium smart by-elsykkel som kombinerer teknologi og eleganse. Med et vedlikeholdsfritt karbon drivrem system og intern 8-trinns giring, tilbyr den en jevn, stille og vedlikeholdsfri kjøreopplevelse. Den integrerte Bluetooth-appen gir sanntidsovervåking av kjøredata og personlige innstillinger, noe som gjør pendling smartere og mer avslappet.",
   keyFeatures: [
-    "Carbon belt drive - maintenance-free up to 30,000km",
-    "Smart App integration for real-time data monitoring",
-    "Internal 8-speed transmission for smooth shifting",
-    "Hydraulic brakes for all-weather performance",
-    "Automatic brake light sensing function",
-    "27.5\" large tires with anti-puncture and reflective strips",
-    "5 levels of electric assist plus automatic mode",
-    "Quick-release design for easy accessory installation"
+    "Karbon drivrem - vedlikeholdsfritt opptil 30 000 km",
+    "Smart App-integrasjon for sanntids dataovervåking",
+    "Intern 8-trinns giring for jevn giring",
+    "Hydrauliske bremser for all-vær ytelse",
+    "Automatisk bremselys sensing funksjon",
+    "27,5\" store dekk med punkteringsbeskyttelse og reflekterende striper",
+    "5 nivåer elektrisk assistanse pluss automatisk modus",
+    "Hurtigutløser design for enkel tilbehørsinstallasjon"
   ],
   availableColors: ["Silver Gray", "Snow White"],
   availableSizes: ["One Size"],
   whatsInTheBox: [
-    "JOBOBIKE Luxe e-bike",
-    "36V 15Ah battery with charger",
-    "User manual and assembly tools",
-    "Warranty card",
-    "Front and rear lights",
-    "Kickstand",
-    "Bell"
+    "JOBOBIKE Luxe el-sykkel",
+    "36V 15Ah batteri med lader",
+    "Brukermanual og monteringsverktøy",
+    "Garantikort",
+    "Front- og baklys",
+    "Sidestøtte",
+    "Bjelle"
   ]
 },
 
@@ -321,11 +321,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
     "/images/robin/robin-3.png",
   ],
   features: [
-    "26\" x 4.0\" fat tires",
-    "80mm RST hydraulic suspension",
-    "Powerful Bafang 250W motor with 80Nm torque",
-    "All-terrain capability",
-    "USB charging port"
+    "26\" x 4,0\" fatbike dekk",
+    "80mm RST hydraulisk demping",
+    "Kraftig Bafang 250W motor med 80Nm dreiemoment",
+    "All-terreng kapasitet",
+    "USB ladeport"
   ],
   badge: "All-Terrain",
   category: ["Fatbike"],
@@ -448,16 +448,16 @@ export const PRODUCTS_DATA: ProductCard[] = [
       bottleHolder: false
     }
   },
-  description: "JOBOBIKE Robin is the most powerful and dynamic fat tire e-bike in the lineup. Born for adventure, it excels on bumpy forest trails, mountains, and even snowy terrain where regular bikes can't go. With 26\" x 4.0\" fat tires and RST hydraulic suspension, Robin delivers exceptional traction and stability across all terrains.",
+  description: "JOBOBIKE Robin er den mest kraftige og dynamiske fatbike el-sykkelen i serien. Skapt for eventyr, utmerker den seg på humpete skogsstier, fjell og til og med snødekket terreng der vanlige sykler ikke kan gå. Med 26\" x 4,0\" fatbike dekk og RST hydraulisk demping, leverer Robin eksepsjonelt grep og stabilitet på alle terreng.",
   keyFeatures: [
-    "26\" x 4.0\" CST/Kenda fat tires with run-flat technology",
-    "80mm RST hydraulic suspension with rebound adjustment",
-    "Bafang 250W brushless motor with 80Nm torque",
-    "48V 13Ah (624Wh) battery with BMS protection",
-    "Hydraulic disc brakes for all-weather stopping power",
-    "Color LCD display with USB charging port",
-    "Shimano 7-speed for terrain adaptation",
-    "High frame and step-through options available"
+    "26\" x 4,0\" CST/Kenda fatbike dekk med punkteringsteknologi",
+    "80mm RST hydraulisk demping med returjustering",
+    "Bafang 250W børsteløs motor med 80Nm dreiemoment",
+    "48V 13Ah (624Wh) batteri med BMS beskyttelse",
+    "Hydrauliske skivebremser for all-vær bremsekraft",
+    "Farget LCD-skjerm med USB ladeport",
+    "Shimano 7-trinns for terrengtilpasning",
+    "Høy ramme og gjennomgående ramme tilgjengelig"
   ],
   availableColors: ["Black-Red", "Gray-Green"],
   availableSizes: ["High Frame", "Step-Through"],
@@ -486,11 +486,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
     "/images/robin-pro/robin-pro-1.png",
   ],
   features: [
-    "Extended range 48V 20Ah battery",
-    "26\" x 4.0\" fat tires",
-    "80mm RST hydraulic suspension",
-    "90km range on single charge",
-    "Premium all-terrain performance"
+    "Utvidet rekkevidde 48V 20Ah batteri",
+    "26\" x 4,0\" fatbike dekk",
+    "80mm RST hydraulisk demping",
+    "90km rekkevidde på en lading",
+    "Premium all-terreng ytelse"
   ],
   badge: "Extended Range",
   category: ["Fatbike" , "Pendler"],
@@ -613,16 +613,16 @@ export const PRODUCTS_DATA: ProductCard[] = [
       bottleHolder: false
     }
   },
-  description: "JOBOBIKE Robin Pro is the upgraded version of the popular Robin fat tire e-bike, featuring an extended range 48V 20Ah (960Wh) battery that delivers up to 90km on a single charge. Perfect for longer adventures on forest trails, mountains, and challenging terrains where standard bikes can't venture.",
+  description: "JOBOBIKE Robin Pro er den oppgraderte versjonen av den populære Robin fatbike el-sykkelen, med et utvidet rekkevidde 48V 20Ah (960Wh) batteri som leverer opptil 90km på en lading. Perfekt for lengre eventyr på skogsstier, fjell og utfordrende terreng der standard sykler ikke kan gå.",
   keyFeatures: [
-    "Extended 48V 20Ah (960Wh) battery for 90km range",
-    "26\" x 4.0\" CST/Kenda fat tires with run-flat technology",
-    "80mm RST hydraulic suspension with rebound adjustment",
-    "Bafang 250W brushless motor with 80Nm torque",
-    "Hydraulic disc brakes for superior stopping power",
-    "Color LCD display with USB charging port",
-    "Shimano 7-speed transmission",
-    "Available in multiple premium colors"
+    "Utvidet 48V 20Ah (960Wh) batteri for 90km rekkevidde",
+    "26\" x 4,0\" CST/Kenda fatbike dekk med punkteringsteknologi",
+    "80mm RST hydraulisk demping med returjustering",
+    "Bafang 250W børsteløs motor med 80Nm dreiemoment",
+    "Hydrauliske skivebremser for overlegen bremsekraft",
+    "Farget LCD-skjerm med USB ladeport",
+    "Shimano 7-trinns giring",
+    "Tilgjengelig i flere premium farger"
   ],
   availableColors: ["Black-Red", "Grey-Green", "Black-Gold", "Black-Blue"],
   availableSizes: ["High Frame", "Step-Through"],
@@ -655,11 +655,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
     "/images/romer/romer-5.png",
   ],
   features: [
-    "Foldable design for easy transport",
-    "20\" fat tires for stability",
-    "Step-through frame",
-    "Compatible with various accessories",
-    "150km range in eco mode"
+    "Sammenleggbart design for enkel transport",
+    "20\" fatbike dekk for stabilitet",
+    "Gjennomgående ramme",
+    "Kompatibel med ulike tilbehør",
+    "150km rekkevidde i øko-modus"
   ],
   badge: "Utility",
   category: ["Sammenleggbar" , "Fatbike"],
@@ -782,16 +782,16 @@ export const PRODUCTS_DATA: ProductCard[] = [
       bottleHolder: false
     }
   },
-  description: "JOBOBIKE Romer is a versatile utility e-bike designed for maximum practicality. With its foldable design and step-through frame, it's perfect for commuters who need easy transport and storage. The double-layer frame provides extra strength while protecting the battery, and it's compatible with various accessories like trailers, baby seats, and baskets.",
+  description: "JOBOBIKE Romer er en allsidig nyttesykkel designet for maksimal praktisk bruk. Med sitt sammenleggbare design og gjennomgående ramme, er den perfekt for pendlere som trenger enkel transport og oppbevaring. Den doble rammen gir ekstra styrke samtidig som den beskytter batteriet, og den er kompatibel med ulike tilbehør som tilhengere, barneseter og kurver.",
   keyFeatures: [
-    "Foldable design - compact storage at 106cm x 60cm x 86cm",
-    "20\" fat tires for stable, comfortable ride on all terrains",
-    "Step-through frame for easy mounting/dismounting",
-    "Double-layer frame for extra strength and battery protection",
-    "Compatible with trailer, baby seat, and cargo accessories",
-    "250W motor with 80Nm torque",
-    "Up to 150km range in eco mode",
-    "Rust-resistant foldable pedals"
+    "Sammenleggbart design - kompakt oppbevaring på 106cm x 60cm x 86cm",
+    "20\" fatbike dekk for stabil, komfortabel kjøring på alle terreng",
+    "Gjennomgående ramme for enkel på- og avstigning",
+    "Dobbel ramme for ekstra styrke og batteribeskyttelse",
+    "Kompatibel med tilhenger, barnesete og lastetilbehør",
+    "250W motor med 80Nm dreiemoment",
+    "Opptil 150km rekkevidde i øko-modus",
+    "Rustbestandige sammenleggbare pedaler"
   ],
   availableColors: ["Mint Cream", "Dark Olive"],
   availableSizes: ["One Size"],
@@ -821,11 +821,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
     "/images/romer-pro/romer-1.png",
   ],
   features: [
-    "Hydraulic disc brakes",
-    "Torque sensor technology",
-    "Suspension seatpost",
-    "Foldable utility design",
-    "Enhanced cargo capacity"
+    "Hydrauliske skivebremser",
+    "Dreiemoment sensor teknologi",
+    "Dempet setepinne",
+    "Sammenleggbart nyttedesign",
+    "Forbedret lastekapasitet"
   ],
   badge: "Pro Utility",
   category: ["Lastesykkel" , "Sammenleggbar"],
@@ -948,16 +948,16 @@ export const PRODUCTS_DATA: ProductCard[] = [
       bottleHolder: false
     }
   },
-  description: "JOBOBIKE Romer Pro is the upgraded version of the popular Romer utility e-bike. It features hydraulic disc brakes for superior stopping power, a torque sensor for more natural pedal assist, and a suspension seatpost for enhanced comfort. Perfect for daily commuting, family outings, and cargo transport.",
+  description: "JOBOBIKE Romer Pro er den oppgraderte versjonen av den populære Romer nyttesykkelen. Den har hydrauliske skivebremser for overlegen bremsekraft, en dreiemoment sensor for mer naturlig pedalassistanse, og en dempet setepinne for økt komfort. Perfekt for daglig pendling, familieturer og lastetransport.",
   keyFeatures: [
-    "Hydraulic disc brakes for stronger, more stable braking",
-    "Torque sensor for smooth, natural power assistance",
-    "Suspension seatpost for enhanced comfort",
-    "48V 15Ah (720Wh) battery for extended range",
-    "Foldable design with double-layer reinforced frame",
-    "20\" fat tires for stability on all terrains",
-    "Compatible with cargo accessories and child seats",
-    "Advanced LCD display with USB port"
+    "Hydrauliske skivebremser for sterkere, mer stabil bremsing",
+    "Dreiemoment sensor for jevn, naturlig kraftassistanse",
+    "Dempet setepinne for økt komfort",
+    "48V 15Ah (720Wh) batteri for utvidet rekkevidde",
+    "Sammenleggbart design med dobbel forsterket ramme",
+    "20\" fatbike dekk for stabilitet på alle terreng",
+    "Kompatibel med lastetilbehør og barneseter",
+    "Avansert LCD-skjerm med USB-port"
   ],
   availableColors: ["Jungle Green", "Dark Olive", "Blue Grey"],
   availableSizes: ["One Size"],
@@ -988,11 +988,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
     "/images/ace-pro/ace-pro-1.jpeg",
   ],
   features: [
-    "Full suspension system",
-    "27.5\" x 2.8\" all-terrain tires",
-    "500W Bafang motor with 95Nm torque",
-    "Hydraulic brakes with cutoff sensors",
-    "Premium color LCD display"
+    "Full dempingssystem",
+    "27,5\" x 2,8\" all-terreng dekk",
+    "500W Bafang motor med 95Nm dreiemoment",
+    "Hydrauliske bremser med avbruddssensorer",
+    "Premium farget LCD-skjerm"
   ],
   badge: "Performance",
   category: ["Terreng"],
@@ -1115,16 +1115,16 @@ export const PRODUCTS_DATA: ProductCard[] = [
       bottleHolder: true
     }
   },
-  description: "JOBOBIKE Ace Pro is the ultimate performance e-mountain bike designed for serious riders who demand the best. Featuring a powerful 500W Bafang mid-drive motor with 95Nm torque, full suspension system, and premium components throughout, the Ace Pro conquers the toughest trails with ease while delivering an exhilarating riding experience.",
+  description: "JOBOBIKE Ace Pro er den ultimate ytelse el-terrengsykkelen designet for seriøse syklister som krever det beste. Med en kraftig 500W Bafang midtmotor med 95Nm dreiemoment, full dempingssystem og premium komponenter gjennom hele sykkelen, erobrer Ace Pro de tøffeste stiene med letthet samtidig som den leverer en spennende kjøreopplevelse.",
   keyFeatures: [
-    "500W Bafang mid-drive motor with 95Nm torque for exceptional power",
-    "Full suspension system (120mm front / 100mm rear) for maximum comfort",
-    "27.5\" x 2.8\" plus-size tires for superior traction and stability",
-    "48V 17.5Ah Samsung battery for 80-120km range",
-    "Tektro hydraulic disc brakes with 180mm rotors",
-    "Shimano 9-speed transmission for precise gear changes",
-    "Color LCD display with Bluetooth connectivity",
-    "Integrated torque sensor for natural pedal assistance"
+    "500W Bafang midtmotor med 95Nm dreiemoment for eksepsjonell kraft",
+    "Full dempingssystem (120mm foran / 100mm bak) for maksimal komfort",
+    "27,5\" x 2,8\" plus-størrelse dekk for overlegen trekkraft og stabilitet",
+    "48V 17,5Ah Samsung batteri for 80-120km rekkevidde",
+    "Tektro hydrauliske skivebremser med 180mm rotorer",
+    "Shimano 9-trinns giring for presise girskift",
+    "Farget LCD-skjerm med Bluetooth tilkobling",
+    "Integrert dreiemoment sensor for naturlig pedalassistanse"
   ],
   availableColors: ["Matte Black", "Anthracite Grey", "Forest Green"],
   availableSizes: ["M (170-180cm)", "L (180-195cm)"],
@@ -1156,11 +1156,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
    "/images/romer-c/romer-c.png",
   ],
   features: [
-    "Enhanced cargo capacity",
-    "Reinforced rear rack",
-    "20\" fat tires",
-    "Foldable cargo design",
-    "Heavy-duty construction"
+    "Forbedret lastekapasitet",
+    "Forsterket bakre bagasjebrett",
+    "20\" fatbike dekk",
+    "Sammenleggbart lastedesign",
+    "Robust konstruksjon"
   ],
   badge: "Cargo",
   category: ["Lastesykkel" ,"Sammenleggbar"],
@@ -1283,16 +1283,16 @@ export const PRODUCTS_DATA: ProductCard[] = [
       bottleHolder: false
     }
   },
-  description: "JOBOBIKE Romer C is the cargo-focused variant of the popular Romer series, designed specifically for heavy-duty transport needs. With its reinforced frame, enhanced rear rack, and 180kg maximum load capacity, it's perfect for deliveries, shopping trips, or transporting children and cargo. The foldable design ensures easy storage when not in use.",
+  description: "JOBOBIKE Romer C er den lastefokuserte varianten av den populære Romer-serien, designet spesielt for tunge transportbehov. Med sin forsterkede ramme, forbedrede bakre bagasjebrett og 180kg maksimal lastekapasitet, er den perfekt for leveranser, handleturer eller transport av barn og last. Det sammenleggbare designet sikrer enkel oppbevaring når den ikke er i bruk.",
   keyFeatures: [
-    "Reinforced frame with 180kg maximum load capacity",
-    "Heavy-duty rear rack designed for cargo boxes and child seats",
-    "20\" fat tires for stable cargo transport on all surfaces",
-    "Foldable design for convenient storage",
-    "Wide comfort saddle with extra padding for longer trips",
-    "Compatible with cargo boxes, child seats, and trailers",
-    "Double kickstand for stable parking when loaded",
-    "Enhanced visibility lights for cargo safety"
+    "Forsterket ramme med 180kg maksimal lastekapasitet",
+    "Robust bakre bagasjebrett designet for lastekasser og barneseter",
+    "20\" fatbike dekk for stabil lastetransport på alle overflater",
+    "Sammenleggbart design for praktisk oppbevaring",
+    "Bred komfortsadel med ekstra polstring for lengre turer",
+    "Kompatibel med lastekasser, barneseter og tilhengere",
+    "Dobbel sidestøtte for stabil parkering når lastet",
+    "Forbedrede synlighetslys for lastesikkerhet"
   ],
   availableColors: ["Cargo Black", "Industrial Grey"],
   availableSizes: ["One Size"],
@@ -1331,11 +1331,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
      
     ],
     features: [
-      "350W Rear Hub Motor",
-      "36V 12.8Ah Battery",
-      "20\" Fat Tires",
-      "Foldable Design",
-      "5 Assist Levels"
+      "350W bakhjulsmotor",
+      "36V 12,8Ah batteri",
+      "20\" fatbike dekk",
+      "Sammenleggbart design",
+      "5 assistansenivåer"
     ],
     category: ["Pendler"],
     rating: 4.3,
@@ -1456,13 +1456,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Sam is a versatile folding e-bike perfect for urban commuters who need portability without sacrificing performance. Its compact design makes storage and transport effortless.",
+    description: "JOBOBIKE Sam er en allsidig sammenleggbar el-sykkel perfekt for bypendlere som trenger bærbarhet uten å ofre ytelse. Det kompakte designet gjør oppbevaring og transport enkelt.",
     keyFeatures: [
-      "Quick-fold mechanism for easy storage",
-      "Fat tires for enhanced stability and comfort",
-      "Powerful 350W motor for city riding",
-      "Removable battery for convenient charging",
-      "Compact size perfect for apartments and offices"
+      "Hurtig-sammenlegging mekanisme for enkel oppbevaring",
+      "Fatbike dekk for forbedret stabilitet og komfort",
+      "Kraftig 350W motor for bykjøring",
+      "Avtakbart batteri for praktisk lading",
+      "Kompakt størrelse perfekt for leiligheter og kontorer"
     ],
     availableColors: ["Matte Black", "White", "Red"],
     availableSizes: ["One Size"],
@@ -1490,11 +1490,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
 
     ],
     features: [
-      "250W Mid-Drive Motor",
-      "48V 15Ah Removable Battery",
-      "9-Speed Shimano Transmission",
-      "90+ km Range",
-      "Bluetooth App Connectivity"
+      "250W midtmotor",
+      "48V 15Ah avtakbart batteri",
+      "9-trinns Shimano giring",
+      "90+ km rekkevidde",
+      "Bluetooth App tilkobling"
     ],
     badge: "Best Seller",
     category: ["Pendler"],
@@ -1617,13 +1617,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: true
       }
     },
-    description: "The JOBOBIKE Lyon Pro is a sophisticated urban e-bike designed for the modern commuter. With its powerful mid-drive motor and long-range battery, it offers the perfect balance of performance and efficiency for city riding.",
+    description: "JOBOBIKE Lyon Pro er en sofistikert by-elsykkel designet for den moderne pendleren. Med sin kraftige midtmotor og langdistanse batteri, tilbyr den den perfekte balansen mellom ytelse og effektivitet for bykjøring.",
     keyFeatures: [
-      "Powerful 250W mid-drive motor with 90 N.m torque",
-      "Long-range 48V 15Ah removable battery",
-      "Smart Bluetooth connectivity with mobile app",
-      "Responsive hydraulic disc brakes",
-      "Comfortable step-through frame design"
+      "Kraftig 250W midtmotor med 90 Nm dreiemoment",
+      "Langdistanse 48V 15Ah avtakbart batteri",
+      "Smart Bluetooth tilkobling med mobilapp",
+      "Responsive hydrauliske skivebremser",
+      "Komfortabelt gjennomgående rammedesign"
     ],
     availableColors: ["Matte Black", "Pearl White", "Ocean Blue"],
     availableSizes: ["One Size"],
@@ -1652,11 +1652,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
 
     ],
     features: [
-      "250W Rear Hub Motor",
-      "48V 15Ah Smart Battery",
-      "8-Speed Shimano Derailleur",
-      "Torque Sensor",
-      "Smart LCD Display"
+      "250W bakhjulsmotor",
+      "48V 15Ah smart batteri",
+      "8-trinns Shimano giring",
+      "Dreiemoment sensor",
+      "Smart LCD-skjerm"
     ],
     category: ["Pendler" ,"Hybrid"],
     rating: 4.5,
@@ -1777,13 +1777,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: true
       }
     },
-    description: "The JOBOBIKE Dyno GT combines smart technology with reliable performance. Featuring a torque sensor and intelligent display system, it's perfect for tech-savvy urban riders.",
+    description: "JOBOBIKE Dyno GT kombinerer smart teknologi med pålitelig ytelse. Med dreiemoment sensor og intelligent skjermsystem, er den perfekt for teknologikyndige bysyklister.",
     keyFeatures: [
-      "Smart torque sensor for natural riding feel",
-      "Fast 3-hour charging capability",
-      "Auto-sensing rear light for safety",
-      "Bluetooth LCD display with app integration",
-      "Lightweight yet durable aluminum frame"
+      "Smart dreiemoment sensor for naturlig kjørefølelse",
+      "Rask 3-timers ladekapasitet",
+      "Auto-sensing baklys for sikkerhet",
+      "Bluetooth LCD-skjerm med app-integrasjon",
+      "Lett men holdbar aluminiumsramme"
     ],
     availableColors: ["Charcoal Gray", "Electric Blue", "Forest Green"],
     availableSizes: ["One Size"],
@@ -1814,11 +1814,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "/images/transer/transer-3.png",
     ],
     features: [
-      "250W Mid-Drive Motor",
-      "48V 17.5Ah Battery",
-      "Cargo Box Included",
-      "Family-Friendly Design",
-      "Extra Long Frame"
+      "250W midtmotor",
+      "48V 17,5Ah batteri",
+      "Lastekasse inkludert",
+      "Familievennlig design",
+      "Ekstra lang ramme"
     ],
     badge: "Family Choice",
     category: ["Sammenleggbar" , "Hybrid"],
@@ -1940,13 +1940,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: true
       }
     },
-    description: "The JOBOBIKE Transer is the ultimate family cargo e-bike, designed to safely transport children and cargo with its extended frame and powerful motor system.",
+    description: "JOBOBIKE Transer er den ultimate familie lastesykkelen, designet for å trygt transportere barn og last med sin utvidede ramme og kraftige motorsystem.",
     keyFeatures: [
-      "Extended longtail frame for maximum cargo capacity",
-      "Powerful mid-drive motor with high torque",
-      "Extra-large battery for long family trips",
-      "Integrated cargo box and safety accessories",
-      "Stable and comfortable ride even when fully loaded"
+      "Utvidet lang ramme for maksimal lastekapasitet",
+      "Kraftig midtmotor med høyt dreiemoment",
+      "Ekstra stort batteri for lange familieturer",
+      "Integrert lastekasse og sikkerhetstilbehør",
+      "Stabil og komfortabel kjøring selv når fullt lastet"
     ],
     availableColors: ["Safety Orange", "Deep Blue", "Forest Green"],
     availableSizes: ["One Size"],
@@ -1975,11 +1975,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "/images/mover/mover-2.png",
     ],
     features: [
-      "250W Rear Hub Motor",
-      "36V 14Ah Battery",
-      "Step-Through Frame",
-      "Comfortable Riding Position",
-      "Integrated Lights"
+      "250W bakhjulsmotor",
+      "36V 14Ah batteri",
+      "Gjennomgående ramme",
+      "Komfortabel kjøreposisjon",
+      "Integrerte lys"
     ],
     category: ["Fatbike"],
     rating: 4.4,
@@ -2100,13 +2100,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Mover offers comfortable, upright riding with its classic step-through design. Perfect for leisurely rides and daily commuting with style and comfort.",
+    description: "JOBOBIKE Mover tilbyr komfortabel, oppreist kjøring med sitt klassiske gjennomgående design. Perfekt for avslappende turer og daglig pendling med stil og komfort.",
     keyFeatures: [
-      "Easy step-through frame for comfortable mounting",
-      "Upright riding position reduces strain",
-      "Integrated lighting system for safety",
-      "Classic city bike styling with modern e-bike technology",
-      "Reliable and affordable urban transportation"
+      "Enkel gjennomgående ramme for komfortabel påstigning",
+      "Oppreist kjøreposisjon reduserer belastning",
+      "Integrert lyssystem for sikkerhet",
+      "Klassisk bysykkel-styling med moderne el-sykkel teknologi",
+      "Pålitelig og rimelig bytransport"
     ],
     availableColors: ["Classic Black", "Cream White", "Burgundy Red"],
     availableSizes: ["One Size"],
@@ -2136,11 +2136,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "/images/eddy-x/eddy-2.png",
     ],
     features: [
-      "250W Mid-Drive Motor",
-      "36V 16Ah Battery",
-      "Smart Display",
-      "Integrated Design",
-      "Urban Optimized"
+      "250W midtmotor",
+      "36V 16Ah batteri",
+      "Smart skjerm",
+      "Integrert design",
+      "By-optimalisert"
     ],
     category: ["Lastesykkel"],
     rating: 4.5,
@@ -2261,13 +2261,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: true
       }
     },
-    description: "The JOBOBIKE Eddy X represents the future of urban e-mobility with its sleek integrated design and smart technology. Perfect for modern commuters who value both style and performance.",
+    description: "JOBOBIKE Eddy X representerer fremtiden for by-elmobilitet med sitt elegante integrerte design og smarte teknologi. Perfekt for moderne pendlere som verdsetter både stil og ytelse.",
     keyFeatures: [
-      "Sleek integrated battery design",
-      "Smart color display with connectivity",
-      "Efficient mid-drive motor system",
-      "Aerodynamic frame for urban efficiency",
-      "Modern aesthetics meet practical performance"
+      "Elegant integrert batteridesign",
+      "Smart fargeskjerm med tilkobling",
+      "Effektivt midtmotorsystem",
+      "Aerodynamisk ramme for byeffektivitet",
+      "Moderne estetikk møter praktisk ytelse"
     ],
     availableColors: ["Graphite Gray", "Pure White", "Midnight Blue"],
     availableSizes: ["One Size"],
@@ -2297,11 +2297,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "/images/astra/astra-2.png",
     ],
     features: [
-      "250W Front Hub Motor",
-      "36V 10Ah Battery",
-      "Lightweight Design",
-      "Budget-Friendly",
-      "Simple Operation"
+      "250W forhjulsmotor",
+      "36V 10Ah batteri",
+      "Lett design",
+      "Budsjettennlig",
+      "Enkel betjening"
     ],
     badge: "Best Value",
     category: ["Sammenleggbar"],
@@ -2423,13 +2423,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Astra is the perfect entry-level e-bike for budget-conscious riders. Despite its affordable price, it delivers reliable performance and all the essential features needed for urban commuting.",
+    description: "JOBOBIKE Astra er den perfekte innstegs-el-sykkelen for budsjettbevisste syklister. Til tross for sin rimelige pris, leverer den pålitelig ytelse og alle de essensielle funksjonene som trengs for bypendling.",
     keyFeatures: [
-      "Affordable entry point into e-biking",
-      "Lightweight and easy to handle",
-      "Simple, user-friendly operation",
-      "Reliable front hub motor system",
-      "Perfect for short to medium commutes"
+      "Rimelig inngang til el-sykling",
+      "Lett og enkel å håndtere",
+      "Enkel, brukervennlig betjening",
+      "Pålitelig forhjulsmotorsystem",
+      "Perfekt for korte til middels pendlinger"
     ],
     availableColors: ["Basic Black", "Pearl White", "Sky Blue"],
     availableSizes: ["One Size"],
@@ -2459,11 +2459,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
 
     ],
     features: [
-      "Lightweight 22kg aluminum frame",
-      "250W XOFO rear hub motor",
-      "36V 14Ah LG battery with BMS",
-      "28-inch wheels for smooth city riding",
-      "Integrated lights and mudguards"
+      "Lett 22kg aluminiumsramme",
+      "250W XOFO bakhjulsmotor",
+      "36V 14Ah LG batteri med BMS",
+      "28-tommer hjul for jevn bykjøring",
+      "Integrerte lys og skjermer"
     ],
     badge: "Lightweight",
     category: ["Pendler"],
@@ -2586,14 +2586,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Viva is the lightest model in the JOBOBIKE family at just 22kg. Designed specifically for urban commuting, it combines elegant design with practical functionality. The lightweight aluminum frame makes it easy to carry and maneuver through city streets, while the 28-inch wheels provide a smooth and comfortable ride. Perfect for fashionable urbanites who value style and comfort.",
+    description: "JOBOBIKE Viva er den letteste modellen i JOBOBIKE-familien med bare 22kg. Designet spesielt for bypendling, kombinerer den elegant design med praktisk funksjonalitet. Den lette aluminiumsrammen gjør den lett å bære og manøvrere gjennom bygatene, mens 28-tommer hjulene gir en jevn og komfortabel tur. Perfekt for motebevisste byboere som verdsetter stil og komfort.",
     keyFeatures: [
-      "Ultra-lightweight 22kg construction",
-      "Powerful 250W rear hub motor with 30Nm torque",
-      "Long-range 504Wh battery for extended rides",
-      "Elegant urban design with integrated components",
-      "Reliable Shimano 7-speed transmission",
-      "Built-in lights and mudguards for all-weather riding"
+      "Ultra-lett 22kg konstruksjon",
+      "Kraftig 250W bakhjulsmotor med 30Nm dreiemoment",
+      "Langdistanse 504Wh batteri for utvidede turer",
+      "Elegant bydesign med integrerte komponenter",
+      "Pålitelig Shimano 7-trinns giring",
+      "Innebygde lys og skjermer for all-vær kjøring"
     ],
     availableColors: ["Blue", "White", "Black"],
     availableSizes: ["One Size (165-185cm)"],
@@ -2623,11 +2623,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "/images/viva-st/viva-st-5.png",
     ],
     features: [
-      "Step-through frame for easy mounting",
-      "Lightweight 22kg design",
-      "250W rear hub motor",
-      "36V 10.4Ah battery",
-      "Perfect for city commuting"
+      "Gjennomgående ramme for enkel påstigning",
+      "Lett 22kg design",
+      "250W bakhjulsmotor",
+      "36V 10,4Ah batteri",
+      "Perfekt for bypendling"
     ],
     badge: "Step-Through",
     category: ["Pendler"],
@@ -2750,14 +2750,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Viva ST features a step-through frame design that makes mounting and dismounting effortless. Ideal for riders who prioritize comfort and convenience, this lightweight city e-bike combines elegant styling with practical urban functionality. The low-entry frame is perfect for daily commutes and casual rides around town.",
+    description: "JOBOBIKE Viva ST har et gjennomgående rammedesign som gjør på- og avstigning enkel. Ideell for syklister som prioriterer komfort og bekvemmelighet, kombinerer denne lette by-el-sykkelen elegant styling med praktisk byfunksjonalitet. Den lave inngangsrammen er perfekt for daglige pendlinger og avslappende turer rundt i byen.",
     keyFeatures: [
-      "Easy step-through frame design",
-      "Ultra-lightweight 22kg construction",
-      "Reliable 250W motor with 30Nm torque",
-      "Comfortable upright riding position",
-      "Integrated lights and mudguards",
-      "Smooth Shimano 7-speed gear system"
+      "Enkel gjennomgående rammedesign",
+      "Ultra-lett 22kg konstruksjon",
+      "Pålitelig 250W motor med 30Nm dreiemoment",
+      "Komfortabel oppreist kjøreposisjon",
+      "Integrerte lys og skjermer",
+      "Jevnt Shimano 7-trinns girsystem"
     ],
     availableColors: ["Blue", "White", "Cream"],
     availableSizes: ["One Size (165-185cm)"],
@@ -2784,11 +2784,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
      "/images/henry/henry-2.png",
     ],
     features: [
-      "Bafang M200 mid-drive motor",
-      "Hidden integrated battery",
-      "Retro classic design",
-      "28-inch wheels",
-      "Premium components"
+      "Bafang M200 midtmotor",
+      "Skjult integrert batteri",
+      "Retro klassisk design",
+      "28-tommer hjul",
+      "Premium komponenter"
     ],
     badge: "Mid-Drive",
     category: ["Terreng"],
@@ -2911,14 +2911,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Henry is a refined urban e-bike designed for men who value minimalist style and cutting-edge technology. Featuring a powerful Bafang M200 mid-drive motor with torque sensor, it delivers a smooth, natural riding experience. The hidden battery integration provides a clean, classic appearance while maintaining modern e-bike performance.",
+    description: "JOBOBIKE Henry er en raffinert by-el-sykkel designet for menn som verdsetter minimalistisk stil og banebrytende teknologi. Med en kraftig Bafang M200 midtmotor med dreiemoment sensor, leverer den en jevn, naturlig kjøreopplevelse. Den skjulte batteriintegrasjonen gir et rent, klassisk utseende samtidig som den opprettholder moderne el-sykkel ytelse.",
     keyFeatures: [
-      "Premium Bafang M200 mid-drive motor with 55Nm torque",
-      "Integrated hidden battery for sleek aesthetics",
-      "Torque sensor for natural pedal assistance",
-      "High-quality hydraulic disc brakes",
-      "Color LCD display with comprehensive data",
-      "Classic retro styling with modern technology"
+      "Premium Bafang M200 midtmotor med 55Nm dreiemoment",
+      "Integrert skjult batteri for elegant estetikk",
+      "Dreiemoment sensor for naturlig pedalassistanse",
+      "Høykvalitets hydrauliske skivebremser",
+      "Farget LCD-skjerm med omfattende data",
+      "Klassisk retro-styling med moderne teknologi"
     ],
     availableColors: ["Matte Black", "Forest Green", "Navy Blue"],
     availableSizes: ["One Size (170-195cm)"],
@@ -2947,11 +2947,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
      "/images/ace/ace-3.png",
     ],
     features: [
-      "Foldable compact design",
-      "Mobile app control",
-      "250W motor with 45Nm torque",
-      "20-inch wheels",
-      "Lightweight and portable"
+      "Sammenleggbart kompakt design",
+      "Mobilapp kontroll",
+      "250W motor med 45Nm dreiemoment",
+      "20-tommer hjul",
+      "Lett og bærbar"
     ],
     badge: "Foldable",
     category: ["Hybrid", "Pendler"],
@@ -3074,14 +3074,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Ace is the perfect solution for urban commuters who need a compact, portable e-bike. Its innovative folding design allows easy storage in apartments, offices, or car trunks. Despite its compact size, it delivers impressive performance with a 250W motor and smart app connectivity for modern riders.",
+    description: "JOBOBIKE Ace er den perfekte løsningen for bypendlere som trenger en kompakt, bærbar el-sykkel. Det innovative sammenleggbare designet tillater enkel oppbevaring i leiligheter, kontorer eller bilbagasjerom. Til tross for sin kompakte størrelse, leverer den imponerende ytelse med en 250W motor og smart app-tilkobling for moderne syklister.",
     keyFeatures: [
-      "Quick-fold design for easy transport",
-      "Mobile app control via Bluetooth",
-      "Powerful 250W motor with 45Nm torque",
-      "CST anti-puncture tires with reflective strips",
-      "Compact 20-inch wheels for agile city riding",
-      "Lightweight 21kg for easy carrying"
+      "Hurtig-sammenlegging design for enkel transport",
+      "Mobilapp kontroll via Bluetooth",
+      "Kraftig 250W motor med 45Nm dreiemoment",
+      "CST punkteringssikre dekk med reflekterende striper",
+      "Kompakte 20-tommer hjul for smidig bykjøring",
+      "Lett 21kg for enkel bæring"
     ],
     availableColors: ["Black", "White", "Grey"],
     availableSizes: ["Universal (155-190cm)"],
@@ -3108,11 +3108,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "/images/triker/triker-2.png",
     ],
     features: [
-      "Three-wheel electric tricycle",
-      "Large rear cargo basket",
-      "Extra stability and safety",
-      "250W motor with differential",
-      "Perfect for seniors and cargo"
+      "Tre-hjuls elektrisk trehjulsykkel",
+      "Stor bakre lastekurv",
+      "Ekstra stabilitet og sikkerhet",
+      "250W motor med differensial",
+      "Perfekt for seniorer og last"
     ],
     badge: "Tricycle",
     category: ["Hybrid", "Terreng"],
@@ -3235,14 +3235,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Triker is an innovative three-wheel electric tricycle designed for maximum stability and cargo capacity. Perfect for seniors, delivery services, or anyone who values extra stability. The large rear basket can carry groceries, packages, or cargo with ease, while the low step-through frame ensures easy mounting and dismounting.",
+    description: "JOBOBIKE Triker er en innovativ tre-hjuls elektrisk trehjulsykkel designet for maksimal stabilitet og lastekapasitet. Perfekt for seniorer, leveringstjenester eller alle som verdsetter ekstra stabilitet. Den store bakre kurven kan bære dagligvarer, pakker eller last med letthet, mens den lave gjennomgående rammen sikrer enkel på- og avstigning.",
     keyFeatures: [
-      "Superior three-wheel stability",
-      "Large rear cargo basket (100L capacity)",
-      "Low step-through frame for easy access",
-      "Differential motor for smooth cornering",
-      "Extra-wide comfort saddle with suspension",
-      "Perfect for seniors and cargo transport"
+      "Overlegen tre-hjuls stabilitet",
+      "Stor bakre lastekurv (100L kapasitet)",
+      "Lav gjennomgående ramme for enkel tilgang",
+      "Differensialmotor for jevne svinger",
+      "Ekstra bred komfortsadel med demping",
+      "Perfekt for seniorer og lastetransport"
     ],
     availableColors: ["Blue", "Black", "Red"],
     availableSizes: ["Universal (155-185cm)"],
@@ -3271,11 +3271,11 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "/images/dyno-gt/dyno-gt-2.png",
     ],
     features: [
-      "Step-through comfort design",
-      "250W reliable motor",
-      "Front suspension",
-      "26-inch wheels",
-      "Affordable quality"
+      "Gjennomgående komfortdesign",
+      "250W pålitelig motor",
+      "Frontdemping",
+      "26-tommer hjul",
+      "Rimelig kvalitet"
     ],
     badge: "Best Value",
     category: ["Hybrid"],
@@ -3398,14 +3398,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
         bottleHolder: false
       }
     },
-    description: "The JOBOBIKE Dyno offers exceptional value for urban commuters seeking comfort and reliability. Its step-through frame design ensures easy mounting, while the front suspension absorbs bumps for a smooth ride. With a solid range and dependable components, it's an excellent choice for daily commuting without breaking the bank.",
+    description: "JOBOBIKE Dyno tilbyr eksepsjonell verdi for bypendlere som søker komfort og pålitelighet. Det gjennomgående rammedesignet sikrer enkel påstigning, mens frontdempingen absorberer støt for en jevn tur. Med solid rekkevidde og pålitelige komponenter, er det et utmerket valg for daglig pendling uten å ruinere budsjettet.",
     keyFeatures: [
-      "Easy step-through frame design",
-      "Front suspension for comfortable rides",
-      "Reliable 250W motor with 40Nm torque",
-      "Long-range 468Wh battery",
-      "26-inch wheels for stability",
-      "Excellent value for money"
+      "Enkel gjennomgående rammedesign",
+      "Frontdemping for komfortable turer",
+      "Pålitelig 250W motor med 40Nm dreiemoment",
+      "Langdistanse 468Wh batteri",
+      "26-tommer hjul for stabilitet",
+      "Utmerket verdi for pengene"
     ],
     availableColors: ["White", "Black", "Silver"],
     availableSizes: ["Universal (160-185cm)"],

@@ -118,24 +118,24 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
       {/* Page 1: Personal Info */}
       {currentPage === 1 && (
         <div className="space-y-5">
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5">Tell us about yourself</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5">Fortell oss om deg selv</h3>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Gender</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Kjønn</label>
               <select 
                 value={formData.gender}
                 onChange={(e) => handleChange('gender', e.target.value)}
                 className="w-full px-4 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] focus:border-[#12b190] transition-all"
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="male">Mann</option>
+                <option value="female">Kvinne</option>
+                <option value="other">Annet</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Age</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Alder</label>
               <input 
                 type="number"
                 value={formData.age}
@@ -149,7 +149,7 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Height (cm)</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Høyde (cm)</label>
               <input 
                 type="number"
                 value={formData.height}
@@ -161,7 +161,7 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Weight (kg)</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Vekt (kg)</label>
               <input 
                 type="number"
                 value={formData.weight}
@@ -174,7 +174,7 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Budget (NOK)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Budsjett (NOK)</label>
             <div className="relative">
               <div className="w-full h-2 bg-gray-200 rounded-lg">
                 <div 
@@ -204,56 +204,56 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
       {/* Page 2: Usage & Terrain */}
       {currentPage === 2 && (
         <div className="space-y-5">
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5">How will you use it?</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5">Hvordan vil du bruke den?</h3>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Usage Type (Select all that apply)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Bruksområde (Velg alle som passer)</label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {['Commuting', 'Off-road', 'City', 'Touring', 'Family', 'Sport'].map(type => (
+              {[{no: 'Pendling', en: 'Commuting'}, {no: 'Terreng', en: 'Off-road'}, {no: 'By', en: 'City'}, {no: 'Tur', en: 'Touring'}, {no: 'Familie', en: 'Family'}, {no: 'Sport', en: 'Sport'}].map(type => (
                 <button
-                  key={type}
+                  key={type.en}
                   type="button"
-                  onClick={() => handleMultiSelect('usageType', type)}
+                  onClick={() => handleMultiSelect('usageType', type.en)}
                   className={`px-3 py-3 rounded-xl border-2 transition-all text-sm font-medium ${
-                    formData.usageType?.includes(type)
+                    formData.usageType?.includes(type.en)
                       ? 'border-[#12b190] bg-[#12b190] text-white shadow-lg transform scale-105'
                       : 'border-gray-300 bg-white text-gray-700 hover:border-[#12b190] hover:text-[#12b190]'
                   }`}
                 >
-                  {type}
+                  {type.no}
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Terrain</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Terreng</label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {['Flat', 'Small hills', 'Hilly', 'Mountain'].map(terrain => (
+              {[{no: 'Flatt', en: 'Flat'}, {no: 'Små bakker', en: 'Small hills'}, {no: 'Kupert', en: 'Hilly'}, {no: 'Fjell', en: 'Mountain'}].map(terrain => (
                 <button
-                  key={terrain}
+                  key={terrain.en}
                   type="button"
-                  onClick={() => handleChange('terrain', terrain)}
+                  onClick={() => handleChange('terrain', terrain.en)}
                   className={`px-3 py-3 rounded-xl border-2 transition-all text-sm font-medium ${
-                    formData.terrain === terrain
+                    formData.terrain === terrain.en
                       ? 'border-[#12b190] bg-[#12b190] text-white shadow-lg transform scale-105'
                       : 'border-gray-300 bg-white text-gray-700 hover:border-[#12b190] hover:text-[#12b190]'
                   }`}
                 >
-                  {terrain}
+                  {terrain.no}
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Distance per trip</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Avstand per tur</label>
             <select 
               value={formData.distancePerTrip}
               onChange={(e) => handleChange('distancePerTrip', e.target.value)}
               className="w-full px-4 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] focus:border-[#12b190] transition-all"
             >
-              <option value="<5">Less than 5 km</option>
+              <option value="<5">Mindre enn 5 km</option>
               <option value="5-15">5-15 km</option>
               <option value="15-30">15-30 km</option>
               <option value="30+">30+ km</option>
@@ -261,7 +261,7 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Minimum Range Required (km)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Minimum rekkevidde nødvendig (km)</label>
             <div className="relative">
               <div className="w-full h-2 bg-gray-200 rounded-lg">
                 <div 
@@ -291,77 +291,77 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
       {/* Page 3: Preferences */}
       {currentPage === 3 && (
         <div className="space-y-5">
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5">Final preferences</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5">Siste preferanser</h3>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Comfort Level</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Komfortnivå</label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {['Sporty', 'Normal', 'Extra comfort'].map(comfort => (
+              {[{no: 'Sporty', en: 'Sporty'}, {no: 'Normal', en: 'Normal'}, {no: 'Ekstra komfort', en: 'Extra comfort'}].map(comfort => (
                 <button
-                  key={comfort}
+                  key={comfort.en}
                   type="button"
-                  onClick={() => handleChange('comfortLevel', comfort)}
+                  onClick={() => handleChange('comfortLevel', comfort.en)}
                   className={`px-3 py-3 rounded-xl border-2 transition-all text-sm font-medium ${
-                    formData.comfortLevel === comfort
+                    formData.comfortLevel === comfort.en
                       ? 'border-[#12b190] bg-[#12b190] text-white shadow-lg transform scale-105'
                       : 'border-gray-300 bg-white text-gray-700 hover:border-[#12b190] hover:text-[#12b190]'
                   }`}
                 >
-                  {comfort}
+                  {comfort.no}
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Weight Preference</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Vektpreferanse</label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {['Light', 'Medium', 'Heavy'].map(weight => (
+              {[{no: 'Lett', en: 'light'}, {no: 'Medium', en: 'medium'}, {no: 'Tung', en: 'heavy'}].map(weight => (
                 <button
-                  key={weight}
+                  key={weight.en}
                   type="button"
-                  onClick={() => handleChange('weightPreference', weight.toLowerCase())}
+                  onClick={() => handleChange('weightPreference', weight.en)}
                   className={`px-3 py-3 rounded-xl border-2 transition-all text-sm font-medium ${
-                    formData.weightPreference === weight.toLowerCase()
+                    formData.weightPreference === weight.en
                       ? 'border-[#12b190] bg-[#12b190] text-white shadow-lg transform scale-105'
                       : 'border-gray-300 bg-white text-gray-700 hover:border-[#12b190] hover:text-[#12b190]'
                   }`}
                 >
-                  {weight}
+                  {weight.no}
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Motor Preference</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Motorpreferanse</label>
             <select 
               value={formData.motorPreference}
               onChange={(e) => handleChange('motorPreference', e.target.value)}
               className="w-full px-4 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] focus:border-[#12b190] transition-all"
             >
-              <option value="Not sure">Not sure / No preference</option>
-              <option value="Front hub">Front hub</option>
-              <option value="Rear hub">Rear hub</option>
-              <option value="Mid-drive">Mid-drive</option>
+              <option value="Not sure">Usikker / Ingen preferanse</option>
+              <option value="Front hub">Forhjulsmotor</option>
+              <option value="Rear hub">Bakhjulsmotor</option>
+              <option value="Mid-drive">Midtmotor</option>
             </select>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Extra Features (Optional)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-3">Ekstra funksjoner (Valgfritt)</label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {['Luggage rack', 'Child seat', 'Foldable', 'Off-road tires'].map(feature => (
+              {[{no: 'Bagasjebrett', en: 'Luggage rack'}, {no: 'Barnesete', en: 'Child seat'}, {no: 'Sammenleggbar', en: 'Foldable'}, {no: 'Terrengg dekk', en: 'Off-road tires'}].map(feature => (
                 <button
-                  key={feature}
+                  key={feature.en}
                   type="button"
-                  onClick={() => handleMultiSelect('extraNeeds', feature)}
+                  onClick={() => handleMultiSelect('extraNeeds', feature.en)}
                   className={`px-3 py-3 rounded-xl border-2 transition-all text-sm font-medium ${
-                    formData.extraNeeds?.includes(feature)
+                    formData.extraNeeds?.includes(feature.en)
                       ? 'border-[#12b190] bg-[#12b190] text-white shadow-lg transform scale-105'
                       : 'border-gray-300 bg-white text-gray-700 hover:border-[#12b190] hover:text-[#12b190]'
                   }`}
                 >
-                  {feature}
+                  {feature.no}
                 </button>
               ))}
             </div>
@@ -377,7 +377,7 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
             onClick={prevPage}
             className="px-4 md:px-6 py-3 border-2 border-gray-300 bg-white rounded-xl font-medium text-gray-700 hover:border-[#12b190] hover:text-[#12b190] transition-all"
           >
-            ← Previous
+            ← Forrige
           </button>
         )}
         
@@ -390,7 +390,7 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
             }}
             className="ml-auto px-6 md:px-8 py-3 bg-gradient-to-r from-[#12b190] to-[#0f9a7a] text-white rounded-xl font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
           >
-            Next →
+            Neste →
           </button>
         ) : (
           <button
@@ -398,7 +398,7 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
             disabled={!isFormValid()}
             className="ml-auto px-6 md:px-8 py-3 bg-gradient-to-r from-[#12b190] to-[#0f9a7a] text-white rounded-xl font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
           >
-            Find My E-Bike
+            Finn min el-sykkel
           </button>
         )}
       </div>

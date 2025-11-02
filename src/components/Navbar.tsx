@@ -77,14 +77,14 @@ export default function Navbar() {
 
   const getCategoryTagline = (category: string): string => {
     const taglines: { [key: string]: string } = {
-      Hybrid: 'Smart Compact Mobility',
-      Pendler: 'Urban Mobility Enjoyment',
-      Sammenleggbar: 'Fold Ride Conquer',
-      Fatbike: 'Stable Off-road All-Terrain',
-      Lastesykkel: 'More Power When Carrying Loads',
-      Terreng: 'Power Technique Outstand',
+      Hybrid: 'Smart kompakt mobilitet',
+      Pendler: 'Urban mobilitet og glede',
+      Sammenleggbar: 'Brett, kjør, erobre',
+      Fatbike: 'Stabil terreng allround',
+      Lastesykkel: 'Mer kraft når du bærer last',
+      Terreng: 'Kraft, teknikk, utmerket',
     };
-    return taglines[category] || 'Explore our collection';
+    return taglines[category] || 'Utforsk vårt utvalg';
   };
 
   // debounced search
@@ -147,14 +147,16 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { name: 'El-sykler', href: '/', dropdown: true },
-    { name: 'Tilbehør', href: '/accessorie' },
-    { name: 'Kontakt', href: '/contact' },
+    { name: 'Sykkelutstyr', href: '/accessorie' },
+    { name: 'Kontakt oss', href: '/contact' },
   ];
 
   const moreMenuItems = [
-    { name: 'Vilkår for tjeneste', href: '/terms' },
+    { name: 'El-sykler', href: '/', dropdown: true },
+    { name: 'Sykkelutstyr', href: '/accessorie' },
     { name: 'Kontakt oss', href: '/contact' },
+    { name: 'Om oss', href: '/about' },
+    { name: 'Bli forhandler', href: '/bli-forhandler' },
   ];
 
   const toggleDropdown = (index: number) =>
@@ -319,106 +321,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* SECOND ROW – nav items like screenshot */}
-        <div className="bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="hidden md:flex items-center gap-6 h-16">
-              {navItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative"
-                  onMouseEnter={() => item.dropdown && toggleDropdown(index)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  {item.dropdown ? (
-                    <button className="flex items-center gap-1 text-lg text-slate-900 hover:text-[#12b190] font-medium">
-                      <span>{item.name}</span>
-                      <ChevronDown className="w-4 h-4" />
-                    </button>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      className="text-lg text-slate-900 hover:text-[#12b190] font-medium"
-                    >
-                      {item.name}
-                    </Link>
-                  )}
 
-                  {/* dropdown panel (unchanged logic) */}
-                  {item.dropdown && activeDropdown === index && (
-                    <div className="absolute left-0 top-full bg-white shadow-2xl rounded-xl border border-gray-100 z-50 w-[95vw] max-w-[700px] max-h-[500px] overflow-hidden flex flex-col mt-3">
-                      <div className="px-8 pt-8 pb-4 border-b border-gray-200 flex-shrink-0">
-                        <h3 className="text-2xl font-bold text-gray-900">
-                          Bla gjennom kategorier
-                        </h3>
-                        <p className="text-sm text-gray-600 mt-1">
-                          Utforsk vårt komplette el-sykkel utvalg
-                        </p>
-                      </div>
-
-                      <div className="overflow-y-auto flex-1 px-8 py-6 custom-scrollbar">
-                        <div className="grid grid-cols-3 gap-6">
-                          {categories.map((cat) => (
-                            <Link
-                              key={cat.slug}
-                              href={`/category/${cat.slug}`}
-                              className="group flex flex-col items-center text-center p-4 rounded-lg hover:bg-gray-50 transition-all duration-300 hover:shadow-md"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              <div className="w-full">
-                                <div className="flex items-center justify-center gap-1 mb-2">
-                                  <h4 className="text-base font-bold text-gray-900 group-hover:text-[#12b190] transition-colors">
-                                    {cat.name}
-                                  </h4>
-                                  <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#12b190] group-hover:translate-x-1 transition-all" />
-                                </div>
-                                <p className="text-xs text-gray-500 leading-relaxed">
-                                  {cat.tagline}
-                                </p>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="px-8 py-4 border-t border-gray-200 text-center flex-shrink-0">
-                        <Link
-                          href="/cycle"
-                          className="inline-flex items-center gap-2 text-sm font-semibold text-[#12b190] hover:text-[#0f9a7a] transition-colors"
-                          onClick={() => setActiveDropdown(null)}
-                        >
-                          Se alle el-sykler
-                          <ChevronRight className="w-4 h-4" />
-                        </Link>
-                      </div>
-
-                      <style jsx>{`
-                        .custom-scrollbar::-webkit-scrollbar {
-                          width: 6px;
-                        }
-                        .custom-scrollbar::-webkit-scrollbar-track {
-                          background: #f1f1f1;
-                          border-radius: 10px;
-                        }
-                        .custom-scrollbar::-webkit-scrollbar-thumb {
-                          background: #12b190;
-                          border-radius: 10px;
-                        }
-                        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                          background: #0f9a7a;
-                        }
-                        .custom-scrollbar {
-                          scrollbar-width: thin;
-                          scrollbar-color: #12b190 #f1f1f1;
-                        }
-                      `}</style>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </nav>
 
       {/* MOBILE MENU (unchanged logic, only header matches new top row) */}
@@ -490,78 +393,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* mobile nav items */}
-            <div className="p-4 space-y-2">
-              <div className="bg-gray-50 rounded-lg overflow-hidden">
-                <button
-                  onClick={toggleMobileDropdown}
-                  className="flex items-center justify-between w-full px-4 py-3 text-gray-900 font-semibold hover:bg-gray-100 transition-colors"
-                >
-                  <span className="text-sm">El-sykler</span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-gray-600 transition-transform duration-300 ${
-                      mobileDropdownOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
 
-                {mobileDropdownOpen && (
-                  <div className="px-2 pb-2 space-y-2 bg-white">
-                    {categories.map((cat) => (
-                      <Link
-                        key={cat.slug}
-                        href={`/category/${cat.slug}`}
-                        className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-all group border border-gray-100"
-                        onClick={() => {
-                          setMobileDropdownOpen(false);
-                          toggleMobileMenu();
-                        }}
-                      >
-                        <div className="flex-1 min-w-0 pr-3">
-                          <div className="flex items-center gap-1.5">
-                            <p className="text-sm font-semibold text-gray-900 truncate">
-                              {cat.name}
-                            </p>
-                            <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#12b190] group-hover:translate-x-0.5 transition-all flex-shrink-0" />
-                          </div>
-                          <p className="text-xs text-gray-500 mt-0.5 truncate">
-                            {cat.tagline}
-                          </p>
-                        </div>
-                        <img
-                          src={cat.image}
-                          alt={cat.name}
-                          className="w-14 h-14 object-contain rounded-md border border-gray-200 flex-shrink-0"
-                        />
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <Link
-                href="/cycle"
-                className="flex items-center justify-between px-4 py-3 text-sm font-semibold text-[#12b190] bg-[#12b190]/5 rounded-lg hover:bg-[#12b190]/10 transition-colors border border-[#12b190]/20"
-                onClick={toggleMobileMenu}
-              >
-                <span>Se alle sykler</span>
-                <ChevronRight className="w-4 h-4 text-[#12b190]" />
-              </Link>
-
-              {navItems
-                .filter((i) => i.name !== 'El-sykler')
-                .map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center justify-between px-4 py-3 text-sm font-semibold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                    onClick={toggleMobileMenu}
-                  >
-                    <span>{item.name}</span>
-                    <ChevronRight className="w-4 h-4 text-gray-400" />
-                  </Link>
-                ))}
-            </div>
           </div>
         </div>
       )}
@@ -580,15 +412,40 @@ export default function Navbar() {
             </div>
 
             <div className="p-6 space-y-4">
-              {moreMenuItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block text-gray-700 hover:text-black"
-                  onClick={toggleMoreMenu}
-                >
-                  {item.name}
-                </Link>
+              {moreMenuItems.map((item, index) => (
+                item.dropdown ? (
+                  <div key={item.name} className="space-y-2">
+                    <div className="text-gray-900 font-semibold">{item.name}</div>
+                    <div className="pl-4 space-y-2">
+                      {categories.map((cat) => (
+                        <Link
+                          key={cat.slug}
+                          href={`/category/${cat.slug}`}
+                          className="block text-sm text-gray-600 hover:text-black"
+                          onClick={toggleMoreMenu}
+                        >
+                          {cat.name}
+                        </Link>
+                      ))}
+                      <Link
+                        href="/cycle"
+                        className="block text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium"
+                        onClick={toggleMoreMenu}
+                      >
+                        Se alle el-sykler
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="block text-gray-700 hover:text-black"
+                    onClick={toggleMoreMenu}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
 
