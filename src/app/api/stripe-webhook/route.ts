@@ -61,9 +61,9 @@ export async function POST(req: NextRequest) {
       
       const { data, error } = await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: [email],
-        subject: `Payment Confirmation #${orderId}`,
-        text: `Thank you ${name}! Your payment of ${total.toFixed(2)} NOK has been confirmed. Order ID: ${orderId}`,
+        to: email,
+        subject: `Payment Confirmation`,
+        text: `Thank you ${name}! Your payment of ${total.toFixed(2)} NOK has been confirmed.`,
       });
 
       if (error) {
