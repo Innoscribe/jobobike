@@ -14,7 +14,7 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
     <div className="mt-16 -mx-6 lg:-mx-8">
       <div className="bg-black w-full px-6 py-8 lg:px-8 lg:py-12">
         <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2 ">
-          Technical Specifications
+          Tekniske Spesifikasjoner
         </h2>
         <div className="w-full h-px bg-white mb-8"></div>
 
@@ -25,7 +25,7 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
               onClick={() => toggleAccordion("general")}
               className="w-full py-4 flex items-center justify-between text-left"
             >
-              <span className="text-lg font-bold text-white uppercase">GENERAL INFORMATION</span>
+              <span className="text-lg font-bold text-white uppercase">GENERELL INFORMASJON</span>
               <ChevronDown 
                 className={`text-white transition-transform duration-200 ${
                   openAccordion === "general" ? "rotate-180" : ""
@@ -35,16 +35,16 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
             {openAccordion === "general" && (
               <div className="pb-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm">
-                  <SpecRow label="Model" value={product.technicalSpecifications?.general?.model} />
-                  <SpecRow label="Frame Type" value={product.technicalSpecifications?.general?.frameType} />
-                  <SpecRow label="Frame Material" value={product.technicalSpecifications?.general?.frameMaterial} />
-                  <SpecRow label="Weight" value={product.technicalSpecifications?.general?.weight} />
-                  <SpecRow label="Max Load" value={product.technicalSpecifications?.general?.maxLoad} />
-                  <SpecRow label="Recommended Height" value={product.technicalSpecifications?.general?.recommendedHeight} />
-                  <SpecRow label="Foldable" value={product.technicalSpecifications?.general?.foldable ? "Yes" : "No"} />
-                  <SpecRow label="Dimensions (Unfolded)" value={product.technicalSpecifications?.general?.dimensions?.unfolded} />
-                  {product.technicalSpecifications?.general?.dimensions?.folded !== "N/A (non-folding)" && (
-                    <SpecRow label="Dimensions (Folded)" value={product.technicalSpecifications?.general?.dimensions?.folded} />
+                  <SpecRow label="Modell" value={product.tekniskeSpesifikasjoner?.generelt?.modell} />
+                  <SpecRow label="Ramme Type" value={product.tekniskeSpesifikasjoner?.generelt?.rammeType} />
+                  <SpecRow label="Ramme Materiale" value={product.tekniskeSpesifikasjoner?.generelt?.rammeMateriale} />
+                  <SpecRow label="Vekt" value={product.tekniskeSpesifikasjoner?.generelt?.vekt} />
+                  <SpecRow label="Maks Last" value={product.tekniskeSpesifikasjoner?.generelt?.maksLast} />
+                  <SpecRow label="Anbefalt Høyde" value={product.tekniskeSpesifikasjoner?.generelt?.anbefalteHøyde} />
+                  <SpecRow label="Sammenleggbar" value={product.tekniskeSpesifikasjoner?.generelt?.sammenleggbar ? "Ja" : "Nei"} />
+                  <SpecRow label="Dimensjoner (Utbrettet)" value={product.tekniskeSpesifikasjoner?.generelt?.dimensjoner?.utbrettet} />
+                  {product.tekniskeSpesifikasjoner?.generelt?.dimensjoner?.sammenlagt !== "N/A" && (
+                    <SpecRow label="Dimensjoner (Sammenlagt)" value={product.tekniskeSpesifikasjoner?.generelt?.dimensjoner?.sammenlagt} />
                   )}
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
               onClick={() => toggleAccordion("motor")}
               className="w-full py-4 flex items-center justify-between text-left"
             >
-              <span className="text-lg font-bold text-white uppercase">MOTOR & POWER</span>
+              <span className="text-lg font-bold text-white uppercase">MOTOR & KRAFT</span>
               <ChevronDown 
                 className={`text-white transition-transform duration-200 ${
                   openAccordion === "motor" ? "rotate-180" : ""
@@ -67,14 +67,14 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
             {openAccordion === "motor" && (
               <div className="pb-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm">
-                  <SpecRow label="Motor Type" value={product.technicalSpecifications?.motor?.type} />
-                  <SpecRow label="Power" value={product.technicalSpecifications?.motor?.power} />
-                  <SpecRow label="Peak Power" value={product.technicalSpecifications?.motor?.peakPower} />
-                  {product.technicalSpecifications?.motor?.torque && (
-                    <SpecRow label="Torque" value={product.technicalSpecifications?.motor?.torque} />
+                  <SpecRow label="Motor Type" value={product.tekniskeSpesifikasjoner?.motor?.type} />
+                  <SpecRow label="Effekt" value={product.tekniskeSpesifikasjoner?.motor?.effekt} />
+                  <SpecRow label="Topp Effekt" value={product.tekniskeSpesifikasjoner?.motor?.toppEffekt} />
+                  {product.tekniskeSpesifikasjoner?.motor?.dreiemoment && (
+                    <SpecRow label="Dreiemoment" value={product.tekniskeSpesifikasjoner?.motor?.dreiemoment} />
                   )}
-                  <SpecRow label="Location" value={product.technicalSpecifications?.motor?.location} />
-                  <SpecRow label="Torque Sensor" value={product.technicalSpecifications?.motor?.torqueSensor ? "Yes" : "No"} />
+                  <SpecRow label="Plassering" value={product.tekniskeSpesifikasjoner?.motor?.plassering} />
+                  <SpecRow label="Dreiemoment Sensor" value={product.tekniskeSpesifikasjoner?.motor?.dreiemomentSensor ? "Ja" : "Nei"} />
                 </div>
               </div>
             )}
@@ -86,7 +86,7 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
               onClick={() => toggleAccordion("battery")}
               className="w-full py-4 flex items-center justify-between text-left"
             >
-              <span className="text-lg font-bold text-white uppercase">BATTERY & CHARGING</span>
+              <span className="text-lg font-bold text-white uppercase">BATTERI & LADING</span>
               <ChevronDown 
                 className={`text-white transition-transform duration-200 ${
                   openAccordion === "battery" ? "rotate-180" : ""
@@ -96,13 +96,13 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
             {openAccordion === "battery" && (
               <div className="pb-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm">
-                  <SpecRow label="Battery Type" value={product.technicalSpecifications?.battery?.type} />
-                  <SpecRow label="Voltage" value={product.technicalSpecifications?.battery?.voltage} />
-                  <SpecRow label="Capacity" value={product.technicalSpecifications?.battery?.capacity} />
-                  <SpecRow label="Energy (Wh)" value={product.technicalSpecifications?.battery?.capacityWh} />
-                  <SpecRow label="Removable" value={product.technicalSpecifications?.battery?.removable ? "Yes" : "No"} />
-                  <SpecRow label="Charging Time" value={product.technicalSpecifications?.battery?.chargingTime} />
-                  <SpecRow label="Battery Life" value={product.technicalSpecifications?.battery?.batteryLife} />
+                  <SpecRow label="Batteri Type" value={product.tekniskeSpesifikasjoner?.batteri?.type} />
+                  <SpecRow label="Spenning" value={product.tekniskeSpesifikasjoner?.batteri?.spenning} />
+                  <SpecRow label="Kapasitet" value={product.tekniskeSpesifikasjoner?.batteri?.kapasitet} />
+                  <SpecRow label="Energi (Wh)" value={product.tekniskeSpesifikasjoner?.batteri?.kapasitetWh} />
+                  <SpecRow label="Avtakbar" value={product.tekniskeSpesifikasjoner?.batteri?.avtakbar ? "Ja" : "Nei"} />
+                  <SpecRow label="Ladetid" value={product.tekniskeSpesifikasjoner?.batteri?.ladetid} />
+                  <SpecRow label="Batteri Levetid" value={product.tekniskeSpesifikasjoner?.batteri?.batteriLevetid} />
                 </div>
               </div>
             )}
@@ -114,7 +114,7 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
               onClick={() => toggleAccordion("performance")}
               className="w-full py-4 flex items-center justify-between text-left"
             >
-              <span className="text-lg font-bold text-white uppercase">PERFORMANCE</span>
+              <span className="text-lg font-bold text-white uppercase">YTELSE</span>
               <ChevronDown 
                 className={`text-white transition-transform duration-200 ${
                   openAccordion === "performance" ? "rotate-180" : ""
@@ -124,13 +124,13 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
             {openAccordion === "performance" && (
               <div className="pb-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm">
-                  <SpecRow label="Max Speed" value={product.technicalSpecifications?.performance?.maxSpeed} />
-                  <SpecRow label="Range (Pure Electric)" value={product.technicalSpecifications?.performance?.range?.pureElectric} />
-                  <SpecRow label="Range (Pedal Assist)" value={product.technicalSpecifications?.performance?.range?.pedalAssist} />
-                  <SpecRow label="Range (Combined)" value={product.technicalSpecifications?.performance?.range?.combined} />
-                  <SpecRow label="Gradability" value={product.technicalSpecifications?.performance?.gradability} />
-                  {product.technicalSpecifications?.performance?.turningRadius && (
-                    <SpecRow label="Turning Radius" value={product.technicalSpecifications?.performance?.turningRadius} />
+                  <SpecRow label="Maks Fart" value={product.tekniskeSpesifikasjoner?.ytelse?.maksFart} />
+                  <SpecRow label="Rekkevidde (Ren Elektrisk)" value={product.tekniskeSpesifikasjoner?.ytelse?.rekkevidde?.renElektrisk} />
+                  <SpecRow label="Rekkevidde (Pedal Assistanse)" value={product.tekniskeSpesifikasjoner?.ytelse?.rekkevidde?.pedalAssistanse} />
+                  <SpecRow label="Rekkevidde (Kombinert)" value={product.tekniskeSpesifikasjoner?.ytelse?.rekkevidde?.kombinert} />
+                  <SpecRow label="Stigningsevne" value={product.tekniskeSpesifikasjoner?.ytelse?.stigningsevne} />
+                  {product.tekniskeSpesifikasjoner?.ytelse?.svingradius && (
+                    <SpecRow label="Svingradius" value={product.tekniskeSpesifikasjoner?.ytelse?.svingradius} />
                   )}
                 </div>
               </div>
@@ -143,7 +143,7 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
               onClick={() => toggleAccordion("wheels")}
               className="w-full py-4 flex items-center justify-between text-left"
             >
-              <span className="text-lg font-bold text-white uppercase">WHEELS & BRAKES</span>
+              <span className="text-lg font-bold text-white uppercase">HJUL & BREMSER</span>
               <ChevronDown 
                 className={`text-white transition-transform duration-200 ${
                   openAccordion === "wheels" ? "rotate-180" : ""
@@ -153,15 +153,15 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
             {openAccordion === "wheels" && (
               <div className="pb-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm">
-                  <SpecRow label="Wheel Size" value={product.technicalSpecifications?.wheels?.size} />
-                  <SpecRow label="Tire Type" value={product.technicalSpecifications?.wheels?.tireType} />
-                  <SpecRow label="Tire Size" value={product.technicalSpecifications?.wheels?.tireSize} />
-                  {product.technicalSpecifications?.wheels?.rimMaterial && (
-                    <SpecRow label="Rim Material" value={product.technicalSpecifications?.wheels?.rimMaterial} />
+                  <SpecRow label="Hjul Størrelse" value={product.tekniskeSpesifikasjoner?.hjul?.størrelse} />
+                  <SpecRow label="Dekk Type" value={product.tekniskeSpesifikasjoner?.hjul?.dekkType} />
+                  <SpecRow label="Dekk Størrelse" value={product.tekniskeSpesifikasjoner?.hjul?.dekkStørrelse} />
+                  {product.tekniskeSpesifikasjoner?.hjul?.felgMateriale && (
+                    <SpecRow label="Felg Materiale" value={product.tekniskeSpesifikasjoner?.hjul?.felgMateriale} />
                   )}
-                  <SpecRow label="Brake Type" value={product.technicalSpecifications?.brakes?.type} />
-                  <SpecRow label="Front Brake" value={product.technicalSpecifications?.brakes?.front} />
-                  <SpecRow label="Rear Brake" value={product.technicalSpecifications?.brakes?.rear} />
+                  <SpecRow label="Bremse Type" value={product.tekniskeSpesifikasjoner?.bremser?.type} />
+                  <SpecRow label="Foran Bremse" value={product.tekniskeSpesifikasjoner?.bremser?.foran} />
+                  <SpecRow label="Bak Bremse" value={product.tekniskeSpesifikasjoner?.bremser?.bak} />
                 </div>
               </div>
             )}

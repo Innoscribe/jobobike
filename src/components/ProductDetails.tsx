@@ -20,13 +20,13 @@ function ReviewStars({ rating = 5, reviewCount = 14 }: { rating?: number; review
             key={star}
             className={`w-4 h-4 ${
               star <= rating
-                ? "fill-[#12b190] text-[#12b190]"
+                ? "fill-yellow-400 text-yellow-400"
                 : "fill-gray-200 text-gray-200"
             }`}
           />
         ))}
       </div>
-      <span className="text-sm text-gray-600">{reviewCount} Reviews</span>
+      <span className="text-sm text-gray-600">{reviewCount} Anmeldelser</span>
     </div>
   );
 }
@@ -137,34 +137,54 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
 </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xl font-bold text-red-600">{formatCurrency(product.price)}</span>
-            <span className="line-through text-gray-500 text-sm">{formatCurrency(product.originalPrice)}</span>
-            <span className="text-green-600 text-sm">{product.discount}</span>
+            <span className="text-xl font-bold text-black">{formatCurrency(product.originalPrice)}</span>
           </div>
 
           {/* Mobile Add to Cart Button */}
           <div className="mt-4">
             <AddToCartButton
               product={product}
-              className="w-full bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#12b190]"
+              className="w-full bg-yellow-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-yellow-600"
             />
           </div>
 
           {/* Mobile Description */}
           <div className="mt-6">
-            <h2 className="text-lg font-bold mb-3 text-black">About the Product</h2>
+            <h2 className="text-lg font-bold mb-3 text-black">Om produktet</h2>
             <p className="text-gray-700 text-sm leading-relaxed">{product.description}</p>
           </div>
 
           {/* Mobile Key Features */}
           <div className="mt-6">
-            <h3 className="font-semibold mb-3 text-black">Key Features:</h3>
+            <h3 className="font-semibold mb-3 text-black">Hovedfunksjoner:</h3>
             <ul className="list-disc ml-5 space-y-2 text-gray-700 text-sm">
               {product.keyFeatures.map((f, i) => (
                 <li key={i}>{f}</li>
               ))}
             </ul>
           </div>
+
+          {/* Mobile Color Selection */}
+          {product.availableColors && product.availableColors.length > 0 && (
+            <div className="mt-6">
+              <h3 className="font-semibold mb-3 text-black">Farge:</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.availableColors.map((color) => (
+                  <button
+                    key={color}
+                    onClick={() => setSelectedColor(color)}
+                    className={`px-4 py-2 border rounded-lg font-medium transition-all ${
+                      selectedColor === color
+                        ? 'bg-black text-white border-black'
+                        : 'bg-white text-gray-900 border-gray-300 hover:border-black'
+                    }`}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Mobile Accordion */}
           <div className="mt-6 bg-white border border-gray-200 rounded-lg text-black">
@@ -174,7 +194,7 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
                 onClick={() => toggleAccordion("specs")}
                 className="w-full px-4 py-4 flex items-center justify-between text-left"
               >
-                <span className="font-medium">Specs</span>
+                <span className="font-medium">Spesifikasjoner</span>
                 {openAccordion === "specs" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
               </button>
               {openAccordion === "specs" && (
@@ -199,13 +219,13 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
                 onClick={() => toggleAccordion("size")}
                 className="w-full px-4 py-4 flex items-center justify-between text-left"
               >
-                <span className="font-medium">Size</span>
+                <span className="font-medium">Størrelse</span>
                 {openAccordion === "size" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
               </button>
               {openAccordion === "size" && (
                 <div className="px-4 pb-4 text-sm text-gray-700">
                   {product.availableSizes.length === 0 ? (
-                    <p>One-size / folding model</p>
+                    <p>En størrelse / sammenleggbar modell</p>
                   ) : (
                     <div className="grid grid-cols-2 gap-2">
                       {product.availableSizes.map((s) => (
@@ -223,7 +243,7 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
                 onClick={() => toggleAccordion("box")}
                 className="w-full px-4 py-4 flex items-center justify-between text-left"
               >
-                <span className="font-medium">What&apos;s in the Box</span>
+                <span className="font-medium">Hva er i esken</span>
                 {openAccordion === "box" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
               </button>
               {openAccordion === "box" && (
@@ -314,13 +334,13 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
 
             {/* DESCRIPTION */}
             <div className="mt-8">
-              <h2 className="text-xl font-bold mb-2 text-black">About the Product</h2>
+              <h2 className="text-xl font-bold mb-2 text-black">Om produktet</h2>
               <p className="text-gray-700">{product.description}</p>
             </div>
 
             {/* KEY FEATURES */}
             <div className="mt-6">
-              <h3 className="font-semibold mb-2 text-black">Key Features:</h3>
+              <h3 className="font-semibold mb-2 text-black">Hovedfunksjoner:</h3>
               <ul className="list-disc ml-6 space-y-1 text-gray-700">
                 {product.keyFeatures.map((f, i) => (
                   <li key={i}>{f}</li>
@@ -328,18 +348,36 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
               </ul>
             </div>
             <div className="flex items-center gap-4">
-
-              <span className="text-2xl font-bold text-red-600 ">{formatCurrency(product.price)}</span>
-              <span className="line-through text-gray-500">{formatCurrency(product.originalPrice)}</span>
-              <span className="text-green-600">{product.discount}</span>
+              <span className="text-2xl font-bold text-black">{formatCurrency(product.originalPrice)}</span>
             </div>
 
+            {/* Desktop Color Selection */}
+            {product.availableColors && product.availableColors.length > 0 && (
+              <div className="mt-6">
+                <h3 className="font-semibold mb-3 text-black">Farge:</h3>
+                <div className="flex flex-wrap gap-2">
+                  {product.availableColors.map((color) => (
+                    <button
+                      key={color}
+                      onClick={() => setSelectedColor(color)}
+                      className={`px-4 py-2 border rounded-lg font-medium transition-all ${
+                        selectedColor === color
+                          ? 'bg-black text-white border-black'
+                          : 'bg-white text-gray-900 border-gray-300 hover:border-black'
+                      }`}
+                    >
+                      {color}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Quantity + Add to Cart in one row */}
             <div className="flex items-center gap-6 mt-6">
               {/* Quantity Controls */}
               <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-600">Qty:</span>
+                <span className="text-sm text-gray-600">Antall:</span>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleQuantityChange(quantity - 1)}
@@ -362,7 +400,7 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
               {/* Add to Cart Button */}
               <AddToCartButton
                 product={product}
-                className="w-44 bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#12b190]"
+                className="w-44 bg-yellow-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-yellow-600"
               />
             </div>
 
@@ -372,7 +410,7 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
               {/* Specs */}
               <div className="border-b border-gray-100">
                 <button onClick={() => toggleAccordion("specs")} className="w-full px-6 py-4 flex items-center justify-between text-left">
-                  <span className="font-medium">Specs</span>
+                  <span className="font-medium">Spesifikasjoner</span>
                   {openAccordion === "specs" ? <ChevronUp /> : <ChevronDown />}
                 </button>
                 {openAccordion === "specs" && (
@@ -394,13 +432,13 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
               {/* Size */}
               <div className="border-b border-gray-100">
                 <button onClick={() => toggleAccordion("size")} className="w-full px-6 py-4 flex items-center justify-between text-left">
-                  <span className="font-medium">Size</span>
+                  <span className="font-medium">Størrelse</span>
                   {openAccordion === "size" ? <ChevronUp /> : <ChevronDown />}
                 </button>
                 {openAccordion === "size" && (
                   <div className="px-6 pb-4 text-sm text-gray-700">
                     {product.availableSizes.length === 0 ? (
-                      <p>One-size / folding model</p>
+                      <p>En størrelse / sammenleggbar modell</p>
                     ) : (
                       <div className="grid grid-cols-2 gap-2">
                         {product.availableSizes.map((s) => (
@@ -415,7 +453,7 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
               {/* What's in the Box */}
               <div>
                 <button onClick={() => toggleAccordion("box")} className="w-full px-6 py-4 flex items-center justify-between text-left">
-                  <span className="font-medium">What&apos;s in the Box</span>
+                  <span className="font-medium">Hva er i esken</span>
                   {openAccordion === "box" ? <ChevronUp /> : <ChevronDown />}
                 </button>
                 {openAccordion === "box" && (

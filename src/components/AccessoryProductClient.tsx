@@ -1,6 +1,6 @@
-﻿'use client';
+'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AccessoryProduct } from '@/lib/accessoriesProducts';
@@ -15,20 +15,6 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || '');
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || '');
   const [quantity, setQuantity] = useState(1);
-
-  useEffect(() => {
-    // Preload first image immediately
-    const firstImg = new window.Image();
-    firstImg.src = product.images[0];
-    
-    // Preload other images with slight delay
-    setTimeout(() => {
-      product.images.slice(1).forEach(src => {
-        const img = new window.Image();
-        img.src = src;
-      });
-    }, 100);
-  }, [product.images]);
 
   const handleAddToCart = () => {
     // Add to cart logic here
@@ -46,9 +32,9 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <nav className="text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900">Home</Link>
+          <Link href="/" className="hover:text-gray-900">Hjem</Link>
           <span className="mx-2">/</span>
-          <Link href="/accessorie" className="hover:text-gray-900">Accessories</Link>
+          <Link href="/accessorie" className="hover:text-gray-900">Tilbehør</Link>
           <span className="mx-2">/</span>
           <span className="text-gray-900">{product.name}</span>
         </nav>
@@ -64,9 +50,6 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                 src={product.images[selectedImage]}
                 alt={product.name}
                 fill
-                priority
-                loading="eager"
-                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
@@ -85,8 +68,6 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                     src={image}
                     alt={`${product.name} - View ${index + 1}`}
                     fill
-                    priority
-                    loading="eager"
                     className="object-cover"
                   />
                 </button>
@@ -96,7 +77,7 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
             {/* Compatibility - Desktop Only */}
             {product.compatibility && product.compatibility.length > 0 && (
               <div className="hidden lg:block border-t pt-6 mt-8">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Compatibility</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-3">Kompatibilitet</h2>
                 <div className="flex flex-wrap gap-2">
                   {product.compatibility.map((model, index) => (
                     <span
@@ -113,11 +94,11 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
             {/* Features - Desktop Only */}
             {product.features && product.features.length > 0 && (
               <div className="hidden lg:block border-t pt-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Features</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-3">Funksjoner</h2>
                 <ul className="space-y-2">
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2 text-gray-600">
-                      <span className="text-teal-500 mt-1">âœ“</span>
+                      <span className="text-teal-500 mt-1">✓</span>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -144,20 +125,20 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                     {formatCurrency(product.price)}
                   </span>
                   {!product.inStock && (
-                    <span className="text-red-600 text-sm font-medium">Out of Stock</span>
+                    <span className="text-red-600 text-sm font-medium">Ikke på lager</span>
                   )}
                 </div>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-8 h-8 border border-[#12b190] rounded-lg bg-[#12b190] text-black hover:bg-[#12b190] transition-colors text-sm"
+                    className="w-8 h-8 border border-yellow-400 rounded-lg bg-yellow-400 text-black hover:bg-yellow-500 transition-colors text-sm"
                   >
                     -
                   </button>
                   <span className="text-lg font-medium w-8 text-center text-black">{quantity}</span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="w-8 h-8 border border-[#12b190] rounded-lg bg-[#12b190] text-black hover:bg-[#12b190] transition-colors text-sm"
+                    className="w-8 h-8 border border-yellow-400 rounded-lg bg-yellow-400 text-black hover:bg-yellow-500 transition-colors text-sm"
                   >
                     +
                   </button>
@@ -170,11 +151,11 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                 disabled={!product.inStock}
                 className={`w-full py-4 rounded-lg font-medium transition-all mb-6 ${
                   product.inStock
-                    ? 'bg-[#12b190] text-black hover:bg-[#12b190]'
+                    ? 'bg-yellow-400 text-black hover:bg-yellow-500'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
-                {product.inStock ? 'ADD TO CART' : 'OUT OF STOCK'}
+                {product.inStock ? 'LEGG I HANDLEKURV' : 'IKKE PÅ LAGER'}
               </button>
             </div>
 
@@ -185,7 +166,7 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                   {formatCurrency(product.price)}
                 </span>
                 {!product.inStock && (
-                  <span className="text-red-600 text-sm font-medium">Out of Stock</span>
+                  <span className="text-red-600 text-sm font-medium">Ikke på lager</span>
                 )}
               </div>
             </div>
@@ -194,7 +175,7 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
             {product.sizes && product.sizes.length > 0 && (
               <div>
                 <label className="block text-sm font-medium text-gray-900 mb-3">
-                  Size:
+                  Størrelse:
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {product.sizes.map((size) => (
@@ -214,18 +195,18 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
               </div>
             )}
 
-            {/* Color Selection */}
+             {/* Color Selection */}
             {product.colors && product.colors.length > 0 && (
               <div>
                 <label className="block text-sm font-medium text-gray-900 mb-3">
-                  Color:
+                  Farge:
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {product.colors.map((color) => (
                     <button
                       key={color}
                       onClick={() => setSelectedColor(color)}
-                      className={`px-6 py-3 border rounded-lg font-medium transition-all ${
+                      className={`px-4 py-2 border rounded-lg font-medium transition-all ${
                         selectedColor === color
                           ? 'bg-black text-white border-black'
                           : 'bg-white text-gray-900 border-gray-300 hover:border-black'
@@ -241,24 +222,26 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
             {/* Quantity Selector - Desktop Only */}
             <div className="hidden lg:block">
               <label className="block text-sm font-medium text-gray-900 mb-3">
-                Quantity:
+                Antall:
               </label>
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-10 h-10 border border-[#12b190] rounded-lg bg-[#12b190] text-black hover:bg-[#12b190] transition-colors"
+                  className="w-10 h-10 border border-yellow-400 rounded-lg bg-yellow-400 text-black hover:bg-yellow-500 transition-colors"
                 >
                   -
                 </button>
                 <span className="text-lg font-medium w-12 text-center text-black">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="w-10 h-10 border border-[#12b190] rounded-lg bg-[#12b190] text-black hover:bg-[#12b190] transition-colors"
+                  className="w-10 h-10 border border-yellow-400 rounded-lg bg-yellow-400 text-black hover:bg-yellow-500 transition-colors"
                 >
                   +
                 </button>
               </div>
             </div>
+
+           
 
             {/* Add to Cart - Desktop */}
             <div className="hidden lg:block space-y-3 pt-4">
@@ -267,24 +250,24 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                 disabled={!product.inStock}
                 className={`w-full py-4 rounded-lg font-medium transition-all ${
                   product.inStock
-                    ? 'bg-[#12b190] text-black hover:bg-[#12b190]'
+                    ? 'bg-yellow-400 text-black hover:bg-yellow-500'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
-                {product.inStock ? 'ADD TO CART' : 'OUT OF STOCK'}
+                {product.inStock ? 'LEGG I HANDLEKURV' : 'IKKE PÅ LAGER'}
               </button>
             </div>
 
             {/* Full Description */}
             <div className="border-t pt-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-3">Description</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-3">Beskrivelse</h2>
               <p className="text-gray-600 leading-relaxed">{product.fullDescription}</p>
             </div>
 
             {/* Specifications */}
             {product.specifications && product.specifications.length > 0 && (
               <div className="border-t pt-6 mt-8">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Specifications</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-3">Spesifikasjoner</h2>
                 <div className="space-y-3">
                   {product.specifications.map((spec, index) => (
                     <div key={index} className="flex justify-between py-2 border-b border-gray-200">
@@ -299,7 +282,7 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
             {/* Compatibility - Mobile Only */}
             {product.compatibility && product.compatibility.length > 0 && (
               <div className="lg:hidden border-t pt-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Compatibility</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-3">Kompatibilitet</h2>
                 <div className="flex flex-wrap gap-2">
                   {product.compatibility.map((model, index) => (
                     <span
@@ -316,10 +299,11 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
             {/* Features - Mobile Only */}
             {product.features && product.features.length > 0 && (
               <div className="lg:hidden border-t pt-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Features</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-3">Funksjoner</h2>
                 <ul className="space-y-2">
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2 text-gray-600">
+                      <span className="text-teal-500 mt-1">✓</span>
                       <span>{feature}</span>
                     </li>
                   ))}

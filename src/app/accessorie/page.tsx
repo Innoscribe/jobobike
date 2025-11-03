@@ -46,7 +46,7 @@ export default function AccessoriesPage() {
                             Home
                         </Link>
                         <span className="mx-2">/</span>
-                        <span className="text-gray-900">Accessories</span>
+                        <span className="text-gray-900">Tilbehør</span>
                     </nav>
                 </div>
             </div>
@@ -54,10 +54,10 @@ export default function AccessoriesPage() {
             {/* Page Header */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <h1 className="text-4xl font-bold text-gray-900 text-center mb-2">
-                    Accessories
+                    Tilbehør
                 </h1>
                 <p className="text-gray-600 text-center mb-8">
-                    {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'}
+                    {filteredProducts.length} {filteredProducts.length === 1 ? 'produkt' : 'produkter'}
                 </p>
 
 

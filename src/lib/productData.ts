@@ -28,109 +28,109 @@ export interface ProductCard {
     drivetrain?: string;
   };
   // NEW: Comprehensive technical specifications
-  technicalSpecifications: {
-    general: {
-      model: string;
-      frameType: string;
-      frameMaterial: string;
-      foldable: boolean;
-      dimensions: {
-        unfolded: string;
-        folded: string;
+  tekniskeSpesifikasjoner: {
+    generelt: {
+      modell: string;
+      rammeType: string;
+      rammeMateriale: string;
+      sammenleggbar: boolean;
+      dimensjoner: {
+        utbrettet: string;
+        sammenlagt: string;
       };
-      weight: string;
-      maxLoad: string;
-      recommendedHeight: string;
+      vekt: string;
+      maksLast: string;
+      anbefalteHøyde: string;
     };
     motor: {
       type: string;
-      power: string;
-      peakPower: string;
-      torque?: string;
-      location: string;
-      torqueSensor?: boolean;
+      effekt: string;
+      toppEffekt: string;
+      dreiemoment?: string;
+      plassering: string;
+      dreiemomentSensor?: boolean;
     };
-    battery: {
+    batteri: {
       type: string;
-      voltage: string;
-      capacity: string;
-      capacityWh: string;
-      removable: boolean;
-      chargingTime: string;
-      batteryLife: string;
+      spenning: string;
+      kapasitet: string;
+      kapasitetWh: string;
+      avtakbar: boolean;
+      ladetid: string;
+      batteriLevetid: string;
     };
-    performance: {
-      maxSpeed: string;
-      range: {
-        pureElectric: string;
-        pedalAssist: string;
-        combined: string;
+    ytelse: {
+      maksFart: string;
+      rekkevidde: {
+        renElektrisk: string;
+        pedalAssistanse: string;
+        kombinert: string;
       };
-      gradability: string;
-      turningRadius?: string;
+      stigningsevne: string;
+      svingradius?: string;
     };
-    wheels: {
-      size: string;
-      tireType: string;
-      tireSize: string;
-      rimMaterial?: string;
+    hjul: {
+      størrelse: string;
+      dekkType: string;
+      dekkStørrelse: string;
+      felgMateriale?: string;
     };
-    brakes: {
-      front: string;
-      rear: string;
+    bremser: {
+      foran: string;
+      bak: string;
       type: string;
     };
-    transmission: {
+    giring: {
       type: string;
-      gears?: string;
-      shifter?: string;
+      gir?: string;
+      girskifter?: string;
     };
-    electrical: {
+    elektrisk: {
       display: string;
-      lights: {
-        front: boolean;
-        rear: boolean;
+      lys: {
+        foran: boolean;
+        bak: boolean;
         type?: string;
       };
       horn: boolean;
-      throttle: boolean;
-      assistLevels: string;
+      gasspedal: boolean;
+      assistanseNivåer: string;
     };
-    comfort: {
-      suspension: {
-        front: boolean;
-        rear: boolean;
+    komfort: {
+      demping: {
+        foran: boolean;
+        bak: boolean;
         type?: string;
       };
-      seat: {
+      sete: {
         type: string;
-        adjustable: boolean;
-        material?: string;
+        justerbar: boolean;
+        materiale?: string;
       };
-      handlebar: {
+      styre: {
         type: string;
-        adjustable: boolean;
-        material?: string;
+        justerbar: boolean;
+        materiale?: string;
       };
     };
-    safety: {
-      reflectors: boolean;
-      bell: boolean;
-      waterResistance: string;
-      certification?: string[];
+    sikkerhet: {
+      reflekser: boolean;
+      bjelle: boolean;
+      vannMotstand: string;
+      sertifisering?: string[];
     };
-    connectivity: {
+    tilkobling: {
       app: boolean;
       gps?: boolean;
       bluetooth?: boolean;
       usb?: boolean;
     };
-    accessories: {
-      kickstand: boolean;
-      mudguards: boolean;
-      rack: boolean;
-      basket: boolean;
-      bottleHolder: boolean;
+    tilbehør: {
+      sidestøtte: boolean;
+      skjermer: boolean;
+      bagasjebrett: boolean;
+      kurv: boolean;
+      flaskeholder: boolean;
     };
   };
   description: string;
@@ -177,109 +177,109 @@ export const PRODUCTS_DATA: ProductCard[] = [
     frame: "Aluminum alloy",
     drivetrain: "Internal 8-speed"
   },
-  technicalSpecifications: {
-    general: {
-      model: "Luxe",
-      frameType: "Step-over urban frame",
-      frameMaterial: "Aluminum alloy",
-      foldable: false,
-      dimensions: {
-        unfolded: "180cm x 110cm x 65cm",
-        folded: "N/A"
+  tekniskeSpesifikasjoner: {
+    generelt: {
+      modell: "Luxe",
+      rammeType: "Høy urban ramme",
+      rammeMateriale: "Aluminiumslegering",
+      sammenleggbar: false,
+      dimensjoner: {
+        utbrettet: "180cm x 110cm x 65cm",
+        sammenlagt: "N/A"
       },
-      weight: "24kg",
-      maxLoad: "120kg",
-      recommendedHeight: "165-195cm"
+      vekt: "24kg",
+      maksLast: "120kg",
+      anbefalteHøyde: "165-195cm"
     },
     motor: {
-      type: "Mid-drive motor",
-      power: "250W",
-      peakPower: "400W",
-      torque: "90Nm",
-      location: "Center",
-      torqueSensor: true
+      type: "Midtmotor",
+      effekt: "250W",
+      toppEffekt: "400W",
+      dreiemoment: "90Nm",
+      plassering: "Senter",
+      dreiemomentSensor: true
     },
-    battery: {
-      type: "Lithium-ion with BMS",
-      voltage: "36V",
-      capacity: "15Ah",
-      capacityWh: "540Wh",
-      removable: true,
-      chargingTime: "4-6 hours",
-      batteryLife: "800-1000 charge cycles"
+    batteri: {
+      type: "Lithium-ion med BMS",
+      spenning: "36V",
+      kapasitet: "15Ah",
+      kapasitetWh: "540Wh",
+      avtakbar: true,
+      ladetid: "4-6 timer",
+      batteriLevetid: "800-1000 ladesykluser"
     },
-    performance: {
-      maxSpeed: "25 km/h",
-      range: {
-        pureElectric: "45km",
-        pedalAssist: "90km",
-        combined: "65km"
+    ytelse: {
+      maksFart: "25 km/h",
+      rekkevidde: {
+        renElektrisk: "45km",
+        pedalAssistanse: "90km",
+        kombinert: "65km"
       },
-      gradability: "15°",
-      turningRadius: "2.5m"
+      stigningsevne: "15°",
+      svingradius: "2.5m"
     },
-    wheels: {
-      size: "27.5\"",
-      tireType: "Urban tires",
-      tireSize: "27.5\" x 2.1\"",
-      rimMaterial: "Aluminum alloy"
+    hjul: {
+      størrelse: "27.5\"",
+      dekkType: "Bydekk",
+      dekkStørrelse: "27.5\" x 2.1\"",
+      felgMateriale: "Aluminiumslegering"
     },
-    brakes: {
-      front: "Hydraulic disc brake",
-      rear: "Hydraulic disc brake",
-      type: "Hydraulic disc"
+    bremser: {
+      foran: "Hydraulisk skivebrems",
+      bak: "Hydraulisk skivebrems",
+      type: "Hydraulisk skive"
     },
-    transmission: {
-      type: "Internal hub gears",
-      gears: "8-speed",
-      shifter: "Grip shift"
+    giring: {
+      type: "Intern navgiring",
+      gir: "8-trinns",
+      girskifter: "Gripskift"
     },
-    electrical: {
-      display: "Bluetooth LCD display",
-      lights: {
-        front: true,
-        rear: true,
-        type: "LED with automatic brake light"
+    elektrisk: {
+      display: "Bluetooth LCD-skjerm",
+      lys: {
+        foran: true,
+        bak: true,
+        type: "LED med automatisk bremselys"
       },
       horn: true,
-      throttle: false,
-      assistLevels: "5 levels + auto"
+      gasspedal: false,
+      assistanseNivåer: "5 nivåer + auto"
     },
-    comfort: {
-      suspension: {
-        front: false,
-        rear: false,
-        type: "Rigid"
+    komfort: {
+      demping: {
+        foran: false,
+        bak: false,
+        type: "Stiv"
       },
-      seat: {
-        type: "Comfort saddle",
-        adjustable: true,
-        material: "Synthetic leather"
+      sete: {
+        type: "Komfortsadel",
+        justerbar: true,
+        materiale: "Syntetisk lær"
       },
-      handlebar: {
-        type: "Urban handlebar",
-        adjustable: true,
-        material: "Aluminum alloy"
+      styre: {
+        type: "Bystyre",
+        justerbar: true,
+        materiale: "Aluminiumslegering"
       }
     },
-    safety: {
-      reflectors: true,
-      bell: true,
-      waterResistance: "IPX5",
-      certification: ["EN15194", "CE"]
+    sikkerhet: {
+      reflekser: true,
+      bjelle: true,
+      vannMotstand: "IPX5",
+      sertifisering: ["EN15194", "CE"]
     },
-    connectivity: {
+    tilkobling: {
       app: true,
       gps: false,
       bluetooth: true,
       usb: true
     },
-    accessories: {
-      kickstand: true,
-      mudguards: true,
-      rack: true,
-      basket: false,
-      bottleHolder: false
+    tilbehør: {
+      sidestøtte: true,
+      skjermer: true,
+      bagasjebrett: true,
+      kurv: false,
+      flaskeholder: false
     }
   },
   description: "JOBOBIKE Luxe er en premium smart by-elsykkel som kombinerer teknologi og eleganse. Med et vedlikeholdsfritt karbon drivrem system og intern 8-trinns giring, tilbyr den en jevn, stille og vedlikeholdsfri kjøreopplevelse. Den integrerte Bluetooth-appen gir sanntidsovervåking av kjøredata og personlige innstillinger, noe som gjør pendling smartere og mer avslappet.",
@@ -343,109 +343,109 @@ export const PRODUCTS_DATA: ProductCard[] = [
     frame: "6061 Aluminum alloy",
     drivetrain: "Shimano 7-speed"
   },
-  technicalSpecifications: {
-    general: {
-      model: "Robin",
-      frameType: "High frame / Step-through available",
-      frameMaterial: "6061 Aluminum alloy",
-      foldable: false,
-      dimensions: {
-        unfolded: "190cm x 120cm x 75cm",
-        folded: "N/A"
+  tekniskeSpesifikasjoner: {
+    generelt: {
+      modell: "Robin",
+      rammeType: "Høy ramme / Gjennomgående tilgjengelig",
+      rammeMateriale: "6061 Aluminiumslegering",
+      sammenleggbar: false,
+      dimensjoner: {
+        utbrettet: "190cm x 120cm x 75cm",
+        sammenlagt: "N/A"
       },
-      weight: "32kg",
-      maxLoad: "150kg",
-      recommendedHeight: "160-200cm"
+      vekt: "32kg",
+      maksLast: "150kg",
+      anbefalteHøyde: "160-200cm"
     },
     motor: {
-      type: "Rear hub motor",
-      power: "250W",
-      peakPower: "500W",
-      torque: "80Nm",
-      location: "Rear hub",
-      torqueSensor: false
+      type: "Bakhjulsmotor",
+      effekt: "250W",
+      toppEffekt: "500W",
+      dreiemoment: "80Nm",
+      plassering: "Bakhjul",
+      dreiemomentSensor: false
     },
-    battery: {
-      type: "Lithium-ion with BMS",
-      voltage: "48V",
-      capacity: "13Ah",
-      capacityWh: "624Wh",
-      removable: true,
-      chargingTime: "6-8 hours",
-      batteryLife: "800-1000 charge cycles"
+    batteri: {
+      type: "Lithium-ion med BMS",
+      spenning: "48V",
+      kapasitet: "13Ah",
+      kapasitetWh: "624Wh",
+      avtakbar: true,
+      ladetid: "6-8 timer",
+      batteriLevetid: "800-1000 ladesykluser"
     },
-    performance: {
-      maxSpeed: "25 km/h",
-      range: {
-        pureElectric: "40km",
-        pedalAssist: "65km",
-        combined: "55km"
+    ytelse: {
+      maksFart: "25 km/h",
+      rekkevidde: {
+        renElektrisk: "40km",
+        pedalAssistanse: "65km",
+        kombinert: "55km"
       },
-      gradability: "20°",
-      turningRadius: "3m"
+      stigningsevne: "20°",
+      svingradius: "3m"
     },
-    wheels: {
-      size: "26\"",
-      tireType: "Fat tires",
-      tireSize: "26\" x 4.0\"",
-      rimMaterial: "Aluminum alloy wide rim"
+    hjul: {
+      størrelse: "26\"",
+      dekkType: "Fatbike dekk",
+      dekkStørrelse: "26\" x 4.0\"",
+      felgMateriale: "Aluminiumslegering bred felg"
     },
-    brakes: {
-      front: "Hydraulic disc brake",
-      rear: "Hydraulic disc brake",
-      type: "Hydraulic disc"
+    bremser: {
+      foran: "Hydraulisk skivebrems",
+      bak: "Hydraulisk skivebrems",
+      type: "Hydraulisk skive"
     },
-    transmission: {
-      type: "External derailleur",
-      gears: "7-speed Shimano",
-      shifter: "Shimano twist grip"
+    giring: {
+      type: "Ekstern girkasse",
+      gir: "7-trinns Shimano",
+      girskifter: "Shimano vrigrep"
     },
-    electrical: {
-      display: "Color LCD with USB port",
-      lights: {
-        front: true,
-        rear: true,
-        type: "LED 60 LUX front, brake light rear"
+    elektrisk: {
+      display: "Farget LCD med USB-port",
+      lys: {
+        foran: true,
+        bak: true,
+        type: "LED 60 LUX foran, bremselys bak"
       },
       horn: true,
-      throttle: false,
-      assistLevels: "5 levels"
+      gasspedal: false,
+      assistanseNivåer: "5 nivåer"
     },
-    comfort: {
-      suspension: {
-        front: true,
-        rear: false,
-        type: "RST hydraulic suspension 80mm"
+    komfort: {
+      demping: {
+        foran: true,
+        bak: false,
+        type: "RST hydraulisk demping 80mm"
       },
-      seat: {
-        type: "Velo leather comfort saddle",
-        adjustable: true,
-        material: "Leather"
+      sete: {
+        type: "Velo lær komfortsadel",
+        justerbar: true,
+        materiale: "Lær"
       },
-      handlebar: {
-        type: "Mountain bike handlebar 720mm",
-        adjustable: false,
-        material: "Aluminum alloy"
+      styre: {
+        type: "Terrengsykkel styre 720mm",
+        justerbar: false,
+        materiale: "Aluminiumslegering"
       }
     },
-    safety: {
-      reflectors: true,
-      bell: true,
-      waterResistance: "IPX4",
-      certification: ["EN15194", "CE", "TUV"]
+    sikkerhet: {
+      reflekser: true,
+      bjelle: true,
+      vannMotstand: "IPX4",
+      sertifisering: ["EN15194", "CE", "TUV"]
     },
-    connectivity: {
+    tilkobling: {
       app: false,
       gps: false,
       bluetooth: false,
       usb: true
     },
-    accessories: {
-      kickstand: true,
-      mudguards: true,
-      rack: false,
-      basket: false,
-      bottleHolder: false
+    tilbehør: {
+      sidestøtte: true,
+      skjermer: true,
+      bagasjebrett: false,
+      kurv: false,
+      flaskeholder: false
     }
   },
   description: "JOBOBIKE Robin er den mest kraftige og dynamiske fatbike el-sykkelen i serien. Skapt for eventyr, utmerker den seg på humpete skogsstier, fjell og til og med snødekket terreng der vanlige sykler ikke kan gå. Med 26\" x 4,0\" fatbike dekk og RST hydraulisk demping, leverer Robin eksepsjonelt grep og stabilitet på alle terreng.",
@@ -462,14 +462,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
   availableColors: ["Black-Red", "Gray-Green"],
   availableSizes: ["High Frame", "Step-Through"],
   whatsInTheBox: [
-    "JOBOBIKE Robin e-bike",
-    "48V 13Ah battery with charger",
-    "User manual and assembly tools",
-    "Warranty card",
-    "Front LED light (60 LUX)",
-    "Rear brake light",
-    "Kickstand",
-    "Bell"
+    "JOBOBIKE Robin el-sykkel",
+    "48V 13Ah batteri med lader",
+    "Brukermanual og monteringsverktøy",
+    "Garantikort",
+    "Front LED-lys (60 LUX)",
+    "Bakre bremselys",
+    "Sidestøtte",
+    "Bjelle"
   ]
 },
 
@@ -508,109 +508,109 @@ export const PRODUCTS_DATA: ProductCard[] = [
     frame: "6061 Aluminum alloy",
     drivetrain: "Shimano 7-speed"
   },
-  technicalSpecifications: {
-    general: {
-      model: "Robin Pro",
-      frameType: "High frame / Step-through available",
-      frameMaterial: "6061 Aluminum alloy",
-      foldable: false,
-      dimensions: {
-        unfolded: "190cm x 120cm x 75cm",
-        folded: "N/A"
+  tekniskeSpesifikasjoner: {
+    generelt: {
+      modell: "Robin Pro",
+      rammeType: "Høy ramme / Gjennomgående tilgjengelig",
+      rammeMateriale: "6061 Aluminiumslegering",
+      sammenleggbar: false,
+      dimensjoner: {
+        utbrettet: "190cm x 120cm x 75cm",
+        sammenlagt: "N/A"
       },
-      weight: "34kg",
-      maxLoad: "150kg",
-      recommendedHeight: "160-200cm"
+      vekt: "34kg",
+      maksLast: "150kg",
+      anbefalteHøyde: "160-200cm"
     },
     motor: {
-      type: "Rear hub motor",
-      power: "250W",
-      peakPower: "500W",
-      torque: "80Nm",
-      location: "Rear hub",
-      torqueSensor: false
+      type: "Bakhjulsmotor",
+      effekt: "250W",
+      toppEffekt: "500W",
+      dreiemoment: "80Nm",
+      plassering: "Bakhjul",
+      dreiemomentSensor: false
     },
-    battery: {
-      type: "Lithium-ion with BMS",
-      voltage: "48V",
-      capacity: "20Ah",
-      capacityWh: "960Wh",
-      removable: true,
-      chargingTime: "8-10 hours",
-      batteryLife: "800-1000 charge cycles"
+    batteri: {
+      type: "Lithium-ion med BMS",
+      spenning: "48V",
+      kapasitet: "20Ah",
+      kapasitetWh: "960Wh",
+      avtakbar: true,
+      ladetid: "8-10 timer",
+      batteriLevetid: "800-1000 ladesykluser"
     },
-    performance: {
-      maxSpeed: "25 km/h",
-      range: {
-        pureElectric: "50km",
-        pedalAssist: "90km",
-        combined: "70km"
+    ytelse: {
+      maksFart: "25 km/h",
+      rekkevidde: {
+        renElektrisk: "50km",
+        pedalAssistanse: "90km",
+        kombinert: "70km"
       },
-      gradability: "20°",
-      turningRadius: "3m"
+      stigningsevne: "20°",
+      svingradius: "3m"
     },
-    wheels: {
-      size: "26\"",
-      tireType: "Fat tires",
-      tireSize: "26\" x 4.0\"",
-      rimMaterial: "Aluminum alloy wide rim"
+    hjul: {
+      størrelse: "26\"",
+      dekkType: "Fatbike dekk",
+      dekkStørrelse: "26\" x 4.0\"",
+      felgMateriale: "Aluminiumslegering bred felg"
     },
-    brakes: {
-      front: "Hydraulic disc brake",
-      rear: "Hydraulic disc brake",
-      type: "Hydraulic disc"
+    bremser: {
+      foran: "Hydraulisk skivebrems",
+      bak: "Hydraulisk skivebrems",
+      type: "Hydraulisk skive"
     },
-    transmission: {
-      type: "External derailleur",
-      gears: "7-speed Shimano",
-      shifter: "Shimano twist grip"
+    giring: {
+      type: "Ekstern girkasse",
+      gir: "7-trinns Shimano",
+      girskifter: "Shimano vrigrep"
     },
-    electrical: {
-      display: "Color LCD with USB port",
-      lights: {
-        front: true,
-        rear: true,
-        type: "LED 60 LUX front, brake light rear"
+    elektrisk: {
+      display: "Farget LCD med USB-port",
+      lys: {
+        foran: true,
+        bak: true,
+        type: "LED 60 LUX foran, bremselys bak"
       },
       horn: true,
-      throttle: false,
-      assistLevels: "5 levels"
+      gasspedal: false,
+      assistanseNivåer: "5 nivåer"
     },
-    comfort: {
-      suspension: {
-        front: true,
-        rear: false,
-        type: "RST hydraulic suspension 80mm"
+    komfort: {
+      demping: {
+        foran: true,
+        bak: false,
+        type: "RST hydraulisk demping 80mm"
       },
-      seat: {
-        type: "Velo leather comfort saddle",
-        adjustable: true,
-        material: "Leather"
+      sete: {
+        type: "Velo lær komfortsadel",
+        justerbar: true,
+        materiale: "Lær"
       },
-      handlebar: {
-        type: "Mountain bike handlebar 720mm",
-        adjustable: false,
-        material: "Aluminum alloy"
+      styre: {
+        type: "Terrengsykkel styre 720mm",
+        justerbar: false,
+        materiale: "Aluminiumslegering"
       }
     },
-    safety: {
-      reflectors: true,
-      bell: true,
-      waterResistance: "IPX4",
-      certification: ["EN15194", "CE", "TUV"]
+    sikkerhet: {
+      reflekser: true,
+      bjelle: true,
+      vannMotstand: "IPX4",
+      sertifisering: ["EN15194", "CE", "TUV"]
     },
-    connectivity: {
+    tilkobling: {
       app: false,
       gps: false,
       bluetooth: false,
       usb: true
     },
-    accessories: {
-      kickstand: true,
-      mudguards: true,
-      rack: false,
-      basket: false,
-      bottleHolder: false
+    tilbehør: {
+      sidestøtte: true,
+      skjermer: true,
+      bagasjebrett: false,
+      kurv: false,
+      flaskeholder: false
     }
   },
   description: "JOBOBIKE Robin Pro er den oppgraderte versjonen av den populære Robin fatbike el-sykkelen, med et utvidet rekkevidde 48V 20Ah (960Wh) batteri som leverer opptil 90km på en lading. Perfekt for lengre eventyr på skogsstier, fjell og utfordrende terreng der standard sykler ikke kan gå.",
@@ -627,14 +627,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
   availableColors: ["Black-Red", "Grey-Green", "Black-Gold", "Black-Blue"],
   availableSizes: ["High Frame", "Step-Through"],
   whatsInTheBox: [
-    "JOBOBIKE Robin Pro e-bike",
-    "48V 20Ah battery with charger",
-    "User manual and assembly tools",
-    "Warranty card",
-    "Front LED light (60 LUX)",
-    "Rear brake light",
-    "Kickstand",
-    "Bell"
+    "JOBOBIKE Robin Pro el-sykkel",
+    "48V 20Ah batteri med lader",
+    "Brukermanual og monteringsverktøy",
+    "Garantikort",
+    "Front LED-lys (60 LUX)",
+    "Bakre bremselys",
+    "Sidestøtte",
+    "Bjelle"
   ]
 },
 
@@ -677,109 +677,109 @@ export const PRODUCTS_DATA: ProductCard[] = [
     frame: "Double-layer aluminum alloy",
     drivetrain: "Shimano 7-speed"
   },
-  technicalSpecifications: {
-    general: {
-      model: "Romer",
-      frameType: "Step-through foldable",
-      frameMaterial: "Double-layer aluminum alloy",
-      foldable: true,
-      dimensions: {
-        unfolded: "165cm x 110cm x 70cm",
-        folded: "106cm x 60cm x 86cm"
+  tekniskeSpesifikasjoner: {
+    generelt: {
+      modell: "Romer",
+      rammeType: "Gjennomgående sammenleggbar",
+      rammeMateriale: "Dobbeltlags aluminiumslegering",
+      sammenleggbar: true,
+      dimensjoner: {
+        utbrettet: "165cm x 110cm x 70cm",
+        sammenlagt: "106cm x 60cm x 86cm"
       },
-      weight: "30kg",
-      maxLoad: "150kg",
-      recommendedHeight: "160cm+"
+      vekt: "30kg",
+      maksLast: "150kg",
+      anbefalteHøyde: "160cm+"
     },
     motor: {
-      type: "Rear hub motor",
-      power: "250W",
-      peakPower: "450W",
-      torque: "80Nm",
-      location: "Rear hub",
-      torqueSensor: false
+      type: "Bakhjulsmotor",
+      effekt: "250W",
+      toppEffekt: "450W",
+      dreiemoment: "80Nm",
+      plassering: "Bakhjul",
+      dreiemomentSensor: false
     },
-    battery: {
-      type: "LG Lithium-ion with BMS",
-      voltage: "48V",
-      capacity: "13Ah",
-      capacityWh: "624Wh",
-      removable: true,
-      chargingTime: "6-8 hours",
-      batteryLife: "800-1000 charge cycles"
+    batteri: {
+      type: "LG Lithium-ion med BMS",
+      spenning: "48V",
+      kapasitet: "13Ah",
+      kapasitetWh: "624Wh",
+      avtakbar: true,
+      ladetid: "6-8 timer",
+      batteriLevetid: "800-1000 ladesykluser"
     },
-    performance: {
-      maxSpeed: "25 km/h",
-      range: {
-        pureElectric: "45km",
-        pedalAssist: "150km",
-        combined: "65km"
+    ytelse: {
+      maksFart: "25 km/h",
+      rekkevidde: {
+        renElektrisk: "45km",
+        pedalAssistanse: "150km",
+        kombinert: "65km"
       },
-      gradability: "18°",
-      turningRadius: "2.2m"
+      stigningsevne: "18°",
+      svingradius: "2.2m"
     },
-    wheels: {
-      size: "20\"",
-      tireType: "Fat tires",
-      tireSize: "20\" x 4.0\"",
-      rimMaterial: "Aluminum alloy"
+    hjul: {
+      størrelse: "20\"",
+      dekkType: "Fatbike dekk",
+      dekkStørrelse: "20\" x 4.0\"",
+      felgMateriale: "Aluminiumslegering"
     },
-    brakes: {
-      front: "Mechanical disc brake",
-      rear: "Mechanical disc brake",
-      type: "Tektro mechanical disc"
+    bremser: {
+      foran: "Mekanisk skivebrems",
+      bak: "Mekanisk skivebrems",
+      type: "Tektro mekanisk skive"
     },
-    transmission: {
-      type: "External derailleur",
-      gears: "7-speed Shimano",
-      shifter: "Shimano twist grip"
+    giring: {
+      type: "Ekstern girkasse",
+      gir: "7-trinns Shimano",
+      girskifter: "Shimano vrigrep"
     },
-    electrical: {
-      display: "LCD display",
-      lights: {
-        front: true,
-        rear: true,
-        type: "LED with waterproof wiring"
+    elektrisk: {
+      display: "LCD-skjerm",
+      lys: {
+        foran: true,
+        bak: true,
+        type: "LED med vanntett kabling"
       },
       horn: true,
-      throttle: false,
-      assistLevels: "5 levels"
+      gasspedal: false,
+      assistanseNivåer: "5 nivåer"
     },
-    comfort: {
-      suspension: {
-        front: false,
-        rear: false,
-        type: "Rigid with fat tire cushioning"
+    komfort: {
+      demping: {
+        foran: false,
+        bak: false,
+        type: "Stiv med fatbike dekk demping"
       },
-      seat: {
-        type: "Comfort saddle",
-        adjustable: true,
-        material: "Synthetic leather"
+      sete: {
+        type: "Komfortsadel",
+        justerbar: true,
+        materiale: "Syntetisk lær"
       },
-      handlebar: {
-        type: "Foldable handlebar",
-        adjustable: true,
-        material: "Aluminum alloy"
+      styre: {
+        type: "Sammenleggbart styre",
+        justerbar: true,
+        materiale: "Aluminiumslegering"
       }
     },
-    safety: {
-      reflectors: true,
-      bell: true,
-      waterResistance: "IPX4",
-      certification: ["EN15194", "CE"]
+    sikkerhet: {
+      reflekser: true,
+      bjelle: true,
+      vannMotstand: "IPX4",
+      sertifisering: ["EN15194", "CE"]
     },
-    connectivity: {
+    tilkobling: {
       app: false,
       gps: false,
       bluetooth: false,
       usb: false
     },
-    accessories: {
-      kickstand: true,
-      mudguards: true,
-      rack: true,
-      basket: true,
-      bottleHolder: false
+    tilbehør: {
+      sidestøtte: true,
+      skjermer: true,
+      bagasjebrett: true,
+      kurv: true,
+      flaskeholder: false
     }
   },
   description: "JOBOBIKE Romer er en allsidig nyttesykkel designet for maksimal praktisk bruk. Med sitt sammenleggbare design og gjennomgående ramme, er den perfekt for pendlere som trenger enkel transport og oppbevaring. Den doble rammen gir ekstra styrke samtidig som den beskytter batteriet, og den er kompatibel med ulike tilbehør som tilhengere, barneseter og kurver.",
@@ -796,15 +796,15 @@ export const PRODUCTS_DATA: ProductCard[] = [
   availableColors: ["Mint Cream", "Dark Olive"],
   availableSizes: ["One Size"],
   whatsInTheBox: [
-    "JOBOBIKE Romer e-bike",
-    "48V 13Ah battery with charger",
-    "User manual and assembly tools",
-    "Warranty card",
-    "Front and rear lights",
-    "Foldable pedals",
-    "Kickstand",
-    "Mudguards",
-    "Bell"
+    "JOBOBIKE Romer el-sykkel",
+    "48V 13Ah batteri med lader",
+    "Brukermanual og monteringsverktøy",
+    "Garantikort",
+    "Front- og baklys",
+    "Sammenleggbare pedaler",
+    "Sidestøtte",
+    "Skjermer",
+    "Bjelle"
   ]
 },
 
@@ -843,109 +843,109 @@ export const PRODUCTS_DATA: ProductCard[] = [
     frame: "Double-layer aluminum alloy",
     drivetrain: "Shimano 7-speed"
   },
-  technicalSpecifications: {
-    general: {
-      model: "Romer Pro",
-      frameType: "Step-through foldable",
-      frameMaterial: "Double-layer aluminum alloy",
-      foldable: true,
-      dimensions: {
-        unfolded: "165cm x 110cm x 70cm",
-        folded: "106cm x 60cm x 86cm"
+  tekniskeSpesifikasjoner: {
+    generelt: {
+      modell: "Romer Pro",
+      rammeType: "Gjennomgående sammenleggbar",
+      rammeMateriale: "Dobbeltlags aluminiumslegering",
+      sammenleggbar: true,
+      dimensjoner: {
+        utbrettet: "165cm x 110cm x 70cm",
+        sammenlagt: "106cm x 60cm x 86cm"
       },
-      weight: "31kg",
-      maxLoad: "150kg",
-      recommendedHeight: "160cm+"
+      vekt: "31kg",
+      maksLast: "150kg",
+      anbefalteHøyde: "160cm+"
     },
     motor: {
-      type: "Rear hub motor",
-      power: "250W",
-      peakPower: "500W",
-      torque: "80Nm",
-      location: "Rear hub",
-      torqueSensor: true
+      type: "Bakhjulsmotor",
+      effekt: "250W",
+      toppEffekt: "500W",
+      dreiemoment: "80Nm",
+      plassering: "Bakhjul",
+      dreiemomentSensor: true
     },
-    battery: {
-      type: "LG Lithium-ion with BMS",
-      voltage: "48V",
-      capacity: "15Ah",
-      capacityWh: "720Wh",
-      removable: true,
-      chargingTime: "6-8 hours",
-      batteryLife: "800-1000 charge cycles"
+    batteri: {
+      type: "LG Lithium-ion med BMS",
+      spenning: "48V",
+      kapasitet: "15Ah",
+      kapasitetWh: "720Wh",
+      avtakbar: true,
+      ladetid: "6-8 timer",
+      batteriLevetid: "800-1000 ladesykluser"
     },
-    performance: {
-      maxSpeed: "25 km/h",
-      range: {
-        pureElectric: "50km",
-        pedalAssist: "160km",
-        combined: "70km"
+    ytelse: {
+      maksFart: "25 km/h",
+      rekkevidde: {
+        renElektrisk: "50km",
+        pedalAssistanse: "160km",
+        kombinert: "70km"
       },
-      gradability: "18°",
-      turningRadius: "2.2m"
+      stigningsevne: "18°",
+      svingradius: "2.2m"
     },
-    wheels: {
-      size: "20\"",
-      tireType: "Fat tires",
-      tireSize: "20\" x 4.0\"",
-      rimMaterial: "Aluminum alloy"
+    hjul: {
+      størrelse: "20\"",
+      dekkType: "Fatbike dekk",
+      dekkStørrelse: "20\" x 4.0\"",
+      felgMateriale: "Aluminiumslegering"
     },
-    brakes: {
-      front: "Hydraulic disc brake",
-      rear: "Hydraulic disc brake",
-      type: "Tektro hydraulic disc"
+    bremser: {
+      foran: "Hydraulisk skivebrems",
+      bak: "Hydraulisk skivebrems",
+      type: "Tektro hydraulisk skive"
     },
-    transmission: {
-      type: "External derailleur",
-      gears: "7-speed Shimano",
-      shifter: "Shimano twist grip"
+    giring: {
+      type: "Ekstern girkasse",
+      gir: "7-trinns Shimano",
+      girskifter: "Shimano vrigrep"
     },
-    electrical: {
-      display: "Advanced LCD display",
-      lights: {
-        front: true,
-        rear: true,
-        type: "LED with waterproof wiring"
+    elektrisk: {
+      display: "Avansert LCD-skjerm",
+      lys: {
+        foran: true,
+        bak: true,
+        type: "LED med vanntett kabling"
       },
       horn: true,
-      throttle: false,
-      assistLevels: "5 levels"
+      gasspedal: false,
+      assistanseNivåer: "5 nivåer"
     },
-    comfort: {
-      suspension: {
-        front: false,
-        rear: true,
-        type: "Suspension seatpost"
+    komfort: {
+      demping: {
+        foran: false,
+        bak: true,
+        type: "Dempet setepinne"
       },
-      seat: {
-        type: "Premium comfort saddle",
-        adjustable: true,
-        material: "Synthetic leather"
+      sete: {
+        type: "Premium komfortsadel",
+        justerbar: true,
+        materiale: "Syntetisk lær"
       },
-      handlebar: {
-        type: "Foldable handlebar",
-        adjustable: true,
-        material: "Aluminum alloy"
+      styre: {
+        type: "Sammenleggbart styre",
+        justerbar: true,
+        materiale: "Aluminiumslegering"
       }
     },
-    safety: {
-      reflectors: true,
-      bell: true,
-      waterResistance: "IPX4",
-      certification: ["EN15194", "CE"]
+    sikkerhet: {
+      reflekser: true,
+      bjelle: true,
+      vannMotstand: "IPX4",
+      sertifisering: ["EN15194", "CE"]
     },
-    connectivity: {
+    tilkobling: {
       app: false,
       gps: false,
       bluetooth: false,
       usb: true
     },
-    accessories: {
-      kickstand: true,
-      mudguards: true,
-      rack: true,
-      basket: true,
-      bottleHolder: false
+    tilbehør: {
+      sidestøtte: true,
+      skjermer: true,
+      bagasjebrett: true,
+      kurv: true,
+      flaskeholder: false
     }
   },
   description: "JOBOBIKE Romer Pro er den oppgraderte versjonen av den populære Romer nyttesykkelen. Den har hydrauliske skivebremser for overlegen bremsekraft, en dreiemoment sensor for mer naturlig pedalassistanse, og en dempet setepinne for økt komfort. Perfekt for daglig pendling, familieturer og lastetransport.",
@@ -962,16 +962,16 @@ export const PRODUCTS_DATA: ProductCard[] = [
   availableColors: ["Jungle Green", "Dark Olive", "Blue Grey"],
   availableSizes: ["One Size"],
   whatsInTheBox: [
-    "JOBOBIKE Romer Pro e-bike",
-    "48V 15Ah battery with charger",
-    "User manual and assembly tools",
-    "Warranty card",
-    "Front and rear lights",
-    "Foldable pedals",
-    "Kickstand",
-    "Mudguards",
-    "Rear rack",
-    "Bell"
+    "JOBOBIKE Romer Pro el-sykkel",
+    "48V 15Ah batteri med lader",
+    "Brukermanual og monteringsverktøy",
+    "Garantikort",
+    "Front- og baklys",
+    "Sammenleggbare pedaler",
+    "Sidestøtte",
+    "Skjermer",
+    "Bakre bagasjebrett",
+    "Bjelle"
   ]
 },
 
@@ -1010,19 +1010,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
     frame: "Aluminum alloy full suspension",
     drivetrain: "Shimano 9-speed"
   },
-  technicalSpecifications: {
-    general: {
-      model: "Ace Pro",
-      frameType: "Full suspension mountain frame",
-      frameMaterial: "6061 Aluminum alloy",
-      foldable: false,
-      dimensions: {
-        unfolded: "185cm x 115cm x 72cm",
-        folded: "N/A"
+  tekniskeSpesifikasjoner: {
+    generelt: {
+      modell: "Ace Pro",
+      rammeType: "Full demping terrengramme",
+      rammeMateriale: "6061 Aluminiumslegering",
+      sammenleggbar: false,
+      dimensjoner: {
+        utbrettet: "185cm x 115cm x 72cm",
+        sammenlagt: "N/A"
       },
-      weight: "28kg",
-      maxLoad: "130kg",
-      recommendedHeight: "170-195cm"
+      vekt: "28kg",
+      maksLast: "130kg",
+      anbefalteHøyde: "170-195cm"
     },
     motor: {
       type: "Mid-drive motor",
@@ -1129,17 +1129,17 @@ export const PRODUCTS_DATA: ProductCard[] = [
   availableColors: ["Matte Black", "Anthracite Grey", "Forest Green"],
   availableSizes: ["M (170-180cm)", "L (180-195cm)"],
   whatsInTheBox: [
-    "JOBOBIKE Ace Pro e-bike",
-    "48V 17.5Ah Samsung battery with fast charger",
-    "User manual and assembly tools",
-    "Warranty card",
-    "High-power LED front light",
-    "LED rear brake light",
-    "Kickstand",
-    "Mudguards",
-    "Bottle holder",
-    "Bell",
-    "Pedals"
+    "JOBOBIKE Ace Pro el-sykkel",
+    "48V 17.5Ah Samsung batteri med hurtiglader",
+    "Brukermanual og monteringsverktøy",
+    "Garantikort",
+    "Høyeffekt LED frontlys",
+    "LED bakre bremselys",
+    "Sidestøtte",
+    "Skjermer",
+    "Flaskeholder",
+    "Bjelle",
+    "Pedaler"
   ]
 },
 
@@ -1178,19 +1178,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
     frame: "Reinforced aluminum alloy",
     drivetrain: "Shimano 7-speed"
   },
-  technicalSpecifications: {
-    general: {
-      model: "Romer C",
-      frameType: "Step-through cargo frame",
-      frameMaterial: "Reinforced aluminum alloy",
-      foldable: true,
-      dimensions: {
-        unfolded: "165cm x 110cm x 70cm",
-        folded: "106cm x 60cm x 86cm"
+  tekniskeSpesifikasjoner: {
+    generelt: {
+      modell: "Romer C",
+      rammeType: "Gjennomgående lasteramme",
+      rammeMateriale: "Forsterket aluminiumslegering",
+      sammenleggbar: true,
+      dimensjoner: {
+        utbrettet: "165cm x 110cm x 70cm",
+        sammenlagt: "106cm x 60cm x 86cm"
       },
-      weight: "32kg",
-      maxLoad: "180kg",
-      recommendedHeight: "160cm+"
+      vekt: "32kg",
+      maksLast: "180kg",
+      anbefalteHøyde: "160cm+"
     },
     motor: {
       type: "Rear hub motor",
@@ -1297,17 +1297,17 @@ export const PRODUCTS_DATA: ProductCard[] = [
   availableColors: ["Cargo Black", "Industrial Grey"],
   availableSizes: ["One Size"],
   whatsInTheBox: [
-    "JOBOBIKE Romer C e-bike",
-    "48V 13Ah battery with charger",
-    "User manual and assembly tools",
-    "Warranty card",
-    "Front and rear lights",
-    "Heavy-duty rear rack",
-    "Double kickstand",
-    "Mudguards",
-    "Large basket (optional)",
-    "Bell",
-    "Foldable pedals"
+    "JOBOBIKE Romer C el-sykkel",
+    "48V 13Ah batteri med lader",
+    "Brukermanual og monteringsverktøy",
+    "Garantikort",
+    "Front- og baklys",
+    "Robust bakre bagasjebrett",
+    "Dobbel sidestøtte",
+    "Skjermer",
+    "Stor kurv (valgfri)",
+    "Bjelle",
+    "Sammenleggbare pedaler"
   ]
 },
   
@@ -1352,108 +1352,108 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Aluminum Alloy",
       drivetrain: "7-Speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "Sam",
-        frameType: "Foldable",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: true,
-        dimensions: {
-          unfolded: "160 x 58 x 100 cm",
-          folded: "80 x 58 x 70 cm"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "Sam",
+        rammeType: "Sammenleggbar",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: true,
+        dimensjoner: {
+          utbrettet: "160 x 58 x 100 cm",
+          sammenlagt: "80 x 58 x 70 cm"
         },
-        weight: "22 kg",
-        maxLoad: "100 kg",
-        recommendedHeight: "155-185 cm"
+        vekt: "22 kg",
+        maksLast: "100 kg",
+        anbefalteHøyde: "155-185 cm"
       },
       motor: {
-        type: "Rear Hub",
-        power: "350W",
-        peakPower: "500W",
-        torque: "40 N.m",
-        location: "Rear Wheel",
-        torqueSensor: false
+        type: "Bakhjulsmotor",
+        effekt: "350W",
+        toppEffekt: "500W",
+        dreiemoment: "40 Nm",
+        plassering: "Bakhjul",
+        dreiemomentSensor: false
       },
-      battery: {
+      batteri: {
         type: "Lithium-ion",
-        voltage: "36V",
-        capacity: "12.8Ah",
-        capacityWh: "461Wh",
-        removable: true,
-        chargingTime: "4-5 hours",
-        batteryLife: "600+ cycles"
+        spenning: "36V",
+        kapasitet: "12.8Ah",
+        kapasitetWh: "461Wh",
+        avtakbar: true,
+        ladetid: "4-5 timer",
+        batteriLevetid: "600+ sykluser"
       },
-      performance: {
-        maxSpeed: "25 km/h",
-        range: {
-          pureElectric: "45 km",
-          pedalAssist: "60-80 km",
-          combined: "50-70 km"
+      ytelse: {
+        maksFart: "25 km/h",
+        rekkevidde: {
+          renElektrisk: "45 km",
+          pedalAssistanse: "60-80 km",
+          kombinert: "50-70 km"
         },
-        gradability: "15°"
+        stigningsevne: "15°"
       },
-      wheels: {
-        size: "20\"",
-        tireType: "Fat Tire",
-        tireSize: "20 x 4.0\"",
-        rimMaterial: "Aluminum Alloy"
+      hjul: {
+        størrelse: "20\"",
+        dekkType: "Fatbike dekk",
+        dekkStørrelse: "20 x 4.0\"",
+        felgMateriale: "Aluminiumslegering"
       },
-      brakes: {
-        front: "Mechanical Disc",
-        rear: "Mechanical Disc",
-        type: "160mm Rotors"
+      bremser: {
+        foran: "Mekanisk skive",
+        bak: "Mekanisk skive",
+        type: "160mm rotorer"
       },
-      transmission: {
-        type: "Derailleur",
-        gears: "7-Speed",
-        shifter: "Shimano"
+      giring: {
+        type: "Girkasse",
+        gir: "7-trinns",
+        girskifter: "Shimano"
       },
-      electrical: {
-        display: "LCD Display",
-        lights: {
-          front: true,
-          rear: true,
+      elektrisk: {
+        display: "LCD-skjerm",
+        lys: {
+          foran: true,
+          bak: true,
           type: "LED"
         },
         horn: false,
-        throttle: true,
-        assistLevels: "5 levels"
+        gasspedal: true,
+        assistanseNivåer: "5 nivåer"
       },
-      comfort: {
-        suspension: {
-          front: true,
-          rear: false,
-          type: "Spring Fork"
+      komfort: {
+        demping: {
+          foran: true,
+          bak: false,
+          type: "Fjærgaffel"
         },
-        seat: {
-          type: "Comfort Saddle",
-          adjustable: true,
-          material: "PU Leather"
+        sete: {
+          type: "Komfortsadel",
+          justerbar: true,
+          materiale: "PU lær"
         },
-        handlebar: {
-          type: "Foldable",
-          adjustable: true,
-          material: "Steel"
+        styre: {
+          type: "Sammenleggbart",
+          justerbar: true,
+          materiale: "Stål"
         }
       },
-      safety: {
-        reflectors: true,
-        bell: true,
-        waterResistance: "IPX4",
-        certification: ["EN15194", "CE"]
+      sikkerhet: {
+        reflekser: true,
+        bjelle: true,
+        vannMotstand: "IPX4",
+        sertifisering: ["EN15194", "CE"]
       },
-      connectivity: {
+      tilkobling: {
         app: false,
         gps: false,
         bluetooth: false,
         usb: true
       },
-      accessories: {
-        kickstand: true,
-        mudguards: true,
-        rack: false,
-        basket: false,
-        bottleHolder: false
+      tilbehør: {
+        sidestøtte: true,
+        skjermer: true,
+        bagasjebrett: false,
+        kurv: false,
+        flaskeholder: false
       }
     },
     description: "JOBOBIKE Sam er en allsidig sammenleggbar el-sykkel perfekt for bypendlere som trenger bærbarhet uten å ofre ytelse. Det kompakte designet gjør oppbevaring og transport enkelt.",
@@ -1467,12 +1467,12 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Matte Black", "White", "Red"],
     availableSizes: ["One Size"],
     whatsInTheBox: [
-      "JOBOBIKE Sam E-bike",
-      "36V 12.8Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Folding Guide",
-      "Keys (2x)"
+      "JOBOBIKE Sam el-sykkel",
+      "36V 12.8Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Sammenleggingsguide",
+      "Nøkler (2x)"
     ]
   },
 
@@ -1512,109 +1512,109 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Aluminum Alloy",
       drivetrain: "9-Speed Shimano"
     },
-    technicalSpecifications: {
-      general: {
-        model: "Lyon Pro",
-        frameType: "Step-through",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: false,
-        dimensions: {
-          unfolded: "185 x 65 x 110 cm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "Lyon Pro",
+        rammeType: "Gjennomgående",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "185 x 65 x 110 cm",
+          sammenlagt: "N/A"
         },
-        weight: "24 kg",
-        maxLoad: "120 kg",
-        recommendedHeight: "155-195 cm"
+        vekt: "24 kg",
+        maksLast: "120 kg",
+        anbefalteHøyde: "155-195 cm"
       },
       motor: {
-        type: "Mid-Drive",
-        power: "250W",
-        peakPower: "500W",
-        torque: "90 N.m",
-        location: "Center",
-        torqueSensor: true
+        type: "Midtmotor",
+        effekt: "250W",
+        toppEffekt: "500W",
+        dreiemoment: "90 Nm",
+        plassering: "Senter",
+        dreiemomentSensor: true
       },
-      battery: {
+      batteri: {
         type: "Lithium-ion",
-        voltage: "48V",
-        capacity: "15Ah",
-        capacityWh: "720Wh",
-        removable: true,
-        chargingTime: "4-6 hours",
-        batteryLife: "800+ cycles"
+        spenning: "48V",
+        kapasitet: "15Ah",
+        kapasitetWh: "720Wh",
+        avtakbar: true,
+        ladetid: "4-6 timer",
+        batteriLevetid: "800+ sykluser"
       },
-      performance: {
-        maxSpeed: "25 km/h",
-        range: {
-          pureElectric: "60 km",
-          pedalAssist: "90-110 km",
-          combined: "75-95 km"
+      ytelse: {
+        maksFart: "25 km/h",
+        rekkevidde: {
+          renElektrisk: "60 km",
+          pedalAssistanse: "90-110 km",
+          kombinert: "75-95 km"
         },
-        gradability: "25Â°",
-        turningRadius: "1.8m"
+        stigningsevne: "25°",
+        svingradius: "1.8m"
       },
-      wheels: {
-        size: "26\"",
-        tireType: "Urban",
-        tireSize: "26 x 2.1\"",
-        rimMaterial: "Aluminum Alloy"
+      hjul: {
+        størrelse: "26\"",
+        dekkType: "Bydekk",
+        dekkStørrelse: "26 x 2.1\"",
+        felgMateriale: "Aluminiumslegering"
       },
-      brakes: {
-        front: "Hydraulic Disc",
-        rear: "Hydraulic Disc",
-        type: "180mm Rotors"
+      bremser: {
+        foran: "Hydraulisk skive",
+        bak: "Hydraulisk skive",
+        type: "180mm rotorer"
       },
-      transmission: {
-        type: "Derailleur",
-        gears: "9-Speed",
-        shifter: "Shimano"
+      giring: {
+        type: "Girkasse",
+        gir: "9-trinns",
+        girskifter: "Shimano"
       },
-      electrical: {
-        display: "LCD Bluetooth Display",
-        lights: {
-          front: true,
-          rear: true,
+      elektrisk: {
+        display: "LCD Bluetooth-skjerm",
+        lys: {
+          foran: true,
+          bak: true,
           type: "LED"
         },
         horn: true,
-        throttle: false,
-        assistLevels: "5 levels"
+        gasspedal: false,
+        assistanseNivåer: "5 nivåer"
       },
-      comfort: {
-        suspension: {
-          front: true,
-          rear: false,
-          type: "Spring Fork"
+      komfort: {
+        demping: {
+          foran: true,
+          bak: false,
+          type: "Fjærgaffel"
         },
-        seat: {
-          type: "Comfort Saddle",
-          adjustable: true,
-          material: "Synthetic Leather"
+        sete: {
+          type: "Komfortsadel",
+          justerbar: true,
+          materiale: "Syntetisk lær"
         },
-        handlebar: {
-          type: "Ergonomic",
-          adjustable: true,
-          material: "Aluminum"
+        styre: {
+          type: "Ergonomisk",
+          justerbar: true,
+          materiale: "Aluminium"
         }
       },
-      safety: {
-        reflectors: true,
-        bell: true,
-        waterResistance: "IPX4",
-        certification: ["EN15194", "CE"]
+      sikkerhet: {
+        reflekser: true,
+        bjelle: true,
+        vannMotstand: "IPX4",
+        sertifisering: ["EN15194", "CE"]
       },
-      connectivity: {
+      tilkobling: {
         app: true,
         gps: false,
         bluetooth: true,
         usb: true
       },
-      accessories: {
-        kickstand: true,
-        mudguards: true,
-        rack: true,
-        basket: false,
-        bottleHolder: true
+      tilbehør: {
+        sidestøtte: true,
+        skjermer: true,
+        bagasjebrett: true,
+        kurv: false,
+        flaskeholder: true
       }
     },
     description: "JOBOBIKE Lyon Pro er en sofistikert by-elsykkel designet for den moderne pendleren. Med sin kraftige midtmotor og langdistanse batteri, tilbyr den den perfekte balansen mellom ytelse og effektivitet for bykjøring.",
@@ -1628,12 +1628,12 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Matte Black", "Pearl White", "Ocean Blue"],
     availableSizes: ["One Size"],
     whatsInTheBox: [
-      "JOBOBIKE Lyon Pro E-bike",
-      "48V 15Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Assembly Tools",
-      "Keys (2x)"
+      "JOBOBIKE Lyon Pro el-sykkel",
+      "48V 15Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Monteringsverktøy",
+      "Nøkler (2x)"
     ]
   },
 
@@ -1673,108 +1673,108 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Aluminum Alloy",
       drivetrain: "8-Speed Shimano"
     },
-    technicalSpecifications: {
-      general: {
-        model: "Dyno GT",
-        frameType: "Diamond",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: false,
-        dimensions: {
-          unfolded: "180 x 60 x 105 cm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "Dyno GT",
+        rammeType: "Diamant",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "180 x 60 x 105 cm",
+          sammenlagt: "N/A"
         },
-        weight: "26 kg",
-        maxLoad: "125 kg",
-        recommendedHeight: "165-200 cm"
+        vekt: "26 kg",
+        maksLast: "125 kg",
+        anbefalteHøyde: "165-200 cm"
       },
       motor: {
-        type: "Rear Hub",
-        power: "250W",
-        peakPower: "450W",
-        torque: "45 N.m",
-        location: "Rear Wheel",
-        torqueSensor: true
+        type: "Bakhjulsmotor",
+        effekt: "250W",
+        toppEffekt: "450W",
+        dreiemoment: "45 Nm",
+        plassering: "Bakhjul",
+        dreiemomentSensor: true
       },
-      battery: {
+      batteri: {
         type: "Lithium-ion",
-        voltage: "48V",
-        capacity: "15Ah",
-        capacityWh: "720Wh",
-        removable: true,
-        chargingTime: "3-4 hours",
-        batteryLife: "1000+ cycles"
+        spenning: "48V",
+        kapasitet: "15Ah",
+        kapasitetWh: "720Wh",
+        avtakbar: true,
+        ladetid: "3-4 timer",
+        batteriLevetid: "1000+ sykluser"
       },
-      performance: {
-        maxSpeed: "25 km/h",
-        range: {
-          pureElectric: "70 km",
-          pedalAssist: "90-120 km",
-          combined: "80-100 km"
+      ytelse: {
+        maksFart: "25 km/h",
+        rekkevidde: {
+          renElektrisk: "70 km",
+          pedalAssistanse: "90-120 km",
+          kombinert: "80-100 km"
         },
-        gradability: "20Â°"
+        stigningsevne: "20°"
       },
-      wheels: {
-        size: "27.5\"",
-        tireType: "Hybrid",
-        tireSize: "27.5 x 1.95\"",
-        rimMaterial: "Double Wall Aluminum"
+      hjul: {
+        størrelse: "27.5\"",
+        dekkType: "Hybrid",
+        dekkStørrelse: "27.5 x 1.95\"",
+        felgMateriale: "Dobbeltvegg aluminium"
       },
-      brakes: {
-        front: "Hydraulic Disc",
-        rear: "Hydraulic Disc",
-        type: "160mm Rotors"
+      bremser: {
+        foran: "Hydraulisk skive",
+        bak: "Hydraulisk skive",
+        type: "160mm rotorer"
       },
-      transmission: {
-        type: "Derailleur",
-        gears: "8-Speed",
-        shifter: "Shimano Altus"
+      giring: {
+        type: "Girkasse",
+        gir: "8-trinns",
+        girskifter: "Shimano Altus"
       },
-      electrical: {
+      elektrisk: {
         display: "Smart LCD Bluetooth",
-        lights: {
-          front: true,
-          rear: true,
+        lys: {
+          foran: true,
+          bak: true,
           type: "Auto-sensing LED"
         },
         horn: true,
-        throttle: false,
-        assistLevels: "5 levels"
+        gasspedal: false,
+        assistanseNivåer: "5 nivåer"
       },
-      comfort: {
-        suspension: {
-          front: true,
-          rear: false,
-          type: "Lockout Fork"
+      komfort: {
+        demping: {
+          foran: true,
+          bak: false,
+          type: "Låsbar gaffel"
         },
-        seat: {
-          type: "Sport Saddle",
-          adjustable: true,
-          material: "Synthetic"
+        sete: {
+          type: "Sportsadel",
+          justerbar: true,
+          materiale: "Syntetisk"
         },
-        handlebar: {
-          type: "Flat Bar",
-          adjustable: false,
-          material: "Aluminum"
+        styre: {
+          type: "Flatt styre",
+          justerbar: false,
+          materiale: "Aluminium"
         }
       },
-      safety: {
-        reflectors: true,
-        bell: true,
-        waterResistance: "IPX5",
-        certification: ["EN15194", "CE"]
+      sikkerhet: {
+        reflekser: true,
+        bjelle: true,
+        vannMotstand: "IPX5",
+        sertifisering: ["EN15194", "CE"]
       },
-      connectivity: {
+      tilkobling: {
         app: true,
         gps: false,
         bluetooth: true,
         usb: true
       },
-      accessories: {
-        kickstand: true,
-        mudguards: true,
-        rack: false,
-        basket: false,
-        bottleHolder: true
+      tilbehør: {
+        sidestøtte: true,
+        skjermer: true,
+        bagasjebrett: false,
+        kurv: false,
+        flaskeholder: true
       }
     },
     description: "JOBOBIKE Dyno GT kombinerer smart teknologi med pålitelig ytelse. Med dreiemoment sensor og intelligent skjermsystem, er den perfekt for teknologikyndige bysyklister.",
@@ -1788,12 +1788,12 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Charcoal Gray", "Electric Blue", "Forest Green"],
     availableSizes: ["One Size"],
     whatsInTheBox: [
-      "JOBOBIKE Dyno GT E-bike",
-      "48V 15Ah Battery",
-      "Fast Charger",
-      "User Manual",
-      "Assembly Kit",
-      "Keys (2x)"
+      "JOBOBIKE Dyno GT el-sykkel",
+      "48V 15Ah batteri",
+      "Hurtiglader",
+      "Brukermanual",
+      "Monteringssett",
+      "Nøkler (2x)"
     ]
   },
 
@@ -1836,19 +1836,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Aluminum Cargo",
       drivetrain: "8-Speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "Transer",
-        frameType: "Cargo/Longtail",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: false,
-        dimensions: {
-          unfolded: "220 x 65 x 110 cm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "Transer",
+        rammeType: "Last/Langhale",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "220 x 65 x 110 cm",
+          sammenlagt: "N/A"
         },
-        weight: "32 kg",
-        maxLoad: "180 kg",
-        recommendedHeight: "160-195 cm"
+        vekt: "32 kg",
+        maksLast: "180 kg",
+        anbefalteHøyde: "160-195 cm"
       },
       motor: {
         type: "Mid-Drive",
@@ -1951,13 +1951,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Safety Orange", "Deep Blue", "Forest Green"],
     availableSizes: ["One Size"],
     whatsInTheBox: [
-      "JOBOBIKE Transer E-bike",
-      "48V 17.5Ah Battery",
-      "Battery Charger",
-      "Cargo Box",
-      "Safety Straps",
-      "User Manual",
-      "Keys (2x)"
+      "JOBOBIKE Transer el-sykkel",
+      "48V 17.5Ah batteri",
+      "Batterilader",
+      "Lastekasse",
+      "Sikkerhetsstropper",
+      "Brukermanual",
+      "Nøkler (2x)"
     ]
   },
 
@@ -1996,19 +1996,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Steel Step-Through",
       drivetrain: "7-Speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "Mover",
-        frameType: "Step-Through",
-        frameMaterial: "High-Tensile Steel",
-        foldable: false,
-        dimensions: {
-          unfolded: "175 x 60 x 105 cm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "Mover",
+        rammeType: "Gjennomgående",
+        rammeMateriale: "Høyfast stål",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "175 x 60 x 105 cm",
+          sammenlagt: "N/A"
         },
-        weight: "23 kg",
-        maxLoad: "110 kg",
-        recommendedHeight: "150-185 cm"
+        vekt: "23 kg",
+        maksLast: "110 kg",
+        anbefalteHøyde: "150-185 cm"
       },
       motor: {
         type: "Rear Hub",
@@ -2111,12 +2111,12 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Classic Black", "Cream White", "Burgundy Red"],
     availableSizes: ["One Size"],
     whatsInTheBox: [
-      "JOBOBIKE Mover E-bike",
-      "36V 14Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Basic Tool Kit",
-      "Keys (2x)"
+      "JOBOBIKE Mover el-sykkel",
+      "36V 14Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Grunnleggende verktøysett",
+      "Nøkler (2x)"
     ]
   },
 
@@ -2157,19 +2157,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Integrated Aluminum",
       drivetrain: "8-Speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "Eddy X",
-        frameType: "Integrated",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: false,
-        dimensions: {
-          unfolded: "180 x 60 x 105 cm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "Eddy X",
+        rammeType: "Integrert",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "180 x 60 x 105 cm",
+          sammenlagt: "N/A"
         },
-        weight: "25 kg",
-        maxLoad: "120 kg",
-        recommendedHeight: "160-195 cm"
+        vekt: "25 kg",
+        maksLast: "120 kg",
+        anbefalteHøyde: "160-195 cm"
       },
       motor: {
         type: "Mid-Drive",
@@ -2272,12 +2272,12 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Graphite Gray", "Pure White", "Midnight Blue"],
     availableSizes: ["One Size"],
     whatsInTheBox: [
-      "JOBOBIKE Eddy X E-bike",
-      "Integrated Battery (non-removable)",
-      "Smart Charger",
-      "User Manual",
-      "App Setup Guide",
-      "Assembly Tools"
+      "JOBOBIKE Eddy X el-sykkel",
+      "Integrert batteri (ikke avtakbart)",
+      "Smart lader",
+      "Brukermanual",
+      "App-oppsettguide",
+      "Monteringsverktøy"
     ]
   },
 
@@ -2319,19 +2319,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Steel",
       drivetrain: "6-Speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "Astra",
-        frameType: "City Bike",
-        frameMaterial: "High-Tensile Steel",
-        foldable: false,
-        dimensions: {
-          unfolded: "175 x 60 x 105 cm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "Astra",
+        rammeType: "Bysykkel",
+        rammeMateriale: "Høyfast stål",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "175 x 60 x 105 cm",
+          sammenlagt: "N/A"
         },
-        weight: "21 kg",
-        maxLoad: "100 kg",
-        recommendedHeight: "155-185 cm"
+        vekt: "21 kg",
+        maksLast: "100 kg",
+        anbefalteHøyde: "155-185 cm"
       },
       motor: {
         type: "Front Hub",
@@ -2434,12 +2434,12 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Basic Black", "Pearl White", "Sky Blue"],
     availableSizes: ["One Size"],
     whatsInTheBox: [
-      "JOBOBIKE Astra E-bike",
-      "36V 10Ah Battery",
-      "Basic Charger",
-      "User Manual",
-      "Basic Tools",
-      "Keys (2x)"
+      "JOBOBIKE Astra el-sykkel",
+      "36V 10Ah batteri",
+      "Grunnlader",
+      "Brukermanual",
+      "Grunnverktøy",
+      "Nøkler (2x)"
     ]
   },
   {
@@ -2481,19 +2481,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Aluminum Alloy 6061",
       drivetrain: "Shimano 7-speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "JOBOBIKE Viva",
-        frameType: "Step-over",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: false,
-        dimensions: {
-          unfolded: "1850 x 680 x 1050 mm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "JOBOBIKE Viva",
+        rammeType: "Høy ramme",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "1850 x 680 x 1050 mm",
+          sammenlagt: "N/A"
         },
-        weight: "22 kg",
-        maxLoad: "120 kg",
-        recommendedHeight: "165-185 cm"
+        vekt: "22 kg",
+        maksLast: "120 kg",
+        anbefalteHøyde: "165-185 cm"
       },
       motor: {
         type: "XOFO Brushless",
@@ -2598,13 +2598,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Blue", "White", "Black"],
     availableSizes: ["One Size (165-185cm)"],
     whatsInTheBox: [
-      "JOBOBIKE Viva E-bike",
-      "36V 14Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Tool Kit",
-      "Pedals",
-      "Bell"
+      "JOBOBIKE Viva el-sykkel",
+      "36V 14Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Verktøysett",
+      "Pedaler",
+      "Bjelle"
     ]
   },
   {
@@ -2645,19 +2645,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Step-through Aluminum Alloy",
       drivetrain: "Shimano 7-speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "JOBOBIKE Viva ST",
-        frameType: "Step-through",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: false,
-        dimensions: {
-          unfolded: "1850 x 680 x 1050 mm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "JOBOBIKE Viva ST",
+        rammeType: "Gjennomgående",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "1850 x 680 x 1050 mm",
+          sammenlagt: "N/A"
         },
-        weight: "22 kg",
-        maxLoad: "120 kg",
-        recommendedHeight: "165-185 cm"
+        vekt: "22 kg",
+        maksLast: "120 kg",
+        anbefalteHøyde: "165-185 cm"
       },
       motor: {
         type: "XOFO Brushless",
@@ -2762,13 +2762,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Blue", "White", "Cream"],
     availableSizes: ["One Size (165-185cm)"],
     whatsInTheBox: [
-      "JOBOBIKE Viva ST E-bike",
-      "36V 10.4Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Tool Kit",
-      "Pedals",
-      "Bell"
+      "JOBOBIKE Viva ST el-sykkel",
+      "36V 10.4Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Verktøysett",
+      "Pedaler",
+      "Bjelle"
     ]
   },
   {
@@ -2806,19 +2806,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Classic Step-over Aluminum",
       drivetrain: "Shimano 8-speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "JOBOBIKE Henry",
-        frameType: "Step-over Classic",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: false,
-        dimensions: {
-          unfolded: "1900 x 700 x 1100 mm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "JOBOBIKE Henry",
+        rammeType: "Høy klassisk ramme",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "1900 x 700 x 1100 mm",
+          sammenlagt: "N/A"
         },
-        weight: "24 kg",
-        maxLoad: "125 kg",
-        recommendedHeight: "170-195 cm"
+        vekt: "24 kg",
+        maksLast: "125 kg",
+        anbefalteHøyde: "170-195 cm"
       },
       motor: {
         type: "Bafang M200",
@@ -2923,13 +2923,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Matte Black", "Forest Green", "Navy Blue"],
     availableSizes: ["One Size (170-195cm)"],
     whatsInTheBox: [
-      "JOBOBIKE Henry E-bike",
-      "36V 14Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Tool Kit",
-      "Pedals",
-      "Bell"
+      "JOBOBIKE Henry el-sykkel",
+      "36V 14Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Verktøysett",
+      "Pedaler",
+      "Bjelle"
     ]
   },
 
@@ -2969,19 +2969,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Foldable Aluminum Alloy",
       drivetrain: "Single Speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "JOBOBIKE Ace",
-        frameType: "Foldable",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: true,
-        dimensions: {
-          unfolded: "1480 x 580 x 1050 mm",
-          folded: "800 x 450 x 650 mm"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "JOBOBIKE Ace",
+        rammeType: "Sammenleggbar",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: true,
+        dimensjoner: {
+          utbrettet: "1480 x 580 x 1050 mm",
+          sammenlagt: "800 x 450 x 650 mm"
         },
-        weight: "21 kg",
-        maxLoad: "120 kg",
-        recommendedHeight: "155-190 cm"
+        vekt: "21 kg",
+        maksLast: "120 kg",
+        anbefalteHøyde: "155-190 cm"
       },
       motor: {
         type: "Brushless",
@@ -3086,13 +3086,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Black", "White", "Grey"],
     availableSizes: ["Universal (155-190cm)"],
     whatsInTheBox: [
-      "JOBOBIKE Ace E-bike",
-      "36V 10Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Tool Kit",
-      "Pedals",
-      "Bell"
+      "JOBOBIKE Ace el-sykkel",
+      "36V 10Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Verktøysett",
+      "Pedaler",
+      "Bjelle"
     ]
   },
   {
@@ -3130,19 +3130,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Low Step-through Steel",
       drivetrain: "Shimano 7-speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "JOBOBIKE Triker",
-        frameType: "Low Step-through Tricycle",
-        frameMaterial: "High-Tensile Steel",
-        foldable: false,
-        dimensions: {
-          unfolded: "1800 x 750 x 1100 mm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "JOBOBIKE Triker",
+        rammeType: "Lav gjennomgående trehjulsykkel",
+        rammeMateriale: "Høyfast stål",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "1800 x 750 x 1100 mm",
+          sammenlagt: "N/A"
         },
-        weight: "38 kg",
-        maxLoad: "160 kg",
-        recommendedHeight: "155-185 cm"
+        vekt: "38 kg",
+        maksLast: "160 kg",
+        anbefalteHøyde: "155-185 cm"
       },
       motor: {
         type: "Differential Motor",
@@ -3247,14 +3247,14 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["Blue", "Black", "Red"],
     availableSizes: ["Universal (155-185cm)"],
     whatsInTheBox: [
-      "JOBOBIKE Triker E-tricycle",
-      "36V 13Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Tool Kit",
-      "Pedals",
-      "Bell",
-      "Rear Cargo Basket"
+      "JOBOBIKE Triker el-trehjulsykkel",
+      "36V 13Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Verktøysett",
+      "Pedaler",
+      "Bjelle",
+      "Bakre lastekurv"
     ]
   },
 
@@ -3293,19 +3293,19 @@ export const PRODUCTS_DATA: ProductCard[] = [
       frame: "Step-through Aluminum Alloy",
       drivetrain: "Shimano 7-speed"
     },
-    technicalSpecifications: {
-      general: {
-        model: "JOBOBIKE Dyno",
-        frameType: "Step-through",
-        frameMaterial: "6061 Aluminum Alloy",
-        foldable: false,
-        dimensions: {
-          unfolded: "1850 x 680 x 1100 mm",
-          folded: "N/A"
+    tekniskeSpesifikasjoner: {
+      generelt: {
+        modell: "JOBOBIKE Dyno",
+        rammeType: "Gjennomgående",
+        rammeMateriale: "6061 Aluminiumslegering",
+        sammenleggbar: false,
+        dimensjoner: {
+          utbrettet: "1850 x 680 x 1100 mm",
+          sammenlagt: "N/A"
         },
-        weight: "25 kg",
-        maxLoad: "120 kg",
-        recommendedHeight: "160-185 cm"
+        vekt: "25 kg",
+        maksLast: "120 kg",
+        anbefalteHøyde: "160-185 cm"
       },
       motor: {
         type: "Brushless",
@@ -3410,13 +3410,13 @@ export const PRODUCTS_DATA: ProductCard[] = [
     availableColors: ["White", "Black", "Silver"],
     availableSizes: ["Universal (160-185cm)"],
     whatsInTheBox: [
-      "JOBOBIKE Dyno E-bike",
-      "36V 13Ah Battery",
-      "Battery Charger",
-      "User Manual",
-      "Tool Kit",
-      "Pedals",
-      "Bell"
+      "JOBOBIKE Dyno el-sykkel",
+      "36V 13Ah batteri",
+      "Batterilader",
+      "Brukermanual",
+      "Verktøysett",
+      "Pedaler",
+      "Bjelle"
     ]
   },
 
