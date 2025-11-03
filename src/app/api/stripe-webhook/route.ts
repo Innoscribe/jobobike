@@ -13,7 +13,10 @@ const resend = new Resend(process.env.RESEND_API_KEY!);
 
 // ✅ Main webhook endpoint
 export async function POST(req: NextRequest) {
+  console.log("🔥 WEBHOOK CALLED - Starting processing...");
+  
   const sig = req.headers.get("stripe-signature");
+  console.log("🔍 Signature present:", !!sig);
 
   if (!sig) {
     console.error("❌ Missing stripe-signature header");
@@ -30,12 +33,14 @@ export async function POST(req: NextRequest) {
       sig,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
+    console.log("✅ Signature verified successfully");
   } catch (err: any) {
     console.error("❌ Stripe signature verification failed:", err.message);
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });
   }
 
   console.log("✅ Stripe webhook received:", event.type);
+  console.log("📋 Full event data:", JSON.stringify(event, null, 2));
 
   // ✅ When payment succeeds
   if (event.type === "payment_intent.succeeded") {
