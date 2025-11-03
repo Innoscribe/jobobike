@@ -41,7 +41,17 @@ export async function POST(req: NextRequest) {
   if (event.type === "payment_intent.succeeded") {
     const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
-    console.log("💰 Payment succeeded:", paymentIntent.id);
+    console.log("💰 Payment Intent Event:", {
+      id: paymentIntent.id,
+      status: paymentIntent.status,
+      amount: paymentIntent.amount
+    });
+
+    // ✅ Only send email if payment is actually succeeded (not just created)
+    if (paymentIntent.status !== "succeeded") {
+      console.log("⏳ Payment not succeeded yet, status:", paymentIntent.status);
+      return new Response("OK", { status: 200 });
+    }
 
     try {
       const total = (paymentIntent.amount ?? 0) / 100;
@@ -49,15 +59,15 @@ export async function POST(req: NextRequest) {
       const name = paymentIntent.shipping?.name ?? "Customer";
       const orderId = paymentIntent.id;
 
-      console.log("📧 Email details:", { email, name, orderId, total });
+      console.log("📧 Email details:", { email, name, orderId, total, status: paymentIntent.status });
 
       if (!email) {
         console.warn("⚠️ No customer email found, skipping email send");
         return new Response("OK", { status: 200 });
       }
 
-      // ✅ Send simple test email
-      console.log("🚀 Attempting to send email via Resend...");
+      // ✅ Send confirmation email only for succeeded payments
+      console.log("🚀 Sending confirmation email for succeeded payment...");
       
       const { data, error } = await resend.emails.send({
         from: "onboarding@resend.dev",
