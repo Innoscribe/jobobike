@@ -49,6 +49,12 @@ export interface ProductCard {
       dreiemoment?: string;
       plassering: string;
       dreiemomentSensor?: boolean;
+      // English properties for compatibility
+      power?: string;
+      peakPower?: string;
+      torque?: string;
+      location?: string;
+      torqueSensor?: boolean;
     };
     batteri: {
       type: string;
@@ -58,6 +64,13 @@ export interface ProductCard {
       avtakbar: boolean;
       ladetid: string;
       batteriLevetid: string;
+      // English properties for compatibility
+      voltage?: string;
+      capacity?: string;
+      capacityWh?: string;
+      removable?: boolean;
+      chargingTime?: string;
+      batteryLife?: string;
     };
     ytelse: {
       maksFart: string;
@@ -65,25 +78,49 @@ export interface ProductCard {
         renElektrisk: string;
         pedalAssistanse: string;
         kombinert: string;
+        // English properties for compatibility
+        pureElectric?: string;
+        pedalAssist?: string;
+        combined?: string;
       };
       stigningsevne: string;
       svingradius?: string;
+      // English properties for compatibility
+      maxSpeed?: string;
+      range?: {
+        pureElectric?: string;
+        pedalAssist?: string;
+        combined?: string;
+      };
+      gradability?: string;
+      turningRadius?: string;
     };
     hjul: {
       størrelse: string;
       dekkType: string;
       dekkStørrelse: string;
       felgMateriale?: string;
+      // English properties for compatibility
+      size?: string;
+      tireType?: string;
+      tireSize?: string;
+      rimMaterial?: string;
     };
     bremser: {
       foran: string;
       bak: string;
       type: string;
+      // English properties for compatibility
+      front?: string;
+      rear?: string;
     };
     giring: {
       type: string;
       gir?: string;
       girskifter?: string;
+      // English properties for compatibility
+      gears?: string;
+      shifter?: string;
     };
     elektrisk: {
       display: string;
@@ -91,26 +128,62 @@ export interface ProductCard {
         foran: boolean;
         bak: boolean;
         type?: string;
+        // English properties for compatibility
+        front?: boolean;
+        rear?: boolean;
       };
       horn: boolean;
       gasspedal: boolean;
       assistanseNivåer: string;
+      // English properties for compatibility
+      lights?: {
+        front?: boolean;
+        rear?: boolean;
+        type?: string;
+      };
+      throttle?: boolean;
+      assistLevels?: string;
     };
     komfort: {
       demping: {
         foran: boolean;
         bak: boolean;
         type?: string;
+        // English properties for compatibility
+        front?: boolean;
+        rear?: boolean;
       };
       sete: {
         type: string;
         justerbar: boolean;
         materiale?: string;
+        // English properties for compatibility
+        adjustable?: boolean;
+        material?: string;
       };
       styre: {
         type: string;
         justerbar: boolean;
         materiale?: string;
+        // English properties for compatibility
+        adjustable?: boolean;
+        material?: string;
+      };
+      // English properties for compatibility
+      suspension?: {
+        front?: boolean;
+        rear?: boolean;
+        type?: string;
+      };
+      seat?: {
+        type?: string;
+        adjustable?: boolean;
+        material?: string;
+      };
+      handlebar?: {
+        type?: string;
+        adjustable?: boolean;
+        material?: string;
       };
     };
     sikkerhet: {
@@ -118,9 +191,21 @@ export interface ProductCard {
       bjelle: boolean;
       vannMotstand: string;
       sertifisering?: string[];
+      // English properties for compatibility
+      reflectors?: boolean;
+      bell?: boolean;
+      waterResistance?: string;
+      certification?: string[];
     };
     tilkobling: {
       app: boolean;
+      gps?: boolean;
+      bluetooth?: boolean;
+      usb?: boolean;
+    };
+    // English properties for compatibility
+    connectivity?: {
+      app?: boolean;
       gps?: boolean;
       bluetooth?: boolean;
       usb?: boolean;
@@ -131,6 +216,111 @@ export interface ProductCard {
       bagasjebrett: boolean;
       kurv: boolean;
       flaskeholder: boolean;
+      // English properties for compatibility
+      kickstand?: boolean;
+      mudguards?: boolean;
+      rack?: boolean;
+      basket?: boolean;
+      bottleHolder?: boolean;
+    };
+    // English properties for compatibility
+    accessories?: {
+      kickstand?: boolean;
+      mudguards?: boolean;
+      rack?: boolean;
+      basket?: boolean;
+      bottleHolder?: boolean;
+    };
+    // English sections for compatibility
+    motor?: {
+      type?: string;
+      power?: string;
+      peakPower?: string;
+      torque?: string;
+      location?: string;
+      torqueSensor?: boolean;
+    };
+    battery?: {
+      type?: string;
+      voltage?: string;
+      capacity?: string;
+      capacityWh?: string;
+      removable?: boolean;
+      chargingTime?: string;
+      batteryLife?: string;
+    };
+    performance?: {
+      maxSpeed?: string;
+      range?: {
+        pureElectric?: string;
+        pedalAssist?: string;
+        combined?: string;
+      };
+      gradability?: string;
+      turningRadius?: string;
+    };
+    wheels?: {
+      size?: string;
+      tireType?: string;
+      tireSize?: string;
+      rimMaterial?: string;
+    };
+    brakes?: {
+      front?: string;
+      rear?: string;
+      type?: string;
+    };
+    transmission?: {
+      type?: string;
+      gears?: string;
+      shifter?: string;
+    };
+    electrical?: {
+      display?: string;
+      lights?: {
+        front?: boolean;
+        rear?: boolean;
+        type?: string;
+      };
+      horn?: boolean;
+      throttle?: boolean;
+      assistLevels?: string;
+    };
+    comfort?: {
+      suspension?: {
+        front?: boolean;
+        rear?: boolean;
+        type?: string;
+      };
+      seat?: {
+        type?: string;
+        adjustable?: boolean;
+        material?: string;
+      };
+      handlebar?: {
+        type?: string;
+        adjustable?: boolean;
+        material?: string;
+      };
+    };
+    safety?: {
+      reflectors?: boolean;
+      bell?: boolean;
+      waterResistance?: string;
+      certification?: string[];
+    };
+    connectivity?: {
+      app?: boolean;
+      gps?: boolean;
+      bluetooth?: boolean;
+      usb?: boolean;
+    };
+    accessories?: {
+      kickstand?: boolean;
+      mudguards?: boolean;
+      rack?: boolean;
+      basket?: boolean;
+      bottleHolder?: boolean;
     };
   };
   description: string;
