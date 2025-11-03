@@ -230,8 +230,8 @@ const ContactUs: React.FC = () => {
                     <h4 className="font-medium text-gray-900">E-post</h4>
                     <div className="text-gray-600 mt-1">
                       <p>
-                        <a href="mailto:support@sykkellageret.no" className="hover:text-[#12b190] transition-colors">
-                          support@sykkellageret.no
+                        <a href="mailto:support@jobobike.no" className="hover:text-[#12b190] transition-colors">
+                          support@jobobike.no
                         </a>
                       </p>
                     </div>

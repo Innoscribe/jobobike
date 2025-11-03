@@ -182,7 +182,7 @@ const PrivacyPolicy = () => {
           </p>
           <div className="bg-gray-50 p-6 rounded-lg">
             <p className="text-gray-700 font-medium mb-2">Jobo Europe Sp. z o.o.</p>
-            <p className="text-gray-700">Email: info@jobobike.eu</p>
+            <p className="text-gray-700">Email: support@jobobike.no</p>
             <p className="text-gray-700">Website: www.jobobike.eu</p>
           </div>
         </section>
