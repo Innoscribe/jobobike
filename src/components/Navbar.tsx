@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import {
   Search,
   ChevronDown,
@@ -17,6 +17,7 @@ import { accessoriesProducts } from '@/lib/accessoriesProducts';
 
 export default function Navbar() {
   const router = useRouter();
+  const pathname = usePathname();
 
   const [activeDropdown, setActiveDropdown] = useState<null | number>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -126,25 +127,25 @@ export default function Navbar() {
     return () => clearTimeout(id);
   }, [query]);
 
-  // close search dropdown and navbar dropdown on outside click
+  // close search dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as Node;
       const insideDesktop = desktopSearchRef.current?.contains(target);
       const insideMobile = mobileSearchRef.current?.contains(target);
-      const insideNavbarDropdown = navbarDropdownRef.current?.contains(target);
       
       if (!insideDesktop && !insideMobile) {
         setShowResults(false);
-      }
-      
-      if (!insideNavbarDropdown) {
-        setNavbarDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // close navbar dropdown on route change
+  useEffect(() => {
+    setNavbarDropdownOpen(false);
+  }, [pathname]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Escape') {
@@ -388,7 +389,6 @@ export default function Navbar() {
                     key={cat.slug}
                     href={`/category/${cat.slug}`}
                     className="flex flex-col items-center p-2 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100"
-                    onClick={() => setNavbarDropdownOpen(false)}
                   >
                     <img
                       src={cat.image}
@@ -409,7 +409,6 @@ export default function Navbar() {
               <Link
                 href="/cycle"
                 className="block p-2 text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium rounded-lg bg-gray-50 transition-colors text-center mt-2"
-                onClick={() => setNavbarDropdownOpen(false)}
               >
                 Se alle el-sykler
               </Link>
@@ -511,7 +510,6 @@ export default function Navbar() {
                         key={cat.slug}
                         href={`/category/${cat.slug}`}
                         className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100"
-                        onClick={toggleMobileMenu}
                       >
                         <img
                           src={cat.image}
@@ -527,7 +525,6 @@ export default function Navbar() {
                     <Link
                       href="/cycle"
                       className="block p-3 text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium rounded-lg bg-gray-50 transition-colors text-center"
-                      onClick={toggleMobileMenu}
                     >
                       Se alle el-sykler
                     </Link>
@@ -617,7 +614,6 @@ export default function Navbar() {
                             key={cat.slug}
                             href={`/category/${cat.slug}`}
                             className="flex items-center p-2 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100"
-                            onClick={toggleMoreMenu}
                           >
                             <img
                               src={cat.image}
@@ -633,7 +629,6 @@ export default function Navbar() {
                         <Link
                           href="/cycle"
                           className="block p-2 text-sm text-[#12b190] hover:text-[#0f9a7a] font-medium rounded-lg bg-gray-50 transition-colors text-center mt-2"
-                          onClick={toggleMoreMenu}
                         >
                           Se alle el-sykler
                         </Link>
