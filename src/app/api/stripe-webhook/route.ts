@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import Stripe from "stripe";
 import { Resend } from "resend";
-import { OrderConfirmationEmail } from "@/app/email/OrderConfirmationEmail";
 
 export const runtime = "nodejs";
 
@@ -39,73 +38,32 @@ export async function POST(req: NextRequest) {
   console.log("✅ Stripe webhook received:", event.type);
 
   // ✅ When payment succeeds
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object as Stripe.Checkout.Session;
+  if (event.type === "payment_intent.succeeded") {
+    const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
-    console.log("💰 Checkout completed:", session.id);
+    console.log("💰 Payment succeeded:", paymentIntent.id);
 
     try {
-      // Get full session with line items
-      const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
-        expand: ["line_items"],
-      });
+      const total = (paymentIntent.amount ?? 0) / 100;
+      const email = paymentIntent.receipt_email;
+      const name = paymentIntent.shipping?.name ?? "Customer";
+      const orderId = paymentIntent.id;
 
-      const lineItems = fullSession.line_items?.data ?? [];
-      const items = lineItems.map((item) => ({
-        name: item.description ?? "Unknown Item",
-        quantity: item.quantity ?? 1,
-        price: (item.amount_total ?? 0) / 100,
-      }));
-
-      const total = (fullSession.amount_total ?? 0) / 100;
-      const email = fullSession.customer_details?.email;
-      const name = fullSession.customer_details?.name ?? "Customer";
-      const orderId = fullSession.id;
+      console.log("📧 Email details:", { email, name, orderId, total });
 
       if (!email) {
         console.warn("⚠️ No customer email found, skipping email send");
         return new Response("OK", { status: 200 });
       }
 
-      // ✅ Send order confirmation email
-      const itemsHtml = items.map(item => 
-        `<tr><td>${item.name}</td><td align="center">${item.quantity}</td><td align="right">${item.price.toFixed(2)} NOK</td></tr>`
-      ).join('');
-
+      // ✅ Send simple test email
+      console.log("🚀 Attempting to send email via Resend...");
+      
       const { data, error } = await resend.emails.send({
-        from: "JOBOBIKE <onboarding@resend.dev>",
+        from: "onboarding@resend.dev",
         to: [email],
-        subject: `Order Confirmation #${orderId}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; color: #222;">
-            <h1>Thank you for your order, ${name}!</h1>
-            <p>Your order <strong>#${orderId}</strong> has been successfully received and paid.</p>
-            
-            <h3>Order Summary</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-              <thead>
-                <tr>
-                  <th align="left">Item</th>
-                  <th>Qty</th>
-                  <th align="right">Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${itemsHtml}
-              </tbody>
-            </table>
-            
-            <p style="font-size: 16px; margin-top: 16px;">
-              <strong>Total:</strong> ${total.toFixed(2)} NOK
-            </p>
-            
-            <p>We'll notify you once your order has been shipped.<br/>You can reply to this email for any questions.</p>
-            
-            <footer style="margin-top: 30px; font-size: 12px; color: #888;">
-              © ${new Date().getFullYear()} JOBOBIKE — All rights reserved.
-            </footer>
-          </div>
-        `,
+        subject: `Payment Confirmation #${orderId}`,
+        text: `Thank you ${name}! Your payment of ${total.toFixed(2)} NOK has been confirmed. Order ID: ${orderId}`,
       });
 
       if (error) {
@@ -113,9 +71,9 @@ export async function POST(req: NextRequest) {
         return new Response("Resend error", { status: 500 });
       }
 
-      console.log("📨 Order confirmation email sent successfully:", data);
+      console.log("📨 Payment confirmation email sent successfully:", data);
     } catch (err) {
-      console.error("❌ Error processing order:", err);
+      console.error("❌ Error processing payment:", err);
       return new Response("Webhook processing error", { status: 500 });
     }
   }
