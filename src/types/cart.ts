@@ -6,6 +6,13 @@ export interface CartItem {
   quantity: number;
   image?: string;
   variant?: string; // for size, color, etc.
+  packageItems?: Array<{
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+  }>;
+  isPackage?: boolean;
 }
 
 export interface CartState {

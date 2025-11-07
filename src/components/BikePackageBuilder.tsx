@@ -174,9 +174,10 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
 
           <AddToCartButton
             product={{
-              ...product,
+              id: `package-${product.id}-${Date.now()}`,
               name: `${product.name} - Komplett Pakke`,
-              price: totalPrice
+              price: totalPrice,
+              image: product.image
             }}
             className="w-full bg-[#12b190] text-white px-4 py-2.5 rounded-md font-semibold hover:bg-[#0f9a7a] transition-colors text-sm"
           />
@@ -278,9 +279,10 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
 
           <AddToCartButton
             product={{
-              ...product,
+              id: `package-${product.id}-${Date.now()}`,
               name: `${product.name} - Komplett Pakke`,
-              price: totalPrice
+              price: totalPrice,
+              image: product.image
             }}
             className="w-full bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0f9a7a] transition-colors"
           />

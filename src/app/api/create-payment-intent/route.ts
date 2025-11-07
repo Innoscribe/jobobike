@@ -52,14 +52,35 @@ export async function POST(request: NextRequest) {
 
     console.log('ðŸ’³ Creating Stripe payment intent with amount:', amount);
 
+    // Create detailed metadata for Stripe dashboard
+    const metadata: any = {
+      order_id: `order_${Date.now()}`,
+      total_items: items.length.toString(),
+    };
+
+    // Add individual items and package details
+    items.forEach((item, index) => {
+      const prefix = `item_${index + 1}`;
+      metadata[`${prefix}_name`] = item.name;
+      metadata[`${prefix}_price`] = item.price.toString();
+      metadata[`${prefix}_quantity`] = (item.quantity || 1).toString();
+      
+      if (item.isPackage && item.packageItems) {
+        metadata[`${prefix}_is_package`] = 'true';
+        metadata[`${prefix}_package_count`] = item.packageItems.length.toString();
+        
+        item.packageItems.forEach((pkg: any, pkgIndex: number) => {
+          metadata[`${prefix}_pkg_${pkgIndex + 1}_name`] = pkg.name;
+          metadata[`${prefix}_pkg_${pkgIndex + 1}_price`] = pkg.price.toString();
+        });
+      }
+    });
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: 'nok',
       automatic_payment_methods: { enabled: true },
-      metadata: {
-        order_id: `order_${Date.now()}`,
-        items: JSON.stringify(items),
-      },
+      metadata,
     });
 
     console.log('âœ… Payment intent created:', paymentIntent.id);
