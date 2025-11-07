@@ -176,8 +176,7 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
             product={{
               ...product,
               name: `${product.name} - Komplett Pakke`,
-              price: totalPrice,
-              description: `Inkluderer: ${selectedItems.map(item => item.name).join(', ')}`
+              price: totalPrice
             }}
             className="w-full bg-[#12b190] text-white px-4 py-2.5 rounded-md font-semibold hover:bg-[#0f9a7a] transition-colors text-sm"
           />
@@ -281,8 +280,7 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
             product={{
               ...product,
               name: `${product.name} - Komplett Pakke`,
-              price: totalPrice,
-              description: `Inkluderer: ${selectedItems.map(item => item.name).join(', ')}`
+              price: totalPrice
             }}
             className="w-full bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0f9a7a] transition-colors"
           />
