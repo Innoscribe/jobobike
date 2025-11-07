@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Add individual items and package details
-    items.forEach((item, index) => {
+    items.forEach((item: any, index: number) => {
       const prefix = `item_${index + 1}`;
       metadata[`${prefix}_name`] = item.name;
       metadata[`${prefix}_price`] = item.price.toString();
