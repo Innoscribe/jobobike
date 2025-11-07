@@ -90,8 +90,7 @@ export default function CompactPackagePreview({ product }: CompactPackagePreview
         product={{
           ...product,
           name: `${product.name} - Pakke`,
-          price: totalPrice,
-          description: `Inkluderer: ${items.filter(i => i.selected).map(i => i.name).join(', ')}`
+          price: totalPrice
         }}
         className="w-full bg-[#12b190] text-white px-4 py-3 rounded font-medium hover:bg-[#0f9a7a]"
       />
