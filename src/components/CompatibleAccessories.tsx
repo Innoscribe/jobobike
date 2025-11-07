@@ -96,30 +96,8 @@ export default function CompatibleAccessories({ product }: CompatibleAccessories
                   product={{
                     id: accessory.id,
                     name: accessory.name,
-                    slug: accessory.slug,
                     price: accessory.price,
-                    originalPrice: accessory.price,
-                    image: accessory.image,
-                    images: accessory.images,
-                    features: accessory.features,
-                    category: accessory.category,
-                    rating: 4.5,
-                    reviewCount: 25,
-                    specifications: {
-                      motor: "",
-                      battery: "",
-                      range: "",
-                      speed: "",
-                      weight: "",
-                      wheelSize: "",
-                      foldable: false
-                    },
-                    tekniskeSpesifikasjoner: {} as any,
-                    description: accessory.description,
-                    keyFeatures: accessory.features,
-                    availableSizes: accessory.sizes || [],
-                    whatsInTheBox: [],
-                    discount: ""
+                    image: accessory.image
                   }}
                   className="bg-[#12b190] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#0f9a7a] transition-colors"
                 />
