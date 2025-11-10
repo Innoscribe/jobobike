@@ -93,38 +93,36 @@ export default function ProductPage() {
         {/* Grid - Mobile: 2 columns, Desktop: 3 columns */}
         <ul role="list" className="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-3 lg:grid-cols-3 overflow-hidden">
           {PRODUCTS_DATA.map((product) => (
-            <li key={product.id} className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black">
-              <div className="relative mb-2 sm:mb-3">
-                <div className="w-full rounded-lg sm:rounded-xl bg-white" />
-                <Link href={`/products/${product.slug}`}>
+            <li key={product.id} className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black h-[360px] sm:h-[360px] flex flex-col">
+              <div className="relative mb-2 sm:mb-8 h-[140px] sm:h-[160px] flex items-center justify-center">
+                <Link href={`/products/${product.slug}`} className="relative w-full h-full flex items-center justify-center">
                   <Image 
-                    className='object-cover w-[85%] h-[85%] sm:w-full sm:h-full m-auto sm:m-0 rounded-lg sm:rounded-xl'
+                    className="object-contain rounded-lg sm:rounded-xl max-w-full max-h-full"
                     src={product.image} 
                     alt={product.name}
-                    width={300}
-                    height={300}
+                    width={250}
+                    height={250}
                     unoptimized
-                    sizes="(max-width: 640px) 150px, 300px"
+                    sizes="(max-width: 640px) 140px, 250px"
                   />
                 </Link>
               </div>
 
-              <div className="space-y-1">
-                <h3 className="text-xs sm:text-sm font-medium text-black group-hover:underline leading-tight">
-                  <Link href="#" className="break-words">{product.name}</Link>
+              <div className="flex-1 flex flex-col">
+                <h3 className="text-xs sm:text-sm font-medium text-black group-hover:underline leading-tight h-[32px] sm:h-[36px] flex items-start">
+                  <Link href={`/products/${product.slug}`} className="break-words line-clamp-2">{product.name}</Link>
                 </h3>
-              </div>
 
-              <div className="mt-2 flex flex-col sm:flex-row sm:items-end sm:justify-between">
+                <div className="mt-auto flex flex-col sm:flex-row sm:items-end sm:justify-between">
                 <div className="flex-1 min-w-0">
                   <span className="text-sm sm:text-base font-semibold text-black whitespace-nowrap">
                     {formatCurrency(product.price)}
                   </span>
 
                   {product.features?.length && (
-                    <ul className="mt-2 sm:mt-3 flex flex-wrap gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] text-gray-700">
+                    <ul className="mt-1 flex flex-col gap-1 text-[8px] sm:text-[10px] text-gray-700">
                       {product.features.slice(0, 2).map((f, i) => (
-                        <li key={i} className="rounded-md border border-gray-200 px-1.5 sm:px-2 py-0.5 whitespace-nowrap">
+                        <li key={i} className="rounded-md border border-gray-200 px-1 sm:px-1.5 py-0.5 w-fit text-ellipsis overflow-hidden max-w-full">
                           {f}
                         </li>
                       ))}
@@ -160,8 +158,8 @@ export default function ProductPage() {
                     className="w-full sm:flex-1 rounded-full border border-gray-300 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-white sm:bg-[#12b190] sm:hover:bg-[#29ecc5] transition md:text-white md:hover:border-black md:bg-black md:hover:bg-gray-50 sm:hover:text-black whitespace-nowrap"
                   />
                 </div>
-              </div> 
-              
+              </div>
+              </div>
             </li>
           ))}
         </ul>

@@ -98,18 +98,19 @@ export default function AccessoriesPage() {
                         {filteredProducts.map((product) => (
                             <li
                                 key={product.id}
-                                className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black min-h-[280px] sm:min-h-[320px] flex flex-col"
+                                className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black h-[330px] sm:h-[330px] flex flex-col"
                             >
-                                <div className="relative mb-2 sm:mb-3">
-                                    <Link href={`/accessories/${product.slug}`}>
+                                <div className="relative mb-2 sm:mb-16 h-[110px] sm:h-[150px] flex items-center justify-center p-1">
+                                    <Link href={`/accessories/${product.slug}`} className="relative w-full h-full flex items-center justify-center">
                                         <Image
-                                            className="object-cover w-[85%] h-[85%] sm:w-full sm:h-full m-auto sm:m-0 rounded-lg sm:rounded-xl"
+                                            className="object-contain rounded-lg sm:rounded-xl"
                                             src={product.images[getSelectedImageIndex(product.id)] || product.image}
                                             alt={product.name}
-                                            width={300}
-                                            height={300}
+                                            width={200}
+                                            height={200}
                                             unoptimized
-                                            sizes="(max-width: 640px) 150px, 300px"
+                                            sizes="(max-width: 640px) 120px, 200px"
+                                            style={{ maxWidth: '90%', maxHeight: '90%' }}
                                         />
                                         {!product.inStock && (
                                             <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
@@ -122,13 +123,13 @@ export default function AccessoriesPage() {
                                 </div>
 
                                 <div className="flex-1 flex flex-col">
-                                    <h3 className="text-xs sm:text-sm font-medium text-black group-hover:underline leading-tight mb-1 mt-1 sm:mt-4">
-                                        <Link href={`/accessories/${product.slug}`} className="break-words">
+                                    <h3 className="text-xs sm:text-sm font-medium text-black group-hover:underline leading-tight mb-1 h-[32px] sm:h-[36px] flex items-start">
+                                        <Link href={`/accessories/${product.slug}`} className="break-words line-clamp-2">
                                             {product.name}
                                         </Link>
                                     </h3>
 
-                                    <div className="mt-auto flex flex-col sm:flex-row sm:items-end sm:justify-between">
+                                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
                                         <div className="flex-1 min-w-0">
                                             <span className="text-sm sm:text-base font-semibold text-black whitespace-nowrap">
                                                 {formatCurrency(product.price)}
@@ -136,7 +137,7 @@ export default function AccessoriesPage() {
                                             
                                             {/* Color Selection */}
                                             {product.colors && product.colors.length > 0 && (
-                                                <div className="mt-2">
+                                                <div className="mt-1">
                                                     <div className="flex gap-1">
                                                         {product.colors.map((color) => (
                                                             <button
@@ -170,7 +171,7 @@ export default function AccessoriesPage() {
                                         </div>
 
                                         {/* Quantity + Add to Cart */}
-                                        <div className="mt-2 sm:mt-0 flex flex-col sm:flex-row sm:items-center gap-2">
+                                        <div className="mt-1 sm:mt-0 flex flex-col sm:flex-row sm:items-center gap-1">
                                             {/* Compact Quantity Selector */}
                                             <div className="flex items-center border border-gray-200 rounded-md w-fit">
                                                 <button

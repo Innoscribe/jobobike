@@ -28,6 +28,37 @@ const ContactUs: React.FC = () => {
     }))
   }
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/xldozejn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          fullName: '',
+          email: '',
+          phoneNumber: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
 
 
 
@@ -65,23 +96,9 @@ const ContactUs: React.FC = () => {
             <div className="bg-white rounded-xl shadow-lg p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Send oss en melding</h2>
               
-              {submitStatus === 'success' && (
-                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    Takk for din melding! Vi kommer tilbake til deg innen 24 timer.
-                  </p>
-                </div>
-              )}
 
-              {submitStatus === 'error' && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                  <p className="text-red-800">
-                    Beklager, det oppstod en feil ved sending av meldingen. Vennligst prøv igjen.
-                  </p>
-                </div>
-              )}
 
-              <form action="https://formspree.io/f/xldozejn" method="POST" className="space-y-6 text-gray-600">
+              <form onSubmit={handleSubmit} className="space-y-6 text-gray-600">
                 <style jsx>{`
                   input,
                   textarea {
@@ -178,11 +195,28 @@ const ContactUs: React.FC = () => {
                   />
                 </div>
 
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <p className="text-green-800">
+                      Takk for din melding! Vi kommer tilbake til deg innen 24 timer.
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-800">
+                      Beklager, det oppstod en feil ved sending av meldingen. Vennligst prøv igjen.
+                    </p>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-200 bg-[#12b190] hover:bg-[#12b190] focus:ring-4 focus:ring-blue-200 shadow-lg hover:shadow-xl"
+                  disabled={isSubmitting}
+                  className="w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-200 bg-[#12b190] hover:bg-[#12b190] focus:ring-4 focus:ring-blue-200 shadow-lg hover:shadow-xl disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
-                  Send melding
+                  {isSubmitting ? 'Sender...' : 'Send melding'}
                 </button>
               </form>
             </div>

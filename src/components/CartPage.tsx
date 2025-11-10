@@ -204,7 +204,6 @@ const CartPage: React.FC = () => {
                       
                       <div className="text-right flex-shrink-0">
                         <p className="text-lg font-bold text-[#12b190]">{formatCurrency(item.price * item.quantity)}</p>
-                        <p className="text-xs text-gray-500">{formatCurrency(item.price)} per stk</p>
                       </div>
                     </div>
                   </div>
@@ -297,7 +296,6 @@ const CartPage: React.FC = () => {
                               
                               <div className="text-right">
                                 <p className="text-3xl font-bold text-[#12b190]">{formatCurrency(item.price * item.quantity)}</p>
-                                <p className="text-sm text-gray-600 font-medium">{formatCurrency(item.price)} per stk</p>
                               </div>
                             </div>
                           </div>

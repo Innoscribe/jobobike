@@ -27,7 +27,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "1",
     slug: "jobobike-front-rack",
-    name: "JOBOBIKE Front Bagasjebrett",
+    name: "Front Bagasjebrett",
     description: "Lettvekts aluminium front bagasjebrett med holdbar matt svart pulverlakkering, rustfritt og perfekt for alle værforhold.",
     fullDescription: "JOBOBIKE front bagasjebrett er laget av lettvekts aluminium med holdbar, matt svart pulverlakkering. Det er rustfritt, noe som gjør det perfekt for alle værforhold. Uansett om du reiser i røft terreng eller i byen - JOBOBIKE bagasjebrettet er garantert ikke å falle ned ved plutselig svinging eller hard bremsing.",
     price: 773,
@@ -68,7 +68,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "2",
     slug: "jobobike-basket-with-wooden",
-    name: "JOBOBIKE Kurv med Tre Håndtak",
+    name: "Kurv med Tre Håndtak",
     description: "Stilig integrert kurv med tre håndtak, perfekt for å bære dagligvarer og personlige gjenstander på el-sykkelen din.",
     fullDescription: "JOBOBIKE kurven med tre håndtak kombinerer funksjonalitet med elegant design. Laget av holdbare materialer med et vakkert tre håndtak aksent, kan den monteres på både front og bak bagasjebrett. Den integrerte designen sikrer rask og enkel installasjon uten ekstra maskinvare.",
     price: 773,
@@ -107,7 +107,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "3",
     slug: "jobobike-cover-bag-sam",
-    name: "JOBOBIKE Deksel Veske for Sam",
+    name: "Deksel Veske for Sam",
     description: "Vanntett deksel veske som beskytter din sammenleggbare sykkel mot støv, vann og skraper. Spesielt designet for JOBOBIKE Sam.",
     fullDescription: "Denne vanntette deksel vesken er spesielt designet for å beskytte din JOBOBIKE Sam sammenleggbare sykkel mot støv, vann og skraper. Det holdbare materialet sikrer langvarig beskyttelse, mens den kompakte designen gjør det enkelt å oppbevare og transportere sykkelen din. Perfekt for reise og oppbevaring.",
     price: 3091,
@@ -139,7 +139,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "4",
     slug: "jobobike-lock",
-    name: "JOBOBIKE Lås",
+    name: "Lås",
     description: "Robust sykkel lås som gir maksimal sikkerhet for el-sykkelen din med tyverisikring og værbestandig konstruksjon.",
     fullDescription: "JOBOBIKE Låsen tilbyr premium sikkerhet for din elektriske sykkel. Med herdet stål konstruksjon med anti-dirk og anti-bor beskyttelse, sikrer denne låsen at sykkelen din forblir trygg. Den værbestandige designen fungerer i alle forhold, og den kompakte størrelsen gjør den lett å bære.",
     price: 773,
@@ -170,7 +170,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "5",
     slug: "jobobike-phone-holder-waterproof",
-    name: "JOBOBIKE Telefon Holder (Vanntett Deksel)",
+    name: "Telefon Holder (Vanntett Deksel)",
     description: "Sikker telefon holder med vanntett deksel, lar deg bruke telefonen til navigasjon mens den beskyttes mot elementene.",
     fullDescription: "Hold telefonen din tilgjengelig og beskyttet med JOBOBIKE Telefon Holder. Det vanntette dekselet tillater full berøringsskjerm funksjonalitet mens det beskytter mot regn og støv. Det sikre monteringssystemet sikrer at telefonen din forblir på plass selv i røft terreng, noe som gjør den perfekt for GPS navigasjon.",
     price: 2178,
@@ -178,8 +178,8 @@ export const accessoriesProducts: AccessoryProduct[] = [
     image: "/images/holder/holder-2.png",
     images: [
       "/images/holder/holder-2.png",
-      "/images/holder/holder-1.png",
       "/images/holder/holder-3.png",
+      "/images/holder/holder-1.png",
       
     ],
     category: ["Elektronikk & Holdere"],
@@ -208,7 +208,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "6",
     slug: "jobobike-bicycle-mirror",
-    name: "JOBOBIKE Sykkel Speil",
+    name: "Sykkel Speil",
     description: "Høykvalitets bakspeil som gir utmerket sikt og sikkerhet mens du kjører el-sykkelen din.",
     fullDescription: "JOBOBIKE Sykkel Speilet forbedrer kjøresikkerheten din med et bredt synsfelt og splintfritt glass. Den justerbare armen lar deg finne den perfekte visningsvinkelen, mens det robuste monteringssystemet holder det sikkert selv på humpete veier. Den elegante designen kompletterer sykkelens estetikk.",
     price: 1019,
@@ -239,7 +239,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "7",
     slug: "jobobike-helmet",
-    name: "JOBOBIKE Sykkel Hjelm",
+    name: "Sykkel Hjelm",
     description: "CE EN 1078 og CPSC sertifisert sikkerhetshjelm med støtbestandig konstruksjon og optimal ventilasjon for komfortabel kjøring.",
     fullDescription: "JOBOBIKE sykkel hjelmen ble testet for sikkerhet av CE EN 1078 i Europa og CPSC i USA. Støtbestandig PC materiale på utsiden og en støtabsorberende EPS unibody på innsiden gir maksimal beskyttelse. Hjelmen har optimal ventilasjon, justerbart tilpasningssystem og avtakbar polstring for komfort under lange turer.",
     price: 1757,
@@ -277,7 +277,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "8",
     slug: "jobobike-bottle-holder",
-    name: "JOBOBIKE Flaskeholder",
+    name: "Flaskeholder",
     description: "Holdbar aluminium flaskeholder som sikkert holder vannflasken din under turer, lett å installere og kompatibel med de fleste flasker.",
     fullDescription: "Hold deg hydrert på turene dine med JOBOBIKE Flaskeholder. Laget av lettvekts aluminium med sikker grep design, holder den flasker fast på plass selv i røft terreng. Det universelle monteringssystemet passer alle JOBOBIKE rammer, og den elegante designen matcher sykkelens estetikk.",
     price: 457,
@@ -312,7 +312,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-integrated-basket-001",
     slug: "integrated-front-basket",
-    name: "JOBOBIKE Integrert Front Kurv",
+    name: "Integrert Front Kurv",
     description: "Integrert kurv spesielt designet for el-sykler. Monteres direkte på front eller bak bagasjebrett uten ekstra maskinvare. Rask og enkel installasjon.",
     fullDescription: "Integrert kurv, spesielt designet for el-sykler. Den kan monteres direkte på front eller bak bagasjebrett på el-sykkelen uten behov for ekstra front bagasjebrett. Installasjonen er rask og enkel. Kurven er laget av aluminium legering og har holdbar matt svart pulverlakkering for utmerket rustmotstand. Dette gjør den egnet for alle værforhold og sikrer lang levetid. Kurvens design kombinerer moderne urban stil med naturlige tre elementer.",
     price: 2986,
@@ -334,14 +334,14 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Installation", value: "Tool-free quick install" }
     ],
     features: [
-      "No additional front rack required - mounts directly",
-      "Quick and easy tool-free installation",
-      "Aluminum alloy with durable powder coating",
-      "Rustproof for all weather conditions",
-      "Natural wood elements for aesthetic appeal",
-      "Secure mounting - won't come loose during turns or braking",
-      "25 kg load capacity",
-      "Spacious interior for everyday items"
+      "Ingen ekstra front bagasjebrett nødvendig",
+      "Rask verktøyfri installasjon",
+      "Aluminium med holdbar pulverlakkering",
+      "Rustfri for alle værforhold",
+      "Naturlige tre elementer",
+      "Sikker montering",
+      "25 kg lastekapasitet",
+      "Romslig interiør"
     ],
     compatibility: [
       "Romer",
@@ -362,7 +362,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-phone-holder-shockproof-001",
     slug: "phone-holder-shockproof",
-    name: "JOBOBIKE Støtsikker Telefon Holder",
+    name: "Støtsikker Telefon Holder",
     description: "Universal støtsikker telefon holder med anti-skli silikon puter og 360° rotasjon. Verktøyfri installasjon, passer telefoner 4.8\"-7.0\".",
     fullDescription: "Sikre telefonen din på hver tur med denne støtsikre, universelle el-sykkel telefon holderen. Bygget for å håndtere røffe veier og daglige pendlerturer, har den en anti-skli klemme, 360° justerbar visning, og et hurtig-installasjonssystem – ingen verktøy nødvendig. Kompatibel med telefoner 132–182mm lange (ca 4.8\" til 7.0\") og monteres på styre opptil 46mm i diameter. Full silikon polstring beskytter telefonen din mot riper og støt, mens sikkerhetslås klemmen forbedrer grep og stabilitet under turer.",
     price: 1546,
@@ -384,15 +384,15 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Material", value: "High-grade plastic with silicone padding" }
     ],
     features: [
-      "Fits most phones 4.8\" to 7.0\"",
-      "Wide handlebar compatibility (up to 46mm)",
-      "Anti-slip silicone pads prevent phone movement",
-      "Locking clamp prevents shaking on rough terrain",
-      "360° rotation for optimal viewing angle",
-      "Tool-free installation - quick and easy setup",
-      "Full silicone padding protects from scratches and shocks",
-      "Safety lock clip for enhanced stability",
-      "Durable construction for daily use"
+      "Passer de fleste telefoner 4.8\" til 7.0\"",
+      "Bred styrekompatibilitet (opptil 46mm)",
+      "Anti-skli silikon puter",
+      "Låseklemme forhindrer risting",
+      "360° rotasjon",
+      "Verktøyfri installasjon",
+      "Full silikon polstring",
+      "Sikkerhetslås klips",
+      "Holdbar konstruksjon"
     ],
     compatibility: ["All models"],
     inStock: true,
@@ -405,7 +405,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-bottle-holder-logo-001",
     slug: "water-bottle-holder-jobobike-logo",
-    name: "JOBOBIKE Logo Water Bottle Holder",
+    name: "Logo Water Bottle Holder",
     description: "Premium water bottle holder with JOBOBIKE branding. Durable construction with secure grip for standard bottles.",
     fullDescription: "Premium water bottle holder featuring the JOBOBIKE logo. Made from high-quality materials with a durable black finish. Provides secure retention for standard water bottles while adding a branded touch to your e-bike. Easy installation with included mounting hardware.",
     price: 667,
@@ -424,13 +424,13 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Hardware", value: "Mounting screws included" }
     ],
     features: [
-      "Features JOBOBIKE branding",
-      "Durable black finish",
-      "Secure bottle retention mechanism",
-      "Fits standard 500-750ml water bottles",
-      "Easy frame mounting",
-      "Weather-resistant materials",
-      "Stylish branded design"
+      "JOBOBIKE logo",
+      "Holdbar svart finish",
+      "Sikker flaskefeste",
+      "Passer standard 500-750ml flasker",
+      "Enkel ramme montering",
+      "Værbestandige materialer",
+      "Stilfull design"
     ],
     compatibility: [
       "Transer",
@@ -472,14 +472,14 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Material", value: "Reinforced polymer with magnets" }
     ],
     features: [
-      "Powerful magnetic grip holds bottle securely",
-      "One-handed quick access while riding",
-      "Easy to grab and replace without looking",
-      "Compatible with magnetic water bottles",
-      "Sturdy frame mounting",
-      "Weather-resistant construction",
-      "Reduces distraction while maintaining hydration",
-      "Universal compatibility with all models"
+      "Kraftig magnetisk grep",
+      "Én-hånds rask tilgang",
+      "Lett å ta og sette tilbake",
+      "Kompatibel med magnetiske flasker",
+      "Solid ramme montering",
+      "Værbestandig konstruksjon",
+      "Reduserer distraksjon",
+      "Universal kompatibilitet"
     ],
     compatibility: ["All models"],
     inStock: true,
@@ -513,14 +513,14 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Shoulder Strap", value: "Optional/removable" }
     ],
     features: [
-      "Waterproof construction protects contents",
-      "Quick-release mounting for easy on/off",
-      "Reflective strips enhance visibility",
-      "Multiple compartments for organization",
-      "Integrated carry handle",
-      "Compatible with all rear racks",
-      "Durable, tear-resistant material",
-      "Perfect for daily commuting"
+      "Vanntett konstruksjon",
+      "Hurtig utløsning",
+      "Reflekterende striper",
+      "Flere rom",
+      "Integrert bærehåndtak",
+      "Kompatibel med alle bagasjebrett",
+      "Holdbart materiale",
+      "Perfekt for daglig pendling"
     ],
     compatibility: ["All models with rear rack"],
     inStock: true,
@@ -553,16 +553,16 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Shoulder Straps", value: "Removable and adjustable" }
     ],
     features: [
-      "Complete set - two bags for both sides",
-      "40-50L total storage capacity",
-      "Fully waterproof with sealed seams",
-      "Quick-release mounting system",
-      "Balanced weight distribution",
-      "3M reflective strips for night visibility",
-      "Reinforced carry handles and shoulder straps",
-      "Multiple compartments and pockets",
-      "Roll-top closure with secure buckles",
-      "Ideal for touring and heavy cargo"
+      "Komplett sett - to vesker",
+      "40-50L total lagringskapasitet",
+      "Helt vanntett",
+      "Hurtig utløsning",
+      "Balansert vektfordeling",
+      "3M reflekterende striper",
+      "Forsterkede håndtak og stropper",
+      "Flere rom og lommer",
+      "Rull-topp lukking",
+      "Ideell for tur og tung last"
     ],
     compatibility: ["All models with rear rack"],
     inStock: true,
@@ -573,7 +573,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-canopy-001",
     slug: "bike-canopy",
-    name: "JOBOBIKE Canopy",
+    name: "Canopy",
     description: "Weather protection canopy for cargo bikes. Shields rider and cargo from rain, sun, and wind.",
     fullDescription: "The JOBOBIKE Canopy provides comprehensive weather protection for cargo bike riders. This durable canopy shields you and your cargo from rain, harsh sun, and wind, making year-round riding more comfortable. Features a sturdy aluminum frame with waterproof fabric cover, easy installation, and adjustable positioning. Perfect for delivery riders, parents transporting children, or anyone who rides in all weather conditions.",
     price: 9099,
@@ -595,15 +595,15 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Weight", value: "~3-4 kg" }
     ],
     features: [
-      "Complete weather protection from rain, sun, and wind",
-      "UPF 50+ UV protection",
-      "Waterproof and windproof fabric",
-      "Sturdy aluminum frame construction",
-      "Adjustable height and angle",
-      "Easy installation with included hardware",
-      "Transparent front panel for visibility",
-      "Foldable design for storage",
-      "Year-round riding comfort"
+      "Komplett værbeskyttelse",
+      "UPF 50+ UV beskyttelse",
+      "Vanntett og vindtett stoff",
+      "Solid aluminium ramme",
+      "Justerbar høyde og vinkel",
+      "Enkel installasjon",
+      "Gjennomsiktig frontpanel",
+      "Sammenleggbar design",
+      "Helårs komfort"
     ],
     compatibility: ["Transer", "Mover"],
     inStock: true,
@@ -614,7 +614,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-monkey-bar-001",
     slug: "monkey-bar",
-    name: "JOBOBIKE Monkey Bar",
+    name: "Monkey Bar",
     description: "Front handlebar attachment for child passenger. Safe and comfortable seating position for young riders.",
     fullDescription: "The JOBOBIKE Monkey Bar is a front-mounted handlebar attachment that allows you to safely transport a child on your cargo bike. This innovative accessory provides a secure holding bar for children to grip while riding, positioned in front of the rider for maximum supervision and interaction. Features padded grips, adjustable positioning, and sturdy construction to ensure safety and comfort.",
     price: 7729,
@@ -635,14 +635,14 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Age Range", value: "Approximately 2-7 years" }
     ],
     features: [
-      "Safe front-mounted handlebar for children",
-      "Padded foam grips for comfort",
-      "Adjustable height and width",
-      "Sturdy steel construction with powder coating",
-      "Allows parent to supervise child while riding",
-      "Easy installation with frame clamps",
-      "Enhances riding experience for parent and child",
-      "Compatible with captain chair and safety accessories"
+      "Sikker front-montert styre for barn",
+      "Polstret skumgrep",
+      "Justerbar høyde og bredde",
+      "Solid stål konstruksjon",
+      "Foreldre kan overvåke barn",
+      "Enkel installasjon",
+      "Forbedrer kjøreopplevelsen",
+      "Kompatibel med captain chair"
     ],
     compatibility: ["Transer", "Mover"],
     inStock: true,
@@ -653,7 +653,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-captain-chair-001",
     slug: "captain-chair",
-    name: "JOBOBIKE Captain Chair",
+    name: "Captain Chair",
     description: "Premium child seat with full back support and safety harness. Comfortable and secure seating for young passengers.",
     fullDescription: "The JOBOBIKE Captain Chair is a premium child seating solution for cargo bikes. Features a full backrest, comfortable cushioning, integrated safety harness, and footrests for secure and comfortable transport of children. Designed to work seamlessly with the Monkey Bar for the ultimate family riding experience. High-quality construction ensures durability and safety for years of use.",
     price: 8607,
@@ -674,15 +674,15 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Cushion", value: "Weather-resistant padded cushion" }
     ],
     features: [
-      "Full back support for comfort and safety",
-      "Integrated 5-point safety harness",
-      "High-density foam cushioning",
-      "Waterproof and weather-resistant cover",
-      "Adjustable footrests for growing children",
-      "Compatible with Monkey Bar handlebar",
-      "Easy installation on cargo platform",
-      "Durable construction for long-term use",
-      "Removable cushion for cleaning"
+      "Full ryggstøtte",
+      "Integrert 5-punkts sele",
+      "Høy-tetthet skum polstring",
+      "Vanntett og værbestandig",
+      "Justerbare fotstøtter",
+      "Kompatibel med Monkey Bar",
+      "Enkel installasjon",
+      "Holdbar konstruksjon",
+      "Avtakbar pute"
     ],
     compatibility: ["Transer", "Mover"],
     inStock: true,
@@ -693,7 +693,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-armrest-001",
     slug: "armrest",
-    name: "JOBOBIKE Armrest",
+    name: "Armrest",
     description: "Comfortable armrests for cargo bike seating. Adds extra comfort and security for passengers.",
     fullDescription: "The JOBOBIKE Armrest set provides additional comfort and security for cargo bike passengers. These padded armrests attach to the sides of the cargo platform, giving passengers something to hold onto and lean against during the ride. Particularly useful when transporting adults or older children, or when using the cargo area for extended trips.",
     price: 2073,
@@ -713,14 +713,14 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Cover Material", value: "Waterproof vinyl" }
     ],
     features: [
-      "Sold as a pair (left and right)",
-      "Comfortable padded construction",
-      "Weather-resistant vinyl cover",
-      "Height adjustable for different riders",
-      "Provides extra security for passengers",
-      "Easy installation with clamp system",
-      "Adds comfort for longer rides",
-      "Durable materials for outdoor use"
+      "Selges som par (venstre og høyre)",
+      "Komfortabel polstret konstruksjon",
+      "Værbestandig vinyl deksel",
+      "Høyde justerbar",
+      "Gir ekstra sikkerhet",
+      "Enkel installasjon",
+      "Legger til komfort",
+      "Holdbare materialer"
     ],
     compatibility: ["Transer"],
     inStock: true,
@@ -731,7 +731,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-safety-belt-001",
     slug: "safety-belt",
-    name: "JOBOBIKE Safety Belt",
+    name: "Safety Belt",
     description: "Adjustable safety belt for securing cargo or passengers on rear rack. Essential safety accessory.",
     fullDescription: "The JOBOBIKE Safety Belt is an essential safety accessory for securing cargo or passengers on your rear rack. Features adjustable length, quick-release buckle, and durable webbing that can withstand outdoor conditions. Perfect for securing bags, boxes, or providing additional safety for rear-mounted child seats.",
     price: 527,
@@ -750,14 +750,14 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Weather Resistance", value: "Water and UV resistant" }
     ],
     features: [
-      "Heavy-duty nylon webbing construction",
-      "Quick-release buckle for easy use",
-      "Adjustable length fits various cargo sizes",
-      "Water and UV resistant materials",
-      "Secures cargo or provides additional passenger safety",
-      "Compatible with all rear rack systems",
-      "Lightweight and portable",
-      "Essential safety accessory"
+      "Kraftig nylon konstruksjon",
+      "Hurtig utløsning spenne",
+      "Justerbar lengde",
+      "Vann og UV bestandig",
+      "Sikrer last eller passasjerer",
+      "Kompatibel med alle bagasjebrett",
+      "Lett og portabel",
+      "Essensielt sikkerhetstilbehør"
     ],
     compatibility: ["All models with rear rack"],
     inStock: true,
@@ -768,7 +768,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-cushion-001",
     slug: "rear-rack-cushion",
-    name: "JOBOBIKE Rear Rack Cushion",
+    name: "Rear Rack Cushion",
     description: "Comfortable cushion for rear rack passenger seating. Waterproof and padded for extended comfort.",
     fullDescription: "Transform your rear rack into a comfortable passenger seat with the JOBOBIKE Rear Rack Cushion. This padded cushion features waterproof covering, anti-slip bottom, and secure attachment straps. Perfect for giving friends a ride or creating a comfortable seating area on your cargo rack. The cushion is weather-resistant and easy to clean.",
     price: 1405,
@@ -788,14 +788,14 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Weather Resistance", value: "Waterproof and UV resistant" }
     ],
     features: [
-      "High-density foam padding for comfort",
-      "Waterproof and weather-resistant cover",
-      "Anti-slip bottom keeps cushion in place",
-      "Adjustable straps for secure attachment",
-      "Easy to install and remove",
-      "Easy to clean - just wipe down",
-      "Suitable for rear rack passenger seating",
-      "Durable construction for long-term use"
+      "Høy-tetthet skum polstring",
+      "Vanntett og værbestandig",
+      "Anti-skli bunn",
+      "Justerbare stropper",
+      "Lett å installere og fjerne",
+      "Lett å rengjøre",
+      "Egnet for passasjer sete",
+      "Holdbar konstruksjon"
     ],
     compatibility: ["All models with rear rack"],
     inStock: true,
@@ -806,7 +806,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
   {
     id: "acc-loading-plate-001",
     slug: "loading-bearing-plate",
-    name: "JOBOBIKE Loading-Bearing Plate",
+    name: "Loading-Bearing Plate",
     description: "Heavy-duty loading platform extension for cargo bikes. Increases cargo capacity and provides flat loading surface.",
     fullDescription: "The JOBOBIKE Loading-Bearing Plate is a heavy-duty platform extension designed for serious cargo needs. This reinforced plate mounts to your cargo bike's platform, providing a stable, flat surface for transporting larger items, boxes, or equipment. Made from durable materials that can handle significant weight, it's perfect for delivery riders, business use, or anyone who needs maximum cargo capacity.",
     price: 3478,
@@ -826,14 +826,14 @@ export const accessoriesProducts: AccessoryProduct[] = [
       { label: "Thickness", value: "~3-5mm" }
     ],
     features: [
-      "Heavy-duty construction for maximum load capacity",
-      "Flat, stable platform for larger cargo items",
-      "Anti-slip surface keeps items secure",
-      "Weather-resistant powder coating",
-      "Bolt-on installation for secure mounting",
-      "Compatible with other cargo accessories",
-      "Ideal for delivery and business use",
-      "Significantly increases cargo capacity"
+      "Kraftig konstruksjon",
+      "Flat, stabil plattform",
+      "Anti-skli overflate",
+      "Værbestandig pulverlakkering",
+      "Bolt-på installasjon",
+      "Kompatibel med annet tilbehør",
+      "Ideell for levering og forretning",
+      "Øker lastekapasitet betydelig"
     ],
     compatibility: ["Transer", "Mover"],
     inStock: true,

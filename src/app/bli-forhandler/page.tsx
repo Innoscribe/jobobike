@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
+import { HiOutlineEnvelope, HiOutlinePhone, HiOutlineBuildingOffice2, HiOutlineClock } from 'react-icons/hi2';
 
 export default function BliForhandlerPage() {
   const [formData, setFormData] = useState({
@@ -26,6 +27,40 @@ export default function BliForhandlerPage() {
     });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/xldozejn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          firmanavn: '',
+          orgnr: '',
+          kontaktperson: '',
+          epost: '',
+          telefon: '',
+          typeVirksomhet: '',
+          beskrivelse: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white mt-32 md:mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -47,15 +82,9 @@ export default function BliForhandlerPage() {
             Registrer din interesse
           </h2>
           
-          {submitStatus === 'success' && (
-            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-green-800">
-                Takk for din interesse! Vi kontakter deg snart med informasjon om forhandlerbetingelser.
-              </p>
-            </div>
-          )}
 
-          <form action="https://formspree.io/f/xldozejn" method="POST" className="space-y-6">
+
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="firmanavn" className="block text-sm font-medium text-gray-700 mb-2">
@@ -173,12 +202,29 @@ export default function BliForhandlerPage() {
               />
             </div>
 
+            {submitStatus === 'success' && (
+              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-green-800">
+                  Takk for din interesse! Vi kontakter deg snart med informasjon om forhandlerbetingelser.
+                </p>
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-800">
+                  Det oppstod en feil ved innsending. Vennligst prøv igjen eller kontakt oss direkte.
+                </p>
+              </div>
+            )}
+
             <div className="text-center">
               <button
                 type="submit"
-                className="px-8 py-3 rounded-lg font-medium transition-colors bg-[#12b190] text-white hover:bg-[#0f9a7a]"
+                disabled={isSubmitting}
+                className="px-8 py-3 rounded-lg font-medium transition-colors bg-[#12b190] text-white hover:bg-[#0f9a7a] disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
-                Send inn forhandlerforespørsel
+                {isSubmitting ? 'Sender...' : 'Send inn forhandlerforespørsel'}
               </button>
             </div>
 
@@ -217,6 +263,31 @@ export default function BliForhandlerPage() {
                   <Check className="w-6 h-6 text-white" />
                 </div>
                 <span className="text-gray-800 font-medium">Rask levering fra Norge/EU</span>
+              </div>
+            </div>
+            
+            {/* Contact Details */}
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <h3 className="text-lg font-semibold text-black mb-3 text-center">
+                Kontakt oss direkte
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <HiOutlineBuildingOffice2 className="w-4 h-4 text-[#12b190]" />
+                  <span className="text-gray-800">Niels Juels Gate 70, Oslo</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <HiOutlineClock className="w-4 h-4 text-[#12b190]" />
+                  <span className="text-gray-800">Man-Fre: 08:00-16:00</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <HiOutlineEnvelope className="w-4 h-4 text-[#12b190]" />
+                  <span className="text-gray-800">support@jobobike.no</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <HiOutlinePhone className="w-4 h-4 text-[#12b190]" />
+                  <span className="text-gray-800">+47 40 55 63 33</span>
+                </div>
               </div>
             </div>
           </div>

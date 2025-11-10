@@ -140,65 +140,78 @@ const LandingPage = () => {
           {PRODUCTS_DATA.slice(0, 6).map((product) => (
             <li
               key={product.id}
-              className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black"
+              className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black h-[360px] sm:h-[360px] flex flex-col"
             >
-              <div className="relative mb-2 sm:mb-3">
-                <Link href={`/products/${product.slug}`}>
+              <div className="relative mb-2 sm:mb-8 h-[140px] sm:h-[160px] flex items-center justify-center">
+                <Link href={`/products/${product.slug}`} className="relative w-full h-full flex items-center justify-center">
                   <Image
-                    className="object-cover w-[85%] h-[85%] sm:w-full sm:h-full m-auto sm:m-0 rounded-lg sm:rounded-xl"
+                    className="object-contain rounded-lg sm:rounded-xl max-w-full max-h-full"
                     src={product.image}
                     alt={product.name}
-                    width={300}
-                    height={300}
+                    width={250}
+                    height={250}
                     priority
                     loading="eager"
-                    sizes="(max-width: 640px) 150px, 300px"
+                    sizes="(max-width: 640px) 140px, 250px"
                   />
                 </Link>
               </div>
 
-              <div className="space-y-1">
-                <h3 className="text-xs sm:text-sm font-medium text-black group-hover:underline leading-tight">
-                  <Link href={`/products/${product.slug}`} className="break-words">
+              <div className="flex-1 flex flex-col">
+                <h3 className="text-xs sm:text-sm font-medium text-black group-hover:underline leading-tight h-[32px] sm:h-[36px] flex items-start">
+                  <Link href={`/products/${product.slug}`} className="break-words line-clamp-2">
                     {product.name}
                   </Link>
                 </h3>
-              </div>
 
-              <div className="mt-2 flex flex-col sm:flex-row sm:items-end sm:justify-between">
-                <div className="flex-1 min-w-0">
-                  <span className="text-sm sm:text-base font-semibold text-black whitespace-nowrap">
-                    {formatCurrency(product.price)}
-                  </span>
-                </div>
-
-                {/* Quantity + Add to Cart */}
-                <div className="mt-2 sm:mt-0 flex flex-col sm:flex-row sm:items-center gap-2">
-                  {/* Compact Quantity Selector */}
-                  <div className="flex items-center border border-gray-200 rounded-md w-fit">
-                    <button
-                      onClick={() => handleQuantityChange(product.id, getQuantity(product.id) - 1)}
-                      className="w-6 h-6 flex items-center justify-center hover:bg-gray-50 transition-colors"
-                    >
-                      <Minus className="h-3 w-3 text-gray-600" />
-                    </button>
-                    <span className="text-xs font-semibold min-w-[16px] text-center text-black px-1">
-                      {getQuantity(product.id)}
+                <div className="mt-auto flex flex-col sm:flex-row sm:items-end sm:justify-between">
+                  <div className="flex-1 min-w-0">
+                    <span className="text-sm sm:text-base font-semibold text-black whitespace-nowrap">
+                      {formatCurrency(product.price)}
                     </span>
-                    <button
-                      onClick={() => handleQuantityChange(product.id, getQuantity(product.id) + 1)}
-                      className="w-6 h-6 flex items-center justify-center hover:bg-gray-50 transition-colors"
-                    >
-                      <Plus className="h-3 w-3 text-gray-600" />
-                    </button>
+
+                    {product.features?.length && (
+                      <ul className="mt-1 flex flex-col gap-1 text-[8px] sm:text-[10px] text-gray-700">
+                        {product.features.slice(0, 2).map((f, i) => (
+                          <li
+                            key={i}
+                            className="rounded-md border border-gray-200 px-1 sm:px-1.5 py-0.5 w-fit text-ellipsis overflow-hidden max-w-full"
+                          >
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
-                  {/* Add to Cart Button */}
-                  <AddToCartButton
-                    product={product}
-                    quantity={getQuantity(product.id)}
-                    className="w-full sm:flex-1 rounded-full border border-gray-300 px-1 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-white bg-[#12b190] hover:bg-[#12b190] transition sm:bg-black sm:hover:border-black sm:hover:bg-gray-50 sm:hover:text-black whitespace-nowrap"
-                  />
+                  {/* Quantity + Add to Cart */}
+                  <div className="mt-2 sm:mt-0 flex flex-col sm:flex-row sm:items-center gap-2">
+                    {/* Compact Quantity Selector */}
+                    <div className="flex items-center border border-gray-200 rounded-md w-fit">
+                      <button
+                        onClick={() => handleQuantityChange(product.id, getQuantity(product.id) - 1)}
+                        className="w-6 h-6 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                      >
+                        <Minus className="h-3 w-3 text-gray-600" />
+                      </button>
+                      <span className="text-xs font-semibold min-w-[16px] text-center text-black px-1">
+                        {getQuantity(product.id)}
+                      </span>
+                      <button
+                        onClick={() => handleQuantityChange(product.id, getQuantity(product.id) + 1)}
+                        className="w-6 h-6 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                      >
+                        <Plus className="h-3 w-3 text-gray-600" />
+                      </button>
+                    </div>
+
+                    {/* Add to Cart Button */}
+                    <AddToCartButton
+                      product={product}
+                      quantity={getQuantity(product.id)}
+                      className="w-full sm:flex-1 rounded-full border border-gray-300 px-1 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-white bg-[#12b190] hover:bg-[#12b190] transition sm:bg-black sm:hover:border-black sm:hover:bg-gray-50 sm:hover:text-black whitespace-nowrap"
+                    />
+                  </div>
                 </div>
               </div>
             </li>

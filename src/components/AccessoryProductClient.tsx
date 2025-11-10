@@ -129,6 +129,48 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
               ))}
             </div>
 
+            {/* Color Selection - Mobile Only (Under Images) */}
+            {product.colors && product.colors.length > 0 && (
+              <div className="lg:hidden">
+                <label className="block text-sm font-medium text-gray-900 mb-2">
+                  Farge:
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {product.colors.map((color, index) => {
+                    const colorMap: { [key: string]: string } = {
+                      'Svart': '#000000',
+                      'Blå': '#0066CC',
+                      'Rød': '#CC0000',
+                      'Grå': '#808080',
+                      'Hvit': '#FFFFFF'
+                    };
+                    return (
+                      <button
+                        key={color}
+                        onClick={() => {
+                          setSelectedColor(color);
+                          if (product.colorImages && product.colorImages[color]) {
+                            const colorImageUrl = product.colorImages[color];
+                            const imageIndex = product.images.findIndex(img => img === colorImageUrl);
+                            if (imageIndex !== -1) {
+                              setSelectedImage(imageIndex);
+                            }
+                          }
+                        }}
+                        className={`w-6 h-6 rounded-full border-2 transition-all ${
+                          selectedColor === color
+                            ? 'border-black scale-110 shadow-lg'
+                            : 'border-gray-300 hover:border-gray-500'
+                        }`}
+                        style={{ backgroundColor: colorMap[color] || color }}
+                        title={color}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {/* Compatibility - Desktop Only */}
             {product.compatibility && product.compatibility.length > 0 && (
               <div className="hidden lg:block border-t pt-6 mt-8">
@@ -171,24 +213,9 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
               </h1>
               <p className="text-gray-600 mb-2">{product.description}</p>
               
-              {/* Compatibility Tags - Desktop Only */}
-              {product.compatibility && product.compatibility.length > 0 && (
-                <div className="mb-4 hidden lg:block">
-                  <p className="text-sm text-gray-500 mb-2">Kompatibel med:</p>
-                  <div className="flex flex-wrap gap-1">
-                    {product.compatibility.map((model, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-[#12b190]/10 text-[#12b190] rounded text-xs font-medium"
-                      >
-                        {model}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
 
-              {/* Mobile: Compatibility Tags + Color Selection */}
+
+              {/* Mobile: Compatibility Tags */}
               <div className="lg:hidden mb-4">
                 {/* Compatibility Tags - Mobile */}
                 {product.compatibility && product.compatibility.length > 0 && (
@@ -203,48 +230,6 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                           {model}
                         </span>
                       ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Color Selection - Mobile */}
-                {product.colors && product.colors.length > 0 && (
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Farge:
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {product.colors.map((color, index) => {
-                        const colorMap: { [key: string]: string } = {
-                          'Svart': '#000000',
-                          'Blå': '#0066CC',
-                          'Rød': '#CC0000',
-                          'Grå': '#808080',
-                          'Hvit': '#FFFFFF'
-                        };
-                        return (
-                          <button
-                            key={color}
-                            onClick={() => {
-                              setSelectedColor(color);
-                              if (product.colorImages && product.colorImages[color]) {
-                                const colorImageUrl = product.colorImages[color];
-                                const imageIndex = product.images.findIndex(img => img === colorImageUrl);
-                                if (imageIndex !== -1) {
-                                  setSelectedImage(imageIndex);
-                                }
-                              }
-                            }}
-                            className={`w-6 h-6 rounded-full border-2 transition-all ${
-                              selectedColor === color
-                                ? 'border-black scale-110 shadow-lg'
-                                : 'border-gray-300 hover:border-gray-500'
-                            }`}
-                            style={{ backgroundColor: colorMap[color] || color }}
-                            title={color}
-                          />
-                        );
-                      })}
                     </div>
                   </div>
                 )}

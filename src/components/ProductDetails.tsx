@@ -28,7 +28,7 @@ function ReviewStars({ rating = 5, reviewCount = 14 }: { rating?: number; review
           />
         ))}
       </div>
-      <span className="text-sm text-gray-600">{reviewCount} Anmeldelser</span>
+      <span className="text-sm text-gray-600">{reviewCount} anmeldelser</span>
     </div>
   );
 }
@@ -155,6 +155,9 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
           </div>
         </div>
 
+        {/* MOBILE TECHNICAL SPECIFICATIONS */}
+        <TechnicalSpecifications product={product} />
+
         {/* MOBILE PRODUCT INFO */}
         <div className="mt-6 space-y-4">
           <div>
@@ -170,7 +173,7 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
           <div className="mt-4">
             <AddToCartButton
               product={product}
-              className="w-full bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0f9a7a]"
+              className="w-full bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0e9a7a]"
             />
           </div>
 
@@ -194,75 +197,7 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
 
 
 
-          {/* Mobile Accordion */}
-          <div className="mt-6 bg-white border border-gray-200 rounded-lg text-black">
-            {/* Specs */}
-            <div className="border-b border-gray-100">
-              <button
-                onClick={() => toggleAccordion("specs")}
-                className="w-full px-4 py-4 flex items-center justify-between text-left"
-              >
-                <span className="font-medium">Spesifikasjoner</span>
-                {openAccordion === "specs" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-              </button>
-              {openAccordion === "specs" && (
-                <div className="px-4 pb-4 text-sm text-gray-700">
-                  <ul className="space-y-2">
-                    <li><strong>Motor:</strong> {product.specifications.motor}</li>
-                    <li><strong>Battery:</strong> {product.specifications.battery}</li>
-                    <li><strong>Range:</strong> {product.specifications.range}</li>
-                    <li><strong>Top speed:</strong> {product.specifications.speed}</li>
-                    <li><strong>Weight:</strong> {product.specifications.weight}</li>
-                    <li><strong>Wheel size:</strong> {product.specifications.wheelSize}</li>
-                    {product.specifications.brakes && <li><strong>Brakes:</strong> {product.specifications.brakes}</li>}
-                    {product.specifications.frame && <li><strong>Frame:</strong> {product.specifications.frame}</li>}
-                  </ul>
-                </div>
-              )}
-            </div>
 
-            {/* Size */}
-            <div className="border-b border-gray-100">
-              <button
-                onClick={() => toggleAccordion("size")}
-                className="w-full px-4 py-4 flex items-center justify-between text-left"
-              >
-                <span className="font-medium">Størrelse</span>
-                {openAccordion === "size" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-              </button>
-              {openAccordion === "size" && (
-                <div className="px-4 pb-4 text-sm text-gray-700">
-                  {product.availableSizes.length === 0 ? (
-                    <p>En størrelse / sammenleggbar modell</p>
-                  ) : (
-                    <div className="grid grid-cols-2 gap-2">
-                      {product.availableSizes.map((s) => (
-                        <div key={s} className="p-2 border rounded text-sm">{s}</div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {/* What's in the Box */}
-            <div>
-              <button
-                onClick={() => toggleAccordion("box")}
-                className="w-full px-4 py-4 flex items-center justify-between text-left"
-              >
-                <span className="font-medium">Hva er i esken</span>
-                {openAccordion === "box" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-              </button>
-              {openAccordion === "box" && (
-                <div className="px-4 pb-4 text-sm text-gray-700">
-                  <ul className="list-disc ml-5 space-y-1">
-                    {product.whatsInTheBox.map((item, i) => <li key={i}>{item}</li>)}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
         </div>
       </div>
 
@@ -353,8 +288,9 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
                 <ChevronRight size={16} className="text-gray-700" />
               </button> */}
             </div>
-          </div>
 
+
+          </div>
 
           {/* PRODUCT DETAILS */}
 
@@ -413,84 +349,33 @@ export default function ProductDetails({ product }: { product: ProductCard }) {
               {/* Add to Cart Button */}
               <AddToCartButton
                 product={product}
-                className="w-44 bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0f9a7a]"
+                className="w-44 bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0e9a7a]"
               />
             </div>
 
 
 
 
-            {/* SPECIFICATIONS */}
-            <div className="bg-white border border-gray-200 rounded-lg text-black">
-              {/* Specs */}
-              <div className="border-b border-gray-100">
-                <button onClick={() => toggleAccordion("specs")} className="w-full px-6 py-4 flex items-center justify-between text-left">
-                  <span className="font-medium">Spesifikasjoner</span>
-                  {openAccordion === "specs" ? <ChevronUp /> : <ChevronDown />}
-                </button>
-                {openAccordion === "specs" && (
-                  <div className="px-6 pb-4 text-sm text-gray-700">
-                    <ul className="space-y-2">
-                      <li><strong>Motor:</strong> {product.specifications.motor}</li>
-                      <li><strong>Battery:</strong> {product.specifications.battery}</li>
-                      <li><strong>Range:</strong> {product.specifications.range}</li>
-                      <li><strong>Top speed:</strong> {product.specifications.speed}</li>
-                      <li><strong>Weight:</strong> {product.specifications.weight}</li>
-                      <li><strong>Wheel size:</strong> {product.specifications.wheelSize}</li>
-                      {product.specifications.brakes && <li><strong>Brakes:</strong> {product.specifications.brakes}</li>}
-                      {product.specifications.frame && <li><strong>Frame:</strong> {product.specifications.frame}</li>}
-                    </ul>
-                  </div>
-                )}
-              </div>
 
-              {/* Size */}
-              <div className="border-b border-gray-100">
-                <button onClick={() => toggleAccordion("size")} className="w-full px-6 py-4 flex items-center justify-between text-left">
-                  <span className="font-medium">Størrelse</span>
-                  {openAccordion === "size" ? <ChevronUp /> : <ChevronDown />}
-                </button>
-                {openAccordion === "size" && (
-                  <div className="px-6 pb-4 text-sm text-gray-700">
-                    {product.availableSizes.length === 0 ? (
-                      <p>En størrelse / sammenleggbar modell</p>
-                    ) : (
-                      <div className="grid grid-cols-2 gap-2">
-                        {product.availableSizes.map((s) => (
-                          <div key={s} className="p-2 border rounded text-sm">{s}</div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-
-              {/* What's in the Box */}
-              <div>
-                <button onClick={() => toggleAccordion("box")} className="w-full px-6 py-4 flex items-center justify-between text-left">
-                  <span className="font-medium">Hva er i esken</span>
-                  {openAccordion === "box" ? <ChevronUp /> : <ChevronDown />}
-                </button>
-                {openAccordion === "box" && (
-                  <div className="px-6 pb-6 text-sm text-gray-700">
-                    <ul className="list-disc ml-5 space-y-1">
-                      {product.whatsInTheBox.map((item, i) => <li key={i}>{item}</li>)}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
 
           </div>
         </div>
       </div>
       
-
-      {/* BIKE PACKAGE BUILDER SECTION */}
-      <BikePackageBuilder product={product} />
-
-      {/* TECHNICAL SPECIFICATIONS SECTION - Add this after the desktop layout closing div */}
-     <TechnicalSpecifications product={product}/>
+      {/* SPECIFICATIONS AND PACKAGE LAYOUT */}
+      <div className="mt-16 -mx-6 lg:-mx-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 w-full">
+          {/* SPECIFICATIONS HALF */}
+          <div className="w-full">
+            <TechnicalSpecifications product={product} />
+          </div>
+          
+          {/* PACKAGE BUILDER HALF */}
+          <div className="bg-white px-6 lg:px-8 py-6">
+            <BikePackageBuilder product={product} />
+          </div>
+        </div>
+      </div>
 
     </div>
   );
