@@ -393,7 +393,7 @@ export default function TechnicalSpecifications({ product }: { product: any }) {
                   {openAccordion === "box" && (
                     <div className="pb-6">
                       <div className="grid grid-cols-1 gap-y-2 text-sm">
-                        {product.whatsInTheBox.map((item, index) => (
+                        {product.whatsInTheBox.map((item: string, index: number) => (
                           <div key={index} className="flex items-start py-1">
                             <span className="text-gray-600 mr-4">•</span>
                             <span className="text-black">{item}</span>
