@@ -91,12 +91,8 @@ export async function POST(request: NextRequest) {
       amount: amount,
       currency: 'nok',
       automatic_payment_methods: { enabled: true },
-      metadata,
+      metadata: couponId ? { ...metadata, coupon_code: couponId } : metadata,
     };
-
-    if (couponId) {
-      paymentIntentParams.metadata.coupon_code = couponId;
-    }
 
     const paymentIntent = await stripe.paymentIntents.create(paymentIntentParams);
 
