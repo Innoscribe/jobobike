@@ -1,0 +1,85 @@
+Products needing Norwegian translation:
+
+1. Integrated Front Basket (acc-integrated-basket-001)
+   - specifications labels need translation (Material, Finish, Base Dimensions, etc.)
+
+2. Støtsikker Telefon Holder (acc-phone-holder-shockproof-001)
+   - specifications labels need translation (Phone Size, Handlebar Diameter, Rotation, etc.)
+
+3. Logo Water Bottle Holder (acc-bottle-holder-logo-001)
+   - name: "Logo Flaskeholder"
+   - description: "Premium flaskeholder med JOBOBIKE logo. Holdbar konstruksjon med sikkert grep for standard flasker."
+   - fullDescription: "Premium flaskeholder med JOBOBIKE logo. Laget av høykvalitets materialer med holdbar svart finish. Gir sikker feste for standard vannflasker mens den legger til et merket preg på el-sykkelen din. Enkel installasjon med inkludert monteringsutstyr."
+   - category: ["Tilbehør", "Hydrering", "Flaskeholdere"]
+   - specifications labels need translation
+
+4. Magnetic Water Bottle Holder (acc-bottle-holder-magnet-001)
+   - name: "Magnetisk Flaskeholder"
+   - description: "Innovativ magnetisk flaskeholder for rask tilgang. Sterkt magnetisk grep med enkel én-hånds betjening."
+   - fullDescription: "Revolusjonerende magnetisk flaskeholder som gir rask, én-hånds tilgang til vannflasken din mens du sykler. Har kraftige magneter som holder flasken sikkert på plass, men slipper lett når det trengs. Perfekt for syklister som trenger hyppig hydrering uten å stoppe. Kompatibel med spesielle magnetiske vannflasker eller magnetiske flaskeadaptere."
+   - category: ["Tilbehør", "Hydrering", "Flaskeholdere", "Magnetisk"]
+   - specifications labels need translation
+   - colors: ["Svart"] (remove "Gr")
+
+5. Single Side Pannier Bag (acc-pannier-single-001)
+   - name: "Ensidig Sykkelveske"
+   - description: "Vanntett ensidig sykkelveske for bakre bagasjebrett. Perfekt for daglig pendling og dagligvarehandel."
+   - fullDescription: "Allsidig ensidig sykkelveske designet for å feste til bakre bagasjebrett. Har vanntett konstruksjon, reflekterende striper for sikkerhet, og flere rom for organisert oppbevaring. Ideell for pendlere som trenger moderat lastekapasitet uten volumet av doble sykkelvesker. Hurtig utløsningssystem tillater enkel montering og fjerning."
+   - category: ["Vesker", "Sykkelvesker", "Oppbevaring", "Last"]
+   - specifications labels need translation
+
+6. Double Side Pannier Bag Set (acc-pannier-double-001)
+   - name: "Dobbel Sykkelveske Sett"
+   - description: "Vanntett dobbel sykkelveske sett for maksimal lastekapasitet. Ideell for sykkelturer, shopping og tung last."
+   - fullDescription: "Komplett dobbeltsidig sykkelveske system for seriøse lastebehov. Har to romslige vesker som festes til begge sider av bakre bagasjebrett, gir balansert vektfordeling og maksimal lagringskapasitet. Vanntett konstruksjon med rull-topp lukking, reflekterende sikkerhetselementer, og hurtig utløsning. Perfekt for sykkeltur, store handleturer, eller transport av utstyr."
+   - category: ["Vesker", "Sykkelvesker", "Oppbevaring", "Last", "Tur"]
+   - specifications labels need translation
+
+7. Canopy (acc-canopy-001)
+   - name: "Værtak"
+   - description: "Værbeskyttelse tak for lastesykler. Beskytter rytter og last mot regn, sol og vind."
+   - fullDescription: "JOBOBIKE Værtaket gir omfattende værbeskyttelse for lastesykkel-ryttere. Dette holdbare taket beskytter deg og lasten din mot regn, sterk sol og vind, og gjør helårs sykling mer komfortabel. Har en solid aluminiumsramme med vanntett stoffdeksel, enkel installasjon og justerbar posisjonering. Perfekt for leveringsryttere, foreldre som transporterer barn, eller alle som sykler i alle værforhold."
+   - category: ["Værbeskyttelse", "Last", "Tilbehør"]
+   - specifications labels need translation
+
+8. Monkey Bar (acc-monkey-bar-001)
+   - name: "Barnestyre"
+   - description: "Front styrefeste for barnpassasjer. Sikker og komfortabel sittestilling for unge ryttere."
+   - fullDescription: "JOBOBIKE Barnestyre er et front-montert styrefeste som lar deg trygt transportere et barn på lastesykkelen din. Dette innovative tilbehøret gir en sikker holdestang for barn å gripe mens de kjører, plassert foran rytteren for maksimal tilsyn og interaksjon. Har polstrede grep, justerbar posisjonering og solid konstruksjon for å sikre trygghet og komfort."
+   - category: ["Barnetransport", "Sikkerhet", "Last", "Tilbehør"]
+   - specifications labels need translation
+
+9. Captain Chair (acc-captain-chair-001)
+   - name: "Kaptein Stol"
+   - description: "Premium barnesete med full ryggstøtte og sikkerhetssele. Komfortabel og sikker sitteplass for unge passasjerer."
+   - fullDescription: "JOBOBIKE Kaptein Stolen er en premium barnesete-løsning for lastesykler. Har full ryggstøtte, komfortabel polstring, integrert sikkerhetssele og fotstøtter for sikker og komfortabel transport av barn. Designet for å fungere sømløst med Barnestyre for den ultimate familiesykkelopplevelsen. Høykvalitets konstruksjon sikrer holdbarhet og sikkerhet i mange år."
+   - category: ["Barnetransport", "Sitteplasser", "Sikkerhet", "Last"]
+   - specifications labels need translation
+
+10. Armrest (acc-armrest-001)
+    - name: "Armlene"
+    - description: "Komfortable armlener for lastesykkel sitteplasser. Legger til ekstra komfort og sikkerhet for passasjerer."
+    - fullDescription: "JOBOBIKE Armlene settet gir ekstra komfort og sikkerhet for lastesykkel passasjerer. Disse polstrede armlenene festes til sidene av lasteplattformen, og gir passasjerer noe å holde i og lene seg mot under turen. Spesielt nyttig når du transporterer voksne eller eldre barn, eller når du bruker lasteområdet for lengre turer."
+    - category: ["Komfort", "Last", "Tilbehør", "Sitteplasser"]
+    - specifications labels need translation
+
+11. Safety Belt (acc-safety-belt-001)
+    - name: "Sikkerhetsbelte"
+    - description: "Justerbart sikkerhetsbelte for å sikre last eller passasjerer på bakre bagasjebrett. Essensielt sikkerhetstilbehør."
+    - fullDescription: "JOBOBIKE Sikkerhetsbeltet er et essensielt sikkerhetstilbehør for å sikre last eller passasjerer på bakre bagasjebrett. Har justerbar lengde, hurtig utløsningsspenne og holdbar vevning som tåler utendørs forhold. Perfekt for å sikre vesker, bokser, eller gi ekstra sikkerhet for bakre-monterte barneseter."
+    - category: ["Sikkerhet", "Last", "Tilbehør"]
+    - specifications labels need translation
+
+12. Rear Rack Cushion (acc-cushion-001)
+    - name: "Bagasjebrett Pute"
+    - description: "Komfortabel pute for bakre bagasjebrett passasjersete. Vanntett og polstret for utvidet komfort."
+    - fullDescription: "Transformer bakre bagasjebrett til et komfortabelt passasjersete med JOBOBIKE Bagasjebrett Pute. Denne polstrede puten har vanntett deksel, anti-skli bunn og sikre festestropper. Perfekt for å gi venner en tur eller skape et komfortabelt seteområde på lastebrettet ditt. Puten er værbestandig og lett å rengjøre."
+    - category: ["Komfort", "Sitteplasser", "Tilbehør"]
+    - specifications labels need translation
+
+13. Loading-Bearing Plate (acc-loading-plate-001)
+    - name: "Lastebærende Plate"
+    - description: "Kraftig lasteplattform utvidelse for lastesykler. Øker lastekapasitet og gir flat lasteflate."
+    - fullDescription: "JOBOBIKE Lastebærende Plate er en kraftig plattform utvidelse designet for seriøse lastebehov. Denne forsterkede platen monteres på lastesykkelens plattform, og gir en stabil, flat overflate for transport av større gjenstander, bokser eller utstyr. Laget av holdbare materialer som kan håndtere betydelig vekt, er den perfekt for leveringsryttere, forretningsbruk, eller alle som trenger maksimal lastekapasitet."
+    - category: ["Last", "Tilbehør", "Kraftig"]
+    - specifications labels need translation

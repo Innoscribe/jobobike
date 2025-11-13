@@ -98,10 +98,15 @@ export default function AccessoriesPage() {
                         {filteredProducts.map((product) => (
                             <li
                                 key={product.id}
-                                className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black h-[330px] sm:h-[330px] flex flex-col"
+                                className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black h-[330px] sm:h-[330px] flex flex-col cursor-pointer"
+                                onClick={(e) => {
+                                    if (!(e.target as HTMLElement).closest('button')) {
+                                        window.location.href = `/accessories/${product.slug}`;
+                                    }
+                                }}
                             >
                                 <div className="relative mb-2 sm:mb-16 h-[110px] sm:h-[150px] flex items-center justify-center p-1">
-                                    <Link href={`/accessories/${product.slug}`} className="relative w-full h-full flex items-center justify-center">
+                                    <div className="relative w-full h-full flex items-center justify-center">
                                         <Image
                                             className="object-contain rounded-lg sm:rounded-xl"
                                             src={product.images[getSelectedImageIndex(product.id)] || product.image}
@@ -119,14 +124,14 @@ export default function AccessoriesPage() {
                                                 </span>
                                             </div>
                                         )}
-                                    </Link>
+                                    </div>
                                 </div>
 
                                 <div className="flex-1 flex flex-col">
                                     <h3 className="text-xs sm:text-sm font-medium text-black group-hover:underline leading-tight mb-1 h-[32px] sm:h-[36px] flex items-start">
-                                        <Link href={`/accessories/${product.slug}`} className="break-words line-clamp-2">
+                                        <span className="break-words line-clamp-2">
                                             {product.name}
-                                        </Link>
+                                        </span>
                                     </h3>
 
                                     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
@@ -136,13 +141,16 @@ export default function AccessoriesPage() {
                                             </span>
                                             
                                             {/* Color Selection */}
-                                            {product.colors && product.colors.length > 0 && (
+                                            {product.colors && product.colors.length > 1 && (
                                                 <div className="mt-1">
                                                     <div className="flex gap-1">
                                                         {product.colors.map((color) => (
                                                             <button
                                                                 key={color}
-                                                                onClick={() => updateSelectedColor(product.id, color)}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    updateSelectedColor(product.id, color);
+                                                                }}
                                                                 className={`w-4 h-4 rounded-full border transition-all ${
                                                                     getSelectedColor(product.id) === color
                                                                         ? 'border-black scale-110'
@@ -175,7 +183,10 @@ export default function AccessoriesPage() {
                                             {/* Compact Quantity Selector */}
                                             <div className="flex items-center border border-gray-200 rounded-md w-fit">
                                                 <button
-                                                    onClick={() => updateQuantity(product.id, getQuantity(product.id) - 1)}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        updateQuantity(product.id, getQuantity(product.id) - 1);
+                                                    }}
                                                     className="w-6 h-6 flex items-center justify-center hover:bg-gray-50 transition-colors"
                                                     disabled={getQuantity(product.id) <= 1}
                                                 >
@@ -185,7 +196,10 @@ export default function AccessoriesPage() {
                                                     {getQuantity(product.id)}
                                                 </span>
                                                 <button
-                                                    onClick={() => updateQuantity(product.id, getQuantity(product.id) + 1)}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        updateQuantity(product.id, getQuantity(product.id) + 1);
+                                                    }}
                                                     className="w-6 h-6 flex items-center justify-center hover:bg-gray-50 transition-colors"
                                                 >
                                                     <span className="text-gray-600 text-sm">+</span>

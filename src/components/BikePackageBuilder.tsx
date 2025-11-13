@@ -27,17 +27,28 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
   const baseName = productNameParts[0].toUpperCase();
   const fullName = productNameParts.join(' ').toUpperCase();
   
-  const compatibleAccessoriesInDetail = accessoriesProducts.filter(acc => 
+  const allCompatibleAccessories = accessoriesProducts.filter(acc => 
     acc.compatibility.some(comp => {
       const compUpper = comp.toUpperCase();
       if (compUpper.includes('UNIVERSAL') || compUpper.includes('ALL')) return false;
       return compUpper.includes(fullName) || compUpper.includes(baseName);
     })
-  ).slice(0, 4);
+  );
   
-  const compatibleAccessoryIds = new Set(compatibleAccessoriesInDetail.map(acc => acc.id));
+  const universalAccessories = accessoriesProducts.filter(acc => 
+    acc.compatibility.some(comp => 
+      comp.toUpperCase().includes('UNIVERSAL') || comp.toUpperCase().includes('ALL')
+    )
+  );
   
-  const otherAccessories = accessoriesProducts.filter(acc => !compatibleAccessoryIds.has(acc.id));
+  let carouselAccessories = allCompatibleAccessories;
+  if (allCompatibleAccessories.length < 5) {
+    carouselAccessories = [...allCompatibleAccessories, ...universalAccessories];
+  }
+  
+  const carouselAccessoryIds = new Set(carouselAccessories.map(acc => acc.id));
+  
+  const otherAccessories = accessoriesProducts.filter(acc => !carouselAccessoryIds.has(acc.id));
   
   const specificAccessories = otherAccessories.filter(acc => 
     acc.compatibility.some(comp => {
@@ -47,8 +58,8 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
     })
   );
   
-  let suggestedAccessories = specificAccessories.slice(0, 4);
-  if (suggestedAccessories.length < 4) {
+  let suggestedAccessories = specificAccessories.slice(0, 3);
+  if (suggestedAccessories.length < 3) {
     const universalAccessories = otherAccessories.filter(acc => 
       acc.compatibility.some(comp => 
         comp.includes('Universal') || comp.includes('All')
@@ -56,11 +67,11 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
     );
     suggestedAccessories = [
       ...suggestedAccessories,
-      ...universalAccessories.slice(0, 4 - suggestedAccessories.length)
+      ...universalAccessories.slice(0, 3 - suggestedAccessories.length)
     ];
   }
   
-  const otherBikes = PRODUCTS_DATA.filter(p => p.id !== product.id).slice(0, 2);
+  const otherBikes = PRODUCTS_DATA.filter(p => p.id !== product.id).slice(0, 3);
   
   const suggestedItems = [
     ...otherBikes.map(bike => ({
@@ -82,7 +93,7 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
     }))
   ];
   
-  const finalSuggestedItems = suggestedItems.length >= 2 ? suggestedItems.slice(0, 6) : suggestedItems;
+  const finalSuggestedItems = suggestedItems;
 
   const [packageItems, setPackageItems] = useState<PackageItem[]>(finalSuggestedItems);
 
@@ -107,7 +118,7 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
   
   return (
     <section className="h-full bg-white">
-      <h3 className="font-semibold mb-2 text-black text-xs">Foreslåtte produkter:</h3>
+      <h3 className="font-semibold mb-2 text-black text-2xl">Foreslåtte produkter:</h3>
       <div className="grid grid-cols-3 gap-1 mb-2">
         {packageItems.map((item) => (
           <button
@@ -127,8 +138,8 @@ export default function BikePackageBuilder({ product }: BikePackageBuilderProps)
                 unoptimized
               />
             </div>
-            <p className="text-[10px] text-gray-700 text-center line-clamp-1 leading-tight">{item.name}</p>
-            <p className="text-[10px] font-semibold text-center text-[#12b190]">{formatCurrency(item.price)}</p>
+            <p className="text-xs text-gray-900 text-center line-clamp-2 leading-tight font-medium">{item.name}</p>
+            <p className="text-sm font-bold text-center text-[#12b190]">{formatCurrency(item.price)}</p>
           </button>
         ))}
       </div>

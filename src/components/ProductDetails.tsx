@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ProductCard } from "@/lib/productData";
+import { ProductCard, PRODUCTS_DATA } from "@/lib/productData";
 import { CombinedProduct } from "@/lib/productVariants";
 import { accessoriesProducts } from "@/lib/accessoriesProducts";
 import Link from "next/link";
@@ -46,6 +46,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
   const router = useRouter();
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(initialVariantIndex);
   const [selectedAccessories, setSelectedAccessories] = useState<{id: string; name: string; price: number; image: string}[]>([]);
+  const [carouselPage, setCarouselPage] = useState(0);
   
   const product = combinedProduct 
     ? combinedProduct.variants[selectedVariantIndex].originalProduct 
@@ -58,6 +59,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
   useEffect(() => {
     setSelectedImage(product.images?.[0] || product.image || "");
     setSelectedSize(product.availableSizes?.[0] || "");
+    setCarouselPage(0);
   }, [selectedVariantIndex, product]);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const { updateQuantity, addToCart } = useCart();
@@ -74,6 +76,28 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
     if (newQuantity < 1) return;
     setQuantity(newQuantity);
     updateQuantity(product.id, newQuantity);
+  };
+
+  const getCompatibleAccessories = () => {
+    const fullProductName = product.name.split(' - ')[0].trim().toUpperCase();
+    const specificAccessories = accessoriesProducts.filter(acc => 
+      acc.compatibility.some(comp => {
+        const compUpper = comp.toUpperCase();
+        if (compUpper.includes('UNIVERSAL') || compUpper.includes('ALL')) return false;
+        return compUpper === fullProductName || compUpper.includes(fullProductName);
+      })
+    );
+    
+    const universalAccessories = accessoriesProducts.filter(acc => 
+      acc.compatibility.some(comp => 
+        comp.toUpperCase().includes('UNIVERSAL') || comp.toUpperCase().includes('ALL')
+      )
+    );
+    
+    if (specificAccessories.length < 5) {
+      return [...specificAccessories, ...universalAccessories];
+    }
+    return specificAccessories;
   };
 
   return (
@@ -201,87 +225,9 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                 </div>
               )}
               
-              {product.availableSizes && product.availableSizes.length > 1 && (
-                <div className="mt-3">
-                  <label className="block text-xs font-medium text-gray-700 mb-2">Størrelse:</label>
-                  <div className="flex flex-wrap gap-2">
-                    {product.availableSizes.map((size) => (
-                      <button
-                        key={size}
-                        onClick={() => setSelectedSize(size)}
-                        className={`px-3 py-1.5 rounded-full border text-xs font-medium transition-colors ${
-                          selectedSize === size
-                            ? 'bg-[#12b190] text-white border-[#12b190]'
-                            : 'bg-white text-gray-700 border-gray-300 hover:border-[#12b190]'
-                        }`}
-                      >
-                        {size}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+
             </div>
             
-            <div className="w-32">
-              <h3 className="text-xs font-semibold mb-2 text-black">Tilbehør:</h3>
-              <div className="grid grid-cols-2 gap-1">
-                {(() => {
-                  const fullProductName = product.name.split(' - ')[0].trim().toUpperCase();
-                  const specificAccessories = accessoriesProducts.filter(acc => 
-                    acc.compatibility.some(comp => {
-                      const compUpper = comp.toUpperCase();
-                      if (compUpper.includes('UNIVERSAL') || compUpper.includes('ALL')) return false;
-                      return compUpper === fullProductName || compUpper.includes(fullProductName);
-                    })
-                  );
-                  
-                  let displayAccessories = specificAccessories.slice(0, 4);
-                  if (displayAccessories.length === 0) {
-                    const universalAccessories = accessoriesProducts.filter(acc => 
-                      acc.compatibility.some(comp => 
-                        comp.includes('Universal') || comp.includes('All')
-                      )
-                    );
-                    displayAccessories = universalAccessories.slice(0, 4);
-                  }
-                  
-                  return displayAccessories.length > 0 ? displayAccessories.map((accessory) => {
-                    const isSelected = selectedAccessories.some(acc => acc.id === accessory.id);
-                    return (
-                      <button
-                        key={accessory.id}
-                        onClick={() => {
-                          if (isSelected) {
-                            setSelectedAccessories(prev => prev.filter(acc => acc.id !== accessory.id));
-                          } else {
-                            setSelectedAccessories(prev => [...prev, {
-                              id: accessory.id,
-                              name: accessory.name,
-                              price: accessory.price,
-                              image: accessory.image
-                            }]);
-                          }
-                        }}
-                        className={`border rounded p-1 transition-colors bg-white ${
-                          isSelected ? 'border-[#12b190] ring-1 ring-[#12b190]' : 'border-gray-200 hover:border-[#12b190]'
-                        }`}
-                      >
-                        <div className="aspect-square bg-white rounded overflow-hidden flex items-center justify-center">
-                          <Image
-                            src={accessory.image}
-                            alt={accessory.name}
-                            width={40}
-                            height={40}
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                      </button>
-                    );
-                  }) : null;
-                })()}
-              </div>
-            </div>
           </div>
 
           <div className="mt-6">
@@ -299,6 +245,77 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                 <li>Størrelse: {product.availableSizes[0]}</li>
               )}
             </ul>
+          </div>
+
+          <div className="mt-6 px-4">
+            <h3 className="font-semibold mb-3 text-black">Foreslåtte tilbehør:</h3>
+            <div className="relative overflow-hidden">
+              {(() => {
+                const allAccessories = getCompatibleAccessories();
+                const totalPages = Math.ceil(allAccessories.length / 4);
+                const currentPageAccessories = allAccessories.slice(carouselPage * 4, carouselPage * 4 + 4);
+                
+                return (
+                  <>
+                    <div className="grid grid-cols-2 grid-rows-2 gap-2 w-full">
+                      {currentPageAccessories.map((acc) => {
+                        const isSelected = selectedAccessories.some(a => a.id === acc.id);
+                        return (
+                          <button
+                            key={acc.id}
+                            onClick={() => {
+                              if (isSelected) {
+                                setSelectedAccessories(prev => prev.filter(a => a.id !== acc.id));
+                              } else {
+                                setSelectedAccessories(prev => [...prev, {
+                                  id: acc.id,
+                                  name: acc.name,
+                                  price: acc.price,
+                                  image: acc.image
+                                }]);
+                              }
+                            }}
+                            className={`border-2 rounded-lg p-2 transition-all flex flex-col text-left ${isSelected ? 'border-[#12b190] bg-[#12b190]/5' : 'border-gray-200 hover:border-[#12b190]'}`}
+                          >
+                            <div className="w-full aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center flex-shrink-0">
+                              <Image
+                                src={acc.image}
+                                alt={acc.name}
+                                width={80}
+                                height={80}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                            <h3 className="text-xs font-medium text-gray-900 line-clamp-1 mb-0.5">
+                              {acc.name}
+                            </h3>
+                            <p className="text-sm font-bold text-[#12b190]">{formatCurrency(acc.price)}</p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {totalPages > 1 && (
+                      <>
+                        <button
+                          onClick={() => setCarouselPage(prev => Math.max(0, prev - 1))}
+                          disabled={carouselPage === 0}
+                          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-1 shadow-md z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          <ChevronLeft size={16} className="text-gray-700" />
+                        </button>
+                        <button
+                          onClick={() => setCarouselPage(prev => Math.min(totalPages - 1, prev + 1))}
+                          disabled={carouselPage === totalPages - 1}
+                          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-1 shadow-md z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          <ChevronRight size={16} className="text-gray-700" />
+                        </button>
+                      </>
+                    )}
+                  </>
+                );
+              })()}
+            </div>
           </div>
         </div>
       </div>
@@ -366,7 +383,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
             </div>
           </div>
 
-          <div className="mt-10 space-y-6   ">
+          <div className="mt-10 space-y-6 pr-8">
             <div>
               <h1 className="text-2xl font-bold text-black">{product.name}</h1>
               <ReviewStars rating={product.rating || 5} reviewCount={product.reviewCount || 14} />
@@ -396,33 +413,14 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
               </div>
             )}
             
-            {product.availableSizes && product.availableSizes.length > 1 && (
-              <div className="mt-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Velg størrelse:</label>
-                <div className="flex flex-wrap gap-2">
-                  {product.availableSizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-2 rounded-full border text-base font-medium transition-colors ${
-                        selectedSize === size
-                          ? 'bg-[#12b190] text-white border-[#12b190]'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-[#12b190]'
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+
 
             <div className="mt-8">
               <h2 className="text-xl font-bold mb-2 text-black">Om produktet</h2>
               <p className="text-gray-700">{product.description}</p>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-6">
+            <div className="mt-6 grid grid-cols-2 gap-3">
               <div>
                 <h3 className="font-semibold mb-2 text-black">Hovedfunksjoner:</h3>
                 <ul className="list-disc ml-6 space-y-1 text-gray-700">
@@ -433,117 +431,128 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                     <li>Størrelse: {product.availableSizes[0]}</li>
                   )}
                 </ul>
+                
+                <div className="flex flex-col gap-2 mt-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl font-bold text-black">{formatCurrency(totalPrice)}</span>
+                    {selectedAccessories.length > 0 && (
+                      <span className="text-sm text-gray-500">({selectedAccessories.length} tilbehør)</span>
+                    )}
+                  </div>
+                  {selectedAccessories.length > 0 && (
+                    <div className="text-sm text-gray-600">
+                      Sykkel: {formatCurrency(product.originalPrice)} + Tilbehør: {formatCurrency(selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-3 mt-4">
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm text-gray-600">Antall:</span>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => handleQuantityChange(quantity - 1)}
+                        className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                      >
+                        <Minus className="h-4 w-4 text-gray-600" />
+                      </button>
+                      <span className="text-base font-semibold min-w-[32px] text-center text-black">
+                        {quantity}
+                      </span>
+                      <button
+                        onClick={() => handleQuantityChange(quantity + 1)}
+                        className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                      >
+                        <Plus className="h-4 w-4 text-gray-600" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      addToCart({ ...product, size: selectedSize }, quantity);
+                      selectedAccessories.forEach(acc => {
+                        addToCart(acc as any, 1);
+                      });
+                    }}
+                    className="w-fit bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0e9a7a]"
+                  >
+                    Legg til i handlekurv
+                  </button>
+                </div>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2 text-black">Kompatible tilbehør:</h3>
-                <div className="grid grid-cols-2 gap-2">
+                <h3 className="font-semibold mb-2 text-black">Foreslåtte tilbehør:</h3>
+                <div className="relative overflow-hidden">
                   {(() => {
-                    const fullProductName = product.name.split(' - ')[0].trim().toUpperCase();
-                    const specificAccessories = accessoriesProducts.filter(acc => 
-                      acc.compatibility.some(comp => {
-                        const compUpper = comp.toUpperCase();
-                        if (compUpper.includes('UNIVERSAL') || compUpper.includes('ALL')) return false;
-                        return compUpper === fullProductName || compUpper.includes(fullProductName);
-                      })
+                    const displayAccessories = getCompatibleAccessories();
+                    
+                    const totalPages = Math.ceil(displayAccessories.length / 4);
+                    const currentPageAccessories = displayAccessories.slice(carouselPage * 4, carouselPage * 4 + 4);
+                    
+                    return (
+                      <>
+                        <div className="grid grid-cols-2 grid-rows-2 gap-2 w-full">
+                          {currentPageAccessories.map((acc) => {
+                            const isSelected = selectedAccessories.some(a => a.id === acc.id);
+                            return (
+                              <button
+                                key={acc.id}
+                                onClick={() => {
+                                  if (isSelected) {
+                                    setSelectedAccessories(prev => prev.filter(a => a.id !== acc.id));
+                                  } else {
+                                    setSelectedAccessories(prev => [...prev, {
+                                      id: acc.id,
+                                      name: acc.name,
+                                      price: acc.price,
+                                      image: acc.image
+                                    }]);
+                                  }
+                                }}
+                                className={`border-2 rounded-lg p-2 transition-all flex flex-col text-left ${isSelected ? 'border-[#12b190] bg-[#12b190]/5' : 'border-gray-200 hover:border-[#12b190]'}`}
+                              >
+                                <div className="w-full aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center flex-shrink-0">
+                                  <Image
+                                    src={acc.image}
+                                    alt={acc.name}
+                                    width={80}
+                                    height={80}
+                                    className="w-full h-full object-contain"
+                                  />
+                                </div>
+                                <h3 className="text-xs font-medium text-gray-900 line-clamp-1 mb-0.5">
+                                  {acc.name}
+                                </h3>
+                                <p className="text-sm font-bold text-[#12b190]">{formatCurrency(acc.price)}</p>
+                              </button>
+                            );
+                          })}
+                        </div>
+                        {totalPages > 1 && (
+                          <>
+                            <button
+                              onClick={() => setCarouselPage(prev => Math.max(0, prev - 1))}
+                              disabled={carouselPage === 0}
+                              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-1 shadow-md z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                              <ChevronLeft size={16} className="text-gray-700" />
+                            </button>
+                            <button
+                              onClick={() => setCarouselPage(prev => Math.min(totalPages - 1, prev + 1))}
+                              disabled={carouselPage === totalPages - 1}
+                              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-1 shadow-md z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                              <ChevronRight size={16} className="text-gray-700" />
+                            </button>
+                          </>
+                        )}
+                      </>
                     );
-                    
-                    let displayAccessories = specificAccessories.slice(0, 4);
-                    if (displayAccessories.length === 0) {
-                      const universalAccessories = accessoriesProducts.filter(acc => 
-                        acc.compatibility.some(comp => 
-                          comp.includes('Universal') || comp.includes('All')
-                        )
-                      );
-                      displayAccessories = universalAccessories.slice(0, 4);
-                    }
-                    
-                    return displayAccessories.length > 0 ? displayAccessories.map((accessory) => {
-                      const isSelected = selectedAccessories.some(acc => acc.id === accessory.id);
-                      return (
-                        <button
-                          key={accessory.id}
-                          onClick={() => {
-                            if (isSelected) {
-                              setSelectedAccessories(prev => prev.filter(acc => acc.id !== accessory.id));
-                            } else {
-                              setSelectedAccessories(prev => [...prev, {
-                                id: accessory.id,
-                                name: accessory.name,
-                                price: accessory.price,
-                                image: accessory.image
-                              }]);
-                            }
-                          }}
-                          className={`border rounded-md p-2 transition-colors group bg-white text-left ${
-                            isSelected ? 'border-[#12b190] ring-2 ring-[#12b190]' : 'border-gray-200 hover:border-[#12b190]'
-                          }`}
-                        >
-                          <div className="aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center">
-                            <Image
-                              src={accessory.image}
-                              alt={accessory.name}
-                              width={100}
-                              height={100}
-                              className="w-full h-full object-contain"
-                            />
-                          </div>
-                          <p className="text-xs text-gray-700 text-center group-hover:text-[#12b190] line-clamp-2">{accessory.name}</p>
-                          <p className="text-xs font-semibold text-center text-[#12b190] mt-1">{formatCurrency(accessory.price)}</p>
-                        </button>
-                      );
-                    }) : null;
                   })()}
                 </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-black">{formatCurrency(totalPrice)}</span>
-                {selectedAccessories.length > 0 && (
-                  <span className="text-sm text-gray-500">({selectedAccessories.length} tilbehør)</span>
-                )}
-              </div>
-              {selectedAccessories.length > 0 && (
-                <div className="text-sm text-gray-600">
-                  Sykkel: {formatCurrency(product.originalPrice)} + Tilbehør: {formatCurrency(selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}
-                </div>
-              )}
-            </div>
-
-            <div className="flex items-center gap-6 mt-6">
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-600">Antall:</span>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => handleQuantityChange(quantity - 1)}
-                    className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
-                  >
-                    <Minus className="h-4 w-4 text-gray-600" />
-                  </button>
-                  <span className="text-base font-semibold min-w-[32px] text-center text-black">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={() => handleQuantityChange(quantity + 1)}
-                    className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
-                  >
-                    <Plus className="h-4 w-4 text-gray-600" />
-                  </button>
-                </div>
-              </div>
-
-              <button
-                onClick={() => {
-                  addToCart({ ...product, size: selectedSize }, quantity);
-                  selectedAccessories.forEach(acc => {
-                    addToCart(acc as any, 1);
-                  });
-                }}
-                className="w-44 bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0e9a7a] whitespace-nowrap"
-              >
-                Legg til i handlekurv
-              </button>
             </div>
           </div>
         </div>
@@ -598,7 +607,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
         </div>
       </div>
       
-      <div className="mt-16 -mx-6 lg:-mx-8">
+      <div className="mt-2 -mx-6 lg:-mx-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 w-full">
           <div className="bg-white px-6 lg:px-8 py-6 order-2 lg:order-2">
             <BikePackageBuilder product={product} />
@@ -609,6 +618,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
           </div>
         </div>
       </div>
+
+
     </div>
   );
 }

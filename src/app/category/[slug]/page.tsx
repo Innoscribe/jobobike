@@ -24,7 +24,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   const combinedProducts = getCombinedProducts();
   const filteredProducts = combinedProducts.filter((p) =>
-    p.category.includes(slug)
+    p.category.some(cat => cat.toLowerCase() === slug.toLowerCase())
   );
 
   if (filteredProducts.length === 0) {

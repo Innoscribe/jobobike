@@ -198,15 +198,15 @@ export default function Navbar() {
               <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              <span className="whitespace-nowrap">EU fabrikk</span>
+              <span className="whitespace-nowrap" suppressHydrationWarning>EU fabrikk</span>
             </div>
             <div className="flex items-center space-x-1 md:space-x-2">
               <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
               </svg>
-              <span className="whitespace-nowrap hidden sm:inline">Gratis frakt til EU</span>
-              <span className="whitespace-nowrap sm:hidden">Gratis frakt</span>
+              <span className="whitespace-nowrap hidden sm:inline" suppressHydrationWarning>Gratis frakt til EU</span>
+              <span className="whitespace-nowrap sm:hidden" suppressHydrationWarning>Gratis frakt</span>
             </div>
             <div className="flex items-center space-x-1 md:space-x-2">
               <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">

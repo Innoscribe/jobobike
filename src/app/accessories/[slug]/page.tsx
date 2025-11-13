@@ -1,15 +1,13 @@
 import { notFound } from 'next/navigation';
 import { accessoriesProducts, getAccessoryBySlug } from '@/lib/accessoriesProducts';
-import AccessoryProductClient from '@/components/AccessoryProductClient';
+import AccessoryDetails from '@/components/AccessoryDetails';
 
-// ✅ Explicit return type to avoid Promise inference issues
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return accessoriesProducts.map((product) => ({
     slug: product.slug,
   }));
 }
 
-// ✅ Explicitly conforming to Next.js PageProps type
 export default async function AccessoryProductPage({
   params,
 }: {
@@ -17,11 +15,15 @@ export default async function AccessoryProductPage({
 }) {
   const { slug } = await params;
 
-  const product = await getAccessoryBySlug(slug);
+  const product = getAccessoryBySlug(slug);
 
   if (!product) {
     notFound();
   }
 
-  return <AccessoryProductClient product={product} />;
+  return (
+    <div className="px-4 md:px-0">
+      <AccessoryDetails product={product} />
+    </div>
+  );
 }

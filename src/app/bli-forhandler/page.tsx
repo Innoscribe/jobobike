@@ -127,6 +127,23 @@ export default function BliForhandlerPage() {
               <p className="text-lg text-gray-600 mb-6">
                 Vi kontakter deg snart med informasjon om forhandlerbetingelser.
               </p>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6 max-w-md">
+                <h3 className="font-semibold text-black mb-3">Hva skjer nå?</h3>
+                <ul className="text-left text-sm text-gray-700 space-y-2">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#12b190] mt-0.5 flex-shrink-0" />
+                    <span>Vi behandler din forespørsel innen 1-2 virkedager</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#12b190] mt-0.5 flex-shrink-0" />
+                    <span>Du mottar informasjon om priser og betingelser</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#12b190] mt-0.5 flex-shrink-0" />
+                    <span>Vi avtaler et møte for å diskutere samarbeid</span>
+                  </li>
+                </ul>
+              </div>
               <button
                 onClick={() => {
                   setSubmitStatus('idle');
@@ -334,7 +351,7 @@ export default function BliForhandlerPage() {
             {/* Contact Details */}
             <div className="mt-6 pt-4 border-t border-gray-200">
               <h3 className="text-lg font-semibold text-black mb-3 text-center">
-                Kontakt oss direkte
+                Kontakt oss
               </h3>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm">

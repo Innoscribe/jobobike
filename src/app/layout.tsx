@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CartProvider } from '@/components/CartContext';
+import PromoButton from '@/components/PromoButton';
 
 
 const robotoCondensed = Roboto_Condensed({
@@ -67,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="nb" className="scroll-smooth">
+    <html lang="nb" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#12b190" />
         <link rel="canonical" href="https://jobobike.no" />
@@ -107,6 +108,7 @@ export default function RootLayout({
         
         {/* Global scripts can be added here */}
         <Footer />
+        <PromoButton />
       </body>
     </html>
   );
