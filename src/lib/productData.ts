@@ -1434,7 +1434,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "Komfortabel sittestilling",
       "Integrerte lys",
     ],
-    category: ["Pendler"],
+    category: ["Pendler", "Fatbike"],
     rating: 4.4,
     reviewCount: 78,
     specifications: {

@@ -61,7 +61,7 @@ const LandingPage = () => {
             <Link href="/category/Pendler">
               <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
                 <Image
-                  src="/images/lyon/lyon-1.png"
+                  src="/images/henry/henry-1.png"
                   alt="Pendler"
                   width={200}
                   height={200}
@@ -95,7 +95,7 @@ const LandingPage = () => {
             <Link href="/category/Sammenleggbar">
               <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
                 <Image
-                  src="/images/eddy-x/eddy-1.png"
+                  src="/images/ace/ace-1.png"
                   alt="Sammenleggbar"
                   width={200}
                   height={200}
