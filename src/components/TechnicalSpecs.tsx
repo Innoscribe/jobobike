@@ -3,7 +3,7 @@
 export default function TechnicalSpecifications({ product }: { product: any }) {
   return (
     <div className="w-full">
-      <div className="bg-white w-full px-0 py-8">
+      <div className="bg-white w-full px-0 py-0">
         <div className="px-6 lg:px-8 mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-black mb-2">
             Tekniske Spesifikasjoner

@@ -142,10 +142,10 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // close dropdowns on route change
+  // close mobile menu and navbar dropdown on route change
   useEffect(() => {
-    setNavbarDropdownOpen(false);
     setIsMobileMenuOpen(false);
+    setNavbarDropdownOpen(false);
   }, [pathname]);
 
   // close navbar dropdown on outside click
@@ -153,14 +153,15 @@ export default function Navbar() {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as Node;
       if (navbarDropdownRef.current && !navbarDropdownRef.current.contains(target)) {
-        setNavbarDropdownOpen(false);
+        const dropdownPanel = document.getElementById('navbar-dropdown-panel');
+        if (dropdownPanel && !dropdownPanel.contains(target)) {
+          setNavbarDropdownOpen(false);
+        }
       }
     };
-    if (navbarDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+    document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [navbarDropdownOpen]);
+  }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Escape') {
@@ -435,9 +436,9 @@ export default function Navbar() {
 
       {/* Navbar Dropdown - Fixed Position */}
       {navbarDropdownOpen && (
-        <div className="fixed top-[142px] w-full z-[100]">
+        <div className="fixed top-[142px] w-full z-[100] pointer-events-none">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="bg-white border border-gray-200 rounded-lg shadow-xl p-3 w-[500px]">
+            <div id="navbar-dropdown-panel" className="bg-white border border-gray-200 rounded-lg shadow-xl p-3 w-[500px] pointer-events-auto">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 {categories.length > 0 ? categories.map((cat) => (
                   <Link

@@ -6,7 +6,7 @@ const ReturPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-gray-50 py-16 mt-32 md:mt-24">
+      <div className="bg-gray-50 pt-36 md:mt-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-4">
             Kjøpsvilkår & Garanti

@@ -21,9 +21,5 @@ export default async function AccessoryProductPage({
     notFound();
   }
 
-  return (
-    <div className="px-4 md:px-0">
-      <AccessoryDetails product={product} />
-    </div>
-  );
+  return <AccessoryDetails product={product} />;
 }

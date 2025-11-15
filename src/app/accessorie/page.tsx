@@ -62,10 +62,10 @@ export default function AccessoriesPage() {
 
 
     return (
-        <div className="min-h-screen bg-white pt-40 md:pt-44 lg:pt-20">
+        <div className="min-h-screen bg-white pt-8 lg:pt-20">
             {/* Breadcrumb */}
             <div className="border-b">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:pt-10">
                     <nav className="text-sm text-gray-600">
                         <Link href="/" className="hover:text-gray-900">
                             Home

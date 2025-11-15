@@ -171,11 +171,11 @@ export const accessoriesProducts: AccessoryProduct[] = [
     fullDescription: "Hold telefonen tilgjengelig og beskyttet med JOBOBIKE telefonholder. Det vanntette dekselet gir full berøringsskjerm-funksjonalitet samtidig som det beskytter mot regn, sprut og støv. Det sikre festesystemet sørger for at telefonen sitter stabilt selv på ujevne veier, noe som gjør den ideell til GPS-navigasjon under sykling.",
     price: 315.10,
     currency: "kr",
-    image: "/images/holder/holder-2.png",
+    image: "/images/holder/holder-3.jpg",
     images: [
-      "/images/holder/holder-2.png",
-      "/images/holder/holder-3.png",
-      "/images/holder/holder-1.png",
+      "/images/holder/holder-3.jpg",
+      "/images/holder/holder-2.jpg",
+      "/images/holder/holder-1.jpg",
     ],
     category: ["Elektronikk & Holdere"],
     specifications: [
@@ -186,9 +186,9 @@ export const accessoriesProducts: AccessoryProduct[] = [
     ],
     colors: ["Svart", "Blå", "Rød"],
     colorImages: {
-      "Rød": "/images/holder/holder-1.png",
-      "Svart": "/images/holder/holder-2.png",
-      "Blå": "/images/holder/holder-3.png"
+      "Rød": "/images/holder/holder-1.jpg",
+      "Svart": "/images/holder/holder-3.jpg",
+      "Blå": "/images/holder/holder-2.jpg"
     },
     features: [
       "Vanntett deksel med berøringsskjerm",

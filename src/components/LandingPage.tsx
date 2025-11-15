@@ -50,16 +50,16 @@ const LandingPage = () => {
               <div className="inline-block">
                 <span className="bg-[#12b190]/10 text-[#12b190] px-4 py-2 rounded-full text-sm font-medium font-sans">Limited Time Offer</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-sans">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight font-sans">
                 <span className="text-[#12b190]">End of Summer Sale</span>
-                <span className="block text-[#12b190] mt-2 text-3xl md:text-4xl lg:text-5xl">Upto 30% OFF</span>
+                <span className="block text-[#12b190] mt-2 text-2xl md:text-4xl lg:text-5xl">Upto 30% OFF</span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl font-sans">
+              <p className="text-base md:text-xl text-gray-600 leading-relaxed max-w-xl font-sans">
                 Premium electric bikes designed for your lifestyle. Lightweight, powerful, and perfect for every journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/cycle">
-                  <button className="group bg-[#12b190] text-white font-bold px-10 py-5 rounded-full text-xl hover:bg-[#0f9d7d] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl">
+                  <button className="group bg-[#12b190] text-white font-bold px-6 py-3 md:px-10 md:py-5 rounded-full text-base md:text-xl hover:bg-[#0f9d7d] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 md:gap-3 shadow-xl hover:shadow-2xl">
                     Shop Now
                     <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </button>

@@ -41,6 +41,8 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
   const [quantity, setQuantity] = useState(1);
   const [selectedSuggestedProducts, setSelectedSuggestedProducts] = useState<Set<string>>(new Set());
   const [selectedSuggestedBikes, setSelectedSuggestedBikes] = useState<Set<string>>(new Set());
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const { addToCart } = useCart();
 
   const suggestedProducts = accessoriesProducts
@@ -110,6 +112,13 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
     return suggestedBikesTotal;
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setZoomPosition({ x, y });
+  };
+
   const getUniqueSpecifications = () => {
     const featureTexts = product.features.map(f => f.toLowerCase());
     return product.specifications.filter(spec => {
@@ -130,9 +139,9 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
   };
 
   return (
-    <div className="pt-40 md:pt-44 lg:pt-20 sm:px-6 lg:px-8">
+    <div className="pt-0 lg:pt-20 sm:px-6 lg:px-8">
       <nav aria-label="Breadcrumb" className="border-b border-gray-200">
-        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-0 sm:px-4 py-3 text-sm">
+        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-0 sm:px-4 py-0 lg:py-3 lg:pt-10 text-sm">
           <li>
             <Link href="/accessorie" className="text-gray-600 hover:text-black transition">
               Tilbehør
@@ -147,13 +156,24 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
       <div className="lg:hidden">
         <div className="mt-6">
           <div className="mb-4 relative">
-            <Image
-              src={selectedImage}
-              alt={product.name}
-              width={600}
-              height={600}
-              className="w-full h-auto object-contain rounded-lg"
-            />
+            <div
+              className="relative w-full h-auto overflow-hidden rounded-lg cursor-zoom-in"
+              onMouseEnter={() => setIsZoomed(true)}
+              onMouseLeave={() => setIsZoomed(false)}
+              onMouseMove={handleMouseMove}
+            >
+              <Image
+                src={selectedImage}
+                alt={product.name}
+                width={600}
+                height={600}
+                className="w-full h-auto object-contain rounded-lg transition-transform duration-200"
+                style={isZoomed ? {
+                  transform: 'scale(2)',
+                  transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
+                } : {}}
+              />
+            </div>
             {product.images.length > 1 && (
               <>
                 <button
@@ -185,17 +205,19 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
               <button
                 key={i}
                 onClick={() => setSelectedImage(img)}
-                className={`flex-shrink-0 border rounded-md p-1 ${
+                className={`flex-shrink-0 border rounded-md ${
                   selectedImage === img ? "border-black" : "border-gray-300"
                 }`}
               >
-                <Image
-                  src={img}
-                  alt={product.name}
-                  width={60}
-                  height={60}
-                  className="object-contain w-[60px] h-[60px]"
-                />
+                <div className="w-[60px] h-[60px] flex items-center justify-center p-1">
+                  <Image
+                    src={img}
+                    alt={product.name}
+                    width={50}
+                    height={50}
+                    style={{ maxWidth: '50px', maxHeight: '50px', objectFit: 'contain' }}
+                  />
+                </div>
               </button>
             ))}
           </div>
@@ -334,13 +356,24 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
         <div className="grid grid-cols-[3fr_2fr] gap-6 w-full">
           <div className="w-full max-w-5xl">
             <div className="relative">
-              <Image
-                src={selectedImage}
-                alt={product.name}
-                width={1000}
-                height={800}
-                className="w-full max-h-[600px] object-contain"
-              />
+              <div
+                className="relative w-full max-h-[600px] overflow-hidden cursor-zoom-in"
+                onMouseEnter={() => setIsZoomed(true)}
+                onMouseLeave={() => setIsZoomed(false)}
+                onMouseMove={handleMouseMove}
+              >
+                <Image
+                  src={selectedImage}
+                  alt={product.name}
+                  width={1000}
+                  height={800}
+                  className="w-full max-h-[600px] object-contain transition-transform duration-200"
+                  style={isZoomed ? {
+                    transform: 'scale(2)',
+                    transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
+                  } : {}}
+                />
+              </div>
               {product.images.length > 1 && (
                 <>
                   <button
@@ -372,17 +405,19 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                 <button
                   key={i}
                   onClick={() => setSelectedImage(img)}
-                  className={`flex-shrink-0 border rounded-md p-1 ${
+                  className={`flex-shrink-0 border rounded-md ${
                     selectedImage === img ? "border-black" : "border-gray-300"
                   }`}
                 >
-                  <Image
-                    src={img}
-                    alt={product.name}
-                    width={60}
-                    height={60}
-                    className="object-contain w-[60px] h-[60px]"
-                  />
+                  <div className="w-[60px] h-[60px] flex items-center justify-center p-1">
+                    <Image
+                      src={img}
+                      alt={product.name}
+                      width={50}
+                      height={50}
+                      style={{ maxWidth: '50px', maxHeight: '50px', objectFit: 'contain' }}
+                    />
+                  </div>
                 </button>
               ))}
             </div>

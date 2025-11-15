@@ -55,12 +55,22 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
   const hasVariants = combinedProduct && combinedProduct.variants.length > 1;
   const [selectedImage, setSelectedImage] = useState(product.images?.[0] || product.image || "");
   const [selectedSize, setSelectedSize] = useState(product.availableSizes?.[0] || "");
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   
   useEffect(() => {
     setSelectedImage(product.images?.[0] || product.image || "");
     setSelectedSize(product.availableSizes?.[0] || "");
     setCarouselPage(0);
+    setIsZoomed(false);
   }, [selectedVariantIndex, product]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setZoomPosition({ x, y });
+  };
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const { updateQuantity, addToCart } = useCart();
   
@@ -80,11 +90,12 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
 
   const getCompatibleAccessories = () => {
     const fullProductName = product.name.split(' - ')[0].trim().toUpperCase();
+    const baseName = fullProductName.split(' ')[0];
     const specificAccessories = accessoriesProducts.filter(acc => 
       acc.compatibility.some(comp => {
         const compUpper = comp.toUpperCase();
         if (compUpper.includes('UNIVERSAL') || compUpper.includes('ALL')) return false;
-        return compUpper === fullProductName || compUpper.includes(fullProductName);
+        return compUpper === baseName || compUpper.includes(baseName);
       })
     );
     
@@ -101,9 +112,9 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
   };
 
   return (
-    <div className="pt-40 md:pt-44 lg:pt-20 sm:px-6 lg:px-8">
+    <div className="pt-0 lg:pt-20 sm:px-6 lg:px-8">
       <nav aria-label="Breadcrumb" className="border-b border-gray-200">
-        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-0 sm:px-4 py-3 text-sm">
+        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-0 sm:px-4 py-0 lg:py-3 lg:pt-10 text-sm">
           <li>
             <Link href="/cycle" className="text-gray-600 hover:text-black transition">
               Sykkel
@@ -115,15 +126,26 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
       </nav>
 
       <div className="lg:hidden">
-        <div className="mt-6">
+        <div className="mt-3">
           <div className="mb-4 relative">
-            <Image
-              src={selectedImage}
-              alt={product.name}
-              width={600}
-              height={600}
-              className="w-full h-auto object-contain rounded-lg"
-            />
+            <div
+              className="relative w-full h-auto overflow-hidden rounded-lg cursor-zoom-in"
+              onMouseEnter={() => setIsZoomed(true)}
+              onMouseLeave={() => setIsZoomed(false)}
+              onMouseMove={handleMouseMove}
+            >
+              <Image
+                src={selectedImage}
+                alt={product.name}
+                width={600}
+                height={600}
+                className="w-full h-auto object-contain rounded-lg transition-transform duration-200"
+                style={isZoomed ? {
+                  transform: 'scale(2)',
+                  transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
+                } : {}}
+              />
+            </div>
             {product.images.length > 1 && (
               <>
                 <button
@@ -204,6 +226,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
               
               {hasVariants && (
                 <div className="mt-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Farge:</label>
                   <div className="flex flex-wrap gap-2">
                     {combinedProduct!.variants.map((variant, idx) => (
                       <button
@@ -219,6 +242,27 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                         }`}
                       >
                         {variant.variantName}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {product.availableSizes && product.availableSizes.length > 1 && (
+                <div className="mt-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Størrelse:</label>
+                  <div className="flex flex-wrap gap-2">
+                    {product.availableSizes.map((size) => (
+                      <button
+                        key={size}
+                        onClick={() => setSelectedSize(size)}
+                        className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                          selectedSize === size
+                            ? 'bg-[#12b190] text-white border-[#12b190]'
+                            : 'bg-white text-gray-700 border-gray-300 hover:border-[#12b190]'
+                        }`}
+                      >
+                        {size}
                       </button>
                     ))}
                   </div>
@@ -248,7 +292,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
           </div>
 
           <div className="mt-6 px-4">
-            <h3 className="font-semibold mb-3 text-black">Foreslåtte tilbehør:</h3>
+            <h3 className="font-semibold mb-3 text-black">Kompatibel tilbehør:</h3>
             <div className="relative overflow-hidden">
               {(() => {
                 const allAccessories = getCompatibleAccessories();
@@ -324,13 +368,24 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
         <div className=" justify-center grid grid-cols-[3fr_2fr] gap-6 w-full">
           <div className=" w-full max-w-5xl ">
             <div className="relative">
-              <Image
-                src={selectedImage}
-                alt={product.name}
-                width={1000}
-                height={800}
-                className="w-full max-h-[600px] object-contain"
-              />
+              <div
+                className="relative w-full max-h-[600px] overflow-hidden cursor-zoom-in"
+                onMouseEnter={() => setIsZoomed(true)}
+                onMouseLeave={() => setIsZoomed(false)}
+                onMouseMove={handleMouseMove}
+              >
+                <Image
+                  src={selectedImage}
+                  alt={product.name}
+                  width={1000}
+                  height={800}
+                  className="w-full max-h-[600px] object-contain transition-transform duration-200"
+                  style={isZoomed ? {
+                    transform: 'scale(2)',
+                    transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
+                  } : {}}
+                />
+              </div>
               {product.images.length > 1 && (
                 <>
                   <button
@@ -391,7 +446,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
 
             {hasVariants && (
               <div className="mt-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Velg variant:</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Farge:</label>
                 <div className="flex flex-wrap gap-2">
                   {combinedProduct!.variants.map((variant, idx) => (
                     <button
@@ -407,6 +462,27 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                       }`}
                     >
                       {variant.variantName}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {product.availableSizes && product.availableSizes.length > 1 && (
+              <div className="mt-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Størrelse:</label>
+                <div className="flex flex-wrap gap-2">
+                  {product.availableSizes.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => setSelectedSize(size)}
+                      className={`px-4 py-2 rounded-full border text-base font-medium transition-colors ${
+                        selectedSize === size
+                          ? 'bg-[#12b190] text-white border-[#12b190]'
+                          : 'bg-white text-gray-700 border-gray-300 hover:border-[#12b190]'
+                      }`}
+                    >
+                      {size}
                     </button>
                   ))}
                 </div>
@@ -483,7 +559,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2 text-black">Foreslåtte tilbehør:</h3>
+                <h3 className="font-semibold mb-2 text-black">Kompatibel tilbehør:</h3>
                 <div className="relative overflow-hidden">
                   {(() => {
                     const displayAccessories = getCompatibleAccessories();

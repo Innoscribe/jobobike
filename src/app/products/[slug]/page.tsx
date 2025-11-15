@@ -22,12 +22,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   
   if (combined) {
     return (
-      <div className="px-4 md:px-0">
-        <ProductDetails 
-          combinedProduct={combined.product} 
-          initialVariantIndex={combined.selectedIndex}
-        />
-      </div>
+      <ProductDetails 
+        combinedProduct={combined.product} 
+        initialVariantIndex={combined.selectedIndex}
+      />
     );
   }
   
@@ -38,8 +36,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   return (
-    <div className="px-4 md:px-0">
-      <ProductDetails product={product} />
-    </div>
+    <ProductDetails product={product} />
   );
 }
