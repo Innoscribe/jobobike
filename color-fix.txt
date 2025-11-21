@@ -1,0 +1,15 @@
+Line 281-289: Add these colors to colorMap:
+"Jungle Green": "#4a7c59",
+"Black Olive": "#3b3c36",
+"Special": "gradient",
+
+After line 289, add:
+const colorValue = colorMap[color];
+const isGradient = colorValue === "gradient";
+
+Line 302: Replace
+style={{ backgroundColor: colorMap[color] || color }}
+with
+style={isGradient ? { background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' } : { backgroundColor: colorValue || "#FFFFFF" }}
+
+Repeat same changes for line 546-567 (desktop version)

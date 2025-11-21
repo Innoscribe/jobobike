@@ -20,8 +20,11 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
 
+  const isColorOutOfStock = product.colorStock && selectedColor ? product.colorStock[selectedColor] === false : false;
+  const isProductOutOfStock = !product.inStock || isColorOutOfStock;
+
   const handleAddToCart = () => {
-    if (isAdding) return;
+    if (isAdding || isProductOutOfStock) return;
     
     setIsAdding(true);
     
@@ -135,27 +138,39 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                       'Grå': '#808080',
                       'Hvit': '#FFFFFF'
                     };
+                    const isColorOutOfStock = product.colorStock ? product.colorStock[color] === false : false;
                     return (
                       <button
                         key={color}
                         onClick={() => {
-                          setSelectedColor(color);
-                          if (product.colorImages && product.colorImages[color]) {
-                            const colorImageUrl = product.colorImages[color];
-                            const imageIndex = product.images.findIndex(img => img === colorImageUrl);
-                            if (imageIndex !== -1) {
-                              setSelectedImage(imageIndex);
+                          if (!isColorOutOfStock) {
+                            setSelectedColor(color);
+                            if (product.colorImages && product.colorImages[color]) {
+                              const colorImageUrl = product.colorImages[color];
+                              const imageIndex = product.images.findIndex(img => img === colorImageUrl);
+                              if (imageIndex !== -1) {
+                                setSelectedImage(imageIndex);
+                              }
                             }
                           }
                         }}
-                        className={`w-6 h-6 rounded-full border-2 transition-all ${
-                          selectedColor === color
+                        disabled={isColorOutOfStock}
+                        className={`w-6 h-6 rounded-full border-2 transition-all relative ${
+                          isColorOutOfStock
+                            ? 'opacity-40 cursor-not-allowed border-gray-300'
+                            : selectedColor === color
                             ? 'border-black scale-110 shadow-lg'
                             : 'border-gray-300 hover:border-gray-500'
                         }`}
                         style={{ backgroundColor: colorMap[color] || color }}
-                        title={color}
-                      />
+                        title={isColorOutOfStock ? `${color} (Out of Stock)` : color}
+                      >
+                        {isColorOutOfStock && (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-full h-0.5 bg-red-500 rotate-45"></div>
+                          </div>
+                        )}
+                      </button>
                     );
                   })}
                 </div>
@@ -209,7 +224,7 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                   <span className="text-2xl font-bold text-gray-900">
                     {formatCurrency(product.price)}
                   </span>
-                  {!product.inStock && (
+                  {isProductOutOfStock && (
                     <span className="text-red-600 text-sm font-medium">Ikke på lager</span>
                   )}
                 </div>
@@ -232,14 +247,14 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
               
               <button
                 onClick={handleAddToCart}
-                disabled={!product.inStock || isAdding}
+                disabled={isProductOutOfStock || isAdding}
                 className={`w-full py-4 rounded-lg font-medium transition-all mb-6 ${
-                  product.inStock && !isAdding
+                  !isProductOutOfStock && !isAdding
                     ? 'bg-[#12b190] text-white hover:bg-[#0f9a7a]'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
-                {!product.inStock ? 'IKKE PÅ LAGER' : isAdding ? 'LEGGER TIL...' : 'LEGG I HANDLEKURV'}
+                {isProductOutOfStock ? 'IKKE PÅ LAGER' : isAdding ? 'LEGGER TIL...' : 'LEGG I HANDLEKURV'}
               </button>
             </div>
 
@@ -248,7 +263,7 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                 <span className="text-4xl font-bold text-gray-900">
                   {formatCurrency(product.price)}
                 </span>
-                {!product.inStock && (
+                {isProductOutOfStock && (
                   <span className="text-red-600 text-sm font-medium">Ikke på lager</span>
                 )}
               </div>
@@ -291,27 +306,39 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                       'Grå': '#808080',
                       'Hvit': '#FFFFFF'
                     };
+                    const isColorOutOfStock = product.colorStock ? product.colorStock[color] === false : false;
                     return (
                       <button
                         key={color}
                         onClick={() => {
-                          setSelectedColor(color);
-                          if (product.colorImages && product.colorImages[color]) {
-                            const colorImageUrl = product.colorImages[color];
-                            const imageIndex = product.images.findIndex(img => img === colorImageUrl);
-                            if (imageIndex !== -1) {
-                              setSelectedImage(imageIndex);
+                          if (!isColorOutOfStock) {
+                            setSelectedColor(color);
+                            if (product.colorImages && product.colorImages[color]) {
+                              const colorImageUrl = product.colorImages[color];
+                              const imageIndex = product.images.findIndex(img => img === colorImageUrl);
+                              if (imageIndex !== -1) {
+                                setSelectedImage(imageIndex);
+                              }
                             }
                           }
                         }}
-                        className={`w-8 h-8 rounded-full border-2 transition-all ${
-                          selectedColor === color
+                        disabled={isColorOutOfStock}
+                        className={`w-8 h-8 rounded-full border-2 transition-all relative ${
+                          isColorOutOfStock
+                            ? 'opacity-40 cursor-not-allowed border-gray-300'
+                            : selectedColor === color
                             ? 'border-black scale-110 shadow-lg'
                             : 'border-gray-300 hover:border-gray-500'
                         }`}
                         style={{ backgroundColor: colorMap[color] || color }}
-                        title={color}
-                      />
+                        title={isColorOutOfStock ? `${color} (Out of Stock)` : color}
+                      >
+                        {isColorOutOfStock && (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-full h-0.5 bg-red-500 rotate-45"></div>
+                          </div>
+                        )}
+                      </button>
                     );
                   })}
                 </div>
@@ -342,14 +369,14 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
             <div className="hidden lg:block space-y-3 pt-4">
               <button
                 onClick={handleAddToCart}
-                disabled={!product.inStock || isAdding}
+                disabled={isProductOutOfStock || isAdding}
                 className={`w-full py-4 rounded-lg font-medium transition-all ${
-                  product.inStock && !isAdding
+                  !isProductOutOfStock && !isAdding
                     ? 'bg-[#12b190] text-white hover:bg-[#0f9a7a]'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
-                {!product.inStock ? 'IKKE PÅ LAGER' : isAdding ? 'LEGGER TIL...' : 'LEGG I HANDLEKURV'}
+                {isProductOutOfStock ? 'IKKE PÅ LAGER' : isAdding ? 'LEGGER TIL...' : 'LEGG I HANDLEKURV'}
               </button>
             </div>
 

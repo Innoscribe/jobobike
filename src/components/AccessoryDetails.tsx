@@ -45,6 +45,9 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const { addToCart } = useCart();
 
+  const isColorOutOfStock = product.colorStock && selectedColor ? product.colorStock[selectedColor] === false : false;
+  const isProductOutOfStock = !product.inStock || isColorOutOfStock;
+
   const suggestedProducts = accessoriesProducts
     .filter(acc => acc.id !== product.id && acc.category.some(cat => product.category.includes(cat)));
   
@@ -158,8 +161,7 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
           <div className="mb-4 relative">
             <div
               className="relative w-full h-auto overflow-hidden rounded-lg cursor-zoom-in"
-              onMouseEnter={() => setIsZoomed(true)}
-              onMouseLeave={() => setIsZoomed(false)}
+              onClick={() => setIsZoomed(!isZoomed)}
               onMouseMove={handleMouseMove}
             >
               <Image
@@ -167,12 +169,17 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                 alt={product.name}
                 width={600}
                 height={600}
-                className="w-full h-auto object-contain rounded-lg transition-transform duration-200"
+                className={`w-full h-auto object-contain rounded-lg transition-transform duration-200 ${isProductOutOfStock ? 'opacity-60' : ''}`}
                 style={isZoomed ? {
                   transform: 'scale(2)',
                   transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
                 } : {}}
               />
+              {isProductOutOfStock && (
+                <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-20">
+                  OUT OF STOCK
+                </div>
+              )}
             </div>
             {product.images.length > 1 && (
               <>
@@ -233,22 +240,36 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-2">Farge:</label>
               <div className="flex gap-2">
-                {product.colors.map((color) => (
-                  <button
-                    key={color}
-                    onClick={() => {
-                      setSelectedColor(color);
-                      if (product.colorImages && product.colorImages[color]) {
-                        setSelectedImage(product.colorImages[color]);
-                      }
-                    }}
-                    className={`w-8 h-8 rounded-full border-2 transition-all ${
-                      selectedColor === color ? 'border-black scale-110' : 'border-gray-300'
-                    }`}
-                    style={{ backgroundColor: colorMap[color] || color }}
-                    title={color}
-                  />
-                ))}
+                {product.colors.map((color) => {
+                  const colorOutOfStock = product.colorStock ? product.colorStock[color] === false : false;
+                  return (
+                    <button
+                      key={color}
+                      onClick={() => {
+                        if (!colorOutOfStock) {
+                          setSelectedColor(color);
+                          if (product.colorImages && product.colorImages[color]) {
+                            setSelectedImage(product.colorImages[color]);
+                          }
+                        }
+                      }}
+                      disabled={colorOutOfStock}
+                      className={`w-8 h-8 rounded-full border-2 transition-all relative ${
+                        colorOutOfStock
+                          ? 'opacity-40 cursor-not-allowed border-gray-300'
+                          : selectedColor === color ? 'border-black scale-110' : 'border-gray-300'
+                      }`}
+                      style={{ backgroundColor: colorMap[color] || color }}
+                      title={colorOutOfStock ? `${color} (Out of Stock)` : color}
+                    >
+                      {colorOutOfStock && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-full h-0.5 bg-red-500 rotate-45"></div>
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -358,8 +379,7 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
             <div className="relative">
               <div
                 className="relative w-full max-h-[600px] overflow-hidden cursor-zoom-in"
-                onMouseEnter={() => setIsZoomed(true)}
-                onMouseLeave={() => setIsZoomed(false)}
+                onClick={() => setIsZoomed(!isZoomed)}
                 onMouseMove={handleMouseMove}
               >
                 <Image
@@ -367,12 +387,17 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                   alt={product.name}
                   width={1000}
                   height={800}
-                  className="w-full max-h-[600px] object-contain transition-transform duration-200"
+                  className={`w-full max-h-[600px] object-contain transition-transform duration-200 ${isProductOutOfStock ? 'opacity-60' : ''}`}
                   style={isZoomed ? {
                     transform: 'scale(2)',
                     transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
                   } : {}}
                 />
+                {isProductOutOfStock && (
+                  <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-20">
+                    OUT OF STOCK
+                  </div>
+                )}
               </div>
               {product.images.length > 1 && (
                 <>
@@ -433,22 +458,36 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Velg farge:</label>
                 <div className="flex gap-3">
-                  {product.colors.map((color) => (
-                    <button
-                      key={color}
-                      onClick={() => {
-                        setSelectedColor(color);
-                        if (product.colorImages && product.colorImages[color]) {
-                          setSelectedImage(product.colorImages[color]);
-                        }
-                      }}
-                      className={`w-10 h-10 rounded-full border-2 transition-all ${
-                        selectedColor === color ? 'border-black scale-110' : 'border-gray-300'
-                      }`}
-                      style={{ backgroundColor: colorMap[color] || color }}
-                      title={color}
-                    />
-                  ))}
+                  {product.colors.map((color) => {
+                    const colorOutOfStock = product.colorStock ? product.colorStock[color] === false : false;
+                    return (
+                      <button
+                        key={color}
+                        onClick={() => {
+                          if (!colorOutOfStock) {
+                            setSelectedColor(color);
+                            if (product.colorImages && product.colorImages[color]) {
+                              setSelectedImage(product.colorImages[color]);
+                            }
+                          }
+                        }}
+                        disabled={colorOutOfStock}
+                        className={`w-10 h-10 rounded-full border-2 transition-all relative ${
+                          colorOutOfStock
+                            ? 'opacity-40 cursor-not-allowed border-gray-300'
+                            : selectedColor === color ? 'border-black scale-110' : 'border-gray-300'
+                        }`}
+                        style={{ backgroundColor: colorMap[color] || color }}
+                        title={colorOutOfStock ? `${color} (Out of Stock)` : color}
+                      >
+                        {colorOutOfStock && (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-full h-0.5 bg-red-500 rotate-45"></div>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -520,17 +559,24 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                   </div>
                   <button
                     onClick={() => {
-                      addToCart({ ...product, size: selectedSize, color: selectedColor } as any, quantity);
-                      selectedSuggestedProducts.forEach(id => {
-                        const suggestedProduct = allSuggestedProducts.find(p => p.id === id);
-                        if (suggestedProduct) {
-                          addToCart(suggestedProduct as any, 1);
-                        }
-                      });
+                      if (!isProductOutOfStock) {
+                        addToCart({ ...product, size: selectedSize, color: selectedColor } as any, quantity);
+                        selectedSuggestedProducts.forEach(id => {
+                          const suggestedProduct = allSuggestedProducts.find(p => p.id === id);
+                          if (suggestedProduct) {
+                            addToCart(suggestedProduct as any, 1);
+                          }
+                        });
+                      }
                     }}
-                    className="w-full bg-[#12b190] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#0e9a7a] mt-6"
+                    disabled={isProductOutOfStock}
+                    className={`w-full px-6 py-3 rounded-md font-semibold mt-6 transition-all ${
+                      isProductOutOfStock
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                        : 'bg-[#12b190] text-white hover:bg-[#0e9a7a]'
+                    }`}
                   >
-                    Legg til i handlekurv
+                    {isProductOutOfStock ? 'IKKE PÅ LAGER' : 'Legg til i handlekurv'}
                   </button>
                 </div>
               </div>
@@ -630,10 +676,19 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
             </div>
 
             <button
-              onClick={() => addToCart({ ...product, size: selectedSize, color: selectedColor } as any, quantity)}
-              className="flex-1 bg-[#12b190] text-white px-4 py-2.5 rounded-md font-semibold hover:bg-[#0e9a7a] text-sm"
+              onClick={() => {
+                if (!isProductOutOfStock) {
+                  addToCart({ ...product, size: selectedSize, color: selectedColor } as any, quantity);
+                }
+              }}
+              disabled={isProductOutOfStock}
+              className={`flex-1 px-4 py-2.5 rounded-md font-semibold text-sm transition-all ${
+                isProductOutOfStock
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  : 'bg-[#12b190] text-white hover:bg-[#0e9a7a]'
+              }`}
             >
-              Legg til i handlekurv
+              {isProductOutOfStock ? 'IKKE PÅ LAGER' : 'Legg til i handlekurv'}
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-﻿// lib/accessoriesProducts.ts
+// lib/accessoriesProducts.ts
 
 export interface AccessoryProduct {
   id: string;
@@ -21,6 +21,7 @@ export interface AccessoryProduct {
   sizes?: string[];
   colors?: string[];
   colorImages?: { [color: string]: string };
+  colorStock?: { [color: string]: boolean };
 }
 
 export const accessoriesProducts: AccessoryProduct[] = [
@@ -189,6 +190,11 @@ export const accessoriesProducts: AccessoryProduct[] = [
       "Rød": "/images/holder/holder-1.jpg",
       "Svart": "/images/holder/holder-3.jpg",
       "Blå": "/images/holder/holder-2.jpg"
+    },
+    colorStock: {
+      "Svart": true,
+      "Blå": false,
+      "Rød": true
     },
     features: [
       "Vanntett deksel med berøringsskjerm",
@@ -733,7 +739,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
       "Laget av slitesterke materialer"
     ],
     compatibility: ["Transer"],
-    inStock: true,
+    inStock: false,
   },
 
   // 19. Safety Belt
@@ -820,8 +826,47 @@ export const accessoriesProducts: AccessoryProduct[] = [
       "Robust og slitesterk konstruksjon"
     ],
     compatibility: ["All models with rear rack"],
-    inStock: true,
+    inStock: false,
   },
+
+{
+    id: "jobobike-cover-bag-sam",
+    slug: "jobobike-cover-bag-for-sam",
+    name: "Sammenleggbar Sykkel Deksel Bag",
+    description: "Vanntett dekkpose som beskytter sykkelen mot støv, vann og riper. Passer til JOBOBIKE Sam.",
+    fullDescription: "Beskytt din JOBOBIKE Sam med denne vanntette dekkposen designet spesielt for sammenleggbare elsykler. Perfekt for oppbevaring av den sammenleggede sykkelen når du trenger å ta den med inn på kontoret eller oppbevare den trygt. Denne slitesterke posen beskytter elsykkelen mot støv, vann og riper under transport eller lagring. Enten du pendler til jobb, reiser eller bare oppbevarer sykkelen hjemme, holder denne posen Sam-en i perfekt stand. Ideell for å holde den sammenleggede sykkelen beskyttet i bilens bagasjerom eller når du bærer den innendørs.",
+    price: 65.00,
+    currency: "€",
+    image: "/images/bikebag/bag-1.jpg",
+    images: [
+      "/images/bikebag/bag-1.jpg",
+      "/images/bikebag/bag-2.jpg",
+    ],
+    category: ["Tilbehør", "Vesker & Oppbevaring"],
+    specifications: [
+      { label: "Kompatibilitet", value: "JOBOBIKE Sam" },
+      { label: "Materiale", value: "Vanntett stoff" },
+      { label: "Beskyttelse", value: "Støv, vann og ripebeskyttelse" },
+      { label: "Type", value: "Sammenleggbar sykkel dekkpose" }
+    ],
+    colors: ["Svart"],
+    colorImages: {
+      "Svart": "/images/accessories/cover-bag-sam-1.jpg"
+    },
+    colorStock: {
+      "Svart": true
+    },
+    features: [
+      "Vanntett beskyttelse",
+      "Designet spesielt for JOBOBIKE Sam",
+      "Beskytter mot støv, vann og riper",
+      "Enkel å bruke og oppbevare",
+      "Slitesterk konstruksjon",
+      "Perfekt for transport og lagring"
+    ],
+    compatibility: ["JOBOBIKE Sam"],
+    inStock: true
+},
 
   // 21. Loading-Bearing Plate
   {

@@ -95,7 +95,12 @@ export default function AccessoriesPage() {
                         role="list"
                         className="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-3 lg:grid-cols-3 overflow-hidden"
                     >
-                        {filteredProducts.map((product) => (
+                        {filteredProducts.map((product) => {
+                            const selectedColor = getSelectedColor(product.id);
+                            const isColorOutOfStock = product.colorStock && selectedColor ? product.colorStock[selectedColor] === false : false;
+                            const isProductOutOfStock = !product.inStock || isColorOutOfStock;
+                            
+                            return (
                             <li
                                 key={product.id}
                                 className="group rounded-xl sm:rounded-2xl border border-gray-200 p-2 sm:p-3 transition hover:border-black h-[330px] sm:h-[330px] flex flex-col cursor-pointer"
@@ -108,7 +113,7 @@ export default function AccessoriesPage() {
                                 <div className="relative mb-2 sm:mb-16 h-[110px] sm:h-[150px] flex items-center justify-center p-1">
                                     <div className="relative w-full h-full flex items-center justify-center">
                                         <Image
-                                            className="object-contain rounded-lg sm:rounded-xl"
+                                            className={`object-contain rounded-lg sm:rounded-xl ${!product.inStock ? 'opacity-60' : ''}`}
                                             src={product.images[getSelectedImageIndex(product.id)] || product.image}
                                             alt={product.name}
                                             width={200}
@@ -118,10 +123,8 @@ export default function AccessoriesPage() {
                                             style={{ maxWidth: '90%', maxHeight: '90%' }}
                                         />
                                         {!product.inStock && (
-                                            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                                <span className="bg-white text-gray-900 px-4 py-2 rounded-full font-medium text-sm">
-                                                    Out of Stock
-                                                </span>
+                                            <div className="absolute top-2 right-2 bg-red-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg">
+                                                OUT OF STOCK
                                             </div>
                                         )}
                                     </div>
@@ -144,22 +147,36 @@ export default function AccessoriesPage() {
                                             {product.colors && product.colors.length > 1 && (
                                                 <div className="mt-1">
                                                     <div className="flex gap-1">
-                                                        {product.colors.map((color) => (
-                                                            <button
-                                                                key={color}
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    updateSelectedColor(product.id, color);
-                                                                }}
-                                                                className={`w-4 h-4 rounded-full border transition-all ${
-                                                                    getSelectedColor(product.id) === color
-                                                                        ? 'border-black scale-110'
-                                                                        : 'border-gray-300'
-                                                                }`}
-                                                                style={{ backgroundColor: colorMap[color] || color }}
-                                                                title={color}
-                                                            />
-                                                        ))}
+                                                        {product.colors.map((color) => {
+                                                            const isColorOutOfStock = product.colorStock ? product.colorStock[color] === false : false;
+                                                            return (
+                                                                <button
+                                                                    key={color}
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();
+                                                                        if (!isColorOutOfStock) {
+                                                                            updateSelectedColor(product.id, color);
+                                                                        }
+                                                                    }}
+                                                                    disabled={isColorOutOfStock}
+                                                                    className={`w-4 h-4 rounded-full border transition-all relative ${
+                                                                        isColorOutOfStock
+                                                                            ? 'opacity-40 cursor-not-allowed border-gray-300'
+                                                                            : getSelectedColor(product.id) === color
+                                                                            ? 'border-black scale-110'
+                                                                            : 'border-gray-300'
+                                                                    }`}
+                                                                    style={{ backgroundColor: colorMap[color] || color }}
+                                                                    title={isColorOutOfStock ? `${color} (Out of Stock)` : color}
+                                                                >
+                                                                    {isColorOutOfStock && (
+                                                                        <div className="absolute inset-0 flex items-center justify-center">
+                                                                            <div className="w-full h-[1px] bg-red-500 rotate-45"></div>
+                                                                        </div>
+                                                                    )}
+                                                                </button>
+                                                            );
+                                                        })}
                                                     </div>
                                                 </div>
                                             )}
@@ -210,13 +227,19 @@ export default function AccessoriesPage() {
                                             <AddToCartButton
                                                 product={product}
                                                 quantity={getQuantity(product.id)}
-                                                className="w-full sm:flex-1 rounded-full border border-gray-300 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-white bg-[#12b190] hover:bg-[#0f9a7a] transition whitespace-nowrap"
+                                                disabled={isProductOutOfStock}
+                                                className={`w-full sm:flex-1 rounded-full border border-gray-300 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium transition whitespace-nowrap ${
+                                                    isProductOutOfStock
+                                                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                                        : 'text-white bg-[#12b190] hover:bg-[#0f9a7a]'
+                                                }`}
                                             />
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                        ))}
+                            );
+                        })}
                     </ul>
                 </section>
 

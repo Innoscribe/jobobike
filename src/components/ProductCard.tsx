@@ -14,6 +14,7 @@ interface Product {
   image: string;
   category?: string[];
   description?: string;
+  inStock?: boolean;
 }
 
 interface ProductCardProps {
@@ -51,6 +52,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
     }, 2000);
   };
 
+  const isOutOfStock = product.inStock === false;
+
   return (
     <Card className={`group hover:shadow-lg transition-shadow duration-300 border border-gray-200 ${className}`}>
       <CardContent className="p-0">
@@ -62,7 +65,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
               alt={product.name}
               width={400}
               height={400}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${isOutOfStock ? 'opacity-60' : ''}`}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = '/api/placeholder/400/400';
@@ -70,26 +73,35 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
             />
           </div>
           
+          {/* Out of Stock Overlay */}
+          {isOutOfStock && (
+            <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+              OUT OF STOCK
+            </div>
+          )}
+          
           {/* Quick Add Button Overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <Button
-              onClick={handleAddToCart}
-              disabled={isAdding}
-              className="bg-white text-black hover:bg-[#12b190] hover:text-black font-semibold px-6 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-            >
-              {isAdding ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2" />
-                  Adding...
-                </>
-              ) : (
-                <>
-                  <ShoppingCart className="w-4 h-4 mr-2" />
-                  Quick Add
-                </>
-              )}
-            </Button>
-          </div>
+          {!isOutOfStock && (
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <Button
+                onClick={handleAddToCart}
+                disabled={isAdding}
+                className="bg-white text-black hover:bg-[#12b190] hover:text-black font-semibold px-6 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+              >
+                {isAdding ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2" />
+                    Adding...
+                  </>
+                ) : (
+                  <>
+                    <ShoppingCart className="w-4 h-4 mr-2" />
+                    Quick Add
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
 
           {/* In Cart Badge */}
           {isInCart && (
@@ -124,17 +136,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
             
             <Button
               onClick={handleAddToCart}
-              disabled={isAdding}
+              disabled={isAdding || isOutOfStock}
               size="sm"
               className={`
                 transition-all duration-300 font-semibold
-                ${justAdded 
+                ${isOutOfStock
+                  ? 'bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed border border-gray-400'
+                  : justAdded 
                   ? 'bg-green-500 hover:bg-green-600 text-white' 
                   : 'bg-[#12b190] hover:bg-[#12b190] text-black'
                 }
               `}
             >
-              {isAdding ? (
+              {isOutOfStock ? (
+                'Out of Stock'
+              ) : isAdding ? (
                 <>
                   <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2" />
                   Adding...

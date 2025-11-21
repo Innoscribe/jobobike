@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jobobike.no/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /studio/
+
+# Allow important pages
+Allow: /products/
+Allow: /accessories/
+Allow: /about/
+Allow: /contact/

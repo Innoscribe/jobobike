@@ -44,6 +44,10 @@ export default function ProductCardItem({
   const currentImage = displayImage || (baseProduct.colors && baseProduct.colorImages 
     ? baseProduct.colorImages[baseProduct.colors[0]] 
     : baseProduct.image);
+  
+  const isOutOfStock = baseProduct.inStock === false;
+
+  const hasColorsAndVariants = baseProduct.colors && baseProduct.colors.length > 0 && combined.variants.length > 1;
 
   return (
     <li
@@ -57,7 +61,7 @@ export default function ProductCardItem({
       <div className="relative mb-2 sm:mb-8 h-[140px] sm:h-[160px] flex items-center justify-center">
         <div className="relative w-full h-full flex items-center justify-center">
           <Image
-            className="object-contain rounded-lg sm:rounded-xl max-w-full max-h-full"
+            className={`object-contain rounded-lg sm:rounded-xl max-w-full max-h-full ${isOutOfStock ? 'opacity-60' : ''}`}
             src={currentImage}
             alt={displayName}
             width={250}
@@ -66,6 +70,11 @@ export default function ProductCardItem({
             sizes="(max-width: 640px) 140px, 250px"
           />
         </div>
+        {isOutOfStock && (
+          <div className="absolute top-2 right-2 bg-red-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full shadow-lg">
+            OUT OF STOCK
+          </div>
+        )}
       </div>
 
       <div className="flex-1 flex flex-col">
@@ -75,34 +84,7 @@ export default function ProductCardItem({
 
         <div className="mt-auto flex flex-col sm:flex-row sm:items-end sm:justify-between">
           <div className="flex-1 min-w-0">
-            {baseProduct.colors && baseProduct.colors.length > 0 ? (
-              <div className="mb-1 flex gap-1">
-                {baseProduct.colors.map((color: string) => {
-                  const colorMap: { [key: string]: string } = {
-                    "Svart": "#000000",
-                    "Hvit": "#FFFFFF",
-                    "Grå": "#808080",
-                    "Grønn": "#22c55e",
-                    "Blå": "#3b82f6",
-                    "Rød": "#ef4444",
-                  };
-                  return (
-                    <button
-                      key={color}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (baseProduct.colorImages && baseProduct.colorImages[color]) {
-                          handleColorChange(color, baseProduct.colorImages[color]);
-                        }
-                      }}
-                      className="w-5 h-5 rounded-full border-2 border-gray-300 hover:border-black transition-all"
-                      style={{ backgroundColor: colorMap[color] || color }}
-                      title={color}
-                    />
-                  );
-                })}
-              </div>
-            ) : null}
+
             {combined.variants.length > 1 && (
               <div className="mb-1">
                 <div className="flex flex-wrap gap-1">
@@ -190,7 +172,12 @@ export default function ProductCardItem({
             <AddToCartButton
               product={baseProduct}
               quantity={quantity}
-              className="w-full sm:flex-1 rounded-full border border-gray-300 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-white sm:bg-[#12b190] sm:hover:bg-[#29ecc5] transition md:text-white md:hover:border-black md:bg-black md:hover:bg-gray-50 sm:hover:text-black whitespace-nowrap"
+              disabled={isOutOfStock}
+              className={`w-full sm:flex-1 rounded-full border px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium transition whitespace-nowrap ${
+                isOutOfStock
+                  ? 'bg-gray-300 border-gray-400 text-gray-500 cursor-not-allowed hover:bg-gray-300'
+                  : 'border-gray-300 text-white sm:bg-[#12b190] sm:hover:bg-[#29ecc5] md:text-white md:hover:border-black md:bg-black md:hover:bg-gray-50 sm:hover:text-black'
+              }`}
             />
           </div>
         </div>

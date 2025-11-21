@@ -9,6 +9,7 @@ interface AddToCartButtonProps {
   className?: string;
   children?: React.ReactNode;
   quantity?: number;
+  disabled?: boolean;
 }
 
 export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
@@ -16,13 +17,14 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   className = '',
   children,
   quantity = 1,
+  disabled = false,
 }) => {
   const { addToCart, } = useCart();
   const [isAdding, setIsAdding] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
 
   const handleAddToCart = () => {
-    if (isAdding) return;
+    if (isAdding || disabled) return;
 
     setIsAdding(true);
     addToCart(product, quantity);
@@ -42,10 +44,12 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   return (
     <button
       onClick={handleAddToCart}
-      disabled={isAdding}
+      disabled={isAdding || disabled}
       className={` ${defaultClasses} ${className}`}
     >
-      {justAdded ? (
+      {disabled ? (
+        'Out of Stock'
+      ) : justAdded ? (
         <>
           <Check className="h-4 w-4" />
           Lagt til!
