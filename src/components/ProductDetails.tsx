@@ -201,6 +201,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
             {/* VARIANT SELECTOR - Mobile */}
             {hasVariants && (
               <div className="mt-3">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Velg variant:</label>
                 <div className="flex flex-wrap gap-2">
                   {combinedProduct!.variants.map((variant, idx) => (
                     <button
@@ -218,6 +219,52 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                       {variant.variantName}
                     </button>
                   ))}
+                </div>
+              </div>
+            )}
+            
+            {/* COLOR SELECTOR - Mobile */}
+            {product.colors && product.colors.length > 1 && (
+              <div className="mt-3">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Farge:</label>
+                <div className="flex flex-wrap gap-2">
+                  {product.colors.map((color) => {
+                    const colorMap: { [key: string]: string } = {
+                      "Svart": "#000000",
+                      "Hvit": "#FFFFFF",
+                      "Grå": "#808080",
+                      "Grønn": "#22c55e",
+                      "Lys Grønn": "#90EE90",
+                      "Blå": "#3b82f6",
+                      "Rød": "#ef4444",
+                      "Jungle Green": "#006400",
+                      "Black Olive": "#3b3c36",
+                      "Special": "#ef4444",
+                      "Peach": "#FFDAB9"
+                    };
+                    const colorValue = colorMap[color];
+                    const isGradient = colorValue === "gradient";
+                    const isSelected = selectedColor === color;
+                    return (
+                      <button
+                        key={color}
+                        onClick={() => {
+                          setSelectedColor(color);
+                          if (product.colorImageArrays && product.colorImageArrays[color]) {
+                            const colorImages = product.colorImageArrays[color];
+                            setCurrentImages(colorImages);
+                            setSelectedImage(colorImages[0]);
+                          } else if (product.colorImages && product.colorImages[color]) {
+                            setCurrentImages([product.colorImages[color]]);
+                            setSelectedImage(product.colorImages[color]);
+                          }
+                        }}
+                        className={`w-10 h-10 rounded-full border-2 transition-all ${isSelected ? 'border-black ring-2 ring-black' : 'border-gray-300 hover:border-black'}`}
+                        style={isGradient ? { background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' } : { backgroundColor: colorValue || "#FFFFFF" }}
+                        title={color}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -242,7 +289,9 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
           {/* Mobile Compatible Accessories */}
           <div className="mt-6">
             <h3 className="font-semibold mb-3 text-black">Kompatible tilbehør:</h3>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="relative overflow-hidden">
+              <div id="mobileAccessoriesCarousel" className="overflow-hidden scroll-smooth snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                <div className="inline-flex gap-2">
               {(() => {
                 const productName = product.name.split(' - ')[0].trim().split(' ')[0];
                 const specificAccessories = accessoriesProducts.filter(acc => 
@@ -258,61 +307,77 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                   )
                 );
                 
-                let displayAccessories = [];
-                if (specificAccessories.length >= 3) {
-                  displayAccessories = [
-                    ...specificAccessories.slice(0, 3),
-                    universalAccessories[0]
-                  ];
-                } else {
-                  displayAccessories = [
-                    ...specificAccessories,
-                    ...universalAccessories.slice(0, 4 - specificAccessories.length)
-                  ];
-                }
-                displayAccessories = displayAccessories.filter(Boolean).slice(0, 4);
+                const displayAccessories = [...specificAccessories, ...universalAccessories];
                 
-                return displayAccessories.length > 0 ? displayAccessories.map((accessory) => {
-                  const isSelected = selectedAccessories.some(acc => acc.id === accessory.id);
-                  return (
-                    <button
-                      key={accessory.id}
-                      onClick={() => {
-                        if (isSelected) {
-                          setSelectedAccessories(prev => prev.filter(acc => acc.id !== accessory.id));
-                        } else {
-                          setSelectedAccessories(prev => [...prev, {
-                            id: accessory.id,
-                            name: accessory.name,
-                            price: accessory.price,
-                            image: accessory.image
-                          }]);
-                        }
-                      }}
-                      className={`border rounded-md p-2 transition-colors bg-white text-left ${
-                        isSelected ? 'border-[#12b190] ring-2 ring-[#12b190]' : 'border-gray-200 hover:border-[#12b190]'
-                      }`}
-                    >
-                      <div className="aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center">
-                        <Image
-                          src={accessory.image}
-                          alt={accessory.name}
-                          width={100}
-                          height={100}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <p className="text-xs text-gray-700 text-center line-clamp-2">{accessory.name}</p>
-                      <p className="text-xs font-semibold text-center text-[#12b190] mt-1">{formatCurrency(accessory.price)}</p>
-                    </button>
-                  );
-                }) : null;
+                return displayAccessories.length > 0 ? (
+                  Array.from({ length: Math.ceil(displayAccessories.length / 4) }).map((_, pageIndex) => (
+                    <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-2 min-w-full flex-shrink-0 snap-start">
+                      {displayAccessories.slice(pageIndex * 4, pageIndex * 4 + 4).map((accessory) => {
+                        const isSelected = selectedAccessories.some(acc => acc.id === accessory.id);
+                        return (
+                          <button
+                            key={accessory.id}
+                            onClick={() => {
+                              if (isSelected) {
+                                setSelectedAccessories(prev => prev.filter(acc => acc.id !== accessory.id));
+                              } else {
+                                setSelectedAccessories(prev => [...prev, {
+                                  id: accessory.id,
+                                  name: accessory.name,
+                                  price: accessory.price,
+                                  image: accessory.image
+                                }]);
+                              }
+                            }}
+                            className={`border rounded-md p-2 transition-colors bg-white text-left ${
+                              isSelected ? 'border-[#12b190] ring-2 ring-[#12b190]' : 'border-gray-200 hover:border-[#12b190]'
+                            }`}
+                          >
+                            <div className="aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center">
+                              <Image
+                                src={accessory.image}
+                                alt={accessory.name}
+                                width={100}
+                                height={100}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                            <p className="text-xs text-gray-700 text-center line-clamp-2">{accessory.name}</p>
+                            <p className="text-xs font-semibold text-center text-[#12b190] mt-1">{formatCurrency(accessory.price)}</p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  ))
+                ) : null;
               })()}
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  const container = document.getElementById('mobileAccessoriesCarousel');
+                  const scrollAmount = container?.offsetWidth || 0;
+                  if (container) container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                }}
+                className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-2 shadow-md z-10"
+              >
+                <ChevronLeft size={16} className="text-gray-700" />
+              </button>
+              <button
+                onClick={() => {
+                  const container = document.getElementById('mobileAccessoriesCarousel');
+                  const scrollAmount = container?.offsetWidth || 0;
+                  if (container) container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }}
+                className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-2 shadow-md z-10"
+              >
+                <ChevronRight size={16} className="text-gray-700" />
+              </button>
             </div>
           </div>
 
           {/* Mobile Price and Cart - After Accessories */}
-          <div className="mt-6 p-3 bg-white">
+          <div className="mt-6 p-3 bg-white relative z-10">
             <div className="text-xl font-bold text-black mb-3">{formatCurrency(product.originalPrice + selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}</div>
             
             <div className="flex items-center gap-3 mb-3">
@@ -540,7 +605,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
             </div>
 
             {/* KEY FEATURES & ACCESSORIES GRID */}
-            <div className="mt-2 grid grid-cols-2 gap-4">
+            <div className="mt-2 lg:-mt-12 grid grid-cols-2 gap-4">
               {/* KEY FEATURES */}
               <div>
                 <h3 className="font-semibold mb-1 text-black">Hovedfunksjoner:</h3>
@@ -643,6 +708,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                 </div>
               </div>
             </div>
+            {/* Price Section */}
             <div className="flex flex-col gap-2 -mt-3">
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-bold text-black">{formatCurrency(totalPrice)}</span>
@@ -657,11 +723,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
               )}
             </div>
 
-
-
-            {/* Quantity + Add to Cart in one row */}
+            {/* Quantity + Add to Cart */}
             <div className="flex items-center gap-6 mt-1">
-              {/* Quantity Controls */}
               <div className="flex items-center gap-4">
                 <span className="text-sm text-gray-600">Antall:</span>
                 <div className="flex items-center gap-2">
@@ -714,9 +777,9 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
       </div>
       
       {/* PACKAGE AND SPECIFICATIONS LAYOUT */}
-      <div className="w-full max-w-full -mt-32">
+      <div className="w-full max-w-full -mt-24">
         {/* TRUST BADGES - Above specifications */}
-        <div className="hidden lg:block max-w-7xl mx-auto px-4 mb-4 -mt-14 relative z-10 pl-16">
+        <div className={`hidden lg:block max-w-7xl mx-auto px-4 mb-4 relative z-10 pl-16 ${hasVariants || (product.colors && product.colors.length > 1) ? '-mt-[150px]' : 'mt-8'}`}>
           <div className="grid grid-cols-2 gap-3 max-w-md">
             <div className="bg-white rounded-lg p-3 shadow-md border-2 border-gray-200">
               <div className="flex flex-col items-center text-center">
@@ -743,16 +806,21 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
           </div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 w-full max-w-full mt-12">
-          {/* PACKAGE BUILDER HALF - First on mobile, left on desktop */}
-          <div className="px-4 lg:px-8 py-6 lg:pt-2 order-1 lg:order-2 w-full max-w-full">
-            <BikePackageBuilder product={product} />
-          </div>
-          
-          {/* SPECIFICATIONS HALF - Second on mobile, right on desktop */}
-          <div className="w-full max-w-full order-2 lg:order-1 lg:pt-2 px-4 lg:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 w-full max-w-full mt-24 lg:mt-20">
+          {/* SPECIFICATIONS HALF - First on mobile, right on desktop */}
+          <div className="w-full max-w-full lg:order-1 lg:pt-2 px-4 lg:px-0">
             <TechnicalSpecifications product={product} />
           </div>
+          
+          {/* PACKAGE BUILDER HALF - Hidden on mobile, shown on desktop */}
+          <div className="hidden lg:block px-4 lg:px-8 py-6 lg:pt-2 lg:order-2 w-full max-w-full">
+            <BikePackageBuilder product={product} />
+          </div>
+        </div>
+        
+        {/* PACKAGE BUILDER - Show at end on mobile only */}
+        <div className="lg:hidden px-4 py-6 w-full max-w-full">
+          <BikePackageBuilder product={product} />
         </div>
       </div>
 
