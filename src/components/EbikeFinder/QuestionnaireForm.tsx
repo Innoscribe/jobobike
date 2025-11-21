@@ -60,11 +60,15 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
     extraNeeds: [],
   });
 
+  const [errors, setErrors] = useState<{age?: string; height?: string; weight?: string}>({});
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 3;
 
   const handleChange = (field: keyof UserPreferences, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    if (field === 'age' || field === 'height' || field === 'weight') {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    }
   };
 
   const handleMultiSelect = (field: 'usageType' | 'extraNeeds', value: string) => {
@@ -84,12 +88,30 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
     }
   };
 
+  const validateInputs = () => {
+    const newErrors: {age?: string; height?: string; weight?: string} = {};
+    
+    if (formData.age && (formData.age < 10 || formData.age > 100)) {
+      newErrors.age = 'Vennligst skriv inn en realistisk alder (10-100 år)';
+    }
+    if (formData.height && (formData.height < 100 || formData.height > 250)) {
+      newErrors.height = 'Vennligst skriv inn en realistisk høyde (100-250 cm)';
+    }
+    if (formData.weight && (formData.weight < 30 || formData.weight > 200)) {
+      newErrors.weight = 'Vennligst skriv inn en realistisk vekt (30-200 kg)';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const isFormValid = () => {
-    return formData.usageType && formData.usageType.length > 0;
+    return formData.usageType && formData.usageType.length > 0 && validateInputs();
   };
 
   const nextPage = (e?: React.MouseEvent) => {
     e?.preventDefault();
+    if (currentPage === 1 && !validateInputs()) return;
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
@@ -140,10 +162,13 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
                 type="number"
                 value={formData.age}
                 onChange={(e) => handleChange('age', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] focus:border-[#12b190] transition-all"
-                min="16"
+                className={`w-full px-4 py-3 bg-white border-2 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] transition-all ${
+                  errors.age ? 'border-red-500' : 'border-gray-300 focus:border-[#12b190]'
+                }`}
+                min="10"
                 max="100"
               />
+              {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
             </div>
           </div>
 
@@ -154,10 +179,13 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
                 type="number"
                 value={formData.height}
                 onChange={(e) => handleChange('height', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] focus:border-[#12b190] transition-all"
-                min="140"
-                max="220"
+                className={`w-full px-4 py-3 bg-white border-2 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] transition-all ${
+                  errors.height ? 'border-red-500' : 'border-gray-300 focus:border-[#12b190]'
+                }`}
+                min="100"
+                max="250"
               />
+              {errors.height && <p className="text-red-500 text-sm mt-1">{errors.height}</p>}
             </div>
 
             <div>
@@ -166,10 +194,13 @@ export default function QuestionnaireForm({ onSubmit }: QuestionnaireFormProps) 
                 type="number"
                 value={formData.weight}
                 onChange={(e) => handleChange('weight', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] focus:border-[#12b190] transition-all"
-                min="40"
+                className={`w-full px-4 py-3 bg-white border-2 text-gray-700 rounded-xl focus:ring-2 focus:ring-[#12b190] transition-all ${
+                  errors.weight ? 'border-red-500' : 'border-gray-300 focus:border-[#12b190]'
+                }`}
+                min="30"
                 max="200"
               />
+              {errors.weight && <p className="text-red-500 text-sm mt-1">{errors.weight}</p>}
             </div>
           </div>
 

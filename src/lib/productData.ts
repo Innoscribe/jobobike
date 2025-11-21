@@ -241,7 +241,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45km", pedalAssistanse: "90km", kombinert: "65km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "65-90 km", kombinert: "65-90 km" },
         stigningsevne: "15°",
         svingradius: "2.5m",
       },
@@ -274,7 +274,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 90Nm",
       "36V 15Ah Samsung (540Wh)",
-      "Opptil 90km",
+      "Opptil 90 km rekkevidde",
       "27.5×2.4 Belt dekk",
       "Aluminiumslegering ramme",
       "Hydraulic Disc bremser",
@@ -366,7 +366,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "40km", pedalAssistanse: "65km", kombinert: "55km" },
+        rekkevidde: { renElektrisk: "40 km", pedalAssistanse: "55-65 km", kombinert: "55-65 km" },
         stigningsevne: "20°",
         svingradius: "3m",
       },
@@ -399,7 +399,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "Bafang 250W, 80Nm",
       "48V 13Ah (624Wh)",
-      "Opptil 65km",
+      "Opptil 65 km rekkevidde",
       "26×4.0 CST/Kenda Fat Tires",
       "6061 Aluminiumslegering ramme (Maks last 150kg)",
       "80mm RST Hydraulisk demping",
@@ -499,7 +499,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "50km", pedalAssistanse: "90km", kombinert: "70km" },
+        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "70-90 km", kombinert: "70-90 km" },
         stigningsevne: "20°",
         svingradius: "3m",
       },
@@ -532,7 +532,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "Bafang 250W, 80Nm",
       "48V 20Ah (960Wh)",
-      "Opptil 90km",
+      "Opptil 90 km rekkevidde",
       "26×4.0 CST/Kenda Fat Tires",
       "6061 Aluminiumslegering ramme (Maks last 150kg)",
       "80mm RST Hydraulisk demping",
@@ -625,7 +625,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45km", pedalAssistanse: "150km", kombinert: "65km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "65-150 km (avhengig av forhold)", kombinert: "65-150 km (avhengig av forhold)" },
         stigningsevne: "18°",
         svingradius: "2.2m",
       },
@@ -658,7 +658,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "Bafang 250W, 80Nm",
       "48V 15Ah LG (720Wh)",
-      "Opptil 150km",
+      "Opptil 150 km rekkevidde",
       "20×3.0 Kenda Fat Tires",
       "Dobbel ramme (Maks last 150kg)",
       "Tektro Mechanical Disc bremser",
@@ -761,7 +761,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "50km", pedalAssistanse: "160km", kombinert: "70km" },
+        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "70-160 km (avhengig av forhold)", kombinert: "70-160 km (avhengig av forhold)" },
         stigningsevne: "18°",
         svingradius: "2.2m",
       },
@@ -794,7 +794,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 80Nm",
       "48V 15Ah LG (720Wh)",
-      "Opptil 160km",
+      "Opptil 160 km rekkevidde",
       "20×3.0 Kenda dekk",
       "Dobbel ramme (Maks last 150kg)",
       "Dempet setepinne",
@@ -898,7 +898,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "50km", pedalAssistanse: "120km", kombinert: "80km" },
+        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "80-120 km", kombinert: "80-120 km" },
         stigningsevne: "25°",
         svingradius: "2.8m",
       },
@@ -931,7 +931,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 50Nm",
       "36V 10Ah Samsung (360Wh)",
-      "Opptil 120km",
+      "Opptil 120 km rekkevidde",
       "20×2.125 CST dekk",
       "6061 Aluminiumslegering ramme",
       "Full demping (Foran 120mm / Bak 100mm)",
@@ -1024,7 +1024,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45km", pedalAssistanse: "140km", kombinert: "60km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "60-140 km (avhengig av forhold)", kombinert: "60-140 km (avhengig av forhold)" },
         stigningsevne: "15°",
         svingradius: "2.2m",
       },
@@ -1057,7 +1057,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "Bafang 250W, 80Nm",
       "48V 15Ah LG (720Wh)",
-      "Opptil 140km",
+      "Opptil 140 km rekkevidde",
       "20×3.0 Kenda dekk",
       "Forsterket ramme (Maks last 180kg)",
       "Tektro Mechanical Disc bremser",
@@ -1146,7 +1146,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "60-80 km", kombinert: "50-70 km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "50-80 km", kombinert: "50-80 km" },
         stigningsevne: "15°",
       },
       hjul: {
@@ -1178,7 +1178,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 40Nm",
       "36V 13Ah (468Wh)",
-      "Opptil 80km",
+      "Opptil 80 km rekkevidde",
       "20×2.125 CST dekk",
       "6061 Aluminiumslegering ramme",
       "Fjærgaffel demping",
@@ -1266,7 +1266,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "60-80 km", kombinert: "50-70 km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "50-80 km", kombinert: "50-80 km" },
         stigningsevne: "20°",
       },
       hjul: {
@@ -1298,7 +1298,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 45Nm",
       "36V 15Ah Samsung (540Wh)",
-      "Opptil 80km",
+      "Opptil 80 km rekkevidde",
       "27.5×2.4 Belt dekk",
       "6061 Aluminiumslegering ramme",
       "Hydraulic Disc bremser",
@@ -1381,7 +1381,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "60 km", pedalAssistanse: "90-110 km", kombinert: "75-95 km" },
+        rekkevidde: { renElektrisk: "60 km", pedalAssistanse: "75-110 km (avhengig av forhold)", kombinert: "75-110 km (avhengig av forhold)" },
         stigningsevne: "25°",
         svingradius: "1.8m",
       },
@@ -1409,7 +1409,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 90Nm",
       "36V 15Ah Samsung (540Wh)",
-      "Opptil 110km",
+      "Opptil 110 km rekkevidde",
       "27.5×2.4 Kenda hjul",
       "6061 Aluminiumslegering ramme",
       "Fjærgaffel demping",
@@ -1497,7 +1497,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "60 km", pedalAssistanse: "80-100 km", kombinert: "70-90 km" },
+        rekkevidde: { renElektrisk: "60 km", pedalAssistanse: "70-100 km", kombinert: "70-100 km" },
         stigningsevne: "20°",
       },
       hjul: {
@@ -1529,7 +1529,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 80Nm",
       "48V 13Ah ×2 (1248Wh)",
-      "Opptil 100km",
+      "Opptil 100 km rekkevidde",
       "20×3.0 CST Cargo hjul",
       "6061 Aluminiumslegering ramme (Maks last 180kg)",
       "Cargo-gaffel demping",
@@ -1613,7 +1613,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "70-90 km", kombinert: "60-80 km" },
+        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "60-90 km", kombinert: "60-90 km" },
         stigningsevne: "15°",
       },
       hjul: {
@@ -1645,7 +1645,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "250W, 35Nm",
       "36V 14Ah (504Wh)",
-      "Opptil 90km",
+      "Opptil 90 km rekkevidde",
       "28×1.75 hjul",
       "Høyfast stål ramme",
       "V-bremser",
@@ -1724,7 +1724,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "60 km", pedalAssistanse: "80-100 km", kombinert: "70-90 km" },
+        rekkevidde: { renElektrisk: "60 km", pedalAssistanse: "70-100 km", kombinert: "70-100 km" },
         stigningsevne: "20°",
       },
       hjul: { størrelse: '28"', dekkType: "Urban", dekkStørrelse: '28 x 1.6"', felgMateriale: "Aluminiumslegering" },
@@ -1751,7 +1751,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "250W, 70Nm",
       "36V 16Ah (576Wh)",
-      "Opptil 100km",
+      "Opptil 100 km rekkevidde",
       "28×1.6 Urban hjul",
       "6061 Aluminiumslegering ramme",
       "Hydrauliske skivebremser",
@@ -1827,7 +1827,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "30 km", pedalAssistanse: "40-60 km", kombinert: "35-50 km" },
+        rekkevidde: { renElektrisk: "30 km", pedalAssistanse: "35-60 km", kombinert: "35-60 km" },
         stigningsevne: "12°",
       },
       hjul: {
@@ -1859,7 +1859,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 30Nm",
       "36V 15Ah Samsung (540Wh)",
-      "Opptil 60km",
+      "Opptil 60 km rekkevidde",
       "27.5×2.4 Kenda hjul",
       "Høyfast stål ramme",
       "Hydraulic Disc bremser",
@@ -1945,7 +1945,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "70 km", kombinert: "50-70 km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "50-70 km", kombinert: "50-70 km" },
         stigningsevne: "15°",
         svingradius: "2.5m",
       },
@@ -1973,7 +1973,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 30Nm",
       "36V 14Ah LG (504Wh)",
-      "Opptil 70km",
+      "Opptil 70 km rekkevidde",
       "700C×38/40 hjul",
       "6061 Aluminiumslegering ramme",
       "Tektro Mechanical Disc bremser",
@@ -2058,7 +2058,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "70 km", kombinert: "50-70 km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "50-70 km", kombinert: "50-70 km" },
         stigningsevne: "15°",
         svingradius: "2.5m",
       },
@@ -2086,7 +2086,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 30Nm",
       "36V 14Ah LG (504Wh)",
-      "Opptil 70km",
+      "Opptil 70 km rekkevidde",
       "700C×38C hjul",
       "6061 Aluminiumslegering ramme",
       "Tektro Mechanical Disc bremser",
@@ -2167,7 +2167,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "90 km", kombinert: "60-90 km" },
+        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "60-90 km", kombinert: "60-90 km" },
         stigningsevne: "20°",
         svingradius: "2.8m",
       },
@@ -2195,7 +2195,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "Bafang 250W, 55Nm",
       "36V 14Ah LG (504Wh)",
-      "Opptil 90km",
+      "Opptil 90 km rekkevidde",
       "28×2.0 CST hjul",
       "6061 Aluminiumslegering ramme",
       "Tektro Hydraulic Disc bremser",
@@ -2287,7 +2287,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "35 km", pedalAssistanse: "60 km", kombinert: "40-60 km" },
+        rekkevidde: { renElektrisk: "35 km", pedalAssistanse: "40-60 km", kombinert: "40-60 km" },
         stigningsevne: "15°",
         svingradius: "2.0m",
       },
@@ -2320,7 +2320,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 45Nm",
       "36V 10Ah Samsung (360Wh)",
-      "Opptil 60km",
+      "Opptil 60 km rekkevidde",
       "20×2.125 CST dekk",
       "6061 Aluminiumslegering ramme",
       "Tektro Mechanical Disc bremser",
@@ -2399,7 +2399,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "90 km", kombinert: "60-90 km" },
+        rekkevidde: { renElektrisk: "50 km", pedalAssistanse: "60-90 km", kombinert: "60-90 km" },
         stigningsevne: "18°",
         svingradius: "2.5m",
       },
@@ -2432,7 +2432,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "Bafang M200 250W, 65Nm",
       "36V 14Ah (504Wh)",
-      "Opptil 90km",
+      "Opptil 90 km rekkevidde",
       "26×2.35 CST hjul",
       "6061 Aluminiumslegering ramme",
       "Tektro Hydrauliske skivebremser",
@@ -2511,7 +2511,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "70 km", kombinert: "50-70 km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "50-70 km", kombinert: "50-70 km" },
         stigningsevne: "12°",
         svingradius: "3.5m",
       },
@@ -2544,7 +2544,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "Bafang 250W, 35Nm",
       "48V 15Ah LG (720Wh)",
-      "Opptil 70km",
+      "Opptil 70 km rekkevidde",
       "20×3.0 CST hjul",
       "Høyfast stål ramme (Maks last 160kg)",
       "Fjærgaffel demping",
@@ -2629,7 +2629,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       },
       ytelse: {
         maksFart: "25 km/t",
-        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "60-80 km", kombinert: "50-70 km" },
+        rekkevidde: { renElektrisk: "45 km", pedalAssistanse: "50-80 km", kombinert: "50-80 km" },
         stigningsevne: "15°",
         svingradius: "2.5m",
       },
@@ -2657,7 +2657,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     keyFeatures: [
       "XOFO 250W, 40Nm",
       "36V 15Ah Samsung (540Wh)",
-      "Opptil 80km",
+      "Opptil 80 km rekkevidde",
       "27.5×2.4 Kenda hjul",
       "6061 Aluminiumslegering ramme",
       "Hydraulic Disc bremser",
@@ -2706,27 +2706,7 @@ export const searchProducts = (query: string): ProductCard[] => {
   const lowerQuery = query.toLowerCase().trim();
 
   return PRODUCTS_DATA.filter((product) => {
-    if (product.name.toLowerCase().includes(lowerQuery)) return true;
-    if (product.description.toLowerCase().includes(lowerQuery)) return true;
-
-    if (product.features?.some((f) => f.toLowerCase().includes(lowerQuery))) return true;
-    if (product.keyFeatures?.some((f) => f.toLowerCase().includes(lowerQuery))) return true;
-
-    if (product.category?.some((cat) => cat.toLowerCase().includes(lowerQuery))) return true;
-
-    if (product.specifications) {
-      const specs = product.specifications;
-      if (specs.motor?.toLowerCase().includes(lowerQuery)) return true;
-      if (specs.battery?.toLowerCase().includes(lowerQuery)) return true;
-      if (specs.frame?.toLowerCase().includes(lowerQuery)) return true;
-      if (specs.drivetrain?.toLowerCase().includes(lowerQuery)) return true;
-    }
-
-    if (product.badge && product.badge.toLowerCase().includes(lowerQuery)) return true;
-
-
-
-    return false;
+    return product.name.toLowerCase().startsWith(lowerQuery);
   });
 };
 

@@ -120,16 +120,15 @@ export function calculateBikeMatch(
 }
 
 function calculateTerrainScore(userTerrain: string, bikeTerrain?: string[], motorWatt?: number): number {
-  if (!bikeTerrain || bikeTerrain.length === 0) return 0.5;
+  if (!bikeTerrain || bikeTerrain.length === 0) return 0.7;
 
   const terrainMatch = bikeTerrain.some(t => 
     t.toLowerCase().includes(userTerrain.toLowerCase()) ||
     userTerrain.toLowerCase().includes(t.toLowerCase())
   );
 
-  if (!terrainMatch) return 0.3;
+  if (!terrainMatch) return 0.5;
 
-  // Check motor power for terrain
   const requiredPower = {
     'flat': 250,
     'small hills': 350,
@@ -141,11 +140,12 @@ function calculateTerrainScore(userTerrain: string, bikeTerrain?: string[], moto
   if (motorWatt && motorWatt >= required) return 1.0;
   if (motorWatt && motorWatt >= required * 0.8) return 0.8;
   
-  return 0.6;
+  return 0.7;
 }
 
 function calculateUsageScore(userUsage: string[], bikeUsage?: string[]): number {
-  if (!bikeUsage || bikeUsage.length === 0) return 0.5;
+  if (!bikeUsage || bikeUsage.length === 0) return 0.6;
+  if (userUsage.length === 0) return 0.6;
 
   const matches = userUsage.filter(usage => 
     bikeUsage.some(bu => 
@@ -154,46 +154,48 @@ function calculateUsageScore(userUsage: string[], bikeUsage?: string[]): number 
     )
   );
 
-  return matches.length / userUsage.length;
+  const score = matches.length / userUsage.length;
+  return score > 0 ? score : 0.4;
 }
 
 function calculateRangeScore(requiredRange: number, bikeRange?: number): number {
-  if (!bikeRange) return 0.5;
+  if (!bikeRange) return 0.6;
   
   if (bikeRange >= requiredRange * 1.2) return 1.0;
   if (bikeRange >= requiredRange) return 0.9;
-  if (bikeRange >= requiredRange * 0.8) return 0.7;
-  if (bikeRange >= requiredRange * 0.6) return 0.5;
+  if (bikeRange >= requiredRange * 0.8) return 0.8;
+  if (bikeRange >= requiredRange * 0.6) return 0.6;
   
-  return 0.3;
+  return 0.4;
 }
 
 function calculateBudgetScore(budget: number, price: number): number {
   if (price <= budget) return 1.0;
   if (price <= budget * 1.1) return 0.8;
-  if (price <= budget * 1.2) return 0.6;
-  
-  return 0.3;
-}
-
-function calculatePhysicalFitScore(height: number, frameHeight?: number): number {
-  if (!frameHeight) return 0.5;
-
-  // Rough frame size calculation based on height
-  const idealFrame = (height - 100) * 0.66;
-  const difference = Math.abs(idealFrame - frameHeight);
-
-  if (difference <= 2) return 1.0;
-  if (difference <= 4) return 0.8;
-  if (difference <= 6) return 0.6;
+  if (price <= budget * 1.2) return 0.7;
+  if (price <= budget * 1.5) return 0.5;
   
   return 0.4;
 }
 
+function calculatePhysicalFitScore(height: number, frameHeight?: number): number {
+  if (!frameHeight) return 0.7;
+
+  const idealFrame = (height - 100) * 0.66;
+  const difference = Math.abs(idealFrame - frameHeight);
+
+  if (difference <= 2) return 1.0;
+  if (difference <= 4) return 0.9;
+  if (difference <= 6) return 0.8;
+  if (difference <= 10) return 0.6;
+  
+  return 0.5;
+}
+
 function calculateComfortScore(userComfort: string, bikeComfort?: string): number {
-  if (!bikeComfort) return 0.5;
+  if (!bikeComfort) return 0.7;
   
   if (userComfort.toLowerCase() === bikeComfort.toLowerCase()) return 1.0;
   
-  return 0.6;
+  return 0.7;
 }

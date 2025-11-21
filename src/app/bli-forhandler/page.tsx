@@ -35,22 +35,25 @@ export default function BliForhandlerPage() {
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {};
     
-    if (!formData.firmanavn || formData.firmanavn.length < 2) {
+    if (!formData.firmanavn || formData.firmanavn.trim().length < 2) {
       newErrors.firmanavn = 'Firmanavn må være minst 2 tegn';
     }
     
-    if (!formData.orgnr || !/^[0-9]{9}$/.test(formData.orgnr)) {
+    if (!formData.orgnr) {
+      newErrors.orgnr = 'Organisasjonsnummer er påkrevd';
+    } else if (!/^[0-9]{9}$/.test(formData.orgnr.replace(/\s/g, ''))) {
       newErrors.orgnr = 'Organisasjonsnummer må være 9 siffer';
     }
     
-    if (!formData.kontaktperson || formData.kontaktperson.length < 2) {
-      newErrors.kontaktperson = 'Kontaktperson må være minst 2 tegn';
-    }
-    if (formData.kontaktperson && !/^[a-zA-ZÀ-ÿ\s]+$/.test(formData.kontaktperson)) {
+    if (!formData.kontaktperson || formData.kontaktperson.trim().length < 2) {
+      newErrors.kontaktperson = 'Kontaktperson er påkrevd';
+    } else if (!/^[a-zA-ZÀ-ÿ\s\-\.]+$/.test(formData.kontaktperson)) {
       newErrors.kontaktperson = 'Kontaktperson kan kun inneholde bokstaver';
     }
     
-    if (!formData.epost || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.epost)) {
+    if (!formData.epost) {
+      newErrors.epost = 'E-post er påkrevd';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.epost)) {
       newErrors.epost = 'Vennligst skriv inn en gyldig e-postadresse';
     }
     
@@ -65,7 +68,7 @@ export default function BliForhandlerPage() {
       }
     }
     
-    if (!formData.beskrivelse || formData.beskrivelse.length < 10) {
+    if (!formData.beskrivelse || formData.beskrivelse.trim().length < 10) {
       newErrors.beskrivelse = 'Beskrivelse må være minst 10 tegn';
     }
     

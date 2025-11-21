@@ -31,7 +31,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Front Bagasjebrett",
     description: "Lettvekts aluminium front bagasjebrett med holdbar matt svart pulverlakkering, rustfritt og perfekt for alle værforhold.",
     fullDescription: "JOBOBIKE front bagasjebrett er laget av lettvekts aluminium med holdbar, matt svart pulverlakkering. Det er rustfritt, noe som gjør det perfekt for alle værforhold. Uansett om du reiser i røft terreng eller i byen – JOBOBIKE bagasjebrettet er garantert ikke å falle ned ved plutselig svinging eller hard bremsing.",
-    price: 945.31,
+    price: 799,
     currency: "kr",
     image: "/images/front-rack/front-1.png",
     images: [
@@ -70,7 +70,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Kurv med Tre Håndtak",
     description: "Stilig integrert kurv med tre håndtak, perfekt for å bære dagligvarer og personlige eiendeler på elsykkelen din.",
     fullDescription: "JOBOBIKE-kurven med tre håndtak kombinerer funksjonalitet med elegant design. Den er laget av holdbare materialer med et vakkert trehåndtak som gir et eksklusivt preg. Kurven kan monteres både på front- og bakbagasjebrett. Den integrerte designen sørger for rask og enkel installasjon uten behov for ekstra festebraketter eller spesialverktøy.",
-    price: 1225.40,
+    price: 999,
     currency: "kr",
     image: "/images/basket/basket-1.png",
     images: [
@@ -109,7 +109,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Dekselveske",
     description: "Vanntett dekselveske som beskytter din sammenleggbare sykkel mot støv, vann og riper. Spesielt designet for JOBOBIKE Sam.",
     fullDescription: "Denne vanntette dekselvesken er spesielt utviklet for å beskytte din sammenleggbare JOBOBIKE Sam mot støv, vann og riper. Det slitesterke materialet gir langvarig beskyttelse, mens den kompakte utformingen gjør det enkelt å oppbevare og transportere sykkelen. Perfekt både til reise og lagring hjemme eller på jobb.",
-    price: 910.29,
+    price: 899,
     currency: "kr",
     image: "/images/Thermal/thermal-bag-1.png",
     images: [
@@ -140,7 +140,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Lås",
     description: "Robust sykkellås som gir maksimal sikkerhet for elsykkelen din, med tyverisikring og værbestandig konstruksjon.",
     fullDescription: "JOBOBIKE-låsen gir førsteklasses sikkerhet for elsykkelen din. Den er laget i herdet stål med både anti-pirk og anti-bor-beskyttelse, slik at sykkelen din forblir trygg ved parkering. Den værbestandige konstruksjonen fungerer godt i regn, snø og skitt, og den kompakte størrelsen gjør den enkel å ta med seg.",
-    price: 630.20,
+    price: 599,
     currency: "kr",
     image: "/images/lock/lock-1.png",
     images: [
@@ -170,7 +170,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Telefonholder (Vanntett Deksel)",
     description: "Sikker telefonholder med vanntett deksel, slik at du kan bruke telefonen til navigasjon samtidig som den er beskyttet mot vær og vind.",
     fullDescription: "Hold telefonen tilgjengelig og beskyttet med JOBOBIKE telefonholder. Det vanntette dekselet gir full berøringsskjerm-funksjonalitet samtidig som det beskytter mot regn, sprut og støv. Det sikre festesystemet sørger for at telefonen sitter stabilt selv på ujevne veier, noe som gjør den ideell til GPS-navigasjon under sykling.",
-    price: 315.10,
+    price: 299,
     currency: "kr",
     image: "/images/holder/holder-3.jpg",
     images: [
@@ -212,7 +212,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Sykkelspeil",
     description: "Høykvalitets bakspeil som gir utmerket sikt og økt sikkerhet når du sykler på elsykkelen.",
     fullDescription: "JOBOBIKE sykkelspeil forbedrer sikkerheten ved å gi et bredt synsfelt bakover med splintfritt glass. Den justerbare armen gjør at du enkelt kan finne riktig vinkel, og det robuste festesystemet holder speilet stabilt selv på humpete underlag. Et elegant design som passer godt sammen med sykkelens utseende.",
-    price: 315.10,
+    price: 599,
     currency: "kr",
     image: "/images/mirror/mirror-1.png",
     images: [
@@ -242,7 +242,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Sykkelhjelm",
     description: "CE EN 1078- og CPSC-sertifisert sykkelhjelm med støtbestandig konstruksjon og optimal ventilasjon for komfortable turer.",
     fullDescription: "JOBOBIKE sykkelhjelm er testet og sertifisert etter CE EN 1078 i Europa og CPSC i USA. Det støtbestandige PC-skallet på utsiden kombinert med en støtabsorberende EPS-innmat gir maksimal beskyttelse ved fall. Hjelmen har optimal ventilasjon, justerbart strammesystem og avtakbare puter for økt komfort på lange turer.",
-    price: 665.22,
+    price: 599,
     currency: "kr",
     image: "/images/helmet/helmet-1.png",
     images: [
@@ -290,7 +290,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Flaskeholder",
     description: "Holdbar flaskeholder i aluminium som holder vannflasken din sikkert på plass under turen. Enkel å montere og kompatibel med de fleste flaskestørrelser.",
     fullDescription: "Hold deg hydrert på turene dine med JOBOBIKE flaskeholder. Den er laget av lett aluminiumslegering og har et sikkert grep som holder flasken godt fast, selv på ujevnt underlag. Det universelle monteringssystemet passer til alle JOBOBIKE-rammer, og det stilrene designet matcher sykkelens estetikk.",
-    price: 175.06,
+    price: 159,
     currency: "kr",
     image: "/images/bottle/bottle-1.png",
     images: [
@@ -322,7 +322,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Integrert Frontkurv",
     description: "Integrert kurv spesielt designet for elsykler. Monteres direkte på front- eller bakbagasjebrett uten ekstra utstyr. Rask og enkel installasjon.",
     fullDescription: "Denne integrerte kurven er spesielt utviklet for elsykler og kan monteres direkte på front- eller bakbagasjebrett uten behov for ekstra frontbagasjebrett. Installasjonen er rask og enkel. Kurven er laget av aluminiumslegering og har en matt svart pulverlakk som gir utmerket rustbeskyttelse. Den er godt egnet for alle værforhold og har lang levetid. Designet kombinerer moderne urban stil med naturlige tre-detaljer.",
-    price: 1260.41,
+    price: 1099,
     currency: "kr",
     image: "/images/Integrated-basket/bak.jpg",
     images: [
@@ -366,7 +366,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Støtsikker Telefonholder",
     description: "Universell støtsikker telefonholder med antiskli-silikonputer og 360° rotasjon. Verktøyfri installasjon, passer telefoner fra 4,8\" til 7,0\".",
     fullDescription: "Sikre telefonen din på hver tur med denne støtsikre, universelle elsykkel-telefonholderen. Den er bygget for å tåle røffe veier og daglig pendling, med antiskli-klemme, 360° justerbar visning og et hurtig-installasjonssystem – helt uten verktøy. Holderen er kompatibel med telefoner som er 132–182 mm lange (ca. 4,8\" til 7,0\") og kan monteres på styre med diameter opptil 46 mm. Full silikonpolstring beskytter telefonen mot riper og støt, mens låseklemmen gir ekstra godt grep og stabilitet under turen.",
-    price: 315.10,
+    price: 399,
     currency: "kr",
     image: "/images/holder-shock/h.jpg",
     images: [
@@ -406,7 +406,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Logo Flaskeholder",
     description: "Premium flaskeholder med JOBOBIKE-logo. Solid konstruksjon med sikkert grep for standard vannflasker.",
     fullDescription: "En premium flaskeholder med tydelig JOBOBIKE-logo. Laget av materialer av høy kvalitet med en slitesterk svart finish. Holderen gir sikkert grep rundt standard vannflasker, samtidig som den tilfører elsykkelen et gjennomført og eksklusivt uttrykk. Enkel å montere på rammen med medfølgende skruer.",
-    price: 280.09,
+    price: 259,
     currency: "kr",
     image: "/images/bottle-logo/b.jpg",
     images: [
@@ -450,7 +450,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Magnetisk Flaskeholder",
     description: "Innovativ magnetisk flaskeholder for rask tilgang. Sterkt magnetfeste med enkel enhåndsbetjening.",
     fullDescription: "En revolusjonerende magnetisk flaskeholder som gjør det mulig å ta flasken raskt med én hånd mens du sykler. Kraftige magneter holder flasken sikkert på plass, men slipper den enkelt når du trenger den. Ideell for syklister som trenger hyppig tilgang til drikke uten å stoppe. Kompatibel med spesielle magnetiske vannflasker eller flasker med magnetadapter.",
-    price: 525.17,
+    price: 459,
     currency: "kr",
     image: "/images/magnet-holder/magnet-holder.png.png",
     images: [
@@ -487,7 +487,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Ensidig Sykkelveske",
     description: "Vanntett enkel sideveske til bakre bagasjebrett. Perfekt til daglig pendling og handleposer.",
     fullDescription: "En allsidig, vanntett enkel sideveske som festes til det bakre bagasjebrettet. Vesken har reflekterende detaljer for økt synlighet og flere rom for organisert oppbevaring. Ideell for pendlere som ønsker moderat lastekapasitet uten å bruke doble sidevesker. Hurtigfeste-systemet gjør det enkelt å ta vesken av og på sykkelen.",
-    price: 945.31,
+    price: 799,
     currency: "kr",
     image: "/images/pannier/pannier-1.png",
     images: [
@@ -541,7 +541,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Dobbel Sykkelveske Sett",
     description: "Vanntett dobbelt sideveskesett med maksimal lastekapasitet. Ideell for turer, storhandel og tung last.",
     fullDescription: "Et komplett dobbelt sideveskesystem for deg som trenger mye lastekapasitet. Settet består av to romslige vesker som festes på hver sin side av det bakre bagasjebrettet, noe som gir balansert vektfordeling og maksimal lagringsplass. Vanntett konstruksjon med rulletopp-lukking, reflekterende detaljer og hurtigfeste gjør dette perfekt for langturer, storhandel eller transport av utstyr.",
-    price: 1715.55,
+    price: 1399,
     currency: "kr",
     image: "/images/double-bag/d.jpg",
     images: [
@@ -596,7 +596,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Værtak",
     description: "Værbeskyttende canopy til lastesykler. Skjermer både rytter og last mot regn, sol og vind.",
     fullDescription: "JOBOBIKE Canopy gir omfattende værbeskyttelse for fører og last på lastesykler. Den robuste konstruksjonen beskytter mot regn, sterk sol og vind, og gjør helårsbruk langt mer komfortabel. Canopyen har solid aluminiumsramme, vanntett duk, enkel montering og kan justeres i høyde og vinkel. Perfekt for bud- og leveringskjøring, transport av barn eller for deg som sykler mye i all slags vær.",
-    price: 3746.21,
+    price: 2999,
     currency: "kr",
     image: "/images/canopy/c.jpg",
     images: [
@@ -636,7 +636,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Barnestyre",
     description: "Fremre styrebøyle for barn som passasjer. Gir en trygg og komfortabel plassering for yngre passasjerer.",
     fullDescription: "JOBOBIKE Monkey Bar er en frontmontert styrebøyle som gjør det mulig å frakte et barn trygt på lastesykkelen. Barnet får et sikkert område å holde seg fast i, plassert foran føreren for maksimal kontroll og mulighet for kommunikasjon. Bøylen har polstrede håndtak, justerbar posisjon og solid konstruksjon for høy sikkerhet og komfort.",
-    price: 3186.03,
+    price: 2499,
     currency: "kr",
     image: "/images/monkey-bar/m.jpg",
     images: [
@@ -673,7 +673,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Kaptein Stol",
     description: "Premium barnesete med full ryggstøtte og sikkerhetssele. Gir trygg og komfortabel sitteplass for unge passasjerer.",
     fullDescription: "JOBOBIKE Captain Chair er en premium sitteplass for barn på lastesykkel. Setet har høy ryggstøtte, myk polstring, integrert sikkerhetssele og fotstøtter for trygg og behagelig transport. Det er designet for å fungere sammen med Monkey Bar for maksimal sikkerhet og komfort. Materialene er slitesterke og værbestandige for langvarig bruk.",
-    price: 3536.14,
+    price: 2799,
     currency: "kr",
     image: "/images/chair/ch.jpg",
     images: [
@@ -712,7 +712,7 @@ export const accessoriesProducts: AccessoryProduct[] = [
     name: "Armlene",
     description: "Komfortable armlener til lasteområdet. Gir ekstra støtte og trygghet for passasjerer.",
     fullDescription: "JOBOBIKE Armrest-settet gir ekstra komfort og sikkerhet for passasjerer på lasteområdet. De polstrede armlenene monteres på sidene av lasteplattformen og gir passasjerene noe å hvile armene på og holde i under turen. Spesielt nyttig når man frakter voksne eller større barn, eller ved lengre turer.",
-    price: 840.27,
+    price: 699,
     currency: "kr",
     image: "/images/arm/a1.jpg",
     images: [

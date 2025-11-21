@@ -22,6 +22,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<null | number>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
   // search state
   const [query, setQuery] = useState('');
@@ -233,7 +234,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <nav className="fixed top-0 md:top-8 w-full z-50 bg-white border-b shadow-sm md:mb-10 overflow-hidden">
+      <nav className="fixed top-0 md:top-8 w-full z-50 bg-white border-b shadow-sm md:mb-10">
         {/* TOP ROW like the screenshot */}
         <div className="max-w-7xl mx-auto px-1 sm:px-4">
           <div className="flex items-center justify-between h-14 sm:h-16 gap-1 sm:gap-4">
@@ -251,7 +252,7 @@ export default function Navbar() {
               className="hidden md:block flex-1 max-w-3xl mx-4"
               ref={desktopSearchRef}
             >
-              <div className="relative">
+              <div className="relative z-[60]">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   id="desktop-search-input"
@@ -279,7 +280,7 @@ export default function Navbar() {
 
                 {/* search results */}
                 {showResults && results.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-96 overflow-y-auto z-50">
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-96 overflow-y-auto z-[9999]">
                     {results.slice(0, 8).map((product) => (
                       <Link
                         key={product.id}
@@ -323,6 +324,14 @@ export default function Navbar() {
                 </svg>
                 <span>Norge</span>
               </div>
+
+              {/* Mobile Search Icon */}
+              <button
+                onClick={() => setIsMobileSearchOpen(true)}
+                className="md:hidden p-1.5 sm:p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <Search className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
+              </button>
 
               {/* Cart */}
               <Link
@@ -435,6 +444,76 @@ export default function Navbar() {
         </div>
       )}
 
+      {/* MOBILE SEARCH MODAL */}
+      {isMobileSearchOpen && (
+        <div className="fixed inset-0 z-[60] md:hidden">
+          <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsMobileSearchOpen(false)}></div>
+          <div className="fixed top-0 left-0 right-0 bg-white shadow-lg p-4">
+            <div className="flex items-center gap-2 mb-4">
+              <button
+                onClick={() => setIsMobileSearchOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-700" />
+              </button>
+              <h2 className="text-lg font-semibold text-gray-900">Søk</h2>
+            </div>
+            <div className="relative" ref={mobileSearchRef}>
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') {
+                    setIsMobileSearchOpen(false);
+                  } else if (e.key === 'Enter' && query.trim()) {
+                    router.push(`/search?query=${encodeURIComponent(query.trim())}`);
+                    setIsMobileSearchOpen(false);
+                  }
+                }}
+                autoFocus
+                type="text"
+                placeholder="Søk produkter..."
+                className="w-full pl-12 pr-4 py-3 text-base text-black bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#12b190] focus:ring-2 focus:ring-[#12b190]/20"
+              />
+              {query && results.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-[60vh] overflow-y-auto z-[9999]">
+                  {results.slice(0, 8).map((product) => (
+                    <Link
+                      key={product.id}
+                      href={product.isAccessory ? `/accessories/${product.slug}` : `/products/${product.slug}`}
+                      className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
+                      onClick={() => {
+                        setIsMobileSearchOpen(false);
+                        setQuery('');
+                      }}
+                    >
+                      <div className="text-left flex-1 min-w-0 pr-4">
+                        <div className="text-sm font-medium text-black truncate">
+                          {product.name}
+                        </div>
+                        {product.price !== undefined && (
+                          <div className="text-xs text-gray-500 mt-1">
+                            {typeof product.price === 'number'
+                              ? `${product.price} kr`
+                              : product.price}
+                          </div>
+                        )}
+                      </div>
+                      <img
+                        src={product.image || '/images/placeholder.png'}
+                        alt={product.name}
+                        className="w-14 h-14 object-contain rounded-md border border-gray-200 flex-shrink-0"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* MOBILE MENU (unchanged logic, only header matches new top row) */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
@@ -455,59 +534,6 @@ export default function Navbar() {
               >
                 <X className="w-5 h-5 text-gray-700" />
               </button>
-            </div>
-
-            {/* mobile search */}
-            <div className="p-4 border-b border-gray-200" ref={mobileSearchRef}>
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  onFocus={() => {
-                    if (results.length) setShowResults(true);
-                  }}
-                  type="text"
-                  placeholder="Søk produkter..."
-                  className="w-full pl-10 pr-4 py-2.5 text-sm text-black bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#12b190] focus:ring-2 focus:ring-[#12b190]/20"
-                />
-
-                {showResults && results.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg max-h-72 overflow-y-auto z-50">
-                    {results.slice(0, 8).map((product) => (
-                      <Link
-                        key={product.id}
-                        href={product.isAccessory ? `/accessories/${product.slug}` : `/products/${product.slug}`}
-                        className="flex items-center justify-between px-3 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
-                        onClick={() => {
-                          setShowResults(false);
-                          setQuery('');
-                          toggleMobileMenu();
-                        }}
-                      >
-                        <div className="text-left flex-1 min-w-0 pr-3">
-                          <div className="text-sm font-medium text-black truncate">
-                            {product.name}
-                          </div>
-                          {product.price !== undefined && (
-                            <div className="text-xs text-gray-500 mt-0.5">
-                              {typeof product.price === 'number'
-                                ? `${product.price} kr`
-                                : product.price}
-                            </div>
-                          )}
-                        </div>
-                        <img
-                          src={product.image || '/images/placeholder.png'}
-                          alt={product.name}
-                          className="w-14 h-14 object-contain rounded-md border border-gray-200 flex-shrink-0"
-                        />
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
             </div>
 
             {/* mobile navigation */}

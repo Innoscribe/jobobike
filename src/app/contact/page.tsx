@@ -36,26 +36,30 @@ const ContactUs: React.FC = () => {
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {}
     
-    if (!formData.fullName || formData.fullName.length < 2) {
+    if (!formData.fullName || formData.fullName.trim().length < 2) {
       newErrors.fullName = 'Fullt navn må være minst 2 tegn'
-    }
-    if (formData.fullName && !/^[a-zA-Z\u00c0-\u00ff\s]+$/.test(formData.fullName)) {
+    } else if (!/^[a-zA-Z\u00c0-\u00ff\s\-\.]+$/.test(formData.fullName)) {
       newErrors.fullName = 'Fullt navn kan kun inneholde bokstaver'
     }
     
-    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    if (!formData.email) {
+      newErrors.email = 'E-post er påkrevd'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Vennligst skriv inn en gyldig e-postadresse'
     }
     
-    const hasDigit = /\d/.test(formData.phoneNumber)
-    if (formData.phoneNumber && hasDigit) {
-      const digitsOnly = formData.phoneNumber.replace(/[^0-9]/g, '')
-      if (digitsOnly.length < 8 || digitsOnly.length > 15) {
-        newErrors.phoneNumber = 'Telefonnummer må være 8-15 siffer (kan inkludere landskode)'
+    if (formData.phoneNumber && formData.phoneNumber.trim()) {
+      if (!/^\+?[0-9\s\-]{8,15}$/.test(formData.phoneNumber)) {
+        newErrors.phoneNumber = 'Vennligst skriv inn et gyldig telefonnummer'
+      } else {
+        const digitsOnly = formData.phoneNumber.replace(/[^0-9]/g, '')
+        if (digitsOnly.length < 8 || digitsOnly.length > 15) {
+          newErrors.phoneNumber = 'Telefonnummer må være 8-15 siffer'
+        }
       }
     }
     
-    if (!formData.message || formData.message.length < 10) {
+    if (!formData.message || formData.message.trim().length < 10) {
       newErrors.message = 'Melding må være minst 10 tegn'
     }
     
@@ -260,7 +264,7 @@ const ContactUs: React.FC = () => {
                   <div>
                     <h4 className="font-medium text-gray-900">Telefon</h4>
                     <p className="text-gray-600 mt-1">
-                      <a href="tel:+4722334455" className="hover:text-[#12b190] transition-colors">
+                      <a href="tel:+4740556333" className="hover:text-[#12b190] transition-colors">
                         +47 405 56 333
                       </a>
                     </p>

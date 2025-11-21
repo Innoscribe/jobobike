@@ -32,6 +32,7 @@ export default function PaymentForm() {
     const [appliedCoupon, setAppliedCoupon] = useState<any>(null);
     const [couponError, setCouponError] = useState('');
     const [applyingCoupon, setApplyingCoupon] = useState(false);
+    const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
     // ðŸ§® Calculate totals from cart
     const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -92,8 +93,76 @@ export default function PaymentForm() {
         setCouponError('');
     };
 
+    const validateForm = () => {
+        const errors: Record<string, string> = {};
+
+        // Name validation
+        const namePattern = /^[a-zA-ZæøåÆØÅ\s-]+$/;
+        if (!shippingInfo.fullName.trim()) {
+            errors.fullName = 'Vennligst skriv inn et gyldig navn';
+        } else if (!namePattern.test(shippingInfo.fullName.trim())) {
+            errors.fullName = 'Vennligst skriv inn et gyldig navn';
+        }
+
+        // Phone validation
+        const phonePattern = /^\+?[0-9\s-]{8,15}$/;
+        if (!shippingInfo.phone.trim()) {
+            errors.phone = 'Vennligst skriv inn et gyldig telefonnummer';
+        } else if (!phonePattern.test(shippingInfo.phone.trim())) {
+            errors.phone = 'Vennligst skriv inn et gyldig telefonnummer';
+        }
+
+        // Email validation
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!email.trim()) {
+            errors.email = 'Vennligst skriv inn en gyldig e-postadresse';
+        } else if (!emailPattern.test(email.trim())) {
+            errors.email = 'Vennligst skriv inn en gyldig e-postadresse';
+        }
+
+        // Postal code validation (4 digits for Norwegian)
+        const postalPattern = /^\d{4}$/;
+        if (!shippingInfo.postal_code.trim()) {
+            errors.postal_code = 'Vennligst skriv inn et gyldig postnummer (4 siffer)';
+        } else if (!postalPattern.test(shippingInfo.postal_code.trim())) {
+            errors.postal_code = 'Vennligst skriv inn et gyldig postnummer (4 siffer)';
+        }
+
+        // Address validation
+        const addressPattern = /^[a-zA-Z0-9æøåÆØÅ\s.,\-]+$/;
+        if (!shippingInfo.addressLine1.trim() || shippingInfo.addressLine1.trim().length < 3) {
+            errors.addressLine1 = 'Vennligst skriv inn en gyldig adresse';
+        } else if (!addressPattern.test(shippingInfo.addressLine1.trim())) {
+            errors.addressLine1 = 'Vennligst skriv inn en gyldig adresse';
+        }
+
+        // City validation
+        const cityPattern = /^[a-zA-ZæøåÆØÅ\s-]+$/;
+        if (!shippingInfo.city.trim()) {
+            errors.city = 'Vennligst skriv inn en gyldig by';
+        } else if (!cityPattern.test(shippingInfo.city.trim())) {
+            errors.city = 'Vennligst skriv inn en gyldig by';
+        }
+
+        // State validation
+        const statePattern = /^[a-zA-ZæøåÆØÅ\s-]+$/;
+        if (!shippingInfo.state.trim()) {
+            errors.state = 'Vennligst skriv inn et gyldig fylke';
+        } else if (!statePattern.test(shippingInfo.state.trim())) {
+            errors.state = 'Vennligst skriv inn et gyldig fylke';
+        }
+
+        setValidationErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            setMessage('Vennligst rett opp feilene i skjemaet');
+            return;
+        }
 
         if (!stripe || !elements) {
             return;
@@ -148,9 +217,9 @@ export default function PaymentForm() {
                 <div className="space-y-4 mb-6">
                     {cartItems.map((item) => (
                         <div key={item.id} className="flex items-center gap-3">
-                            <div className="w-12 h-12 bg-blue-100 rounded flex items-center justify-center">
+                            <div className="w-16 h-16 bg-gray-50 rounded flex items-center justify-center flex-shrink-0">
                                 {item.image ? (
-                                    <img src={item.image} alt={item.name} className="w-10 h-10 object-cover rounded" />
+                                    <img src={item.image} alt={item.name} className="w-full h-full object-contain rounded" />
                                 ) : (
                                     <span className="text-blue-600 text-sm">ðŸ“¦</span>
                                 )}
@@ -253,11 +322,21 @@ export default function PaymentForm() {
                             <input
                                 type="email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    if (validationErrors.email) {
+                                        setValidationErrors(prev => ({ ...prev, email: '' }));
+                                    }
+                                }}
+                                className={`w-full p-3 border rounded focus:outline-none focus:ring-2 text-gray-700 ${
+                                    validationErrors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                                }`}
                                 placeholder="post@eksempel.no"
                                 required
                             />
+                            {validationErrors.email && (
+                                <p className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
+                            )}
                         </div>
 
 
@@ -268,13 +347,21 @@ export default function PaymentForm() {
                             <input
                                 type="text"
                                 value={shippingInfo.fullName}
-                                onChange={(e) =>
-                                    setShippingInfo({ ...shippingInfo, fullName: e.target.value })
-                                }
-                                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                onChange={(e) => {
+                                    setShippingInfo({ ...shippingInfo, fullName: e.target.value });
+                                    if (validationErrors.fullName) {
+                                        setValidationErrors(prev => ({ ...prev, fullName: '' }));
+                                    }
+                                }}
+                                className={`w-full p-3 border rounded focus:outline-none focus:ring-2 text-gray-700 ${
+                                    validationErrors.fullName ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                                }`}
                                 placeholder="Ola Nordmann"
                                 required
                             />
+                            {validationErrors.fullName && (
+                                <p className="mt-1 text-sm text-red-600">{validationErrors.fullName}</p>
+                            )}
                         </div>
 
                         {/* Phone Number */}
@@ -283,13 +370,21 @@ export default function PaymentForm() {
                             <input
                                 type="tel"
                                 value={shippingInfo.phone || ""}
-                                onChange={(e) =>
-                                    setShippingInfo({ ...shippingInfo, phone: e.target.value })
-                                }
-                                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                onChange={(e) => {
+                                    setShippingInfo({ ...shippingInfo, phone: e.target.value });
+                                    if (validationErrors.phone) {
+                                        setValidationErrors(prev => ({ ...prev, phone: '' }));
+                                    }
+                                }}
+                                className={`w-full p-3 border rounded focus:outline-none focus:ring-2 text-gray-700 ${
+                                    validationErrors.phone ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                                }`}
                                 placeholder="+47 123 45 678"
                                 required
                             />
+                            {validationErrors.phone && (
+                                <p className="mt-1 text-sm text-red-600">{validationErrors.phone}</p>
+                            )}
                         </div>
 
                         {/* Country */}
@@ -317,13 +412,21 @@ export default function PaymentForm() {
                             <input
                                 type="text"
                                 value={shippingInfo.addressLine1}
-                                onChange={(e) =>
-                                    setShippingInfo({ ...shippingInfo, addressLine1: e.target.value })
-                                }
-                                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                onChange={(e) => {
+                                    setShippingInfo({ ...shippingInfo, addressLine1: e.target.value });
+                                    if (validationErrors.addressLine1) {
+                                        setValidationErrors(prev => ({ ...prev, addressLine1: '' }));
+                                    }
+                                }}
+                                className={`w-full p-3 border rounded focus:outline-none focus:ring-2 text-gray-700 ${
+                                    validationErrors.addressLine1 ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                                }`}
                                 placeholder="Storgata 1"
                                 required
                             />
+                            {validationErrors.addressLine1 && (
+                                <p className="mt-1 text-sm text-red-600">{validationErrors.addressLine1}</p>
+                            )}
                         </div>
 
                         {/* Address Line 2 */}
@@ -342,36 +445,66 @@ export default function PaymentForm() {
 
                         {/* City, State, ZIP */}
                         <div className="grid grid-cols-3 gap-3">
-                            <input
-                                type="text"
-                                value={shippingInfo.city}
-                                onChange={(e) =>
-                                    setShippingInfo({ ...shippingInfo, city: e.target.value })
-                                }
-                                className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
-                                placeholder="By"
-                                required
-                            />
-                            <input
-                                type="text"
-                                value={shippingInfo.state}
-                                onChange={(e) =>
-                                    setShippingInfo({ ...shippingInfo, state: e.target.value })
-                                }
-                                className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
-                                placeholder="Fylke"
-                                required
-                            />
-                            <input
-                                type="text"
-                                value={shippingInfo.postal_code || ""}
-                                onChange={(e) =>
-                                    setShippingInfo({ ...shippingInfo, postal_code: e.target.value })
-                                }
-                                className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
-                                placeholder="Postnummer"
-                                required
-                            />
+                            <div>
+                                <input
+                                    type="text"
+                                    value={shippingInfo.city}
+                                    onChange={(e) => {
+                                        setShippingInfo({ ...shippingInfo, city: e.target.value });
+                                        if (validationErrors.city) {
+                                            setValidationErrors(prev => ({ ...prev, city: '' }));
+                                        }
+                                    }}
+                                    className={`w-full p-3 border rounded focus:outline-none focus:ring-2 text-gray-700 ${
+                                        validationErrors.city ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                                    }`}
+                                    placeholder="By"
+                                    required
+                                />
+                                {validationErrors.city && (
+                                    <p className="mt-1 text-xs text-red-600">{validationErrors.city}</p>
+                                )}
+                            </div>
+                            <div>
+                                <input
+                                    type="text"
+                                    value={shippingInfo.state}
+                                    onChange={(e) => {
+                                        setShippingInfo({ ...shippingInfo, state: e.target.value });
+                                        if (validationErrors.state) {
+                                            setValidationErrors(prev => ({ ...prev, state: '' }));
+                                        }
+                                    }}
+                                    className={`w-full p-3 border rounded focus:outline-none focus:ring-2 text-gray-700 ${
+                                        validationErrors.state ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                                    }`}
+                                    placeholder="Fylke"
+                                    required
+                                />
+                                {validationErrors.state && (
+                                    <p className="mt-1 text-xs text-red-600">{validationErrors.state}</p>
+                                )}
+                            </div>
+                            <div>
+                                <input
+                                    type="text"
+                                    value={shippingInfo.postal_code || ""}
+                                    onChange={(e) => {
+                                        setShippingInfo({ ...shippingInfo, postal_code: e.target.value });
+                                        if (validationErrors.postal_code) {
+                                            setValidationErrors(prev => ({ ...prev, postal_code: '' }));
+                                        }
+                                    }}
+                                    className={`w-full p-3 border rounded focus:outline-none focus:ring-2 text-gray-700 ${
+                                        validationErrors.postal_code ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                                    }`}
+                                    placeholder="Postnummer"
+                                    required
+                                />
+                                {validationErrors.postal_code && (
+                                    <p className="mt-1 text-xs text-red-600">{validationErrors.postal_code}</p>
+                                )}
+                            </div>
                         </div>
                     </div>
 
