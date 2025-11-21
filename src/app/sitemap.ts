@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { PRODUCTS_DATA } from '@/lib/productData'
-import { accessories } from '@/lib/accessoriesProducts'
+import { accessoriesProducts } from '@/lib/accessoriesProducts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://jobobike.no'
@@ -54,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // Accessory pages
-  const accessoryPages = accessories.map((accessory) => ({
+  const accessoryPages = accessoriesProducts.map((accessory) => ({
     url: `${baseUrl}/accessories/${accessory.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
