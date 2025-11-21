@@ -108,6 +108,29 @@ export default function ProductCardItem({
                 </div>
               </div>
             )}
+            {combined.variants.length === 1 && baseProduct.colors && baseProduct.colors.length > 0 && (
+              <div className="mb-1">
+                <div className="flex flex-wrap gap-1">
+                  {baseProduct.colors.map((color: string) => (
+                    <button
+                      key={color}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleColorChange(color, baseProduct.colorImages?.[color] || baseProduct.image);
+                      }}
+                      className={`w-5 h-5 rounded-full border-2 transition-all ${
+                        selectedColor === color || (!selectedColor && color === baseProduct.colors[0])
+                          ? 'border-[#12b190] scale-110'
+                          : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                      style={{ backgroundColor: color.toLowerCase() === 'svart' ? '#000' : color.toLowerCase() === 'hvit' ? '#fff' : color.toLowerCase() === 'grå' ? '#808080' : color.toLowerCase() === 'grønn' ? '#22c55e' : color.toLowerCase() === 'blå' ? '#3b82f6' : color.toLowerCase() === 'peach' ? '#ffd7be' : '#ccc' }}
+                      title={color}
+                      aria-label={`Select ${color} color`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
             {combined.variants.length === 1 && !baseProduct.colors && baseProduct.availableSizes && baseProduct.availableSizes.length > 1 && (
               <div className="mb-1">
                 <div className="flex flex-wrap gap-1">

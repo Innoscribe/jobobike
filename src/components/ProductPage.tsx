@@ -7,6 +7,7 @@ import { PRODUCTS_DATA } from "@/lib/productData";
 import { getCombinedProducts } from "@/lib/productVariants";
 import { useCart } from "./CartContext";
 import ProductCardItem from "./ProductCardItem";
+import EbikeCalculator from "./EbikeFinder/EbikeCalculator";
 
 /**
  * ProductPage.tsx
@@ -122,18 +123,9 @@ export default function ProductPage() {
           ))}
         </ul>
 
-        {/* SEO text */}
-        <section className="mt-8 sm:mt-10 rounded-xl sm:rounded-2xl border border-gray-200 bg-gray-50 p-4 sm:p-6">
-          <h2 className="text-base sm:text-lg font-semibold text-black">Velg riktig sykkel</h2>
-          <p className="mt-2 text-xs sm:text-sm leading-5 sm:leading-6 text-gray-700">
-            Utforsk vårt utvalg av elsykler, terreng- og landeveissykler. Vi hjelper deg å finne en sykkel som passer ditt behov—til jobb, trening eller tur.
-          </p>
-          <ul className="mt-3 list-disc pl-4 sm:pl-5 text-xs sm:text-sm leading-5 sm:leading-6 text-gray-700 space-y-1">
-            <li>Fri frakt over 1000 kr</li>
-            <li>Click &amp; Collect i butikk</li>
-            <li>Medlemspriser med bonus</li>
-          </ul>
-        </section>
+        <div className="mt-8">
+          <EbikeCalculator products={PRODUCTS_DATA} />
+        </div>
       </section>
     </main>
   );

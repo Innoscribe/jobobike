@@ -39,7 +39,7 @@ export default function EbikeCalculator({ products = [] }: EbikeCalculatorProps)
   };
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+    <section className="py-12 px-4 bg-white">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
