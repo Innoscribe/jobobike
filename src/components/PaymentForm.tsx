@@ -208,7 +208,7 @@ export default function PaymentForm() {
     };
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-0 lg:mt-20">
             {/* Left Column - Order Summary */}
             <div className="bg-white p-6 rounded-lg border border-gray-200">
                 <h2 className="text-lg font-medium mb-6 text-black">Bestillingsoversikt</h2>

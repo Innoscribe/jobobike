@@ -326,7 +326,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section className="py-8 md:py-12 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-5">
           <svg className="w-full h-full" viewBox="0 0 400 400">
             <path

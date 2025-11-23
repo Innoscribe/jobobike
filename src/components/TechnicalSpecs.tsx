@@ -1,8 +1,8 @@
 "use client";
 
-export default function TechnicalSpecifications({ product }: { product: any }) {
+export default function TechnicalSpecifications({ product, hasVariantsAndColors, hasVariantOrColor }: { product: any; hasVariantsAndColors?: boolean; hasVariantOrColor?: boolean }) {
   return (
-    <div className="w-full">
+    <div className={`w-full ${hasVariantsAndColors ? 'mt-8' : hasVariantOrColor ? 'mt-16' : 'mt-24'}`}>
       <div className="bg-white w-full px-0 py-0">
         <div className="px-6 lg:px-8 mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-black mb-2">

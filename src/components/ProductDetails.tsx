@@ -125,9 +125,9 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                     const prevIndex = currentIndex === 0 ? currentImages.length - 1 : currentIndex - 1;
                     setSelectedImage(currentImages[prevIndex]);
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-3 shadow-lg z-10"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-2 shadow-lg z-20"
                 >
-                  <ChevronLeft size={20} className="text-gray-700" />
+                  <ChevronLeft size={16} className="text-gray-700" />
                 </button>
                 <button
                   onClick={() => {
@@ -135,9 +135,9 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                     const nextIndex = currentIndex === currentImages.length - 1 ? 0 : currentIndex + 1;
                     setSelectedImage(currentImages[nextIndex]);
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-3 shadow-lg z-10"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border border-gray-300 rounded-full p-2 shadow-lg z-20"
                 >
-                  <ChevronRight size={20} className="text-gray-700" />
+                  <ChevronRight size={16} className="text-gray-700" />
                 </button>
               </>
             )}
@@ -798,9 +798,10 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
         {(() => {
           const currentVariantSlugs = product.modelVariants?.map(v => v.slug) || [];
           const usedVariantFamilies = new Set<string>();
+          const foreslatteBikes = PRODUCTS_DATA.filter(p => p.id !== product.id).slice(0, 3).map(p => p.id);
           
           const eligibleProducts = PRODUCTS_DATA.filter(p => 
-            p.slug !== product.slug && p.inStock !== false && !currentVariantSlugs.includes(p.slug)
+            p.slug !== product.slug && p.inStock !== false && !currentVariantSlugs.includes(p.slug) && !foreslatteBikes.includes(p.id)
           );
           
           const bestseller = eligibleProducts.find(p => {
@@ -827,49 +828,56 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
             return false;
           });
           
+          const hasVariantsAndColors = hasVariants && product.colors && product.colors.length > 1;
           const additionalProducts = eligibleProducts.filter(p => {
             const variantSlugs = p.modelVariants?.map(v => v.slug) || [p.slug];
             return !variantSlugs.some(slug => usedVariantFamilies.has(slug));
-          }).slice(0, 2);
+          }).slice(0, hasVariantsAndColors ? 4 : 2);
           
           const availableAds = [bestseller, popular, ...additionalProducts].filter(Boolean) as typeof PRODUCTS_DATA;
-          const hasVariantsAndColors = hasVariants && product.colors && product.colors.length > 1;
-          const maxAds = hasVariantsAndColors ? 4 : 2;
-          const displayAds = availableAds.slice(0, maxAds);
+          const displayAds = availableAds.slice(0, hasVariantsAndColors ? 6 : 3);
           
           return displayAds.length > 0 && (
-            <div className="hidden lg:block absolute left-[13%] top-[780px] z-10 mt-14 pt-4">
-              <div className={`grid gap-4 ${hasVariantsAndColors ? 'grid-cols-2 w-[500px]' : 'grid-cols-2 w-[500px]'}`}>
-                {displayAds.map((ad) => {
-                  const isBestseller = ad.rating >= 4.8;
-                  const label = isBestseller ? 'BESTSELGER' : 'POPULÆR';
-                  const bgColor = isBestseller ? 'bg-red-500' : 'bg-yellow-500';
-                  const textColor = isBestseller ? 'text-white' : 'text-black';
-                  
-                  return (
-                    <Link key={ad.slug} href={`/products/${ad.slug}`} className="relative bg-gradient-to-br from-white to-gray-50 border-2 border-[#12b190] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 cursor-pointer">
-                      {label && (
-                        <div className={`absolute top-3 left-3 ${bgColor} ${textColor} text-xs font-bold px-3 py-1 rounded-full z-10 shadow-md`}>{label}</div>
-                      )}
-                      <div className="p-3 pb-2">
-                        <Image src={ad.image} alt={ad.name} width={120} height={120} className="w-full h-20 object-contain mb-2" />
-                        <div className="bg-[#12b190] text-white px-3 py-2 rounded-lg">
-                          <h3 className="text-sm font-bold">{ad.name.toUpperCase()}</h3>
-                          <p className="text-xs opacity-90">Klikk for å se →</p>
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                })}
+            <>
+              <div className={`hidden lg:block absolute left-8 ${hasVariantsAndColors ? 'top-[720px]' : 'top-[750px]'} z-10 mt-20 pl-4`}>
+                <h2 className="text-xl font-bold text-[#12b190] mb-4">Andre kjøpte også</h2>
               </div>
-            </div>
+              <div className={`hidden lg:block absolute left-8 ${hasVariantsAndColors ? 'top-[760px]' : 'top-[790px]'} z-10 mt-20 pl-4`}>
+                <div className={`grid gap-3 ${hasVariantsAndColors ? 'grid-cols-3 grid-rows-2 w-[650px]' : 'grid-cols-3 w-[650px]'}`}>
+                  {displayAds.map((ad) => {
+                    return (
+                      <Link key={ad.slug} href={`/products/${ad.slug}`} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100">
+                        <div className={`relative bg-white p-4 ${hasVariantsAndColors ? 'h-28' : 'h-40'}`}>
+                          <Image src={ad.image} alt={ad.name} width={150} height={150} className="w-full h-full object-contain" />
+                        </div>
+                        <div className={`border-t border-gray-100 ${hasVariantsAndColors ? 'p-2' : 'p-4'}`}>
+                          <div className="flex items-center gap-1 mb-1">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                              <Star key={star} className={`w-3 h-3 ${star <= (ad.rating || 5) ? 'fill-[#12b190] text-[#12b190]' : 'fill-gray-200 text-gray-200'}`} />
+                            ))}
+                            <span className="text-xs text-gray-600 ml-1">({ad.reviewCount || 0})</span>
+                          </div>
+                          <h3 className={`font-semibold text-gray-900 mb-2 line-clamp-2 leading-snug ${hasVariantsAndColors ? 'text-xs' : 'text-sm'}`}>{ad.name}</h3>
+                          <div className="flex items-center gap-2">
+                            {ad.originalPrice !== ad.price && (
+                              <span className="text-xs text-red-500 line-through">{formatCurrency(ad.originalPrice).replace(' kr', ',-')}</span>
+                            )}
+                            <p className={`font-bold text-gray-900 ${hasVariantsAndColors ? 'text-sm' : 'text-base'}`}>{formatCurrency(ad.price).replace(' kr', ',-')}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
           );
         })()}
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 w-full max-w-full mt-24 lg:mt-28">
           {/* SPECIFICATIONS HALF - First on mobile, right on desktop */}
           <div className="w-full max-w-full lg:order-1 lg:pt-2 px-4 lg:px-0">
-            <TechnicalSpecifications product={product} />
+            <TechnicalSpecifications product={product} hasVariantsAndColors={hasVariants && product.colors && product.colors.length > 1} hasVariantOrColor={hasVariants || (product.colors && product.colors.length > 1)} />
           </div>
           
           {/* PACKAGE BUILDER HALF - Hidden on mobile, shown on desktop */}

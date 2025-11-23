@@ -148,14 +148,14 @@ export default function ProductCardItem({
               </div>
             )}
             <div className="flex items-center gap-1.5">
-              <span className="text-sm sm:text-base font-semibold text-black whitespace-nowrap">
-                {formatCurrency(baseProduct.price)}
-              </span>
               {baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && (
-                <span className="text-[10px] sm:text-xs text-red-500 line-through">
+                <span className="text-[10px] sm:text-xs text-red-500 line-through whitespace-nowrap">
                   {formatCurrency(baseProduct.originalPrice)}
                 </span>
               )}
+              <span className="text-sm sm:text-base font-bold text-[#12b190] whitespace-nowrap">
+                {formatCurrency(baseProduct.price)}
+              </span>
             </div>
 
             {displayFeatures?.length && (
