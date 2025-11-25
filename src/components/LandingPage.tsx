@@ -45,8 +45,19 @@ const LandingPage = () => {
       <section className="w-full bg-gradient-to-r from-gray-50 to-white pt-2 md:mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:grid md:grid-cols-[40%_60%] gap-4 md:gap-8 items-center pb-4 md:pb-6 lg:pb-8 md:pt-16">
-            {/* Text Content - First on mobile, Left on desktop */}
-            <div className="space-y-3 md:space-y-6 text-center md:text-left w-full order-1">
+            {/* Image - First on mobile, Right on desktop */}
+            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[450px] order-2 md:order-2">
+              <Image
+                src="/images/newbanner.png"
+                alt="Banner"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
+            
+            {/* Text Content - Second on mobile, Left on desktop */}
+            <div className="space-y-3 md:space-y-6 text-center md:text-left w-full order-1 md:order-1">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#12b190] leading-tight">
                 ELSYKKEL SALG
               </h1>
@@ -56,17 +67,6 @@ const LandingPage = () => {
               <Link href="/black-week" className="inline-flex items-center gap-2 bg-[#12b190] text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-[#0f9a7a] transition-colors">
                 Handle nå <ArrowRight className="w-5 h-5" />
               </Link>
-            </div>
-            
-            {/* Image - Second on mobile, Right on desktop */}
-            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[450px] order-2">
-              <Image
-                src="/images/newbanner.png"
-                alt="Banner"
-                fill
-                priority
-                className="object-contain"
-              />
             </div>
           </div>
         </div>
