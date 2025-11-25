@@ -59,7 +59,7 @@ const LandingPage = () => {
             </div>
             
             {/* Image - Right */}
-            <div className="relative w-full h-[200px] md:h-[400px] lg:h-[450px]">
+            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[450px]">
               <Image
                 src="/images/newbanner.png"
                 alt="Banner"
