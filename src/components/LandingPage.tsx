@@ -46,7 +46,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:grid md:grid-cols-[40%_60%] gap-4 md:gap-8 items-center pb-4 md:pb-6 lg:pb-8 md:pt-16">
             {/* Image - First on mobile, Right on desktop */}
-            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[450px] order-2 md:order-2">
+            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[450px] order-1 md:order-2">
               <Image
                 src="/images/newbanner.png"
                 alt="Banner"
@@ -57,7 +57,7 @@ const LandingPage = () => {
             </div>
             
             {/* Text Content - Second on mobile, Left on desktop */}
-            <div className="space-y-3 md:space-y-6 text-center md:text-left w-full order-1 md:order-1">
+            <div className="space-y-3 md:space-y-6 text-center md:text-left w-full order-2 md:order-1">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#12b190] leading-tight">
                 ELSYKKEL SALG
               </h1>
