@@ -1,4 +1,4 @@
-// src/lib/productData.ts
+﻿// src/lib/productData.ts
 export interface ProductVariant {
   variantName: string;
   originalPrice: number;
@@ -305,8 +305,6 @@ export const PRODUCTS_DATA: ProductCard[] = [
     image: "/images/robin/robin-1.png",
     images: ["/images/robin/robin-1.png", 
       "/images/robin/robin-2.png",
-      "/images/robin/robin-3.jpg",
-       "/images/robin/robin-4.jpg",
        "/images/robin/robin-5.jpg", 
        "/images/robin/robin-6.jpg"],
     features: [
@@ -1095,8 +1093,6 @@ export const PRODUCTS_DATA: ProductCard[] = [
     images: [
       "/images/sam/sam-1.png",
       "/images/sam/sam-2.png",
-      "/images/sam/sam-3.JPG",
-      "/images/sam/sam-4.JPG",
       "/images/sam/sam-5.jpg",
       "/images/sam/sam-6.jpg",
     ],
@@ -1438,7 +1434,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     price: 26399.4,
     discount: "14%",
     image: "/images/transer/transer-1.png",
-    images: ["/images/transer/transer-1.png", "/images/transer/transer-2.png", "/images/transer/tran-1.png", "/images/transer/tan-2.png", "/images/transer/transer-3.tif", "/images/transer/transer-4.tif"],
+    images: ["/images/transer/transer-1.png", "/images/transer/transer-2.png","/images/transer/tran-1.jpg", "/images/transer/tan-2.jpg" ],
     features: ["BAFANG 36V 250W midtmotor", "48V 17.5Ah batteri", "Lastekasse inkludert", "Familievennlig", "Lang ramme"],
     badge: "Familievalg",
     category: ["Lastesykkel", "Pendler"],
@@ -1451,7 +1447,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
       "Grå": "/images/transer/transergrey-1.jpg"
     },
     colorImageArrays: {
-      "Grønn": ["/images/transer/transer-1.png", "/images/transer/transer-2.png", "/images/transer/transer-3.tif", "/images/transer/transer-4.tif", "/images/transer/tran-1.jpg", "/images/transer/tan-2.jpg"],
+      "Grønn": ["/images/transer/transer-1.png", "/images/transer/transer-2.png", "/images/transer/tran-1.jpg", "/images/transer/tan-2.jpg"],
       "Hvit": ["/images/transer/transerwhite-2.jpg", "/images/transer/transerwhite-1.jpg", "/images/transer/tran-1.jpg", "/images/transer/tan-2.jpg"],
       "Grå": ["/images/transer/transergrey-1.jpg", "/images/transer/transergrey-2.jpg", "/images/transer/tran-1.jpg", "/images/transer/tan-2.jpg"]
     },
@@ -1887,7 +1883,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     price: 17599.2,
     discount: "18%",
     image: "/images/viva/viva-1.png",
-    images: ["/images/viva/viva-1.png", "/images/viva/viva-2.jpg", "/images/viva/viva-4.jpg", "/images/viva/viva-3.jpg"],
+    images: ["/images/viva/viva-1.png", "/images/viva/viva-2.jpg"],
     features: [
       "Lett 29kg aluminiumsramme",
       "XOFO 36V 250W bakhjulsmotor",
@@ -2003,9 +1999,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     discount: "18%",
     image: "/images/viva-st/viva-st-1.png",
     images: ["/images/viva-st/viva-st-1.png",
-       "/images/viva-st/viva-st-2.png", 
-       "/images/viva-st/viva-st-3.png",
-        "/images/viva-st/viva-st-5.png",],
+       "/images/viva-st/viva-st-2.png"],
     features: ["Gjennomgående ramme", "Lett 29kg", "XOFO 36V 250W bakhjulsmotor", "36V 14Ah LG batteri", "Bypendling"],
     badge: "Lettvekt",
     category: ["Pendler"],
@@ -2116,10 +2110,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     discount: "17%",
     image: "/images/henry/henry-1.png",
     images: ["/images/henry/henry-1.png",
-      "/images/henry/henry-2.jpg",
-      "/images/henry/henry-3.jpg",
-      "/images/henry/henry-4.jpg","/images/henry/henry-5.jpg","/images/henry/henry-6.jpg",
-    ],
+      "/images/henry/henry-2.jpg","/images/henry/henry-5.jpg","/images/henry/henry-6.jpg"],
     features: ["BAFANG 36V 250W midtmotor", "36V 17.5Ah batteri", "Retro design", '27.5×2.1 hjul', "Premium komponenter"],
     badge: "Midtmotor",
     category: ["Pendler"],
@@ -2350,7 +2341,7 @@ export const PRODUCTS_DATA: ProductCard[] = [
     price: 26399.2,
     discount: "17%",
     image: "/images/linda/linda-1.jpg",
-    images: ["/images/linda/linda-1.jpg", "/images/linda/linda-2.jpg", "/images/linda/linda-3.jpg", "/images/linda/linda-4.jpg", "/images/linda/linda-5.jpg", "/images/linda/linda-6.jpg"],
+    images: ["/images/linda/linda-1.jpg", "/images/linda/linda-2.jpg","/images/linda/linda-5.jpg", "/images/linda/linda-6.jpg"],
     features: ["Gjennomgående ramme", "Bafang M200 midtmotor 65Nm", "36V 14Ah batteri (504Wh)", '26" hjul', "SR Gel sadel"],
     badge: "Komfort",
     category: ["Pendler"],

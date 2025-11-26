@@ -44,27 +44,53 @@ const LandingPage = () => {
     <div className="min-h-screen bg-white">
       <section className="w-full bg-gradient-to-r from-gray-50 to-white pt-2 md:mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:grid md:grid-cols-[40%_60%] gap-4 md:gap-8 items-center pb-4 md:pb-6 lg:pb-8 md:pt-16">
+          <div className="flex flex-col md:grid md:grid-cols-[35%_65%] gap-0 items-stretch pb-0 md:pt-16 md:h-[500px] lg:h-[550px]">
             {/* Image - First on mobile, Right on desktop */}
-            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[450px] order-1 md:order-2">
+            <div className="relative w-full h-[300px] md:h-full order-1 md:order-2 overflow-hidden">
               <Image
                 src="/images/newbanner.png"
                 alt="Banner"
                 fill
                 priority
-                className="object-contain"
+                className="object-cover"
               />
             </div>
             
             {/* Text Content - Second on mobile, Left on desktop */}
-            <div className="space-y-3 md:space-y-6 text-center md:text-left w-full order-2 md:order-1">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#12b190] leading-tight">
-                ELSYKKEL SALG
+            <div className="flex flex-col justify-center space-y-3 md:space-y-6 text-center md:text-left w-full order-2 md:order-1 bg-gradient-to-br from-orange-500 to-orange-600 p-6 md:p-12">
+              <div className="inline-block">
+                <span className="bg-black text-orange-500 px-4 py-2 rounded-full text-sm md:text-base font-bold uppercase tracking-wider">Black Week 2025</span>
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
+                ELSYKKEL<br/>SALG
               </h1>
-              <p className="text-lg md:text-2xl text-black">
-                Opptil 40% avslag
-              </p>
-              <Link href="/black-week" className="inline-flex items-center gap-2 bg-[#12b190] text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-[#0f9a7a] transition-colors">
+              
+              <div className="flex items-center justify-center md:justify-start gap-3">
+                <span className="text-5xl md:text-7xl font-black text-white">40%</span>
+                <div className="text-left">
+                  <p className="text-xl md:text-2xl font-bold text-white uppercase">Opptil</p>
+                  <p className="text-lg md:text-xl font-semibold text-black">Avslag</p>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+                    <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+                  </svg>
+                  <span className="text-white font-semibold text-sm">Gratis frakt</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="text-white font-semibold text-sm">2 års garanti</span>
+                </div>
+              </div>
+              
+              <Link href="/black-week" className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg w-fit mx-auto md:mx-0">
                 Handle nå <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

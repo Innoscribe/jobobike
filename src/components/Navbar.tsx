@@ -219,7 +219,7 @@ export default function Navbar() {
   return (
     <>
       {/* Green promotional banner */}
-      <div className={`hidden md:block bg-[#12b190] text-white py-2 fixed top-0 w-full z-50 transition-transform duration-500 ease-in-out ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}>
+      <div className={`bg-[#12b190] text-white py-2 fixed top-0 w-full z-50 transition-transform duration-500 ease-in-out ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="max-w-7xl mx-auto px-2 md:px-4">
           <div className="flex items-center justify-start gap-4 md:gap-6 lg:gap-8 text-[9px] sm:text-[10px] md:text-sm">
             <div className="flex items-center space-x-1">
@@ -232,7 +232,7 @@ export default function Navbar() {
               <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
               </svg>
-              <span className="truncate" suppressHydrationWarning>Free Delivery</span>
+              <span className="truncate" suppressHydrationWarning>Gratis levering</span>
             </div>
             <div className="flex items-center space-x-1 hidden sm:flex" suppressHydrationWarning>
               <svg className="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
