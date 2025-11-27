@@ -122,8 +122,8 @@ export default function AccessoriesPage() {
                                             sizes="(max-width: 640px) 120px, 200px"
                                             style={{ maxWidth: '90%', maxHeight: '90%' }}
                                         />
-                                        {product.inStock && product.originalPrice && product.originalPrice !== product.price && (
-                                            <div className="absolute top-2 right-2 bg-red-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-semibold">
+                                        {product.originalPrice && product.originalPrice !== product.price && (
+                                            <div className="absolute top-2 left-2 bg-red-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-semibold">
                                                 -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
                                             </div>
                                         )}

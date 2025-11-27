@@ -77,6 +77,16 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
                 fill
                 className="object-cover"
               />
+              {product.originalPrice && product.originalPrice !== product.price && (
+                <div className="absolute top-3 left-3 bg-red-600 text-white px-3 py-1.5 rounded-full text-sm font-semibold shadow-lg">
+                  -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+                </div>
+              )}
+              {!product.inStock && (
+                <div className="absolute top-3 right-3 bg-red-500 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+                  UTSOLGT
+                </div>
+              )}
               {product.images.length > 1 && (
                 <>
                   <button

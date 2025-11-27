@@ -181,8 +181,8 @@ export const accessoriesProducts: AccessoryProduct[] = [
     description: "Sikker telefonholder med vanntett deksel, slik at du kan bruke telefonen til navigasjon samtidig som den er beskyttet mot vær og vind.",
     fullDescription: "Hold telefonen tilgjengelig og beskyttet med JOBOBIKE telefonholder. Det vanntette dekselet gir full berøringsskjerm-funksjonalitet samtidig som det beskytter mot regn, sprut og støv. Det sikre festesystemet sørger for at telefonen sitter stabilt selv på ujevne veier, noe som gjør den ideell til GPS-navigasjon under sykling.",
     originalPrice: 299,
-    price: 239.2,
-    discount: "40%",
+    price: 254.15,
+    discount: "15%",
     currency: "kr",
     image: "/images/holder/holder-3.jpg",
     images: [
@@ -307,8 +307,8 @@ export const accessoriesProducts: AccessoryProduct[] = [
     description: "Holdbar flaskeholder i aluminium som holder vannflasken din sikkert på plass under turen. Enkel å montere og kompatibel med de fleste flaskestørrelser.",
     fullDescription: "Hold deg hydrert på turene dine med JOBOBIKE flaskeholder. Den er laget av lett aluminiumslegering og har et sikkert grep som holder flasken godt fast, selv på ujevnt underlag. Det universelle monteringssystemet passer til alle JOBOBIKE-rammer, og det stilrene designet matcher sykkelens estetikk.",
     originalPrice: 159,
-    price: 127.2,
-    discount: "40%",
+    price: 135.15,
+    discount: "15%",
     currency: "kr",
     image: "/images/bottle/bottle-1.png",
     images: [
@@ -429,8 +429,8 @@ export const accessoriesProducts: AccessoryProduct[] = [
     description: "Premium flaskeholder med JOBOBIKE-logo. Solid konstruksjon med sikkert grep for standard vannflasker.",
     fullDescription: "En premium flaskeholder med tydelig JOBOBIKE-logo. Laget av materialer av høy kvalitet med en slitesterk svart finish. Holderen gir sikkert grep rundt standard vannflasker, samtidig som den tilfører elsykkelen et gjennomført og eksklusivt uttrykk. Enkel å montere på rammen med medfølgende skruer.",
     originalPrice: 259,
-    price: 207.2,
-    discount: "40%",
+    price: 220.15,
+    discount: "15%",
     currency: "kr",
     image: "/images/bottle-logo/b.jpg",
     images: [
@@ -788,8 +788,8 @@ export const accessoriesProducts: AccessoryProduct[] = [
     description: "Justerbar sikkerhetsstropp til å sikre last eller passasjerer på bakre bagasjebrett. Et viktig sikkerhetstilbehør.",
     fullDescription: "JOBOBIKE Safety Belt er et viktig sikkerhetstilbehør for å sikre bagasje eller ekstra utstyr på bagasjebrettet. Stroppen har justerbar lengde, hurtigspenne og slitesterk rem som tåler utendørs bruk. Egner seg godt til å feste vesker, esker eller som ekstra sikring ved bruk av seter eller puter på bagasjebrettet.",
     originalPrice: 249,
-    price: 199.2,
-    discount: "40%",
+    price: 211.65,
+    discount: "15%",
     currency: "kr",
     image: "/images/belt/bel.jpg",
     images: [

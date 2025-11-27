@@ -74,21 +74,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
             />
           </div>
           
-          {/* Discount Badge */}
-          {!isOutOfStock && product.originalPrice && product.originalPrice !== product.price && (
-            <div className="absolute top-3 right-3 bg-red-600 text-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-semibold">
+          {/* Discount Badge - Left Side */}
+          {product.originalPrice && product.originalPrice !== product.price && (
+            <div className="absolute top-3 left-3 bg-red-600 text-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-semibold">
               -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
             </div>
           )}
           
-          {/* BLACK WEEK Badge for 40% discount bikes */}
-          {!isOutOfStock && ['henry-001', 'transer-001', 'robin-pro-001', 'dyno-001', 'luxe-snow-001'].includes(product.id) && (
-            <div className="absolute top-3 left-3 bg-orange-500 text-black px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
-              BLACK WEEK
-            </div>
-          )}
-          
-          {/* Out of Stock Overlay */}
+          {/* Out of Stock Badge - Right Side */}
           {isOutOfStock && (
             <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
               UTSOLGT
