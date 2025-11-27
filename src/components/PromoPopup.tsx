@@ -24,21 +24,45 @@ export default function PromoPopup({ onClose }: PromoPopupProps = {}) {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('BLACKFRIDAY60');
+    navigator.clipboard.writeText('JOBO-40');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setIsSubmitting(true);
     
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setError('Vennligst oppgi en gyldig e-postadresse');
+      setIsSubmitting(false);
       return;
     }
 
-    setShowCode(true);
+    try {
+      const response = await fetch('/api/promo-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      if (response.status === 409) {
+        setError('Denne e-postadressen er allerede brukt');
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
+      setShowCode(true);
+    } catch (err) {
+      setError('Noe gikk galt. Prøv igjen.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isVisible) return null;
@@ -56,16 +80,16 @@ export default function PromoPopup({ onClose }: PromoPopupProps = {}) {
         <div className="text-center">
           <div className="mb-3 sm:mb-4">
             <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-3 sm:mb-4">
-              OPPTIL 60% AVSLAG
+              OPPTIL 40% RABATT PÅ UTVALGTE PRODUKTER
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2">
-            BLACK MONTH ER HER NÅ!
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+            GRATULERER!
           </h2>
           
           <p className="text-white/90 mb-4 sm:mb-6 text-base sm:text-lg">
-            Oppgi e-postadressen din for å låse opp rabatten!
+            Du får opptil 40% rabatt på utvalgte produkter. Bruk rabattkoden nedenfor under kassen for å få rabatten.
           </p>
 
           {!showCode ? (
@@ -84,47 +108,31 @@ export default function PromoPopup({ onClose }: PromoPopupProps = {}) {
                 {error && <p className="text-red-500 text-xs mb-3">{error}</p>}
                 <button
                   type="submit"
-                  className="w-full px-4 py-2 bg-[#12b190] text-white rounded-lg hover:bg-[#0f9a7a] transition text-sm font-semibold"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2 bg-[#12b190] text-white rounded-lg hover:bg-[#0f9a7a] transition text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  LÅS OPP RABATTEN
+                  {isSubmitting ? 'VENNLIGST VENT...' : 'LÅS OPP RABATTEN'}
                 </button>
               </div>
             </form>
           ) : (
             <div className="bg-white rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">GRATULERER!</h3>
               <p className="text-gray-700 text-sm sm:text-base mb-4 font-medium">
-                DU FÅR NÅ TILGANG TIL ÅRETS BESTE PRISER, OG MULIGHETEN TIL Å FÅ:
+                Bruk denne koden i kassen:
               </p>
-              <ul className="text-left space-y-2 mb-4">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#12b190] font-bold">✓</span>
-                  <span className="text-gray-700 text-sm sm:text-base">GRATIS FRAKT</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#12b190] font-bold">✓</span>
-                  <span className="text-gray-700 text-sm sm:text-base">14 DAGERS ÅPENT KJØP</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#12b190] font-bold">✓</span>
-                  <span className="text-gray-700 text-sm sm:text-base">2-5 ÅRS GARANTI</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#12b190] font-bold">✓</span>
-                  <span className="text-gray-700 text-sm sm:text-base font-bold">OPPTIL 60% RABATT PÅ HELE BUTIKKEN</span>
-                </li>
-              </ul>
+              <div className="bg-gray-100 border-2 border-dashed border-[#12b190] rounded-lg p-4 mb-4">
+                <p className="text-2xl sm:text-3xl font-bold text-[#12b190] tracking-wider">JOBO-40</p>
+              </div>
+              <button
+                onClick={handleCopy}
+                className="w-full bg-[#12b190] text-white py-2 rounded-lg hover:bg-[#0f9a7a] transition text-sm font-semibold"
+              >
+                {copied ? 'KOPIERT!' : 'KOPIER KODE'}
+              </button>
             </div>
           )}
 
-          {showCode ? (
-            <button
-              onClick={() => window.location.href = '/black-week'}
-              className="w-full bg-white text-[#12b190] py-3 rounded-lg font-bold hover:bg-gray-100 transition text-sm sm:text-base"
-            >
-              SE ALLE TILBUD HER
-            </button>
-          ) : (
+          {!showCode && (
             <button
               onClick={handleClose}
               className="w-full bg-transparent text-white py-3 rounded-lg font-normal hover:underline transition text-sm sm:text-base"

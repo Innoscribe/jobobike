@@ -8,6 +8,7 @@ export interface CartItem {
   id: string;
   name: string;
   price: number;
+  originalPrice?: number;
   image: string;
   quantity: number;
   category?: string[];
@@ -191,11 +192,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   // Save cart to cookies whenever items change (except during initial load)
-  // useEffect(() => {
-  //   if (!state.isLoading) {
-  //     saveCartToCookies(state.items);
-  //   }
-  // }, [state.items, state.isLoading]);
+  useEffect(() => {
+    if (!state.isLoading) {
+      saveCartToCookies(state.items);
+    }
+  }, [state.items, state.isLoading]);
 
   const addToCart = (item: Omit<CartItem, 'quantity'>, quantity: number = 1) => {
     dispatch({ type: 'ADD_TO_CART', payload: { ...item, quantity } });

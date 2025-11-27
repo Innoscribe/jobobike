@@ -23,7 +23,8 @@ export async function POST(request: Request) {
       email,
       metadata: {
         source: 'promo_popup',
-        promo_code: 'BLACKFRIDAY60',
+        promo_code: 'JOBO-40',
+        promo_code_id: 'promo_1SYBnY5Qn08gFC7jEVhgj0V8',
         timestamp: new Date().toISOString()
       }
     });

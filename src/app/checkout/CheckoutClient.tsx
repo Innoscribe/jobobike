@@ -34,37 +34,49 @@ export default function CheckoutClient() {
 
   useEffect(() => {
     console.log('=== CHECKOUT USEEFFECT ===');
+    
+    // Check for direct checkout items in sessionStorage FIRST
+    const directCheckoutData = sessionStorage.getItem('directCheckoutItems');
+    
+    if (directCheckoutData) {
+      try {
+        const directItems = JSON.parse(directCheckoutData);
+        console.log('Direct checkout items found:', directItems);
+        sessionStorage.removeItem('directCheckoutItems');
+        
+        if (directItems && directItems.length > 0) {
+          const storedCoupon = localStorage.getItem('appliedCoupon');
+          const couponData = storedCoupon ? JSON.parse(storedCoupon) : null;
+          createPaymentIntent(directItems, couponData);
+          return;
+        }
+      } catch (e) {
+        console.error('Failed to parse direct checkout items:', e);
+      }
+    }
+    
+    // Otherwise use cart flow
     console.log('Cart loading state:', cartLoading);
     console.log('Cart items:', cartItems);
     
-    // Wait for cart to load first
     if (cartLoading) {
       console.log('Still loading cart, waiting...');
       setLoading(true);
       return;
     }
     
-    // Now check cart contents
-    console.log('Cart loaded. Items count:', cartItems.length);
-    console.log('Cart items detail:', cartItems);
-    
-    // Check if cart is empty
     if (!cartItems || cartItems.length === 0) {
-      console.log('Cart is empty');
+      console.log('No items to checkout');
       setError('Handlekurven din er tom. Legg til produkter i handlekurven før du går til kassen.');
       setLoading(false);
       return;
     }
     
-    // Check for applied coupon in localStorage
     const storedCoupon = localStorage.getItem('appliedCoupon');
     const couponData = storedCoupon ? JSON.parse(storedCoupon) : null;
-    
-    // Cart has items, create payment intent
-    console.log('Creating payment intent for items:', cartItems);
     createPaymentIntent(cartItems, couponData);
     
-  }, [cartItems, cartLoading, totalItems]); // React to changes in cart
+  }, [cartItems, cartLoading, totalItems]);
 
   const createPaymentIntent = async (items: CartItem[], couponData?: any) => {
     console.log('=== CREATING PAYMENT INTENT ===');
@@ -80,6 +92,7 @@ export default function CheckoutClient() {
           name: item.name,
           quantity: item.quantity,
           price: item.price,
+          originalPrice: (item as any).originalPrice || item.price,
           category: item.category || 'general'
         }))
       };
@@ -206,7 +219,7 @@ export default function CheckoutClient() {
       )}
 
       {/* Loading State */}
-      {loading && cartItems.length > 0 && (
+      {loading && (
         <div className="bg-white p-8 rounded-lg border text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <p className="mt-4">Setter opp betaling...</p>
@@ -214,7 +227,7 @@ export default function CheckoutClient() {
       )}
 
       {/* Payment Form - Only show when we have items and client secret */}
-      {!loading && !error && cartItems.length > 0 && (
+      {!loading && !error && (
         <div className="bg-white rounded-lg border shadow-sm">
           {clientSecret && stripePromise ? (
             <Elements 

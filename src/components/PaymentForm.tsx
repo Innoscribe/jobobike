@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import {
@@ -34,23 +34,26 @@ export default function PaymentForm() {
     const [applyingCoupon, setApplyingCoupon] = useState(false);
     const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
-    // ðŸ§® Calculate totals from cart
+    const originalSubtotal = cartItems.reduce((sum, item) => {
+        const origPrice = (item as any).originalPrice || item.price;
+        return sum + (origPrice * item.quantity);
+    }, 0);
     const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const saved = 0;
+    const saved = originalSubtotal - subtotal;
     const taxId = 0;
     
     let discount = 0;
     if (appliedCoupon) {
+        const baseForDiscount = originalSubtotal;
         if (appliedCoupon.percent_off) {
-            discount = (subtotal * appliedCoupon.percent_off) / 100;
+            discount = (baseForDiscount * appliedCoupon.percent_off) / 100;
         } else if (appliedCoupon.amount_off) {
             discount = appliedCoupon.amount_off / 100;
         }
     }
     
-    const total = subtotal - saved - discount + taxId;
+    const total = appliedCoupon ? (originalSubtotal - discount) : subtotal;
 
-    // ðŸ’± Currency options - Only NOK
     const currencies = [
         { code: 'NOK', rate: 1, symbol: 'kr' }
     ];
@@ -96,7 +99,6 @@ export default function PaymentForm() {
     const validateForm = () => {
         const errors: Record<string, string> = {};
 
-        // Name validation
         const namePattern = /^[a-zA-ZæøåÆØÅ\s-]+$/;
         if (!shippingInfo.fullName.trim()) {
             errors.fullName = 'Vennligst skriv inn et gyldig navn';
@@ -104,7 +106,6 @@ export default function PaymentForm() {
             errors.fullName = 'Vennligst skriv inn et gyldig navn';
         }
 
-        // Phone validation
         const phonePattern = /^\+?[0-9\s-]{8,15}$/;
         if (!shippingInfo.phone.trim()) {
             errors.phone = 'Vennligst skriv inn et gyldig telefonnummer';
@@ -112,7 +113,6 @@ export default function PaymentForm() {
             errors.phone = 'Vennligst skriv inn et gyldig telefonnummer';
         }
 
-        // Email validation
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!email.trim()) {
             errors.email = 'Vennligst skriv inn en gyldig e-postadresse';
@@ -120,7 +120,6 @@ export default function PaymentForm() {
             errors.email = 'Vennligst skriv inn en gyldig e-postadresse';
         }
 
-        // Postal code validation (4 digits for Norwegian)
         const postalPattern = /^\d{4}$/;
         if (!shippingInfo.postal_code.trim()) {
             errors.postal_code = 'Vennligst skriv inn et gyldig postnummer (4 siffer)';
@@ -128,7 +127,6 @@ export default function PaymentForm() {
             errors.postal_code = 'Vennligst skriv inn et gyldig postnummer (4 siffer)';
         }
 
-        // Address validation
         const addressPattern = /^[a-zA-Z0-9æøåÆØÅ\s.,\-]+$/;
         if (!shippingInfo.addressLine1.trim() || shippingInfo.addressLine1.trim().length < 3) {
             errors.addressLine1 = 'Vennligst skriv inn en gyldig adresse';
@@ -136,7 +134,6 @@ export default function PaymentForm() {
             errors.addressLine1 = 'Vennligst skriv inn en gyldig adresse';
         }
 
-        // City validation
         const cityPattern = /^[a-zA-ZæøåÆØÅ\s-]+$/;
         if (!shippingInfo.city.trim()) {
             errors.city = 'Vennligst skriv inn en gyldig by';
@@ -144,7 +141,6 @@ export default function PaymentForm() {
             errors.city = 'Vennligst skriv inn en gyldig by';
         }
 
-        // State validation
         const statePattern = /^[a-zA-ZæøåÆØÅ\s-]+$/;
         if (!shippingInfo.state.trim()) {
             errors.state = 'Vennligst skriv inn et gyldig fylke';
@@ -200,7 +196,6 @@ export default function PaymentForm() {
                 setMessage("An unexpected error occurred.");
             }
         } else {
-            // âœ… Clear the cart after successful payment
             clearCart();
         }
 
@@ -209,49 +204,72 @@ export default function PaymentForm() {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-0 lg:mt-20">
-            {/* Left Column - Order Summary */}
             <div className="bg-white p-6 rounded-lg border border-gray-200">
                 <h2 className="text-lg font-medium mb-6 text-black">Bestillingsoversikt</h2>
 
-                {/* ðŸ›’ Dynamic Cart Items */}
                 <div className="space-y-4 mb-6">
-                    {cartItems.map((item) => (
-                        <div key={item.id} className="flex items-center gap-3">
-                            <div className="w-16 h-16 bg-gray-50 rounded flex items-center justify-center flex-shrink-0">
-                                {item.image ? (
-                                    <img src={item.image} alt={item.name} className="w-full h-full object-contain rounded" />
-                                ) : (
-                                    <span className="text-blue-600 text-sm">ðŸ“¦</span>
-                                )}
+                    {cartItems.map((item) => {
+                        const origPrice = (item as any).originalPrice || item.price;
+                        const hasDiscount = origPrice > item.price;
+                        return (
+                            <div key={item.id} className="flex items-center gap-3">
+                                <div className="w-16 h-16 bg-gray-50 rounded flex items-center justify-center flex-shrink-0">
+                                    {item.image ? (
+                                        <img src={item.image} alt={item.name} className="w-full h-full object-contain rounded" />
+                                    ) : (
+                                        <span className="text-blue-600 text-sm">📦</span>
+                                    )}
+                                </div>
+                                <div className="flex-1">
+                                    <p className="text-sm text-black">{item.name}</p>
+                                    <div className="flex items-center gap-2">
+                                        {hasDiscount && (
+                                            <p className="text-sm text-red-500 line-through">
+                                                {formatCurrency(convertPrice(origPrice * item.quantity))}
+                                            </p>
+                                        )}
+                                        <p className="text-sm font-medium text-black">
+                                            {formatCurrency(convertPrice(item.price * item.quantity))}
+                                        </p>
+                                    </div>
+                                </div>
+                                <p className="text-sm text-black">x{item.quantity}</p>
                             </div>
-                            <div className="flex-1">
-                                <p className="text-sm text-black">{item.name}</p>
-                                <p className="text-sm font-medium text-black">
-                                    {formatCurrency(convertPrice(item.price * item.quantity))}
-                                </p>
-                            </div>
-                            <p className="text-sm text-black">x{item.quantity}</p>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
-                {/* Order Summary */}
                 <div className="space-y-3 border-t pt-4">
-                    <div className="flex justify-between text-sm text-black">
-                        <span>Delsum</span>
-                        <span>{formatCurrency(convertPrice(subtotal))}</span>
-                    </div>
-                    {saved > 0 && (
-                        <div className="flex justify-between text-sm text-green-600">
-                            <span>SPART</span>
-                            <span>{formatCurrency(convertPrice(saved))}</span>
-                        </div>
-                    )}
-                    {appliedCoupon && discount > 0 && (
-                        <div className="flex justify-between text-sm text-green-600">
-                            <span>Rabatt ({appliedCoupon.name || couponCode})</span>
-                            <span>-{formatCurrency(convertPrice(discount))}</span>
-                        </div>
+                    {appliedCoupon ? (
+                        <>
+                            <div className="flex justify-between text-sm">
+                                <span className="text-black">Opprinnelig pris</span>
+                                <span className="text-red-500 line-through">{formatCurrency(convertPrice(originalSubtotal))}</span>
+                            </div>
+                            <div className="flex justify-between text-sm text-green-600 font-medium">
+                                <span>Rabatt ({appliedCoupon.name || couponCode})</span>
+                                <span>-{formatCurrency(convertPrice(discount))}</span>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            {saved > 0 && (
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-black">Opprinnelig pris</span>
+                                    <span className="text-red-500 line-through">{formatCurrency(convertPrice(originalSubtotal))}</span>
+                                </div>
+                            )}
+                            <div className="flex justify-between text-sm text-black">
+                                <span>Delsum</span>
+                                <span className="font-medium">{formatCurrency(convertPrice(subtotal))}</span>
+                            </div>
+                            {saved > 0 && (
+                                <div className="flex justify-between text-sm text-green-600">
+                                    <span>Du sparer</span>
+                                    <span>-{formatCurrency(convertPrice(saved))}</span>
+                                </div>
+                            )}
+                        </>
                     )}
                     <div className="flex justify-between text-sm text-black">
                         <span>Frakt</span>
@@ -311,13 +329,8 @@ export default function PaymentForm() {
                 </div>
             </div>
 
-            {/* Right Column - Payment Form */}
             <div className="bg-white p-6 rounded-lg border border-gray-200">
                 <form onSubmit={handleSubmit}>
-
-
-
-                    {/* Shipping Information */}
                     <div className="mb-6">
                         <h3 className="font-medium mb-4 text-black">Leveringsinformasjon</h3>
 
@@ -343,9 +356,6 @@ export default function PaymentForm() {
                             )}
                         </div>
 
-
-
-                        {/* Full Name */}
                         <div className="mb-4">
                             <label className="block text-sm text-gray-600 mb-1">Fullt navn</label>
                             <input
@@ -368,7 +378,6 @@ export default function PaymentForm() {
                             )}
                         </div>
 
-                        {/* Phone Number */}
                         <div className="mb-4">
                             <label className="block text-sm text-gray-600 mb-1">Telefon</label>
                             <input
@@ -391,7 +400,6 @@ export default function PaymentForm() {
                             )}
                         </div>
 
-                        {/* Country */}
                         <div className="mb-4">
                             <label className="block text-sm text-gray-600 mb-1">Land</label>
                             <select
@@ -410,7 +418,6 @@ export default function PaymentForm() {
                             </select>
                         </div>
 
-                        {/* Address Line 1 */}
                         <div className="mb-4">
                             <label className="block text-sm text-gray-600 mb-1">Adresse</label>
                             <input
@@ -433,7 +440,6 @@ export default function PaymentForm() {
                             )}
                         </div>
 
-                        {/* Address Line 2 */}
                         <div className="mb-4">
                             <label className="block text-sm text-gray-600 mb-1">Adresse linje 2</label>
                             <input
@@ -447,7 +453,6 @@ export default function PaymentForm() {
                             />
                         </div>
 
-                        {/* City, State, ZIP */}
                         <div className="grid grid-cols-3 gap-3">
                             <div>
                                 <input
@@ -512,14 +517,6 @@ export default function PaymentForm() {
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-                    {/* Payment Method */}
                     <div className="mb-6">
                         <h3 className="font-medium mb-4 text-black">Betalingsmetode</h3>
                         <p className="text-sm text-gray-600 mb-4">Kortinformasjon</p>
@@ -542,7 +539,6 @@ export default function PaymentForm() {
                         </div>
                     )}
 
-                    {/* Pay Button */}
                     <button
                         type="submit"
                         disabled={isLoading || !stripe || !elements}

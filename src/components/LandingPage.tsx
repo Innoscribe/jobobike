@@ -159,7 +159,7 @@ const LandingPage = () => {
 
           <div className="text-center mt-8">
             <Link
-              href="/cycle"
+              href="/elsykler"
               className="inline-flex items-center gap-2 bg-[#12b190] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0f9a7a] transition-colors"
             >
               Se alle sykler<span>→</span>
@@ -191,7 +191,7 @@ const LandingPage = () => {
 
         <div className="text-center mt-8">
           <Link
-            href="/cycle"
+            href="/elsykler"
             className="inline-flex items-center gap-2 bg-[#12b190] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0f9a7a] transition-colors"
           >
             Se alle sykler<span>→</span>
@@ -232,7 +232,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
-              HVORFOR STOLE PÅ JOBOBIKE?
+              HVORFOR JOBOBIKE?
             </h2>
           </div>
 

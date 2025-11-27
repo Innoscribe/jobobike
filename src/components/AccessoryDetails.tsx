@@ -147,7 +147,7 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
       <nav aria-label="Breadcrumb" className="border-b border-gray-200">
         <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 sm:px-4 py-3 text-sm">
           <li>
-            <Link href="/accessorie" className="text-gray-600 hover:text-black transition">
+            <Link href="/sykkelutstyr" className="text-gray-600 hover:text-black transition">
               Tilbehør
             </Link>
           </li>
@@ -322,15 +322,15 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                 <div id="suggestedCarouselMobile" className="overflow-x-auto scroll-smooth pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                   <div className="inline-flex gap-2">
                     {Array.from({ length: Math.ceil(allSuggestedProducts.length / 4) }).map((_, pageIndex) => (
-                      <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-2 w-[calc(100vw-2rem)] flex-shrink-0">
+                      <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-1.5 w-[calc(100vw-2.5rem)] flex-shrink-0 snap-start">
                         {allSuggestedProducts.slice(pageIndex * 4, pageIndex * 4 + 4).map((acc) => (
                           <button
                             key={acc.id}
                             onClick={() => toggleSuggestedProduct(acc.id)}
-                            className={`border-2 rounded-lg p-2 transition-all flex flex-col ${
+                            className={`border-[0.5px] rounded-lg p-2 transition-all flex flex-col ${
                               selectedSuggestedProducts.has(acc.id)
-                                ? 'border-[#12b190] bg-[#12b190]/5'
-                                : 'border-gray-200 hover:border-[#12b190]'
+                                ? 'border-black bg-[#12b190]/10'
+                                : 'border-gray-300 bg-white'
                             }`}
                           >
                             <div className="w-full aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center flex-shrink-0">
@@ -548,10 +548,10 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                       </span>
                     )}
                     <span className={`text-2xl font-bold ${product.originalPrice && product.originalPrice !== product.price ? 'text-[#12b190]' : 'text-black'}`}>{formatCurrency(calculateTotalPrice())}</span>
-                    {selectedSuggestedProducts.size > 0 && (
-                      <span className="text-sm text-gray-500">({selectedSuggestedProducts.size} tillegg)</span>
-                    )}
                   </div>
+                  {selectedSuggestedProducts.size > 0 && (
+                    <div className="text-xs text-gray-500 mt-1">({Array.from(selectedSuggestedProducts).map(id => allSuggestedProducts.find(p => p.id === id)?.name).filter(Boolean).join(', ')})</div>
+                  )}
                   
                   <div className="mt-2 flex items-center gap-4">
                     <span className="text-sm text-gray-600">Antall:</span>
@@ -573,27 +573,54 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                       </button>
                     </div>
                   </div>
-                  <button
-                    onClick={() => {
-                      if (!isProductOutOfStock) {
-                        addToCart({ ...product, size: selectedSize, color: selectedColor } as any, quantity);
-                        selectedSuggestedProducts.forEach(id => {
-                          const suggestedProduct = allSuggestedProducts.find(p => p.id === id);
-                          if (suggestedProduct) {
-                            addToCart(suggestedProduct as any, 1);
-                          }
-                        });
-                      }
-                    }}
-                    disabled={isProductOutOfStock}
-                    className={`w-full px-6 py-3 rounded-md font-semibold mt-6 transition-all ${
-                      isProductOutOfStock
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        : 'bg-[#12b190] text-white hover:bg-[#0e9a7a]'
-                    }`}
-                  >
-                    {isProductOutOfStock ? 'IKKE PÅ LAGER' : 'Legg til i handlekurv'}
-                  </button>
+                  <div className="flex gap-2 mt-6">
+                    <button
+                      onClick={() => {
+                        if (!isProductOutOfStock) {
+                          addToCart({ ...product, size: selectedSize, color: selectedColor } as any, quantity);
+                          selectedSuggestedProducts.forEach(id => {
+                            const suggestedProduct = allSuggestedProducts.find(p => p.id === id);
+                            if (suggestedProduct) {
+                              addToCart(suggestedProduct as any, 1);
+                            }
+                          });
+                        }
+                      }}
+                      disabled={isProductOutOfStock}
+                      className={`flex-1 px-4 py-3 rounded-md font-semibold transition-all whitespace-nowrap ${
+                        isProductOutOfStock
+                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                          : 'bg-[#12b190] text-white hover:bg-[#0e9a7a]'
+                      }`}
+                    >
+                      {isProductOutOfStock ? 'IKKE PÅ LAGER' : 'Legg til i handlekurv'}
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (!isProductOutOfStock) {
+                          addToCart({ ...product, size: selectedSize, color: selectedColor } as any, quantity);
+                          selectedSuggestedProducts.forEach(id => {
+                            const suggestedProduct = allSuggestedProducts.find(p => p.id === id);
+                            if (suggestedProduct) {
+                              addToCart(suggestedProduct as any, 1);
+                            }
+                          });
+                          setTimeout(() => {
+                            const router = require('next/navigation').useRouter;
+                            window.location.href = '/checkout';
+                          }, 500);
+                        }
+                      }}
+                      disabled={isProductOutOfStock}
+                      className={`flex-1 px-4 py-3 rounded-md font-semibold transition-all whitespace-nowrap ${
+                        isProductOutOfStock
+                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                          : 'bg-black text-white hover:bg-gray-800'
+                      }`}
+                    >
+                      Gå til betaling
+                    </button>
+                  </div>
                 </div>
               </div>
               
@@ -604,15 +631,15 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                     <div id="suggestedCarousel" className="overflow-x-auto scroll-smooth pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                       <div className="inline-flex gap-2">
                         {Array.from({ length: Math.ceil(allSuggestedProducts.length / 4) }).map((_, pageIndex) => (
-                          <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-2 w-full flex-shrink-0">
+                          <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-1.5 w-full flex-shrink-0 snap-start">
                             {allSuggestedProducts.slice(pageIndex * 4, pageIndex * 4 + 4).map((acc) => (
                               <button
                                 key={acc.id}
                                 onClick={() => toggleSuggestedProduct(acc.id)}
-                                className={`border-2 rounded-lg p-2 transition-all flex flex-col ${
+                                className={`border-[0.5px] rounded-lg p-2 transition-all flex flex-col ${
                                   selectedSuggestedProducts.has(acc.id)
-                                    ? 'border-[#12b190] bg-[#12b190]/5'
-                                    : 'border-gray-200 hover:border-[#12b190]'
+                                    ? 'border-black bg-[#12b190]/10'
+                                    : 'border-gray-300 bg-white'
                                 }`}
                               >
                                 <div className="w-full aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center flex-shrink-0">
@@ -672,10 +699,10 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
               </span>
             )}
             <span className={`text-xl font-bold ${product.originalPrice && product.originalPrice !== product.price ? 'text-[#12b190]' : 'text-black'}`}>{formatCurrency(calculateTotalPrice())}</span>
-            {selectedSuggestedProducts.size > 0 && (
-              <span className="text-xs text-gray-500">({selectedSuggestedProducts.size} tillegg)</span>
-            )}
           </div>
+          {selectedSuggestedProducts.size > 0 && (
+            <div className="text-xs text-gray-500">({Array.from(selectedSuggestedProducts).map(id => allSuggestedProducts.find(p => p.id === id)?.name).filter(Boolean).join(', ')})</div>
+          )}
 
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5 border border-gray-200 rounded-lg p-1">
@@ -703,7 +730,7 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
                 }
               }}
               disabled={isProductOutOfStock}
-              className={`flex-1 px-4 py-2.5 rounded-md font-semibold text-sm transition-all ${
+              className={`flex-1 px-4 py-2.5 rounded-md font-semibold text-sm transition-all whitespace-nowrap ${
                 isProductOutOfStock
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   : 'bg-[#12b190] text-white hover:bg-[#0e9a7a]'
@@ -712,6 +739,22 @@ export default function AccessoryDetails({ product }: AccessoryDetailsProps) {
               {isProductOutOfStock ? 'IKKE PÅ LAGER' : 'Legg til i handlekurv'}
             </button>
           </div>
+          <button
+            onClick={() => {
+              if (!isProductOutOfStock) {
+                addToCart({ ...product, size: selectedSize, color: selectedColor } as any, quantity);
+                setTimeout(() => window.location.href = '/checkout', 500);
+              }
+            }}
+            disabled={isProductOutOfStock}
+            className={`w-full px-4 py-2.5 rounded-md font-semibold text-sm transition-all whitespace-nowrap ${
+              isProductOutOfStock
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-black text-white hover:bg-gray-800'
+            }`}
+          >
+            Gå til betaling
+          </button>
         </div>
       </div>
 

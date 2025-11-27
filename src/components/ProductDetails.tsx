@@ -89,7 +89,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
       <nav aria-label="Breadcrumb" className="border-b border-gray-200">
         <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 text-sm overflow-x-auto">
           <li className="flex-shrink-0">
-            <Link href="/cycle" className="text-gray-600 hover:text-black transition">
+            <Link href="/elsykler" className="text-gray-600 hover:text-black transition">
               Sykkel
             </Link>
           </li>
@@ -323,7 +323,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                 
                 return displayAccessories.length > 0 ? (
                   Array.from({ length: Math.ceil(displayAccessories.length / 4) }).map((_, pageIndex) => (
-                    <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-2 min-w-full flex-shrink-0 snap-start">
+                    <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-1.5 w-[calc(100vw-2.5rem)] flex-shrink-0 snap-start">
                       {displayAccessories.slice(pageIndex * 4, pageIndex * 4 + 4).map((accessory) => {
                         const isSelected = selectedAccessories.some(acc => acc.id === accessory.id);
                         return (
@@ -341,8 +341,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                                 }]);
                               }
                             }}
-                            className={`border rounded-md p-2 transition-colors bg-white text-left ${
-                              isSelected ? 'border-[#12b190] ring-2 ring-[#12b190]' : 'border-gray-200 hover:border-[#12b190]'
+                            className={`border-[0.5px] rounded-md p-2 transition-all text-left ${
+                              isSelected ? 'border-black bg-[#12b190]/10' : 'border-gray-300 bg-white'
                             }`}
                           >
                             <div className="aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center">
@@ -430,13 +430,32 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                 }
               }}
               disabled={isProductOutOfStock}
-              className={`w-full px-4 py-2 rounded-md text-sm font-semibold ${
+              className={`w-full px-4 py-2 rounded-md text-sm font-semibold whitespace-nowrap ${
                 isProductOutOfStock
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   : 'bg-[#12b190] text-white hover:bg-[#0e9a7a]'
               }`}
             >
               {isProductOutOfStock ? 'UTSOLGT' : 'Legg til i handlekurv'}
+            </button>
+            <button
+              onClick={() => {
+                if (!isProductOutOfStock) {
+                  addToCart(product, quantity);
+                  selectedAccessories.forEach(acc => {
+                    addToCart(acc as any, 1);
+                  });
+                  setTimeout(() => router.push('/checkout'), 500);
+                }
+              }}
+              disabled={isProductOutOfStock}
+              className={`w-full px-4 py-2 rounded-md text-sm font-semibold mt-2 whitespace-nowrap ${
+                isProductOutOfStock
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  : 'bg-black text-white hover:bg-gray-800'
+              }`}
+            >
+              Gå til betaling
             </button>
           </div>
 
@@ -672,7 +691,7 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                     
                     return displayAccessories.length > 0 ? (
                       Array.from({ length: Math.ceil(displayAccessories.length / 4) }).map((_, pageIndex) => (
-                        <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-2 min-w-full flex-shrink-0 snap-start">
+                        <div key={pageIndex} className="grid grid-cols-2 grid-rows-2 gap-1.5 w-full flex-shrink-0 snap-start">
                           {displayAccessories.slice(pageIndex * 4, pageIndex * 4 + 4).map((accessory) => {
                             const isSelected = selectedAccessories.some(acc => acc.id === accessory.id);
                             return (
@@ -690,8 +709,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                                     }]);
                                   }
                                 }}
-                                className={`border-2 rounded-lg p-1 transition-all flex flex-col ${
-                                  isSelected ? 'border-[#12b190] bg-[#12b190]/5' : 'border-gray-200 hover:border-[#12b190]'
+                                className={`border-[0.5px] rounded-lg p-1 transition-all flex flex-col ${
+                                  isSelected ? 'border-black bg-[#12b190]/10' : 'border-gray-300 bg-white'
                                 }`}
                               >
                                 <div className="w-full aspect-square bg-white rounded mb-1 overflow-hidden flex items-center justify-center flex-shrink-0">
@@ -742,19 +761,22 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
             {/* Price Section */}
             <div className="flex flex-col gap-2 -mt-3">
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-black">{formatCurrency(product.price + selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}</span>
                 {product.originalPrice !== product.price && (
                   <span className="text-base text-red-500 line-through">
                     {formatCurrency(product.originalPrice + selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}
                   </span>
                 )}
-                {selectedAccessories.length > 0 && (
-                  <span className="text-sm text-gray-500">({selectedAccessories.length} tilbehør)</span>
+                <span className="text-2xl font-bold text-black">{formatCurrency(product.price + selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}</span>
+                {['henry-001', 'transer-001', 'robin-pro-001', 'dyno-001', 'luxe-snow-001'].includes(product.id) && (
+                  <span className="bg-orange-500 text-black px-2 py-1 rounded-full text-xs font-bold">
+                    BLACK WEEK
+                  </span>
                 )}
               </div>
               {selectedAccessories.length > 0 && (
                 <div className="text-sm text-gray-600">
-                  Sykkel: {formatCurrency(product.price)} + Tilbehør: {formatCurrency(selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}
+                  <div>Sykkel: {formatCurrency(product.price)} + Tilbehør: {formatCurrency(selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}</div>
+                  <div className="text-xs text-gray-500 mt-1">({selectedAccessories.map(acc => acc.name).join(', ')})</div>
                 </div>
               )}
             </div>
@@ -793,13 +815,32 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                   }
                 }}
                 disabled={isProductOutOfStock}
-                className={`w-44 px-6 py-3 rounded-md font-semibold whitespace-nowrap ${
+                className={`px-4 py-3 rounded-md font-semibold whitespace-nowrap ${
                   isProductOutOfStock
                     ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     : 'bg-[#12b190] text-white hover:bg-[#0e9a7a]'
                 }`}
               >
                 {isProductOutOfStock ? 'UTSOLGT' : 'Legg til i handlekurv'}
+              </button>
+              <button
+                onClick={() => {
+                  if (!isProductOutOfStock) {
+                    addToCart(product, quantity);
+                    selectedAccessories.forEach(acc => {
+                      addToCart(acc as any, 1);
+                    });
+                    setTimeout(() => router.push('/checkout'), 500);
+                  }
+                }}
+                disabled={isProductOutOfStock}
+                className={`px-4 py-3 rounded-md font-semibold whitespace-nowrap ${
+                  isProductOutOfStock
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : 'bg-black text-white hover:bg-gray-800'
+                }`}
+              >
+                Gå til betaling
               </button>
             </div>
 

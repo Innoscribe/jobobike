@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
       <div className="bg-gray-50 py-16 pt-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-4">
-            JOBOBIKE Personvernerklæring
+            Personvernerklæring
           </h1>
           <p className="text-sm text-gray-600 text-center">
             Sist oppdatert: 27. november 2025

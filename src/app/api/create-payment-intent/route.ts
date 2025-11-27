@@ -35,7 +35,9 @@ export async function POST(request: NextRequest) {
       }
 
       let total = items.reduce((sum, item) => {
-        const price = item.price ? Math.round(item.price * 100) : 0;
+        // Use originalPrice if coupon is applied, otherwise use price
+        const basePrice = couponData && item.originalPrice ? item.originalPrice : item.price;
+        const price = basePrice ? Math.round(basePrice * 100) : 0;
         const quantity = item.quantity || 1;
         return sum + price * quantity;
       }, 0);

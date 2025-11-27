@@ -19,23 +19,26 @@ export default function BlackWeekPage() {
   });
 
   useEffect(() => {
-    const now = new Date();
-    const nextWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
-    const endDate = nextWeek.getTime();
+    // Set end date to tomorrow at 12:00 AM (midnight)
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+    const endDate = tomorrow.getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const distance = endDate - now;
 
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000)
-      });
-
       if (distance < 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         clearInterval(timer);
+      } else {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        });
       }
     }, 1000);
 

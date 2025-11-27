@@ -31,11 +31,11 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
 
   return (
     <div className={`p-4 bg-white rounded-lg border ${className}`}>
-      <h3 className="text-lg font-semibold mb-4 text-black">Cart Summary</h3>
+      <h3 className="text-lg font-semibold mb-4 text-black">Handlekurv sammendrag</h3>
       
       <div className="space-y-2 mb-4">
         <div className="flex justify-between">
-          <span className="text-gray-600">Items ({totalItems})</span>
+          <span className="text-gray-600">Varer ({totalItems})</span>
           <span className="font-medium">{formatCurrency(totalPrice)}</span>
         </div>
         
@@ -46,7 +46,7 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
         
         <div className="border-t pt-2">
           <div className="flex justify-between">
-            <span className="text-lg font-semibold text-black">Total</span>
+            <span className="text-lg font-semibold text-black">Totalt</span>
             <span className="text-lg font-bold text-black">
               {formatCurrency(totalPrice)}
             </span>
