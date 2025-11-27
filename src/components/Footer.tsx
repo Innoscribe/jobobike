@@ -84,7 +84,7 @@ const Footer = () => {
       <div className="border-t border-gray-200 py-4">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4 text-xs text-gray-500">
           <div className="text-center">
-            © 2025 <span className="text-[#12b190] font-semibold">JALUT AI INNOSCRIBE</span>. Org nr: 932806517. Alle rettigheter forbeholdt.
+            © 2025 <span className="text-[#12b190] font-semibold">JALUT AI LAUNCHLABS</span>. Org nr: 931 361 414. Niels Juels Gate 70,B 0259 Oslo. Alle rettigheter forbeholdt.
           </div>
           <div className="flex gap-3 justify-center">
             <img src="/images/visa.png" alt="Visa" className="h-5 sm:h-6 object-contain" />
