@@ -247,27 +247,23 @@ export default function PaymentForm() {
                                 <span className="text-red-500 line-through">{formatCurrency(convertPrice(originalSubtotal))}</span>
                             </div>
                             <div className="flex justify-between text-sm text-green-600 font-medium">
-                                <span>Rabatt ({appliedCoupon.name || couponCode})</span>
+                                <span>Kupongrabatt {appliedCoupon.percent_off ? `(${appliedCoupon.percent_off}% rabatt)` : ''}</span>
                                 <span>-{formatCurrency(convertPrice(discount))}</span>
                             </div>
                         </>
                     ) : (
                         <>
                             {saved > 0 && (
-                                <div className="flex justify-between text-sm">
-                                    <span className="text-black">Opprinnelig pris</span>
-                                    <span className="text-red-500 line-through">{formatCurrency(convertPrice(originalSubtotal))}</span>
-                                </div>
-                            )}
-                            <div className="flex justify-between text-sm text-black">
-                                <span>Delsum</span>
-                                <span className="font-medium">{formatCurrency(convertPrice(subtotal))}</span>
-                            </div>
-                            {saved > 0 && (
-                                <div className="flex justify-between text-sm text-green-600">
-                                    <span>Du sparer</span>
-                                    <span>-{formatCurrency(convertPrice(saved))}</span>
-                                </div>
+                                <>
+                                    <div className="flex justify-between text-sm">
+                                        <span className="text-black">Opprinnelig pris</span>
+                                        <span className="text-red-500 line-through">{formatCurrency(convertPrice(originalSubtotal))}</span>
+                                    </div>
+                                    <div className="flex justify-between text-sm text-green-600">
+                                        <span>Du sparer</span>
+                                        <span>-{formatCurrency(convertPrice(saved))}</span>
+                                    </div>
+                                </>
                             )}
                         </>
                     )}
