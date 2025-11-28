@@ -46,6 +46,7 @@ export default function AccessoryProductClient({ product }: AccessoryProductClie
       id: uniqueId,
       name: productName,
       price: product.price,
+      originalPrice: product.originalPrice,
       image: product.image,
       category: product.category
     }, quantity);
