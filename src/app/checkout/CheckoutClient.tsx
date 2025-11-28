@@ -3,22 +3,13 @@
 import { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { useCart } from '@/components/CartContext'; // Import your CartContext
+import { useCart, CartItem } from '@/components/CartContext';
 import PaymentForm from '@/components/PaymentForm';
 import { formatCurrency } from '@/utils/currency';
 import { getProductWeight } from '@/utils/productWeight';
 
 // Replace with your publishable key
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
-
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image?: string;
-  category?: string[];
-}
 
 export default function CheckoutClient() {
   const [clientSecret, setClientSecret] = useState('');
