@@ -75,7 +75,12 @@ export default function ProductCardItem({
             BLACK WEEK
           </div>
         )}
-        {baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && (
+        {baseProduct.badge !== 'Black Week' && baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && (
+          <div className="absolute top-2 left-2 bg-red-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-semibold">
+            -{Math.round(((baseProduct.originalPrice - baseProduct.price) / baseProduct.originalPrice) * 100)}%
+          </div>
+        )}
+        {baseProduct.badge === 'Black Week' && baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && !isOutOfStock && (
           <div className="absolute top-2 right-2 bg-red-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-semibold">
             -{Math.round(((baseProduct.originalPrice - baseProduct.price) / baseProduct.originalPrice) * 100)}%
           </div>
