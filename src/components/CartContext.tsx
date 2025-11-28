@@ -8,17 +8,19 @@ export interface CartItem {
   id: string;
   name: string;
   price: number;
-  originalPrice?: number;
+  originalPrice: number;
   image: string;
   quantity: number;
   category?: string[];
   size?: string;
+  weight?: number; // weight in kg
 }
 
 interface CartState {
   items: CartItem[];
   totalItems: number;
   totalPrice: number;
+  shippingCost: number;
   isLoading: boolean;
 }
 
@@ -35,6 +37,7 @@ interface CartContextType extends CartState {
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
+  grandTotal: number;
 }
 
 // Cookie configuration
@@ -96,16 +99,28 @@ const initialState: CartState = {
   items: [],
   totalItems: 0,
   totalPrice: 0,
+  shippingCost: 0,
   isLoading: true,
+};
+
+// Helper function to calculate shipping for a single item
+const calculateItemShipping = (weight: number): number => {
+  if (weight <= 0 || weight > 50) return 0;
+  return 440 + 28 * (weight - 1);
 };
 
 // Helper function to calculate totals
 const calculateTotals = (items: CartItem[]) => {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const shippingCost = items.reduce((sum, item) => {
+    const itemWeight = item.weight || 0;
+    return sum + (calculateItemShipping(itemWeight) * item.quantity);
+  }, 0);
   return { 
     totalItems, 
-    totalPrice: Math.round(totalPrice * 100) / 100 // Round to 2 decimal places
+    totalPrice: Math.round(totalPrice * 100) / 100,
+    shippingCost: Math.round(shippingCost)
   };
 };
 
@@ -131,21 +146,21 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         newItems = [...state.items, { ...itemWithoutQuantity, quantity: quantityToAdd }];
       }
       
-      const { totalItems, totalPrice } = calculateTotals(newItems);
-      return { ...state, items: newItems, totalItems, totalPrice };
+      const { totalItems, totalPrice, shippingCost } = calculateTotals(newItems);
+      return { ...state, items: newItems, totalItems, totalPrice, shippingCost };
     }
 
     case 'REMOVE_FROM_CART': {
       const newItems = state.items.filter(item => item.id !== action.payload);
-      const { totalItems, totalPrice } = calculateTotals(newItems);
-      return { ...state, items: newItems, totalItems, totalPrice };
+      const { totalItems, totalPrice, shippingCost } = calculateTotals(newItems);
+      return { ...state, items: newItems, totalItems, totalPrice, shippingCost };
     }
 
     case 'UPDATE_QUANTITY': {
       if (action.payload.quantity <= 0) {
         const newItems = state.items.filter(item => item.id !== action.payload.id);
-        const { totalItems, totalPrice } = calculateTotals(newItems);
-        return { ...state, items: newItems, totalItems, totalPrice };
+        const { totalItems, totalPrice, shippingCost } = calculateTotals(newItems);
+        return { ...state, items: newItems, totalItems, totalPrice, shippingCost };
       }
 
       const newItems = state.items.map(item =>
@@ -154,16 +169,16 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
           : item
       );
       
-      const { totalItems, totalPrice } = calculateTotals(newItems);
-      return { ...state, items: newItems, totalItems, totalPrice };
+      const { totalItems, totalPrice, shippingCost } = calculateTotals(newItems);
+      return { ...state, items: newItems, totalItems, totalPrice, shippingCost };
     }
 
     case 'CLEAR_CART':
-      return { ...state, items: [], totalItems: 0, totalPrice: 0 };
+      return { ...state, items: [], totalItems: 0, totalPrice: 0, shippingCost: 0 };
 
     case 'LOAD_CART': {
-      const { totalItems, totalPrice } = calculateTotals(action.payload);
-      return { ...state, items: action.payload, totalItems, totalPrice };
+      const { totalItems, totalPrice, shippingCost } = calculateTotals(action.payload);
+      return { ...state, items: action.payload, totalItems, totalPrice, shippingCost };
     }
 
     default:
@@ -215,6 +230,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     clearCartCookies();
   };
 
+  const grandTotal = state.totalPrice + state.shippingCost;
+
   return (
     <CartContext.Provider
       value={{
@@ -223,6 +240,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         removeFromCart,
         updateQuantity,
         clearCart,
+        grandTotal,
       }}
     >
       {children}

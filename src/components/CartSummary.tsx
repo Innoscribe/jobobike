@@ -15,7 +15,7 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
   showCheckoutButton = false,
   onCheckout
 }) => {
-  const { totalItems, totalPrice, clearCart,  } = useCart();
+  const { totalItems, totalPrice, shippingCost, grandTotal, clearCart } = useCart();
 
   const handleCheckout = () => {
     if (onCheckout) {
@@ -35,22 +35,10 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
       
       <div className="space-y-2 mb-4">
         <div className="flex justify-between">
-          <span className="text-gray-600">Varer ({totalItems})</span>
-          <span className="font-medium">{formatCurrency(totalPrice)}</span>
-        </div>
-        
-        <div className="flex justify-between">
-          <span className="text-gray-600">Frakt</span>
-          <span className="font-medium text-[#12b190]">Gratis</span>
-        </div>
-        
-        <div className="border-t pt-2">
-          <div className="flex justify-between">
-            <span className="text-lg font-semibold text-black">Totalt</span>
-            <span className="text-lg font-bold text-black">
-              {formatCurrency(totalPrice)}
-            </span>
-          </div>
+          <span className="text-lg font-semibold text-black">Totalt</span>
+          <span className="text-lg font-bold text-black">
+            {formatCurrency(grandTotal)}
+          </span>
         </div>
       </div>
 

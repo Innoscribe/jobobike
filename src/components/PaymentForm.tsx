@@ -8,6 +8,8 @@ import {
 } from '@stripe/react-stripe-js';
 import { useCart } from '@/components/CartContext';
 import { formatCurrency } from '@/utils/currency';
+import { calculateTotal, calculateShippingForWeight } from '@/utils/pricing';
+import { getProductWeight } from '@/utils/productWeight';
 
 export default function PaymentForm() {
     const stripe = useStripe();
@@ -34,25 +36,48 @@ export default function PaymentForm() {
     const [applyingCoupon, setApplyingCoupon] = useState(false);
     const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
+    // Calculate shipping per item, then sum
+    const totalShipping = cartItems.reduce((sum, item) => {
+        const weight = (item as any).weight || getProductWeight(item.id);
+        const itemShipping = calculateShippingForWeight(weight);
+        return sum + (itemShipping * item.quantity);
+    }, 0);
+
     const originalSubtotal = cartItems.reduce((sum, item) => {
         const origPrice = (item as any).originalPrice || item.price;
         return sum + (origPrice * item.quantity);
     }, 0);
-    const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const saved = originalSubtotal - subtotal;
-    const taxId = 0;
     
     let discount = 0;
+    let basePrice = originalSubtotal;
+    
     if (appliedCoupon) {
-        const baseForDiscount = originalSubtotal;
+        // Apply coupon to ORIGINAL prices
         if (appliedCoupon.percent_off) {
-            discount = (baseForDiscount * appliedCoupon.percent_off) / 100;
+            discount = (originalSubtotal * appliedCoupon.percent_off) / 100;
         } else if (appliedCoupon.amount_off) {
             discount = appliedCoupon.amount_off / 100;
         }
+        basePrice = originalSubtotal - discount;
+    } else {
+        // No coupon: use current sale prices
+        const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        basePrice = subtotal;
     }
     
-    const total = appliedCoupon ? (originalSubtotal - discount) : subtotal;
+    // VAT is included in prices (not added on top)
+    const taxableBasis = basePrice + totalShipping;
+    // const vat = Math.round(taxableBasis * 0.25); // 25% VAT calculation (commented out)
+    const vat = 0; // VAT included in prices, shown as 0
+    const total = Math.round(taxableBasis);
+    
+    const pricingBreakdown = {
+        productPrice: basePrice,
+        shipping: totalShipping,
+        taxableBasis,
+        vat,
+        total
+    };
 
     const currencies = [
         { code: 'NOK', rate: 1, symbol: 'kr' }
@@ -211,35 +236,51 @@ export default function PaymentForm() {
                     {cartItems.map((item) => {
                         const origPrice = (item as any).originalPrice || item.price;
                         const hasDiscount = origPrice > item.price;
+                        const itemDiscount = appliedCoupon?.percent_off 
+                            ? (origPrice * item.quantity * appliedCoupon.percent_off) / 100
+                            : 0;
+                        const itemFinal = (origPrice * item.quantity) - itemDiscount;
                         return (
-                            <div key={item.id} className="flex items-center gap-3">
-                                <div className="w-16 h-16 bg-gray-50 rounded flex items-center justify-center flex-shrink-0">
-                                    {item.image ? (
-                                        <img src={item.image} alt={item.name} className="w-full h-full object-contain rounded" />
-                                    ) : (
-                                        <span className="text-blue-600 text-sm">📦</span>
-                                    )}
-                                </div>
-                                <div className="flex-1">
-                                    <p className="text-sm text-black">{item.name}</p>
-                                    {appliedCoupon ? (
-                                        <p className="text-sm font-medium text-black">
-                                            {formatCurrency(convertPrice(origPrice * item.quantity))}
-                                        </p>
-                                    ) : (
-                                        <div className="flex items-center gap-2">
-                                            {hasDiscount && (
-                                                <p className="text-sm text-red-500 line-through">
-                                                    {formatCurrency(convertPrice(origPrice * item.quantity))}
+                            <div key={item.id} className="border-b pb-3">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-16 h-16 bg-gray-50 rounded flex items-center justify-center flex-shrink-0">
+                                        {item.image ? (
+                                            <img src={item.image} alt={item.name} className="w-full h-full object-contain rounded" />
+                                        ) : (
+                                            <span className="text-blue-600 text-sm">📦</span>
+                                        )}
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="text-sm font-medium text-black">{item.name} (x{item.quantity})</p>
+                                        {appliedCoupon ? (
+                                            <div className="text-xs space-y-1 mt-1">
+                                                <div className="flex justify-between text-gray-600">
+                                                    <span>Opprinnelig pris</span>
+                                                    <span>{formatCurrency(convertPrice(origPrice * item.quantity))}</span>
+                                                </div>
+                                                <div className="flex justify-between text-green-600">
+                                                    <span>-{appliedCoupon.percent_off}% rabatt</span>
+                                                    <span>-{formatCurrency(convertPrice(itemDiscount))}</span>
+                                                </div>
+                                                <div className="flex justify-between font-medium text-black">
+                                                    <span>Pris etter rabatt</span>
+                                                    <span>{formatCurrency(convertPrice(itemFinal))}</span>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="flex items-center gap-2 mt-1">
+                                                {hasDiscount && (
+                                                    <p className="text-xs text-red-500 line-through">
+                                                        {formatCurrency(convertPrice(origPrice * item.quantity))}
+                                                    </p>
+                                                )}
+                                                <p className="text-sm font-medium text-black">
+                                                    {formatCurrency(convertPrice(item.price * item.quantity))}
                                                 </p>
-                                            )}
-                                            <p className="text-sm font-medium text-black">
-                                                {formatCurrency(convertPrice(item.price * item.quantity))}
-                                            </p>
-                                        </div>
-                                    )}
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                                <p className="text-sm text-black">x{item.quantity}</p>
                             </div>
                         );
                     })}
@@ -247,44 +288,18 @@ export default function PaymentForm() {
 
                 <div className="space-y-3 border-t pt-4">
                     {appliedCoupon ? (
-                        <>
-                            <div className="flex justify-between text-sm">
-                                <span className="text-black">Opprinnelig pris</span>
-                                <span className="text-black">{formatCurrency(convertPrice(originalSubtotal))}</span>
-                            </div>
-                            <div className="bg-green-50 border border-green-200 rounded p-3 my-2">
-                                <div className="flex justify-between text-sm text-green-700 font-semibold mb-1">
-                                    <span>Kupongrabatt {appliedCoupon.percent_off ? `(${appliedCoupon.percent_off}% rabatt)` : ''}</span>
-                                    <span>-{formatCurrency(convertPrice(discount))}</span>
-                                </div>
-                                <p className="text-xs text-green-600">
-                                    Du fikk {appliedCoupon.percent_off}% rabatt på den opprinnelige prisen
-                                </p>
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            {saved > 0 && (
-                                <>
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-black">Opprinnelig pris</span>
-                                        <span className="text-red-500 line-through">{formatCurrency(convertPrice(originalSubtotal))}</span>
-                                    </div>
-                                    <div className="flex justify-between text-sm text-green-600">
-                                        <span>Du sparer</span>
-                                        <span>-{formatCurrency(convertPrice(saved))}</span>
-                                    </div>
-                                </>
-                            )}
-                        </>
-                    )}
+                        <div className="flex justify-between text-sm font-medium">
+                            <span className="text-black">Total produktpris</span>
+                            <span className="text-black">{formatCurrency(convertPrice(basePrice))}</span>
+                        </div>
+                    ) : null}
                     <div className="flex justify-between text-sm text-black">
                         <span>Frakt</span>
-                        <span className="text-green-600 font-medium">Gratis</span>
+                        <span className="text-black">{formatCurrency(convertPrice(pricingBreakdown.shipping))}</span>
                     </div>
-                    <div className="flex justify-between text-sm text-black">
-                        <span>MVA</span>
-                        <span className="text-black">Inkludert i prisen</span>
+                    <div className="flex justify-between text-sm text-gray-600">
+                        <span>MVA (inkludert i prisen)</span>
+                        <span>{formatCurrency(convertPrice(pricingBreakdown.vat))}</span>
                     </div>
                     <div className="flex justify-between font-medium text-lg border-t pt-3 text-black">
                         <span>Totalt å betale</span>

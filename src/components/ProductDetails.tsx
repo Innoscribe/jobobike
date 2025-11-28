@@ -15,6 +15,7 @@ import TechnicalSpecifications from "./TechnicalSpecs";
 import BikePackageBuilder from "./BikePackageBuilder";
 
 import { formatCurrency } from "@/utils/currency";
+import { getProductWeight } from "@/utils/productWeight";
 
 function ReviewStars({ rating = 5, reviewCount = 14 }: { rating?: number; reviewCount?: number }) {
   return (
@@ -423,9 +424,10 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
             <button
               onClick={() => {
                 if (!isProductOutOfStock) {
-                  addToCart(product, quantity);
+                  const weight = getProductWeight(product.id, product.specifications.weight);
+                  addToCart({...product, originalPrice: product.originalPrice, weight}, quantity);
                   selectedAccessories.forEach(acc => {
-                    addToCart(acc as any, 1);
+                    addToCart({...acc as any, originalPrice: acc.originalPrice || acc.price, weight: 0.5}, 1);
                   });
                 }
               }}
@@ -441,9 +443,10 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
             <button
               onClick={() => {
                 if (!isProductOutOfStock) {
-                  addToCart(product, quantity);
+                  const weight = getProductWeight(product.id, product.specifications.weight);
+                  addToCart({...product, originalPrice: product.originalPrice, weight}, quantity);
                   selectedAccessories.forEach(acc => {
-                    addToCart(acc as any, 1);
+                    addToCart({...acc as any, originalPrice: acc.originalPrice || acc.price, weight: 0.5}, 1);
                   });
                   setTimeout(() => router.push('/checkout'), 500);
                 }
@@ -808,9 +811,10 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
               <button
                 onClick={() => {
                   if (!isProductOutOfStock) {
-                    addToCart(product, quantity);
+                    const weight = getProductWeight(product.id, product.specifications.weight);
+                    addToCart({...product, originalPrice: product.originalPrice, weight}, quantity);
                     selectedAccessories.forEach(acc => {
-                      addToCart(acc as any, 1);
+                      addToCart({...acc as any, originalPrice: acc.originalPrice || acc.price, weight: 0.5}, 1);
                     });
                   }
                 }}
@@ -826,9 +830,10 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
               <button
                 onClick={() => {
                   if (!isProductOutOfStock) {
-                    addToCart(product, quantity);
+                    const weight = getProductWeight(product.id, product.specifications.weight);
+                    addToCart({...product, originalPrice: product.originalPrice, weight}, quantity);
                     selectedAccessories.forEach(acc => {
-                      addToCart(acc as any, 1);
+                      addToCart({...acc as any, originalPrice: acc.originalPrice || acc.price, weight: 0.5}, 1);
                     });
                     setTimeout(() => router.push('/checkout'), 500);
                   }

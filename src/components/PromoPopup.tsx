@@ -89,7 +89,7 @@ export default function PromoPopup({ onClose }: PromoPopupProps = {}) {
           </h2>
           
           <p className="text-white/90 mb-4 sm:mb-6 text-base sm:text-lg">
-            Du får opptil 40% rabatt på utvalgte produkter. Bruk rabattkoden nedenfor under kassen for å få rabatten.
+            Du får opptil 40% rabatt på utvalgte produkter. Bruk rabattkoden nedenfor for å få rabatten.
           </p>
 
           {!showCode ? (

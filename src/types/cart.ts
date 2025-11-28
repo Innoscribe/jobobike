@@ -6,11 +6,13 @@ export interface CartItem {
   quantity: number;
   image?: string;
   variant?: string; // for size, color, etc.
+  weight?: number; // weight in kg
   packageItems?: Array<{
     id: string;
     name: string;
     price: number;
     image: string;
+    weight?: number;
   }>;
   isPackage?: boolean;
 }

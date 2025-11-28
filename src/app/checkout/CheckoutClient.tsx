@@ -6,6 +6,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { useCart } from '@/components/CartContext'; // Import your CartContext
 import PaymentForm from '@/components/PaymentForm';
 import { formatCurrency } from '@/utils/currency';
+import { getProductWeight } from '@/utils/productWeight';
 
 // Replace with your publishable key
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -93,7 +94,8 @@ export default function CheckoutClient() {
           quantity: item.quantity,
           price: item.price,
           originalPrice: (item as any).originalPrice || item.price,
-          category: item.category || 'general'
+          category: item.category || 'general',
+          weight: item.weight || getProductWeight(item.id)
         }))
       };
       

@@ -1,5 +1,6 @@
 ﻿import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { getProductWeight } from '@/utils/productWeight';
 
 if (!process.env.STRIPE_SECRET_KEY) {
   console.error('âŒ STRIPE_SECRET_KEY is not configured in environment variables');
@@ -34,26 +35,45 @@ export async function POST(request: NextRequest) {
         throw new Error('No items in cart');
       }
 
-      let total = items.reduce((sum, item) => {
-        // Use originalPrice if coupon is applied, otherwise use price
-        const basePrice = couponData && item.originalPrice ? item.originalPrice : item.price;
-        const price = basePrice ? Math.round(basePrice * 100) : 0;
-        const quantity = item.quantity || 1;
-        return sum + price * quantity;
-      }, 0);
-
+      let productTotal = 0;
+      
       if (couponData) {
+        // When coupon is applied, ALWAYS use originalPrice
+        productTotal = items.reduce((sum, item) => {
+          const originalPrice = item.originalPrice || item.price;
+          const price = Math.round(originalPrice * 100);
+          const quantity = item.quantity || 1;
+          return sum + price * quantity;
+        }, 0);
+        
+        // Apply discount to original prices
         if (couponData.percent_off) {
-          const discount = Math.round((total * couponData.percent_off) / 100);
-          total = total - discount;
-          console.log(`Applied ${couponData.percent_off}% discount: -${discount}`);
+          const discount = Math.round((productTotal * couponData.percent_off) / 100);
+          productTotal = productTotal - discount;
+          console.log(`Applied ${couponData.percent_off}% discount on original prices: -${discount}`);
         } else if (couponData.amount_off) {
-          total = total - couponData.amount_off;
+          productTotal = productTotal - couponData.amount_off;
           console.log(`Applied fixed discount: -${couponData.amount_off}`);
         }
+      } else {
+        // No coupon: use current price
+        productTotal = items.reduce((sum, item) => {
+          const price = Math.round(item.price * 100);
+          const quantity = item.quantity || 1;
+          return sum + price * quantity;
+        }, 0);
       }
 
-      console.log('âœ… Calculated total amount:', total);
+      // Calculate shipping per item
+      const shippingTotal = items.reduce((sum, item) => {
+        const weight = item.weight || getProductWeight(item.id);
+        const quantity = item.quantity || 1;
+        const itemShipping = weight > 0 && weight <= 50 ? (440 + 28 * (weight - 1)) : 0;
+        return sum + (itemShipping * quantity);
+      }, 0);
+
+      const total = productTotal + Math.round(shippingTotal * 100);
+      console.log('âœ… Product total:', productTotal, 'Shipping:', Math.round(shippingTotal * 100), 'Total:', total);
       return total;
     };
 
@@ -65,10 +85,17 @@ export async function POST(request: NextRequest) {
 
     console.log('ðŸ’³ Creating Stripe payment intent with amount:', amount);
 
+    // Calculate total weight for shipping
+    const totalWeight = items.reduce((sum: number, item: any) => {
+      const weight = item.weight || getProductWeight(item.id);
+      return sum + (weight * (item.quantity || 1));
+    }, 0);
+
     // Create detailed metadata for Stripe dashboard
     const metadata: any = {
       order_id: `order_${Date.now()}`,
       total_items: items.length.toString(),
+      total_weight_kg: totalWeight.toFixed(2),
     };
 
     // Add individual items and package details
@@ -77,6 +104,7 @@ export async function POST(request: NextRequest) {
       metadata[`${prefix}_name`] = item.name;
       metadata[`${prefix}_price`] = item.price.toString();
       metadata[`${prefix}_quantity`] = (item.quantity || 1).toString();
+      metadata[`${prefix}_weight`] = (item.weight || getProductWeight(item.id)).toString();
       
       if (item.isPackage && item.packageItems) {
         metadata[`${prefix}_is_package`] = 'true';
