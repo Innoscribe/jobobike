@@ -254,7 +254,14 @@ export default function ResultsDisplay({
                         Se
                       </button>
                     </Link>
-                   <AddToCartButton product={bike} className='border rounded-xl text-white bg-[#12b190] hover:bg-[#0f9a7a]'/>
+                   <AddToCartButton product={{
+                     id: bike.id,
+                     name: bike.name,
+                     price: bike.price,
+                     originalPrice: bike.price,
+                     image: bike.image || '',
+                     category: bike.category || []
+                   }} className='border rounded-xl text-white bg-[#12b190] hover:bg-[#0f9a7a]'/>
                   </div>
                 </div>
               </div>
