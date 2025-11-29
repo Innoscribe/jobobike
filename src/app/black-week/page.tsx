@@ -19,11 +19,8 @@ export default function BlackWeekPage() {
   });
 
   useEffect(() => {
-    // Set end date to Sunday at 12:00 AM (midnight)
-    const sunday = new Date();
-    sunday.setDate(sunday.getDate() + 2);
-    sunday.setHours(0, 0, 0, 0);
-    const endDate = sunday.getTime();
+    // Set end date to December 26, 2025 at 12:00 AM (midnight)
+    const endDate = new Date('2025-12-26T00:00:00').getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -48,7 +45,7 @@ export default function BlackWeekPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#12b190] via-[#0fa080] to-[#0e9a7a] py-12 md:py-24 px-4 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#c41e3a] via-[#165b33] to-[#c41e3a] py-12 md:py-24 px-4 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
         </div>
@@ -60,7 +57,7 @@ export default function BlackWeekPage() {
                 <p className="text-white text-sm font-medium">⚡ Eksklusivt tilbud</p>
               </div>
               <h1 className="text-4xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white">
-                BLACK WEEK
+                CHRISTMAS SALE
               </h1>
               <p className="text-lg md:text-3xl font-light text-white/90">
                 Opptil 60% rabatt på el-sykler
@@ -157,8 +154,8 @@ export default function BlackWeekPage() {
                 return (
                   <Link key={product.id} href={`/products/${product.slug}`} className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200 flex flex-col h-full hover:shadow-lg transition-shadow">
                     <div className="relative h-40 md:h-56 flex items-center justify-center p-4 md:p-8 bg-white">
-                      <div className="absolute top-2 left-2 md:top-3 md:left-3 bg-orange-500 text-black px-2 py-1 md:px-3 md:py-1.5 rounded-full text-[9px] md:text-xs font-bold shadow-lg">
-                        BLACK WEEK
+                      <div className="absolute top-2 left-2 md:top-3 md:left-3 bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white px-2 py-1 md:px-3 md:py-1.5 rounded-full text-[9px] md:text-xs font-bold shadow-lg">
+                        CHRISTMAS SALE
                       </div>
                       <div className="absolute top-2 right-2 md:top-3 md:right-3 bg-red-600 text-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-semibold">
                         -{discountPercent}%

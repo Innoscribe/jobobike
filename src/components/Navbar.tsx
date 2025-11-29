@@ -394,14 +394,14 @@ export default function Navbar() {
         </div>
 
         {/* Moving Text Banner */}
-        <div className={`w-full bg-orange-500 text-black py-2 overflow-hidden transition-all duration-500 ease-in-out ${isScrolled ? 'hidden' : 'block'}`}>
+        <div className={`w-full bg-gradient-to-r from-[#c41e3a] via-[#165b33] to-[#c41e3a] text-white py-2 overflow-hidden transition-all duration-500 ease-in-out ${isScrolled ? 'hidden' : 'block'}`}>
           <div className="flex animate-scroll-fast text-xl font-medium gap-5">
-            <span className="whitespace-nowrap flex gap-5"><span>BLACK WEEK ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>BLACK WEEK ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>BLACK WEEK ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>BLACK WEEK ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>BLACK WEEK ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>BLACK WEEK ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
+            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
+            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
+            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
+            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
+            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
+            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
           </div>
         </div>
 
@@ -428,7 +428,7 @@ export default function Navbar() {
                 href="/black-week"
                 className="text-sm md:text-base font-medium text-gray-700 hover:text-[#12b190] transition-colors whitespace-nowrap flex-shrink-0"
               >
-                Black Week
+                Christmas Sale
               </Link>
               <Link
                 href="/bli-forhandler"
@@ -636,7 +636,7 @@ export default function Navbar() {
                 href="/black-week"
                 className="block p-4 text-gray-900 hover:bg-[#12b190] hover:text-white rounded-lg transition-colors font-medium border border-gray-200 hover:border-[#12b190]"
               >
-                Black Week
+                Christmas Sale
               </Link>
               <Link
                 href="/bli-forhandler"

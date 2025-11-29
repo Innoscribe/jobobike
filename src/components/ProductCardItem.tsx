@@ -70,17 +70,17 @@ export default function ProductCardItem({
             sizes="(max-width: 640px) 140px, 250px"
           />
         </div>
-        {baseProduct.badge === 'Black Week' && (
-          <div className="absolute top-2 left-2 bg-orange-500 text-black px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-bold shadow-lg">
-            BLACK WEEK
+        {baseProduct.badge === 'CHRISTMAS SALE' && (
+          <div className="absolute top-2 left-2 bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-bold shadow-lg">
+            CHRISTMAS SALE
           </div>
         )}
-        {baseProduct.badge !== 'Black Week' && baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && (
+        {baseProduct.badge !== 'CHRISTMAS SALE' && baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && (
           <div className="absolute top-2 left-2 bg-red-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-semibold">
             -{Math.round(((baseProduct.originalPrice - baseProduct.price) / baseProduct.originalPrice) * 100)}%
           </div>
         )}
-        {baseProduct.badge === 'Black Week' && baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && !isOutOfStock && (
+        {baseProduct.badge === 'CHRISTMAS SALE' && baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && !isOutOfStock && (
           <div className="absolute top-2 right-2 bg-red-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-semibold">
             -{Math.round(((baseProduct.originalPrice - baseProduct.price) / baseProduct.originalPrice) * 100)}%
           </div>

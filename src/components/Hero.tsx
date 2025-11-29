@@ -15,8 +15,8 @@ const Hero = () => {
           {/* Left: Text and Button */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              End of Summer Sale
-              <span className="block text-[#12b190] mt-2">Upto 30% OFF</span>
+              Christmas Sale
+              <span className="block bg-gradient-to-r from-[#c41e3a] to-[#165b33] bg-clip-text text-transparent mt-2">Upto 40% OFF</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600">
               Premium electric bikes designed for your lifestyle. Lightweight, powerful, and perfect for every journey.

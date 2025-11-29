@@ -57,9 +57,9 @@ const LandingPage = () => {
             </div>
             
             {/* Text Content - Second on mobile, Left on desktop */}
-            <div className="flex flex-col justify-center space-y-3 md:space-y-6 text-center md:text-left w-full order-2 md:order-1 bg-gradient-to-br from-orange-500 to-orange-600 p-6 md:p-12">
+            <div className="flex flex-col justify-center space-y-3 md:space-y-6 text-center md:text-left w-full order-2 md:order-1 bg-gradient-to-br from-[#c41e3a] via-[#165b33] to-[#c41e3a] p-6 md:p-12">
               <div className="inline-block">
-                <span className="bg-black text-orange-500 px-4 py-2 rounded-full text-sm md:text-base font-bold uppercase tracking-wider">Black Week 2025</span>
+                <span className="bg-white text-[#c41e3a] px-4 py-2 rounded-full text-sm md:text-base font-bold uppercase tracking-wider">Christmas Sale 2024</span>
               </div>
               
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
@@ -90,7 +90,7 @@ const LandingPage = () => {
                 </div>
               </div>
               
-              <Link href="/black-week" className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg w-fit mx-auto md:mx-0">
+              <Link href="/black-week" className="inline-flex items-center justify-center gap-2 bg-white text-[#c41e3a] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg w-fit mx-auto md:mx-0">
                 Handle nå <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

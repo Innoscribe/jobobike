@@ -118,8 +118,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
               </div>
             )}
             {!isProductOutOfStock && ['henry-001', 'transer-001', 'robin-pro-001', 'dyno-001', 'luxe-snow-001'].includes(product.id) && (
-              <div className="absolute top-3 left-3 bg-orange-500 text-black px-3 py-1.5 rounded-full text-xs font-bold shadow-lg z-20">
-                BLACK WEEK
+              <div className="absolute top-3 left-3 bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg z-20">
+                CHRISTMAS SALE
               </div>
             )}
             {isProductOutOfStock && (
@@ -485,8 +485,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                 </div>
               )}
               {!isProductOutOfStock && ['henry-001', 'transer-001', 'robin-pro-001', 'dyno-001', 'luxe-snow-001'].includes(product.id) && (
-                <div className="absolute top-3 left-3 bg-orange-500 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg z-20">
-                  BLACK WEEK
+                <div className="absolute top-3 left-3 bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg z-20">
+                  CHRISTMAS SALE
                 </div>
               )}
               {isProductOutOfStock && (
@@ -771,8 +771,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                 )}
                 <span className="text-2xl font-bold text-black">{formatCurrency(product.price + selectedAccessories.reduce((sum, acc) => sum + acc.price, 0))}</span>
                 {['henry-001', 'transer-001', 'robin-pro-001', 'dyno-001', 'luxe-snow-001'].includes(product.id) && (
-                  <span className="bg-orange-500 text-black px-2 py-1 rounded-full text-xs font-bold">
-                    BLACK WEEK
+                  <span className="bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white px-2 py-1 rounded-full text-xs font-bold">
+                    CHRISTMAS SALE
                   </span>
                 )}
               </div>
