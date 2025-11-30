@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Package, Shield, Truck, Plus } from 'lucide-react';
+import { Gift, Shield, Truck, Plus } from 'lucide-react';
 import { PRODUCTS_DATA } from '@/lib/productData';
 import { useCart } from '@/components/CartContext';
 
@@ -45,56 +45,59 @@ export default function BlackWeekPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#c41e3a] via-[#165b33] to-[#c41e3a] py-12 md:py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
-        </div>
-        
+      <section className="relative py-12 md:py-20 px-4 overflow-hidden bg-gradient-to-br from-[#c41e3a] via-[#165b33] to-[#c41e3a]">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center space-y-6 md:space-y-10">
-            <div className="space-y-4">
-              <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full">
-                <p className="text-white text-sm font-medium">⚡ Eksklusivt tilbud</p>
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-center">
+            {/* Left: Content */}
+            <div className="space-y-6 text-center md:text-left md:pl-12 lg:pl-20">
+              <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full">
+                <p className="text-white text-xs font-medium">⚡ Eksklusivt tilbud</p>
               </div>
-              <h1 className="text-4xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white">
-                CHRISTMAS SALE
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+                JULE SALG
               </h1>
-              <p className="text-lg md:text-3xl font-light text-white/90">
-                Opptil 60% rabatt på el-sykler
+              <p className="text-lg md:text-2xl font-light text-white/90">
+                Opptil 40% rabatt på el-sykler
               </p>
-            </div>
-
-            {/* Countdown Timer */}
-            <div className="flex justify-center gap-2 md:gap-6 py-4 md:py-8">
-              <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3 md:p-8 min-w-[70px] md:min-w-[130px] shadow-2xl transform hover:scale-105 transition-transform">
-                <div className="text-3xl md:text-6xl font-bold text-[#12b190] tabular-nums">{timeLeft.days}</div>
-                <div className="text-xs md:text-sm text-gray-600 mt-1 md:mt-2 font-medium">DAGER</div>
-              </div>
-              <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3 md:p-8 min-w-[70px] md:min-w-[130px] shadow-2xl transform hover:scale-105 transition-transform">
-                <div className="text-3xl md:text-6xl font-bold text-[#12b190] tabular-nums">{timeLeft.hours}</div>
-                <div className="text-xs md:text-sm text-gray-600 mt-1 md:mt-2 font-medium">TIMER</div>
-              </div>
-              <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3 md:p-8 min-w-[70px] md:min-w-[130px] shadow-2xl transform hover:scale-105 transition-transform">
-                <div className="text-3xl md:text-6xl font-bold text-[#12b190] tabular-nums">{timeLeft.minutes}</div>
-                <div className="text-xs md:text-sm text-gray-600 mt-1 md:mt-2 font-medium">MIN</div>
-              </div>
-              <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3 md:p-8 min-w-[70px] md:min-w-[130px] shadow-2xl transform hover:scale-105 transition-transform">
-                <div className="text-3xl md:text-6xl font-bold text-[#12b190] tabular-nums animate-pulse">{timeLeft.seconds}</div>
-                <div className="text-xs md:text-sm text-gray-600 mt-1 md:mt-2 font-medium">SEK</div>
-              </div>
-            </div>
-
-            <div className="space-y-4 md:space-y-6">
-              <p className="text-base md:text-2xl text-white/90 font-light max-w-2xl mx-auto">
+              <p className="text-sm md:text-base text-white/80">
                 Begrenset tilbud - kun denne uken
               </p>
-              
               <Link 
                 href="/cycle"
-                className="inline-block bg-white hover:bg-gray-100 text-[#12b190] text-lg font-semibold px-12 py-5 rounded-full transition-all transform hover:scale-105 shadow-2xl"
+                className="inline-block bg-white hover:bg-gray-100 text-[#12b190] text-base md:text-lg font-semibold px-8 md:px-12 py-3 md:py-4 rounded-full transition-all transform hover:scale-105 shadow-2xl"
               >
                 Handle nå →
               </Link>
+            </div>
+            
+            {/* Right: Image */}
+            <div className="relative h-[300px] md:h-[500px] rounded-2xl overflow-hidden">
+              <img src="/images/blackweek.jpg" alt="Jule Salg" className="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Countdown Timer Section */}
+      <section className="bg-white py-8 px-4 border-b border-gray-200">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-center text-sm md:text-base text-gray-600 mb-4 font-medium">Tilbudet utløper om:</p>
+          <div className="flex gap-3 md:gap-4 justify-center">
+            <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-4 md:p-6 flex-1 max-w-[100px] md:max-w-[120px] shadow-sm">
+              <div className="text-3xl md:text-5xl font-bold text-[#12b190] tabular-nums text-center">{timeLeft.days}</div>
+              <div className="text-xs md:text-sm text-gray-600 mt-2 font-medium text-center">Dager</div>
+            </div>
+            <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-4 md:p-6 flex-1 max-w-[100px] md:max-w-[120px] shadow-sm">
+              <div className="text-3xl md:text-5xl font-bold text-[#12b190] tabular-nums text-center">{timeLeft.hours}</div>
+              <div className="text-xs md:text-sm text-gray-600 mt-2 font-medium text-center">Timer</div>
+            </div>
+            <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-4 md:p-6 flex-1 max-w-[100px] md:max-w-[120px] shadow-sm">
+              <div className="text-3xl md:text-5xl font-bold text-[#12b190] tabular-nums text-center">{timeLeft.minutes}</div>
+              <div className="text-xs md:text-sm text-gray-600 mt-2 font-medium text-center">Min</div>
+            </div>
+            <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-4 md:p-6 flex-1 max-w-[100px] md:max-w-[120px] shadow-sm">
+              <div className="text-3xl md:text-5xl font-bold text-[#12b190] tabular-nums text-center">{timeLeft.seconds}</div>
+              <div className="text-xs md:text-sm text-gray-600 mt-2 font-medium text-center">Sek</div>
             </div>
           </div>
         </div>
@@ -114,7 +117,7 @@ export default function BlackWeekPage() {
 
             <div className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:shadow-md transition-all">
               <div className="flex justify-center mb-4">
-                <Package className="w-12 h-12 text-[#12b190]" />
+                <Gift className="w-12 h-12 text-[#12b190]" />
               </div>
               <h3 className="text-xl font-normal text-gray-900 mb-2">14 dagers åpent kjøp</h3>
               <p className="text-sm text-gray-600">Returner enkelt innen 14 dager</p>
@@ -155,7 +158,7 @@ export default function BlackWeekPage() {
                   <Link key={product.id} href={`/products/${product.slug}`} className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200 flex flex-col h-full hover:shadow-lg transition-shadow">
                     <div className="relative h-40 md:h-56 flex items-center justify-center p-4 md:p-8 bg-white">
                       <div className="absolute top-2 left-2 md:top-3 md:left-3 bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white px-2 py-1 md:px-3 md:py-1.5 rounded-full text-[9px] md:text-xs font-bold shadow-lg">
-                        CHRISTMAS SALE
+                        JULE SALG
                       </div>
                       <div className="absolute top-2 right-2 md:top-3 md:right-3 bg-red-600 text-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-semibold">
                         -{discountPercent}%

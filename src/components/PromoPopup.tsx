@@ -80,12 +80,12 @@ export default function PromoPopup({ onClose }: PromoPopupProps = {}) {
         <div className="text-center">
           <div className="mb-3 sm:mb-4">
             <span className="inline-block bg-yellow-400 text-red-600 text-xs font-bold px-3 py-1 rounded-full mb-3 sm:mb-4 animate-pulse">
-              🎅 CHRISTMAS SALE - OPPTIL 40% RABATT 🎄
+              🎀 JULE SALG - OPPTIL 40% RABATT
             </span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-            🎁 GRATULERER! 🎁
+            GRATULERER!
           </h2>
           
           <p className="text-white/90 mb-4 sm:mb-6 text-base sm:text-lg">
@@ -111,7 +111,7 @@ export default function PromoPopup({ onClose }: PromoPopupProps = {}) {
                   disabled={isSubmitting}
                   className="w-full px-4 py-2 bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white rounded-lg hover:scale-105 transition text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'VENNLIGST VENT...' : '🎁 LÅS OPP RABATTEN'}
+                  {isSubmitting ? 'VENNLIGST VENT...' : 'LÅS OPP RABATTEN'}
                 </button>
               </div>
             </form>
@@ -127,7 +127,7 @@ export default function PromoPopup({ onClose }: PromoPopupProps = {}) {
                 onClick={handleCopy}
                 className="w-full bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white py-2 rounded-lg hover:scale-105 transition text-sm font-semibold"
               >
-                {copied ? '✅ KOPIERT!' : '🎄 KOPIER KODE'}
+                {copied ? '✅ KOPIERT!' : 'KOPIER KODE'}
               </button>
             </div>
           )}

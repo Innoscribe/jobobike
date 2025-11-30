@@ -91,7 +91,10 @@ const LandingPage = () => {
             {/* Text Content - Second on mobile, Left on desktop */}
             <div className="flex flex-col justify-center space-y-3 md:space-y-6 text-center md:text-left w-full order-2 md:order-1 bg-gradient-to-br from-[#c41e3a] via-[#165b33] to-[#c41e3a] p-6 md:p-12 relative overflow-hidden">
               <div className="inline-block relative z-10">
-                <span className="bg-white text-[#c41e3a] px-4 py-2 rounded-full text-sm md:text-base font-bold uppercase tracking-wider shadow-lg">🎄 Christmas Sale 2025</span>
+                <span className="bg-white text-[#c41e3a] px-4 py-2 rounded-full text-sm md:text-base font-bold uppercase tracking-wider shadow-lg inline-flex items-center gap-2">
+                  <img src="/images/wreath.png" alt="Christmas Wreath" className="w-5 h-5 md:w-6 md:h-6" />
+                  Jule Salg 2025
+                </span>
               </div>
               
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight relative z-10">

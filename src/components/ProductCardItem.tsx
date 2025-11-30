@@ -72,7 +72,7 @@ export default function ProductCardItem({
         </div>
         {baseProduct.badge === 'CHRISTMAS SALE' && (
           <div className="absolute top-2 left-2 bg-gradient-to-r from-[#c41e3a] to-[#165b33] text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-xs font-bold shadow-lg">
-            CHRISTMAS SALE
+            JULE SALG
           </div>
         )}
         {baseProduct.badge !== 'CHRISTMAS SALE' && baseProduct.originalPrice && baseProduct.originalPrice !== baseProduct.price && (

@@ -20,7 +20,7 @@ const Hero = () => {
           {/* Left: Text and Button */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight relative">
-              <span className="inline-block animate-pulse" style={{animationDuration: '2s'}}>🎄</span> Christmas Sale
+              <span className="inline-block animate-pulse" style={{animationDuration: '2s'}}>🎄</span> Jule Salg
               <span className="block bg-gradient-to-r from-[#c41e3a] to-[#165b33] bg-clip-text text-transparent mt-2 font-black">Upto 40% OFF</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600">

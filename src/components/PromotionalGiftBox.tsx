@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { Gift } from 'lucide-react';
 import PromoPopup from './PromoPopup';
 
 const PromotionalGiftBox = () => {
@@ -47,11 +48,23 @@ const PromotionalGiftBox = () => {
           disabled={isOpening}
         >
           {/* Circular button with icon */}
-          <div className="relative w-20 h-20 bg-gradient-to-br from-[#c41e3a] to-[#165b33] rounded-full shadow-2xl flex items-center justify-center">
-            {/* Gift icon */}
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+          <div className="relative w-24 h-24 rounded-full shadow-2xl flex items-center justify-center p-[3px] bg-gradient-to-br from-[#c41e3a] via-[#165b33] to-[#c41e3a]">
+            <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+            <svg className="w-14 h-14" viewBox="0 0 24 24" fill="none" stroke="url(#giftGradient)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <defs>
+                <linearGradient id="giftGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{stopColor: '#c41e3a', stopOpacity: 1}} />
+                  <stop offset="50%" style={{stopColor: '#165b33', stopOpacity: 1}} />
+                  <stop offset="100%" style={{stopColor: '#c41e3a', stopOpacity: 1}} />
+                </linearGradient>
+              </defs>
+              <polyline points="20 12 20 22 4 22 4 12"></polyline>
+              <rect x="2" y="7" width="20" height="5"></rect>
+              <line x1="12" y1="22" x2="12" y2="7"></line>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
             </svg>
+            </div>
           </div>
           
           {/* Badge */}

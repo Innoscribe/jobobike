@@ -394,14 +394,36 @@ export default function Navbar() {
         </div>
 
         {/* Moving Text Banner */}
-        <div className={`w-full bg-gradient-to-r from-[#c41e3a] via-[#165b33] to-[#c41e3a] text-white py-2 overflow-hidden transition-all duration-500 ease-in-out ${isScrolled ? 'hidden' : 'block'}`}>
-          <div className="flex animate-scroll-fast text-xl font-medium gap-5">
-            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
-            <span className="whitespace-nowrap flex gap-5"><span>CHRISTMAS SALE ER I GANG</span><span>OPPTIL 40% RABATT</span></span>
+        <div className={`w-full bg-gradient-to-r from-[#c41e3a] via-[#165b33] to-[#c41e3a] text-white py-2 overflow-hidden transition-all duration-1000 ease-in-out ${isScrolled ? 'hidden' : 'block'}`}>
+          <div className="flex animate-scroll-fast text-xl font-medium">
+            <div className="flex gap-3 whitespace-nowrap pr-3">
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+            </div>
+            <div className="flex gap-3 whitespace-nowrap pr-3">
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+              <span>JULE SALG ER I GANG</span>
+              <span>OPPTIL 40% RABATT</span>
+            </div>
           </div>
         </div>
 
@@ -428,7 +450,7 @@ export default function Navbar() {
                 href="/black-week"
                 className="text-sm md:text-base font-medium text-gray-700 hover:text-[#12b190] transition-colors whitespace-nowrap flex-shrink-0"
               >
-                Christmas Sale
+                Jule Salg
               </Link>
               <Link
                 href="/bli-forhandler"
