@@ -37,7 +37,7 @@ export default function PaymentForm() {
     const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
     // Calculate shipping per item, then sum
-    const totalShipping = cartItems.reduce((sum, item) => {
+    const calculatedShipping = cartItems.reduce((sum, item) => {
         const weight = (item as any).weight || getProductWeight(item.id);
         const itemShipping = calculateShippingForWeight(weight);
         return sum + (itemShipping * item.quantity);
@@ -50,6 +50,10 @@ export default function PaymentForm() {
     
     let discount = 0;
     let basePrice = originalSubtotal;
+    
+    // Free shipping if order exceeds 3000 NOK
+    const isFreeShipping = basePrice >= 3000;
+    const totalShipping = isFreeShipping ? 0 : calculatedShipping;
     
     if (appliedCoupon) {
         // Apply coupon to ORIGINAL prices
@@ -295,8 +299,17 @@ export default function PaymentForm() {
                     ) : null}
                     <div className="flex justify-between text-sm text-black">
                         <span>Frakt</span>
-                        <span className="text-black">{formatCurrency(convertPrice(pricingBreakdown.shipping))}</span>
+                        {isFreeShipping ? (
+                            <span className="text-green-600 font-medium">GRATIS</span>
+                        ) : (
+                            <span className="text-black">{formatCurrency(convertPrice(pricingBreakdown.shipping))}</span>
+                        )}
                     </div>
+                    {!isFreeShipping && basePrice > 0 && (
+                        <div className="text-xs text-gray-600">
+                            Legg til {formatCurrency(3000 - basePrice)} for gratis frakt
+                        </div>
+                    )}
                     <div className="flex justify-between text-sm text-gray-600">
                         <span>MVA (inkludert i prisen)</span>
                         <span>{formatCurrency(convertPrice(pricingBreakdown.vat))}</span>
