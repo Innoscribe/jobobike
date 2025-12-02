@@ -31,11 +31,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'JOBOBIKE Norge | Premium El-sykler - Gratis Frakt',
+    default: 'JOBOBIKE Norge | Premium El-sykler - Gratis Frakt & 2 Års Garanti',
     template: '%s | JOBOBIKE Norge'
   },
-  description: 'Norges ledende leverandør av premium el-sykler. Over 300 partnere i Europa, 50.000+ solgte sykler. Gratis frakt, 2 års garanti. Fatbike, lastesykkel og pendlersykler.',
-  keywords: 'el-sykkel, elektrisk sykkel, jobobike, fatbike, lastesykkel, pendlersykkel, norge, gratis frakt, el-sykkel norge, elektrisk transport, ebike, electric bike',
+  description: 'Kjøp premium el-sykler fra JOBOBIKE Norge. Fatbike, lastesykkel, pendlersykkel. Gratis frakt over 3000 kr. 2 års garanti. 300+ partnere i Europa. 50.000+ solgte sykler. Bestill i dag!',
+  keywords: 'el-sykkel norge, elektrisk sykkel, jobobike, fatbike, lastesykkel, pendlersykkel, kjøp el-sykkel, el-sykkel pris, ebike norge, elektrisk sykkel norge, sammenleggbar el-sykkel, terreng el-sykkel, hybrid el-sykkel, gratis frakt el-sykkel',
   authors: [{ name: 'JOBOBIKE Norge', url: 'https://jobobike.no' }],
   creator: 'JOBOBIKE Norge',
   publisher: 'JOBOBIKE Norge',
@@ -161,26 +161,30 @@ export default function RootLayout({
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "availableLanguage": "Norwegian"
+                "availableLanguage": "Norwegian",
+                "telephone": "+47-405-56-333",
+                "email": "support@jobobike.no"
               },
               "sameAs": [
                 "https://facebook.com/jobobike",
                 "https://instagram.com/jobobike",
                 "https://twitter.com/jobobike"
-              ],
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "El-sykler",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Product",
-                      "name": "Premium El-sykler",
-                      "category": "Electric Bicycles"
-                    }
-                  }
-                ]
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "JOBOBIKE Norge",
+              "url": "https://jobobike.no",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://jobobike.no/elsykler?search={search_term_string}",
+                "query-input": "required name=search_term_string"
               }
             })
           }}

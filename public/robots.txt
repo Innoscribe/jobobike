@@ -1,17 +1,25 @@
+# JOBOBIKE Norge - Robots.txt
 User-agent: *
 Allow: /
 
 # Sitemap
 Sitemap: https://jobobike.no/sitemap.xml
 
-# Disallow admin areas
-Disallow: /admin/
+# Disallow admin and API areas
 Disallow: /api/
 Disallow: /_next/
 Disallow: /studio/
+Disallow: /admin/
 
 # Allow important pages
 Allow: /products/
 Allow: /accessories/
-Allow: /about/
-Allow: /contact/
+Allow: /category/
+Allow: /om-oss
+Allow: /kontakt-oss
+Allow: /elsykler
+Allow: /sykkelutstyr
+Allow: /black-week
+
+# Crawl delay
+Crawl-delay: 1

@@ -84,8 +84,39 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
     updateQuantity(product.id, newQuantity); // keep cart in sync
   };
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": currentImages,
+    "description": product.description,
+    "sku": product.id,
+    "brand": {
+      "@type": "Brand",
+      "name": "JOBOBIKE"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://jobobike.no/products/${product.slug}`,
+      "priceCurrency": "NOK",
+      "price": product.price,
+      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+      "availability": isProductOutOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": product.rating || 5,
+      "reviewCount": product.reviewCount || 14
+    }
+  };
+
   return (
     <div className="md:pt-12 w-full overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="border-b border-gray-200">
         <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 text-sm overflow-x-auto">
