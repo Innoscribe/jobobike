@@ -658,7 +658,7 @@ export default function Navbar() {
                 href="/black-week"
                 className="block p-4 text-gray-900 hover:bg-[#12b190] hover:text-white rounded-lg transition-colors font-medium border border-gray-200 hover:border-[#12b190]"
               >
-                Christmas Sale
+                Jule Salg
               </Link>
               <Link
                 href="/bli-forhandler"

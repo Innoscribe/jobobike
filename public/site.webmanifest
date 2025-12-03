@@ -9,14 +9,19 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/images/favicon.jpg",
-      "sizes": "192x192",
-      "type": "image/jpeg"
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
     },
     {
-      "src": "/images/favicon.jpg",
+      "src": "/apple-touch-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],
