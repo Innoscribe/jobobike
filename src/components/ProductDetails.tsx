@@ -16,6 +16,7 @@ import BikePackageBuilder from "./BikePackageBuilder";
 
 import { formatCurrency } from "@/utils/currency";
 import { getProductWeight } from "@/utils/productWeight";
+import { getAccessoryWeight } from "@/utils/accessoryWeight";
 
 function ReviewStars({ rating = 5, reviewCount = 14 }: { rating?: number; reviewCount?: number }) {
   return (
@@ -476,7 +477,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                     variant: hasVariants ? combinedProduct!.variants[selectedVariantIndex].variantName : undefined
                   }, quantity);
                   selectedAccessories.forEach(acc => {
-                    addToCart({...acc, originalPrice: acc.price, weight: 0.5}, 1);
+                    const accWeight = getAccessoryWeight(acc.id, acc.name);
+                    addToCart({...acc, originalPrice: acc.price, weight: accWeight}, 1);
                   });
                 }
               }}
@@ -501,7 +503,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                     variant: hasVariants ? combinedProduct!.variants[selectedVariantIndex].variantName : undefined
                   }, quantity);
                   selectedAccessories.forEach(acc => {
-                    addToCart({...acc, originalPrice: acc.price, weight: 0.5}, 1);
+                    const accWeight = getAccessoryWeight(acc.id, acc.name);
+                    addToCart({...acc, originalPrice: acc.price, weight: accWeight}, 1);
                   });
                   setTimeout(() => router.push('/checkout'), 500);
                 }
@@ -887,7 +890,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                       variant: hasVariants ? combinedProduct!.variants[selectedVariantIndex].variantName : undefined
                     }, quantity);
                     selectedAccessories.forEach(acc => {
-                      addToCart({...acc, originalPrice: acc.price, weight: 0.5}, 1);
+                      const accWeight = getAccessoryWeight(acc.id, acc.name);
+                      addToCart({...acc, originalPrice: acc.price, weight: accWeight}, 1);
                     });
                   }
                 }}
@@ -912,7 +916,8 @@ export default function ProductDetails({ product: singleProduct, combinedProduct
                       variant: hasVariants ? combinedProduct!.variants[selectedVariantIndex].variantName : undefined
                     }, quantity);
                     selectedAccessories.forEach(acc => {
-                      addToCart({...acc, originalPrice: acc.price, weight: 0.5}, 1);
+                      const accWeight = getAccessoryWeight(acc.id, acc.name);
+                      addToCart({...acc, originalPrice: acc.price, weight: accWeight}, 1);
                     });
                     setTimeout(() => router.push('/checkout'), 500);
                   }
